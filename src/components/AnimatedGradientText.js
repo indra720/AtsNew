@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+const AnimatedGradientText = () => {
+    return (_jsxs("div", { className: "flex flex-col items-center justify-center min-h-screen bg-[#0f172a]", children: [_jsx("h1", { className: "text-6xl font-extrabold text-transparent bg-clip-text \n        bg-linear-to-r from-purple-500 via-pink-500 via-red-500 via-sky-500 via-yellow-400 to-purple-500 \n        animate-gradient-x", children: "Infinite Gradient Text \uD83D\uDD25" }), _jsxs("button", { className: "relative mt-12 px-10 py-4 text-lg font-semibold text-white rounded-lg overflow-hidden \n        shadow-lg hover:scale-105 transition-all duration-300", children: [_jsx("span", { className: "absolute inset-0 bg-linear-to-r \n          from-purple-500 via-pink-500 via-red-500 via-sky-500 via-yellow-400 to-purple-500 \n          animate-gradient-x rounded-lg" }), _jsx("span", { className: "relative z-10", children: "Start Project" })] })] }));
+};
+export default AnimatedGradientText;
