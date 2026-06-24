@@ -8,7 +8,14 @@ import {
   Bot,
   Database,
   CircleCheckBig,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 const AOS = {
   init: (config: any) => console.log("AOS initialized with config:", config),
 };
@@ -121,12 +128,10 @@ const TechnologyServices: React.FC = () => {
       style={{ fontFamily: "Times New Roman, serif" }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
-
         <div className="text-center mb-12 md:mb-16 lg:mb-20" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
             Comprehensive Technology Services
           </h2>
-
           <p
             className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
             data-aos="fade-up"
@@ -137,67 +142,80 @@ const TechnologyServices: React.FC = () => {
           </p>
         </div>
 
-
-        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              data-aos="zoom-in"
-              data-aos-delay={index * 150}
-              className="rounded-xl shadow-lg overflow-hidden group bg-white hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-1 flex flex-col h-full"
-            >
-
-              <div className="relative h-48 md:h-56 overflow-hidden shrink-0">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  onError={(e) => handleImageError(e, service.title)}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent" />
-
-
-                <div className="absolute top-4 sm:top-6 left-4 sm:left-6 bg-black/60 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-lg">
-
-                  {service.icon}
-                </div>
-
-
-                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
-
-
-              <div className="p-6 md:p-8 flex flex-col flex-grow">
-                <p className="text-gray-700 mb-6 text-sm sm:text-base leading-relaxed">
-                  {service.description}
-                </p>
-
-                <div className="space-y-2 mb-6">
-                  {service.features.map((feature, i) => (
-                    <div key={i} className="flex items-center space-x-2">
-                      <CircleCheckBig className="h-4 w-4 text-teal-600 shrink-0" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                
-                <button
-                  className="mt-auto inline-flex items-center justify-center gap-2 text-sm font-medium
-                    text-white h-10 rounded-md px-4 w-full
-                    bg-linear-to-r from-cyan-500 to-teal-600
-                    hover:shadow-lg hover:scale-[1.01] transition-all"
+        <div className="relative group">
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              320: { slidesPerView: 1, spaceBetween: 15 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 4, spaceBetween: 30 },
+            }}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            navigation={{
+              nextEl: ".tech-button-next",
+              prevEl: ".tech-button-prev",
+            }}
+            className="pb-16 px-4"
+          >
+            {services.map((service, index) => (
+              <SwiperSlide key={index} className="h-auto! flex">
+                <div
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
+                  className="group relative flex flex-col h-full w-full rounded-3xl bg-white p-2 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(20,184,166,0.15)] border border-gray-100"
                 >
-                  Learn More
-                  <ArrowRight className="h-4 w-4 ml-1 text-white" />
-                </button>
-              </div>
-            </div>
-          ))}
+                  <div className="relative h-60 w-full overflow-hidden rounded-2xl shrink-0">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      onError={(e) => handleImageError(e, service.title)}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                    <div className="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
+                      {service.icon}
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col p-6 grow">
+                    <h3 className="mb-3 text-xl font-bold text-teal-600">
+                      {service.title}
+                    </h3>
+                    <p className="mb-6 text-sm text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    <div className="mb-6 space-y-2">
+                      {service.features.slice(0, 3).map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2">
+                          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-50">
+                            <CircleCheckBig className="h-3 w-3 text-teal-600" />
+                          </div>
+                          <span className="text-xs font-medium text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      className="mt-auto group/btn flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition-all shadow-md shadow-teal-500/20"
+                    >
+                      Learn More
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                    </button>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className="tech-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+            <ChevronLeft className="w-5 h-5" />
+          </div>
+          <div className="tech-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+            <ChevronRight className="w-5 h-5" />
+          </div>
         </div>
       </div>
     </section>
