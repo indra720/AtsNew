@@ -8,7 +8,14 @@ import {
   Smartphone,
   Code,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+
 const solutions = [
   {
     title: "AI Solutions",
@@ -79,7 +86,7 @@ const solutions = [
 const Solution: React.FC = () => {
   return (
     <div className="min-h-screen font-sans bg-linear-to-br from-teal-50 via-white to-cyan-100 text-gray-900">
-      <section className="relative pt-3 lg:pt-6 pb-16  lg:pb-24 overflow-hidden">
+      <section className="relative pt-3 lg:pt-6 pb-16 lg:pb-24 overflow-hidden">
         <div className="relative w-full px-4 sm:px-6 lg:px-10 text-center">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
             Innovative <span className="text-teal-600">Solutions</span>
@@ -122,66 +129,93 @@ const Solution: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {solutions.map((solution, index) => (
-              <div
-                key={index}
-                className="group relative bg-white border border-teal-100 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden transform hover:-translate-y-1 flex flex-col h-full"
-              >
-                <div className="h-40 overflow-hidden shrink-0">
-                  <img
-                    src={solution.image}
-                    alt={solution.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = `https://placehold.co/800x500/E0F2F7/0F766E?text=${solution.title.replace(
-                        /\s/g,
-                        "+"
-                      )}`;
-                    }}
-                  />
-                </div>
+          <div className="relative group">
+            <Swiper
+              modules={[Autoplay, Navigation]}
+              spaceBetween={24}
+              slidesPerView={1}
+              breakpoints={{
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+              }}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              navigation={{
+                nextEl: ".solution-button-next",
+                prevEl: ".solution-button-prev",
+              }}
+              className="pb-12 flex! items-stretch!"
+            >
+              {solutions.map((solution, index) => (
+                <SwiperSlide key={index} className="h-auto! flex">
+                  <div className="group relative bg-white border border-teal-100 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden transform hover:-translate-y-1 flex flex-col h-full w-full">
+                    <div className="h-40 overflow-hidden shrink-0">
+                      <img
+                        src={solution.image}
+                        alt={solution.title}
+                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = `https://placehold.co/800x500/E0F2F7/0F766E?text=${solution.title.replace(
+                            /\s/g,
+                            "+"
+                          )}`;
+                        }}
+                      />
+                    </div>
 
-                <div
-                  className={`absolute top-4 left-4 w-14 h-14 bg-${solution.color}-600 text-white rounded-xl flex items-center justify-center z-20 shadow-xl border-2 border-white`}
-                >
-                  {React.cloneElement(solution.icon, {
-                    className: "w-8 h-8 text-white",
-                  })}
-                </div>
+                    <div
+                      className={`absolute top-4 left-4 w-14 h-14 bg-${solution.color}-600 text-white rounded-xl flex items-center justify-center z-20 shadow-xl border-2 border-white`}
+                    >
+                      {React.cloneElement(solution.icon as React.ReactElement, {
+                        className: "w-8 h-8 text-white",
+                      })}
+                    </div>
 
-                <div className="p-6 sm:p-8 relative z-10 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                    {solution.title}
-                  </h3>
+                    <div className="p-6 sm:p-8 relative z-10 flex flex-col grow">
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900">
+                        {solution.title}
+                      </h3>
 
-                  <p className="text-gray-700 mb-6 text-base flex-grow">
-                    {solution.description}
-                  </p>
+                      <p className="text-gray-700 mb-6 text-base">
+                        {solution.description}
+                      </p>
 
-                  <h4 className="font-semibold text-gray-800 mb-3">
-                    Key Capabilities:
-                  </h4>
-                  <ul className="space-y-2 text-gray-600 mb-8">
-                    {solution.items.map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-base">
-                        <CheckCircle className="w-5 h-5 text-teal-500 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                      <div className="mt-auto">
+                        <h4 className="font-semibold text-gray-800 mb-3">
+                          Key Capabilities:
+                        </h4>
+                        <ul className="space-y-2 text-gray-600 mb-8">
+                          {solution.items.map((item, i) => (
+                            <li
+                              key={i}
+                              className="flex items-center gap-3 text-base"
+                            >
+                              <CheckCircle className="w-5 h-5 text-teal-500 shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
 
-                  <a
-                    href="#"
-                    className="mt-auto inline-flex items-center text-lg font-bold text-teal-600 group-hover:text-teal-700 transition duration-300"
-                  >
-                    Explore {solution.title}
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            ))}
+                        <a
+                          href="#"
+                          className="inline-flex items-center text-lg font-bold text-teal-600 group-hover:text-teal-700 transition duration-300"
+                        >
+                          Explore {solution.title}
+                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <div className="solution-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+              <ChevronLeft className="w-5 h-5" />
+            </div>
+            <div className="solution-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+              <ChevronRight className="w-5 h-5" />
+            </div>
           </div>
         </div>
       </section>

@@ -49,7 +49,7 @@ const About: FC = () => {
       style={{ fontFamily: "Times New Roman, serif" }}
     >
 
-      <section className="relative py-6 sm:py-16  text-center flex items-center justify-center min-h-[500px]">
+      <section className="relative py-6   text-center flex items-center justify-center min-h-[300px]">
 
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -60,7 +60,7 @@ const About: FC = () => {
         ></div>
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
 
-        <div className="relative w-full px-6">
+        <div className="relative w-full px-6 ">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-linear-to-r from-cyan-400 to-teal-500 text-transparent bg-clip-text">
             About <span className="text-white">ATS GLOBAL TECH</span>
           </h1>
@@ -101,7 +101,7 @@ const About: FC = () => {
       </section>
 
 
-      <section className="py-20 lg:py-24 bg-gray-50">
+      <section className="py-10 bg-gray-50">
         <div className="w-full px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           <div>

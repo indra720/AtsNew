@@ -15,7 +15,13 @@ import {
   Lightbulb,
   Wrench,
   Rocket,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 interface ServiceCardProps {
   title: string;
@@ -33,9 +39,9 @@ const ServiceCard: FC<ServiceCardProps> = ({
   icon,
   popular,
 }) => (
-  <div className="rounded-lg bg-white/60 backdrop-blur-md text-gray-900 shadow-lg hover:shadow-2xl transition-all duration-300 border border-teal-200 relative hover:-translate-y-1">
+  <div className="rounded-lg bg-white/60 backdrop-blur-md text-gray-900 shadow-lg hover:shadow-2xl transition-all duration-300 border border-teal-200 relative hover:-translate-y-1 h-full flex flex-col">
     {popular && (
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
         <div className="inline-flex items-center rounded-full text-xs font-semibold bg-teal-500 text-white px-4 py-1">
           <Star className="h-3 w-3 mr-1" /> Popular
         </div>
@@ -48,9 +54,9 @@ const ServiceCard: FC<ServiceCardProps> = ({
         {icon}
       </div>
       <h3 className="font-semibold text-xl mb-2">{title}</h3>
-      <p className="text-gray-600 mb-6 grow">{description}</p>{" "}
+      <p className="text-gray-600 mb-6">{description}</p>{" "}
 
-      <ul className="space-y-2 mb-6">
+      <ul className="space-y-2 mb-6 grow">
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-center text-gray-700">
 
@@ -181,7 +187,7 @@ const romanStyle: React.CSSProperties = {
 const ServicesSection: FC = () => (
   <main className="bg-linear-to-r from-teal-50 via-white to-teal-100 text-gray-900 min-h-screen ">
 
-    <section className="bg-gray-200 text-center py-14 px-4">
+    <section className="bg-gray-200 text-center py-6 px-4">
       {" "}
 
       <h1
@@ -278,7 +284,9 @@ const ServicesSection: FC = () => (
       </div>
     </section>
 
-    <section className="py-16  px-4 w-full">
+
+   {/* Detailed service Offerings */}
+    <section className="py-16 px-4 w-full">
       <h2
         className="text-center text-3xl md:text-4xl font-bold mb-10 md:mb-12"
         style={romanStyle}
@@ -286,10 +294,35 @@ const ServicesSection: FC = () => (
         Detailed Service Offerings
       </h2>
 
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {servicesData.map((service, idx) => (
-          <ServiceCard key={idx} {...service} />
-        ))}
+      <div className="relative group">
+        <Swiper
+          modules={[Autoplay, Navigation]}
+          spaceBetween={24}
+          slidesPerView={1}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 4 },
+          }}
+          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          navigation={{
+            nextEl: ".service-button-next",
+            prevEl: ".service-button-prev",
+          }}
+          className="pb-12 flex! items-stretch!"
+        >
+          {servicesData.map((service, idx) => (
+            <SwiperSlide key={idx} className="h-auto! flex">
+              <ServiceCard {...service} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="service-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+          <ChevronLeft className="w-5 h-5" />
+        </div>
+        <div className="service-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+          <ChevronRight className="w-5 h-5" />
+        </div>
       </div>
     </section>
 

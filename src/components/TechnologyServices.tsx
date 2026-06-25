@@ -160,7 +160,7 @@ const TechnologyServices: React.FC = () => {
             className="pb-16 px-4"
           >
             {services.map((service, index) => (
-              <SwiperSlide key={index} className="h-auto! flex">
+              <SwiperSlide key={index} className="h-auto! flex pb-2">
                 <div
                   data-aos="zoom-in"
                   data-aos-delay={index * 100}

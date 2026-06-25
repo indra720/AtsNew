@@ -106,23 +106,25 @@ const FeaturedSuccessStories = () => {
 
         <div className="relative group">
           <Swiper
-              modules={[Autoplay, Navigation]}
-              spaceBetween={24}
-              slidesPerView={1}
-              breakpoints={{
-                320: { slidesPerView: 1, spaceBetween: 15 },
-                768: { slidesPerView: 2, spaceBetween: 20 },
-                1024: { slidesPerView: 4, spaceBetween: 30 },
-              }}
-              autoplay={{ delay: 3500, disableOnInteraction: false }}
-              navigation={{
-                nextEl: ".featured-button-next",
-                prevEl: ".featured-button-prev",
-              }}
-              className="pb-12"
-            >
+            modules={[Autoplay, Navigation]}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              320: { slidesPerView: 1, spaceBetween: 15 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 4, spaceBetween: 30 },
+            }}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            navigation={{
+              nextEl: ".featured-button-next",
+              prevEl: ".featured-button-prev",
+            }}
+            className="pb-12 flex!
+ items-stretch!
+!"
+          >
             {caseStudies.map((study, index) => (
-              <SwiperSlide key={study.id}>
+              <SwiperSlide key={study.id} className="flex flex-col h-auto pb-2">
                 <div
                   data-aos="zoom-in"
                   data-aos-delay={index * 150}
@@ -131,83 +133,83 @@ const FeaturedSuccessStories = () => {
                   group overflow-hidden flex flex-col h-full"
                 >
 
-                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden shrink-0">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    onError={(e) =>
+                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden shrink-0">
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      onError={(e) =>
                       (e.currentTarget.src = `https://placehold.co/600x400/E2E8F0/475569?text=${encodeURIComponent(
                         study.title
                       )}`)
-                    }
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                      }
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
 
 
-                  <div
-                    className="absolute top-4 left-4 bg-black/60 backdrop-blur-md
+                    <div
+                      className="absolute top-4 left-4 bg-black/60 backdrop-blur-md
                   text-white px-3 py-1 rounded-full text-xs tracking-wide shadow-md"
-                  >
-                    {study.category}
-                  </div>
-                </div>
-
-
-                <div className="p-6 md:p-8 flex flex-col grow">
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                    {study.title}
-                  </h3>
-
-                  <p className="text-gray-500 text-sm mb-3">
-                    Client: <span className="font-semibold">{study.client}</span>
-                  </p>
-
-                  <p className="text-gray-700 text-sm mb-4 grow">
-                    {study.description}
-                  </p>
-
-
-                  <ul className="space-y-1 mb-5">
-                    {study.points.map((point, i) => (
-                      <li
-                        key={i}
-                        className="flex items-center gap-2 text-gray-700 text-sm"
-                      >
-                        <CheckCircle className="w-4 h-4 text-teal-600 shrink-0" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {study.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    >
+                      {study.category}
+                    </div>
                   </div>
 
 
-                  <button
-                    onClick={() => navigate(study.link)}
-                    className="inline-flex items-center justify-center gap-2 text-base font-medium
+                  <div className="p-6 md:p-8 flex flex-col grow">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                      {study.title}
+                    </h3>
+
+                    <p className="text-gray-500 text-sm mb-3">
+                      Client: <span className="font-semibold">{study.client}</span>
+                    </p>
+
+                    <p className="text-gray-700 text-sm mb-4 h-20 ">
+                      {study.description}
+                    </p>
+
+
+                    <ul className="space-y-1 mb-5 min-h-[90px]">
+                      {study.points.map((point, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center gap-2 text-gray-700 text-sm"
+                        >
+                          <CheckCircle className="w-4 h-4 text-teal-600 shrink-0" />
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {study.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+
+                    <button
+                      onClick={() => navigate(study.link)}
+                      className="inline-flex items-center justify-center gap-2 text-base font-medium
                     text-white h-10 rounded-md px-5 w-full
                     bg-linear-to-r from-cyan-500 to-teal-600
-                    hover:scale-[1.01] transition-all"
-                  >
-                    View Case Study
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                    hover:scale-[1.01] transition-all mt-auto"
+                    >
+                      View Case Study
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
-              </div>
               </SwiperSlide>
             ))}
           </Swiper>
-          
+
           <div className="featured-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
             <ChevronLeft className="w-5 h-5" />
           </div>
@@ -215,7 +217,7 @@ const FeaturedSuccessStories = () => {
             <ChevronRight className="w-5 h-5" />
           </div>
         </div>
-      
+
         <div className="text-center mt-12 md:mt-16" data-aos="fade-up">
           <button
             onClick={() => navigate("/work/projects")}

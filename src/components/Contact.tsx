@@ -38,7 +38,7 @@ const Notification: React.FC<NotificationProps> = ({ status, setStatus }) => {
       }, 4000);
       return () => clearTimeout(timer);
     }
-    return () => {};
+    return () => { };
   }, [status, setStatus]);
 
   if (status !== "success") return null;
@@ -119,7 +119,7 @@ const Contact: React.FC = () => {
               <h3 className="text-xl font-semibold text-teal-600 mb-2">
                 📧 Email Us
               </h3>
-              <p className="text-gray-700 break-words mb-1">
+              <p className="text-gray-700 wrap-break-word mb-1">
                 info@atsglobaltech.com
               </p>
             </div>
@@ -200,7 +200,7 @@ const Contact: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
-                    <p className="text-gray-700 break-words">
+                    <p className="text-gray-700 wrap-break-word">
                       info@atsglobaltech.com
                     </p>
                   </div>
@@ -295,11 +295,10 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className={`w-full flex items-center justify-center bg-linear-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-lg font-semibold transition duration-300 ${
-                      status === "sending"
+                    className={`w-full flex items-center justify-center bg-linear-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-lg font-semibold transition duration-300 ${status === "sending"
                         ? "opacity-75 cursor-not-allowed"
                         : "hover:from-teal-600 hover:to-cyan-600 shadow-md hover:shadow-lg"
-                    }`}
+                      }`}
                   >
                     {status === "sending" ? (
                       <>

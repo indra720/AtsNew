@@ -1,5 +1,9 @@
 import React from "react";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 interface Testimonial {
   id: number;
@@ -78,64 +82,86 @@ const ClientTestimonials: React.FC = () => {
         </div>
 
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.id}
-              data-aos="fade-up"
-              data-aos-delay={index * 150}
-              className="rounded-2xl bg-white border border-gray-200 shadow-xl
-              hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 md:p-10
-              relative overflow-hidden group flex flex-col justify-between"
-            >
+        <div className="relative group">
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            navigation={{
+              nextEl: ".testimonial-button-next",
+              prevEl: ".testimonial-button-prev",
+            }}
+            className="pb-12 flex! items-stretch! p-5"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={testimonial.id} className="h-auto! flex pb-2">
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay={index * 150}
+                  className="rounded-2xl bg-white border border-gray-200 shadow-xl
+                  hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 md:p-10
+                  relative overflow-hidden group flex flex-col justify-between h-full w-full"
+                >
 
-              <div className="absolute top-4 right-4 md:top-6 md:right-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Quote className="h-10 w-10 md:h-12 md:w-12 text-teal-600" />
-              </div>
+                  <div className="absolute top-4 right-4 md:top-6 md:right-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Quote className="h-10 w-10 md:h-12 md:w-12 text-teal-600" />
+                  </div>
 
-              <div>
+                  {/* Content Section - grows to fill space */}
+                  <div className="grow">
+                    <div className="flex justify-start mb-4">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5 md:w-6 md:h-6 text-teal-500 fill-teal-500 drop-shadow-sm"
+                        />
+                      ))}
+                    </div>
 
-                <div className="flex justify-start mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 md:w-6 md:h-6 text-teal-500 fill-teal-500 drop-shadow-sm"
+                    <blockquote className="text-gray-700 text-base md:text-lg italic mb-6 leading-relaxed">
+                      “{testimonial.quote}”
+                    </blockquote>
+                  </div>
+
+                  {/* Footer Section - sticks to bottom */}
+                  <div className="flex items-center space-x-4 pt-4 border-t border-gray-100 mt-auto">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      onError={(e) =>
+                      (e.currentTarget.src =
+                        "https://placehold.co/64x64/E2E8F0/475569?text=User")
+                      }
+                      className="w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-teal-600 object-cover shrink-0"
                     />
-                  ))}
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-base md:text-lg">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-teal-600 font-medium text-sm md:text-base">
+                        {testimonial.role}
+                      </p>
+                      <p className="text-gray-500 text-xs md:text-sm">
+                        {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
                 </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-
-                <blockquote className="text-gray-700 text-base md:text-lg italic mb-6 leading-relaxed">
-                  “{testimonial.quote}”
-                </blockquote>
-              </div>
-
-
-              <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  onError={(e) =>
-                    (e.currentTarget.src =
-                      "https://placehold.co/64x64/E2E8F0/475569?text=User")
-                  }
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-teal-600 object-cover shrink-0"
-                />
-                <div>
-                  <h4 className="font-bold text-gray-900 text-base md:text-lg">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-teal-600 font-medium text-sm md:text-base">
-                    {testimonial.role}
-                  </p>
-                  <p className="text-gray-500 text-xs md:text-sm">
-                    {testimonial.company}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          ))}
+          <div className="testimonial-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+            <ChevronLeft className="w-5 h-5" />
+          </div>
+          <div className="testimonial-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
+            <ChevronRight className="w-5 h-5" />
+          </div>
         </div>
       </div>
     </section>
