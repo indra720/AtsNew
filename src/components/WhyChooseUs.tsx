@@ -1,172 +1,126 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  CircleCheckBig,
+  CheckCircle2,
   Lightbulb,
   Users,
   Rocket,
   TrendingUp,
+  ArrowRight,
+  ShieldCheck,
+  Award,
 } from "lucide-react";
+import Card3D from "./ui/Card3D";
 
-interface Feature {
-  text: string;
-}
+const features = [
+  "24/7 Technical Support & Proactive Maintenance",
+  "Agile Sprint Methodology & Transparent Standups",
+  "Rigorous Automated Testing & Quality Assurance",
+  "Scalable, Resilient & Cloud-Native Architecture",
+  "Cutting-Edge Modern Technology Stack",
+  "Value-Driven, Cost-Effective Engineering",
+  "Weekly Deliverables & Transparent Progress Reports",
+  "Post-Launch Enterprise Hypercare & Staff Training",
+];
 
-interface Card {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  videoPoster: string;
-}
+const cards = [
+  {
+    title: "Innovation First",
+    desc: "We pioneer modern, future-ready technologies keeping your enterprise ahead of evolving industry dynamics.",
+    icon: Lightbulb,
+    color: "from-cyan-400 to-blue-500",
+    glow: "rgba(0, 242, 254, 0.2)",
+  },
+  {
+    title: "Expert Engineering",
+    desc: "Certified solution architects and senior engineers bringing deep real-world domain mastery to every line of code.",
+    icon: Users,
+    color: "from-blue-500 to-indigo-600",
+    glow: "rgba(59, 130, 246, 0.2)",
+  },
+  {
+    title: "Rapid Agile Delivery",
+    desc: "Disciplined sprints guarantee accelerated time-to-market with zero architectural debt or quality shortcuts.",
+    icon: Rocket,
+    color: "from-purple-500 to-pink-500",
+    glow: "rgba(168, 85, 247, 0.2)",
+  },
+  {
+    title: "Hyper-Scalable Systems",
+    desc: "Every system is engineered to effortlessly scale from initial thousands to millions of concurrent active users.",
+    icon: TrendingUp,
+    color: "from-emerald-400 to-teal-500",
+    glow: "rgba(16, 185, 129, 0.2)",
+  },
+];
 
-const WhyChooseUs: React.FC = () => {
-  const features: Feature[] = [
-    { text: "24/7 Technical Support & Maintenance" },
-    { text: "Agile Development Methodology" },
-    { text: "Comprehensive Quality Assurance" },
-    { text: "Scalable & Future-Proof Architecture" },
-    { text: "Modern Technology Stack" },
-    { text: "Cost-Effective Solutions" },
-    { text: "Regular Progress Updates" },
-    { text: "Post-Launch Support & Training" },
-  ];
-
-  const cards: Card[] = [
-    {
-      title: "Innovation First",
-      description:
-        "We implement modern, future-ready technologies that keep you ahead of market trends and competitors.",
-      icon: <Lightbulb className="h-6 w-6 text-teal-600" />,
-      videoPoster:
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop",
-    },
-    {
-      title: "Expert Team",
-      description:
-        "Our certified engineers, architects, and consultants bring years of real-world expertise to every project.",
-      icon: <Users className="h-6 w-6 text-teal-600" />,
-      videoPoster:
-        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop",
-    },
-    {
-      title: "Rapid Delivery",
-      description:
-        "Our agile workflows ensure your product ships faster with consistent quality and predictable timelines.",
-      icon: <Rocket className="h-6 w-6 text-teal-600" />,
-      videoPoster:
-        "https://plus.unsplash.com/premium_photo-1747949065888-5a57b2d506db?w=600&auto=format&fit=crop&q=60",
-    },
-    {
-      title: "Scalable Solutions",
-      description:
-        "Every solution is designed to grow effortlessly as your business evolves, ensuring long-term sustainability.",
-      icon: <TrendingUp className="h-6 w-6 text-teal-600" />,
-      videoPoster:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
-    },
-  ];
-
+export const WhyChooseUs: React.FC = () => {
   return (
-    <section
-      className="py-12 md:py-16 lg:py-24 bg-white overflow-x-hidden"
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
+    <section className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column */}
+          <div className="lg:col-span-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
+              <Award className="w-3.5 h-3.5" />
+              <span>THE ATS ADVANTAGE</span>
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-
-          <div>
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
-              data-aos="fade-right"
-            >
-              Why Choose ATS GLOBAL TECH?
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display mb-6">
+              Why Global Leaders Choose ATS GLOBAL TECH
             </h2>
 
-            <p
-              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
-              data-aos="fade-right"
-              data-aos-delay="200"
-            >
-              We don’t just build digital solutions — we engineer long-lasting,
-              scalable systems backed by innovation, deep expertise, and a
-              commitment to helping businesses thrive in the modern digital era.
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 font-medium">
+              We don’t just write software — we architect long-lasting, resilient systems backed by deep engineering 
+              excellence, transparent communication, and an unwavering commitment to your business supremacy.
             </p>
 
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-3"
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 100}
-                >
-                  <CircleCheckBig className="h-5 w-5 text-teal-600 mt-1 shrink-0" />
-                  <span className="text-gray-700 font-medium text-base">
-                    {feature.text}
-                  </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-10">
+              {features.map((feat, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#0066FF] shrink-0 mt-0.5" />
+                  <span>{feat}</span>
                 </div>
               ))}
             </div>
 
-            <button
-              data-aos="flip-up"
-              data-aos-delay="400"
-              className="inline-flex items-center justify-center gap-2
-              bg-linear-to-r from-cyan-500 to-teal-600
-              text-white h-11 rounded-md px-8 py-3
-              text-base font-medium transition-all duration-300
-              hover:scale-[1.02] hover:shadow-lg"
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_8px_25px_rgba(0,102,255,0.35)] transition transform hover:scale-[1.02]"
             >
-              Learn More About Us
-              <ArrowRight className="ml-1 h-5 w-5" />
-            </button>
+              <span>Discover Our Company Story</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mt-12 lg:mt-0"
-            data-aos="fade-left"
-            data-aos-delay="300"
-          >
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                data-aos="fade-left"
-                data-aos-delay={index * 150}
-                className="bg-white border border-gray-200 rounded-2xl
-                overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1
-                transition-all duration-500 group"
-              >
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={card.videoPoster}
-                    onError={(e) =>
-                      (e.currentTarget.src =
-                        "https://placehold.co/400x250/E2E8F0/475569?text=Image+Placeholder")
-                    }
-                    alt={card.title}
-                    className="w-full h-full object-cover
-                    group-hover:scale-110 transition-transform duration-500"
-                  />
+          {/* Right Column: 3D Grid */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {cards.map((c) => {
+              const Icon = c.icon;
+              return (
+                <Card3D
+                  key={c.title}
+                  intensity={14}
+                  glowColor="rgba(0, 102, 255, 0.1)"
+                  className="cloud-card p-6 border border-blue-100/90 hover:border-blue-300 rounded-3xl flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-5 shadow-inner group-hover:scale-110 group-hover:bg-[#0066FF] group-hover:text-white transition-all duration-300">
+                      <Icon className="w-6 h-6 stroke-[2.2]" />
+                    </div>
 
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 font-display group-hover:text-[#0066FF] transition">
+                      {c.title}
+                    </h3>
 
-                  <div className="absolute top-4 left-4 bg-white p-3 rounded-xl shadow-md">
-                    {card.icon}
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      {c.desc}
+                    </p>
                   </div>
-                </div>
-
-                <div className="p-6 text-center">
-                  <h3 className="font-bold text-gray-900 mb-2 text-xl">
-                    {card.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {card.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+                </Card3D>
+              );
+            })}
           </div>
         </div>
       </div>

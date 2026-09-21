@@ -14,6 +14,8 @@ import SocialBar from "./components/SocialBar";
 import ContactModal from "./components/ContactModal";
 
 import HeroSection from "./components/HeroSection";
+import Interactive3DShowcase from "./components/ui/Interactive3DShowcase";
+import GenAIEcosystem3D from "./components/ui/GenAIEcosystem3D";
 import ProvenTrackRecord from "./components/ProvenTrackRecord";
 import TechnologyServices from "./components/TechnologyServices";
 import TechnologyStack from "./components/TechnologyStack";
@@ -62,12 +64,6 @@ const App: React.FC = () => {
   useEffect(() => {
     AOS.init({ duration: 900, once: true });
     AOS.refresh();
-
-    const timer = setTimeout(() => {
-      setOpenModal(true);
-    }, 15000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -75,7 +71,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <ModalOnlyForHome setOpenModal={setOpenModal} />
 
-      <div className="relative w-full overflow-x-hidden min-h-screen flex flex-col bg-white text-gray-900">
+      <div className="relative w-full overflow-x-hidden min-h-screen flex flex-col bg-[#F0F7FF] text-[#0A1629] selection:bg-[#0066FF]/20 selection:text-[#0052CC]">
         <SocialBar />
         <Navbar />
 
@@ -86,6 +82,8 @@ const App: React.FC = () => {
               element={
                 <>
                   <HeroSection />
+                  <Interactive3DShowcase />
+                  <GenAIEcosystem3D />
                   <ProvenTrackRecord />
                   <TechnologyServices />
                   <TechnologyStack />

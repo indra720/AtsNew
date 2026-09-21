@@ -1,172 +1,312 @@
-
-
-
 import React from "react";
+import { Link } from "react-router-dom";
+import {
+  Bot,
+  Brain,
+  Sparkles,
+  ArrowRight,
+  MessageSquare,
+  ShieldCheck,
+  CheckCircle2,
+  HelpCircle,
+  Zap,
+} from "lucide-react";
+import Card3D from "./ui/Card3D";
 
 const FeatureCard: React.FC<{
   title: string;
   desc: string;
   img: string;
 }> = ({ title, desc, img }) => (
-  <div className="bg-white border border-blue-200 rounded-xl overflow-hidden hover:shadow-md transition">
-    <img src={img} alt={title} className="w-full h-44 object-cover" />
-    <div className="p-6">
-      <h4 className="text-lg font-semibold text-blue-800 mb-2">{title}</h4>
-      <p className="text-gray-700 text-sm leading-relaxed">{desc}</p>
+  <Card3D className="h-full">
+    <div className="cloud-card h-full rounded-3xl overflow-hidden flex flex-col justify-between group">
+      <div>
+        <div className="relative w-full h-44 overflow-hidden">
+          <img
+            src={img}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src =
+                "https://placehold.co/600x400/0f172a/00f2fe?text=AI+Feature";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
+        </div>
+        <div className="p-6">
+          <h4 className="text-lg font-black font-display text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">
+            {title}
+          </h4>
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">{desc}</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </Card3D>
 );
 
 export default function AIChatAssistant() {
+  const stats = [
+    { label: "Resolution Time", value: "-62%", glow: "text-cyan-400" },
+    { label: "Ticket Deflection", value: "45%", glow: "text-emerald-400" },
+    { label: "Supported Languages", value: "89+", glow: "text-indigo-400" },
+    { label: "Customer Satisfaction", value: "4.7/5 avg", glow: "text-purple-400" },
+  ];
+
+  const features = [
+    {
+      title: "Intent Recognition",
+      desc: "NLU models classify user purpose accurately within milliseconds.",
+      img: "https://plus.unsplash.com/premium_photo-1677094310918-cc302203b21c?auto=format&fit=crop&q=60&w=1000",
+    },
+    {
+      title: "Emotion Awareness",
+      desc: "Sentiment scoring enables escalation on frustration or negative tone.",
+      img: "https://plus.unsplash.com/premium_photo-1677269465314-d5d2247a0b0c?auto=format&fit=crop&q=60&w=1000",
+    },
+    {
+      title: "Smart Knowledge Retrieval",
+      desc: "Embedding search pulls answers from docs, FAQs, and chat history.",
+      img: "https://plus.unsplash.com/premium_photo-1677094310956-7f88ae5f5c6b?auto=format&fit=crop&q=60&w=1000",
+    },
+    {
+      title: "Human Handoff",
+      desc: "Seamless transfer to live reps with context and sentiment memory.",
+      img: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Personalization Engine",
+      desc: "Responses adapt to user profile, product usage, and conversation history.",
+      img: "https://plus.unsplash.com/premium_photo-1675793714962-a2413250c490?auto=format&fit=crop&q=60&w=1000",
+    },
+    {
+      title: "Omnichannel Support",
+      desc: "Works seamlessly across chat, WhatsApp, mobile, and email.",
+      img: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=1200&auto=format&fit=crop",
+    },
+  ];
+
+  const stack = [
+    "Python",
+    "Rasa",
+    "React",
+    "Node.js",
+    "PostgreSQL",
+    "ElasticSearch",
+    "Docker",
+    "AWS",
+    "LangChain",
+    "NLU Models",
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        "We automated over 40% of our tickets within one quarter. The multilingual support is incredible.",
+      author: "Director of Support",
+    },
+    {
+      quote:
+        "Customer satisfaction scores improved consistently — our team now focuses on high-value interactions.",
+      author: "CX Lead",
+    },
+  ];
+
+  const faqs = [
+    {
+      q: "Does it support custom models?",
+      a: "Yes — companies can integrate their own finetuned models via a modular ML API.",
+    },
+    {
+      q: "How is sensitive data handled?",
+      a: "PII is encrypted server-side, with strict access roles and audit logs for compliance.",
+    },
+  ];
+
   return (
-    <main className="bg-linear-to-b from-blue-50 via-white to-blue-100 text-gray-900 min-h-screen py-32 px-4">
-      <div className="w-full">
+    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-
-        <section className="grid gap-10 lg:grid-cols-2 items-center mb-20">
+      <div className="max-w-7xl mx-auto">
+        <section className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
-            <span className="text-sm bg-blue-100 text-blue-700 rounded-full px-4 py-1 inline-block mb-4 font-medium">
-              AI · Case Study
-            </span>
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] bg-white border border-blue-200 shadow-xs px-3.5 py-1.5 rounded-full mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>AI · Case Study</span>
+            </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-blue-900">
-              AI-Powered Chat Assistant
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight text-[#0A1629] leading-tight mb-6">
+              AI-Powered{" "}
+              <span className="bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF] bg-clip-text text-transparent">
+                Chat Assistant
+              </span>
             </h1>
 
-            <p className="text-lg text-gray-700 max-w-xl leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl font-sans">
               A multilingual AI assistant that automates customer support with smart
               routing, sentiment insights, and personalized responses — driving faster
               resolution and higher satisfaction.
             </p>
 
-            <button className="bg-linear-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-6 py-3 rounded-xl text-white font-semibold shadow-md">
-              Try the Demo
-            </button>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] text-white font-bold px-8 py-4 rounded-2xl shadow-[0_10px_30px_rgba(0,102,255,0.3)] transition duration-300 hover:scale-[1.02]"
+            >
+              <span>Try the Demo</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          <img
-            src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=60&w=1000"
-            alt="AI chat"
-            className="rounded-2xl shadow-lg w-full h-80 object-cover"
-          />
+          <div className="relative">
+            <div className="relative rounded-3xl overflow-hidden border border-blue-200 shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=60&w=1000"
+                alt="AI chat"
+                className="w-full h-72 sm:h-96 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent opacity-60" />
+            </div>
+          </div>
         </section>
 
-
-        <section className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-16">
-          {[
-            { label: "Resolution Time", value: "-62%" },
-            { label: "Ticket Deflection", value: "45%" },
-            { label: "Supported Languages", value: "89+" },
-            { label: "Customer Satisfaction", value: "4.7/5 avg" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-3xl font-bold text-blue-700">{stat.value}</p>
-              <p className="text-xs text-gray-600">{stat.label}</p>
+        {/* Telemetry Stats */}
+        <section className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-20 p-6 rounded-3xl cloud-card shadow-xl">
+          {stats.map((stat) => (
+            <div key={stat.label} className="border-r last:border-r-0 border-blue-100 px-2">
+              <p className="text-3xl sm:text-4xl font-black font-display text-[#0066FF] mb-1">
+                {stat.value}
+              </p>
+              <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                {stat.label}
+              </p>
             </div>
           ))}
         </section>
 
-
-        <section className="grid gap-10 lg:grid-cols-3 mb-20">
-          <div className="lg:col-span-2 bg-white border border-blue-200 p-8 rounded-2xl shadow-sm">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-800">Project Overview</h2>
-            <p className="text-gray-700 leading-relaxed">
-              This intelligent automation platform combines natural language
-              understanding, personalization models, and proactive support flows
-              to remove friction from customer service. It delivers contextual,
-              human-like responses while freeing agents for higher-value work.
-            </p>
+        {/* Architecture & Flow */}
+        <section className="mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Intelligent Pipeline</span>
+            <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
+              Architecture & System Flow
+            </h2>
           </div>
 
-          <div className="bg-blue-50 border border-blue-200 p-6 rounded-2xl shadow-sm">
-            <h3 className="text-lg font-semibold mb-3 text-blue-800">Quick Facts</h3>
-            <p className="text-sm text-gray-700 mb-1">Industry: Support Automation</p>
-            <p className="text-sm text-gray-700 mb-1">Team: 5 AI Engineers, 4 Developers</p>
-            <p className="text-sm text-gray-700 mb-1">Stack: Python · React · PostgreSQL · Rasa · AWS</p>
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card3D className="h-full">
+              <div className="cloud-card h-full p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-5 shadow-inner">
+                    <Brain className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <h3 className="text-xl font-black font-display text-[#0A1629] mb-2">
+                    Intent Classification
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
+                    NLU models parse customer inquiries in real time, detecting sentiment, language, and core issue tags.
+                  </p>
+                </div>
+              </div>
+            </Card3D>
+
+            <Card3D className="h-full">
+              <div className="cloud-card h-full p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-5 shadow-inner">
+                    <Bot className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <h3 className="text-xl font-black font-display text-[#0A1629] mb-2">
+                    Dynamic Resolution Engine
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
+                    Integrates with internal CRM and billing APIs to provide instant, self-service resolutions without human intervention.
+                  </p>
+                </div>
+              </div>
+            </Card3D>
+
+            <Card3D className="h-full">
+              <div className="cloud-card h-full p-8 rounded-3xl flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-5 shadow-inner">
+                    <Zap className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <h3 className="text-xl font-black font-display text-[#0A1629] mb-2">
+                    Human-in-the-Loop Handover
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
+                    Seamless escalation to human agents with full conversation context and suggested responses when sentiment drops.
+                  </p>
+                </div>
+              </div>
+            </Card3D>
           </div>
         </section>
 
-
+        {/* Feature Cards Grid */}
         <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-8 text-blue-800">Core Features</h2>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Enterprise Grade</span>
+            <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
+              Core Capabilities
+            </h2>
+          </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard
-              title="Intent Recognition"
-              desc="NLU models classify user purpose accurately within milliseconds."
-              img="https://plus.unsplash.com/premium_photo-1677094310918-cc302203b21c?auto=format&fit=crop&q=60&w=1000"
-            />
-            <FeatureCard
-              title="Emotion Awareness"
-              desc="Sentiment scoring enables escalation on frustration or negative tone."
-              img="https://plus.unsplash.com/premium_photo-1677269465314-d5d2247a0b0c?auto=format&fit=crop&q=60&w=1000"
-            />
-            <FeatureCard
-              title="Smart Knowledge Retrieval"
-              desc="Embedding search pulls answers from docs, FAQs, and chat history."
-              img="https://plus.unsplash.com/premium_photo-1677094310956-7f88ae5f5c6b?auto=format&fit=crop&q=60&w=1000"
-            />
-            <FeatureCard
-              title="Human Handoff"
-              desc="Seamless transfer to live reps with context and sentiment memory."
-              img="https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=1200&auto=format&fit=crop"
-            />
-            <FeatureCard
-              title="Personalization Engine"
-              desc="Responses adapt to user profile, product usage, and conversation history."
-              img="https://plus.unsplash.com/premium_photo-1675793714962-a2413250c490?auto=format&fit=crop&q=60&w=1000"
-            />
-            <FeatureCard
-              title="Omnichannel Support"
-              desc="Works seamlessly across chat, WhatsApp, mobile, and email."
-              img="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=1200&auto=format&fit=crop"
-            />
+            {features.map((f, i) => (
+              <FeatureCard key={i} title={f.title} desc={f.desc} img={f.img} />
+            ))}
           </div>
         </section>
 
-
-        <section className="grid gap-10 lg:grid-cols-2 items-center mb-20">
-          <img
-            src="https://plus.unsplash.com/premium_photo-1677094310893-0d6594c211ea?auto=format&fit=crop&q=60&w=1000"
-            alt="data results"
-            className="rounded-2xl shadow-md w-full h-80 object-cover"
-          />
+        {/* Measurable Success */}
+        <section className="grid gap-10 lg:grid-cols-2 items-center mb-20 cloud-card rounded-3xl p-6 sm:p-10">
+          <div className="rounded-2xl overflow-hidden border border-blue-200 shadow-xl">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1677094310893-0d6594c211ea?auto=format&fit=crop&q=60&w=1000"
+              alt="data results"
+              className="rounded-2xl w-full h-72 sm:h-80 object-cover"
+            />
+          </div>
 
           <div>
-            <h3 className="text-2xl font-semibold mb-3 text-blue-900">Measurable Success</h3>
-            <p className="text-gray-700 leading-relaxed mb-4">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Proven ROI</span>
+            <h3 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
+              Measurable Success
+            </h3>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-sans">
               Automation frees up agent bandwidth and allows global scaling without
               expanding headcount.
             </p>
 
-            <ul className="list-disc ml-5 text-gray-600 space-y-2 text-sm">
-              <li>Reduced escalations via proactive guidance</li>
-              <li>Automated troubleshooting flows</li>
-              <li>Higher satisfaction via instant responses</li>
+            <ul className="space-y-3">
+              {[
+                "Reduced escalations via proactive guidance",
+                "Automated troubleshooting flows",
+                "Higher satisfaction via instant responses",
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-center gap-3 text-slate-700 text-sm font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-[#0066FF] shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </section>
 
+        {/* Tech Stack */}
+        <section className="mb-20 text-center">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">AI Frameworks</span>
+          <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-6">
+            Technology Stack
+          </h2>
 
-        <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-5 text-blue-800">Technology Stack</h2>
-
-          <div className="flex gap-3 flex-wrap">
-            {[
-              "Python",
-              "Rasa",
-              "React",
-              "Node.js",
-              "PostgreSQL",
-              "ElasticSearch",
-              "Docker",
-              "AWS",
-              "LangChain",
-              "NLU Models",
-            ].map((t) => (
+          <div className="flex gap-3 justify-center flex-wrap max-w-4xl mx-auto">
+            {stack.map((t) => (
               <span
                 key={t}
-                className="px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-sm text-blue-700"
+                className="px-4 py-2 bg-white border border-blue-200 rounded-2xl text-xs font-mono font-bold text-[#0066FF] shadow-xs hover:border-[#0066FF]/40 transition-colors"
               >
                 {t}
               </span>
@@ -174,62 +314,69 @@ export default function AIChatAssistant() {
           </div>
         </section>
 
-
+        {/* Client Feedback */}
         <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-6 text-blue-800">Client Feedback</h2>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">User Experience</span>
+            <h2 className="text-3xl font-black font-display text-[#0A1629] mt-1">
+              Client Feedback
+            </h2>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
-            <blockquote className="bg-white border border-blue-200 p-6 rounded-2xl shadow-sm">
-              <p className="italic text-gray-700 mb-4">
-                "We automated over 40% of our tickets within one quarter.
-                The multilingual support is incredible."
-              </p>
-              <footer className="text-sm text-blue-700">— Director of Support</footer>
-            </blockquote>
-            <blockquote className="bg-white border border-blue-200 p-6 rounded-2xl shadow-sm">
-              <p className="italic text-gray-700 mb-4">
-                "Customer satisfaction scores improved consistently —
-                our team now focuses on high-value interactions."
-              </p>
-              <footer className="text-sm text-blue-700">— CX Lead</footer>
-            </blockquote>
+            {testimonials.map((t, i) => (
+              <Card3D key={i} className="h-full">
+                <blockquote className="cloud-card h-full rounded-3xl p-8 flex flex-col justify-between">
+                  <p className="italic text-slate-700 text-base sm:text-lg mb-6 leading-relaxed font-sans">
+                    "{t.quote}"
+                  </p>
+                  <footer className="text-xs font-mono text-[#0066FF] font-bold border-t border-blue-100 pt-4">
+                    — {t.author}
+                  </footer>
+                </blockquote>
+              </Card3D>
+            ))}
           </div>
         </section>
 
-
+        {/* FAQs */}
         <section className="mb-20">
-          <h2 className="text-2xl font-semibold mb-6 text-blue-800">FAQs</h2>
-          <div className="space-y-3">
-            <details className="bg-blue-50 border border-blue-200 p-4 rounded-xl">
-              <summary className="font-medium text-blue-800 cursor-pointer">
-                Does it support custom models?
-              </summary>
-              <p className="text-gray-700 text-sm mt-2">
-                Yes — companies can integrate their own finetuned models via a modular ML API.
-              </p>
-            </details>
-
-            <details className="bg-blue-50 border border-blue-200 p-4 rounded-xl">
-              <summary className="font-medium text-blue-800 cursor-pointer">
-                How is sensitive data handled?
-              </summary>
-              <p className="text-gray-700 text-sm mt-2">
-                PII is encrypted server-side, with strict access roles and audit logs for compliance.
-              </p>
-            </details>
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Architecture Insights</span>
+            <h2 className="text-3xl font-black font-display text-[#0A1629] mt-1">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {faqs.map((faq, i) => (
+              <details key={i} className="cloud-card p-5 rounded-2xl group transition-colors">
+                <summary className="font-black text-[#0A1629] text-base cursor-pointer flex items-center justify-between list-none">
+                  <span>{faq.q}</span>
+                  <HelpCircle className="w-5 h-5 text-[#0066FF] group-open:rotate-180 transition-transform" />
+                </summary>
+                <p className="text-slate-600 text-sm mt-3 pt-3 border-t border-blue-100 leading-relaxed font-sans">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
           </div>
         </section>
 
-      
-        <section className="bg-white border border-blue-200 p-10 rounded-2xl text-center shadow-sm">
-          <h3 className="text-2xl font-semibold mb-3 text-blue-900">
+        {/* CTA */}
+        <section className="bg-gradient-to-r from-white via-[#F0F7FF] to-[#EBF5FF] border border-blue-200 p-8 sm:p-12 rounded-3xl text-center shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0066FF]/10 rounded-full blur-[100px] pointer-events-none" />
+          <h3 className="text-2xl sm:text-4xl font-black font-display text-[#0A1629] mb-3">
             Enhance your support with intelligent automation
           </h3>
-          <p className="text-gray-700 mb-6">
+          <p className="text-slate-600 text-base sm:text-lg mb-8 max-w-2xl mx-auto font-sans">
             Deliver faster, smarter, and more personalized assistance across all channels.
           </p>
-          <button className="bg-linear-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-3 rounded-full font-semibold shadow-md">
-            Book Consultation
-          </button>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] text-white px-8 py-4 rounded-2xl font-bold shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition duration-300 hover:scale-105"
+          >
+            <span>Book Consultation</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </section>
       </div>
     </main>

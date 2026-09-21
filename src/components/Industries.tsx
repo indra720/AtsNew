@@ -1,327 +1,233 @@
-import { FC } from "react";
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import {
-  House,
-  Zap,
-  CircleCheckBig,
-  Target,
-  TrendingUp,
-  ArrowRight,
-  Gamepad2,
   Heart,
   Banknote,
   ShoppingCart,
   GraduationCap,
   Building,
   Truck,
+  House,
+  Gamepad2,
   Users,
   Globe,
   Award,
-  Check,
-  ChevronLeft,
-  ChevronRight,
+  ArrowRight,
+  CheckCircle,
+  Sparkles,
 } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import Card3D from "./ui/Card3D";
 
-const Industries: FC = () => {
-  const stats = [
-    {
-      label: "Industries Served",
-      value: "25+",
-      icon: <Users className="h-10 w-10 text-teal-600" />,
-    },
-    {
-      label: "Enterprise Clients",
-      value: "200+",
-      icon: <Building className="h-10 w-10 text-teal-600" />,
-    },
-    {
-      label: "Countries",
-      value: "5+",
-      icon: <Globe className="h-10 w-10 text-teal-600" />,
-    },
-    {
-      label: "Industry Awards",
-      value: "15+",
-      icon: <Award className="h-10 w-10 text-teal-600" />,
-    },
-  ];
+const stats = [
+  { label: "Industries Served", value: "25+", icon: Users, color: "text-cyan-400" },
+  { label: "Enterprise Clients", value: "200+", icon: Building, color: "text-indigo-400" },
+  { label: "Global Reach", value: "5+ Countries", icon: Globe, color: "text-purple-400" },
+  { label: "Industry Awards", value: "15+", icon: Award, color: "text-amber-400" },
+];
 
-  const industryCards = [
-    {
-      title: "Healthcare & Life Sciences",
-      icon: <Heart className="h-8 w-8 text-teal-600" />,
-      img: "https://plus.unsplash.com/premium_photo-1698421947098-d68176a8f5b2?w=600",
-      features: [
-        "Telemedicine Platforms",
-        "AI Diagnostics & Analysis",
-        "HIPAA Compliant Data Management",
-      ],
-    },
-    {
-      title: "Financial Services",
-      icon: <Banknote className="h-8 w-8 text-teal-600" />,
-      img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800",
-      features: [
-        "Secure Mobile Banking Apps",
-        "Real-Time Fraud Detection (AI/ML)",
-        "Regulatory Compliance (PCI DSS)",
-      ],
-    },
-    {
-      title: "Retail & E-commerce",
-      icon: <ShoppingCart className="h-8 w-8 text-teal-600" />,
-      img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600",
-      features: [
-        "Omni-Channel Store Integration",
-        "AI-Powered Product Recommendations",
-        "Inventory & Supply Chain Optimization",
-      ],
-    },
-    {
-      title: "Education & EdTech",
-      icon: <GraduationCap className="h-8 w-8 text-teal-600" />,
-      img: "https://plus.unsplash.com/premium_photo-1750859860252-6d23c5598f7c?w=600",
-      features: [
-        "Virtual Classroom Solutions",
-        "Adaptive Learning Platforms",
-        "Student Performance Analytics",
-      ],
-    },
-    {
-      title: "Manufacturing & Industrial",
-      icon: <Building className="h-8 w-8 text-teal-600" />,
-      img: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=800",
-      features: [
-        "IoT Integration & Monitoring",
-        "Predictive Maintenance Systems",
-        "Robotic Process Automation (RPA)",
-      ],
-    },
-    {
-      title: "Transportation & Logistics",
-      icon: <Truck className="h-8 w-8 text-teal-600" />,
-      img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800",
-      features: [
-        "Real-Time GPS Fleet Tracking",
-        "Route Optimization Algorithms",
-        "Warehouse Management Systems (WMS)",
-      ],
-    },
-    {
-      title: "Real Estate & PropTech",
-      icon: <House className="h-8 w-8 text-teal-600" />,
-      img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800",
-      features: [
-        "Immersive Virtual Property Tours",
-        "Smart Building & IoT Integration",
-        "Tenant & Owner Portal Solutions",
-      ],
-    },
-    {
-      title: "Entertainment & Media",
-      icon: <Gamepad2 className="h-8 w-8 text-teal-600" />,
-      img: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800",
-      features: [
-        "High-Performance Streaming Platforms",
-        "Audience Data Analytics",
-        "Digital Rights Management (DRM)",
-      ],
-    },
-  ];
+const industryCards = [
+  {
+    title: "Healthcare & Life Sciences",
+    icon: Heart,
+    color: "from-cyan-400 to-blue-500",
+    glow: "rgba(0, 242, 254, 0.2)",
+    image: "https://plus.unsplash.com/premium_photo-1698421947098-d68176a8f5b2?w=600",
+    features: [
+      "Secure Telemedicine & Virtual Care Platforms",
+      "AI Diagnostics & Predictive Health Analytics",
+      "HIPAA Compliant Cloud Data Management",
+    ],
+  },
+  {
+    title: "Financial Services & Banking",
+    icon: Banknote,
+    color: "from-blue-500 to-indigo-600",
+    glow: "rgba(59, 130, 246, 0.2)",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600",
+    features: [
+      "Ultra-Secure Mobile Banking Applications",
+      "Real-Time AI/ML Fraud Detection Engines",
+      "Strict Regulatory Compliance (PCI DSS, SOC2)",
+    ],
+  },
+  {
+    title: "Retail & E-commerce",
+    icon: ShoppingCart,
+    color: "from-indigo-500 to-purple-600",
+    glow: "rgba(99, 102, 241, 0.2)",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600",
+    features: [
+      "Omni-Channel Multi-Store Integration",
+      "AI-Driven Personalized Merchandising",
+      "Automated Supply Chain & Inventory Sync",
+    ],
+  },
+  {
+    title: "Education & EdTech",
+    icon: GraduationCap,
+    color: "from-purple-500 to-pink-500",
+    glow: "rgba(168, 85, 247, 0.2)",
+    image: "https://plus.unsplash.com/premium_photo-1750859860252-6d23c5598f7c?w=600",
+    features: [
+      "Interactive Virtual Classroom Platforms",
+      "AI-Adaptive Personalized Learning Systems",
+      "Comprehensive Student Performance Analytics",
+    ],
+  },
+  {
+    title: "Manufacturing & Industrial",
+    icon: Building,
+    color: "from-amber-400 to-orange-500",
+    glow: "rgba(245, 158, 11, 0.2)",
+    image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600",
+    features: [
+      "Industrial IoT Monitoring & Telemetry",
+      "Predictive Equipment Maintenance Systems",
+      "Robotic Process Automation (RPA) Workflows",
+    ],
+  },
+  {
+    title: "Logistics & Supply Chain",
+    icon: Truck,
+    color: "from-emerald-400 to-teal-500",
+    glow: "rgba(16, 185, 129, 0.2)",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600",
+    features: [
+      "Real-Time GPS Fleet Tracking & Dispatch",
+      "AI Dynamic Route Optimization Algorithms",
+      "Automated Warehouse Logistics Systems",
+    ],
+  },
+  {
+    title: "Real Estate & PropTech",
+    icon: House,
+    color: "from-cyan-500 to-teal-400",
+    glow: "rgba(0, 242, 254, 0.2)",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600",
+    features: [
+      "Interactive 3D Virtual Property Tours",
+      "Automated Tenant Billing & Lease Management",
+      "Real Estate Multi-Listing Marketplaces",
+    ],
+  },
+  {
+    title: "Gaming & Entertainment",
+    icon: Gamepad2,
+    color: "from-pink-500 to-rose-500",
+    glow: "rgba(244, 63, 94, 0.2)",
+    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+    features: [
+      "Multiplayer Low-Latency Game Backends",
+      "High-Throughput Streaming & Global CDN",
+      "Interactive Digital Media & Web3 Solutions",
+    ],
+  },
+];
 
-  const whyChooseUs = [
-    {
-      title: "Industry Compliance",
-      desc: "We ensure all solutions meet regulations like HIPAA, PCI DSS, and GDPR.",
-      icon: <CircleCheckBig className="h-8 w-8 text-teal-600" />,
-    },
-    {
-      title: "Domain Experts",
-      desc: "Our team includes specialists with decades of experience.",
-      icon: <Target className="h-8 w-8 text-teal-600" />,
-    },
-    {
-      title: "Proven Track Record",
-      desc: "With 200+ projects delivered, we bring experience that drives success.",
-      icon: <TrendingUp className="h-8 w-8 text-teal-600" />,
-    },
-  ];
-
+export const Industries: FC = () => {
   return (
-    <div className="font-serif">
-      <section className="relative py-2 lg:py-6 bg-linear-to-r from-teal-50 via-white to-teal-100 overflow-hidden text-gray-900">
-        <div className="relative w-full px-4 sm:px-6 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Industries We Serve
+    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen">
+      {/* Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>INDUSTRY DOMAIN EXPERTISE</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
+            Industries We <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Transform</span>
           </h1>
 
-          <p className="text-xl text-gray-700 mb-10 max-w-4xl mx-auto leading-relaxed">
-            We bring deep industry expertise and innovative technology solutions
-            to transform businesses across diverse sectors, helping
-            organizations achieve their digital transformation goals with
-            tailored approaches that address specific industry challenges.
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-sans">
+            We deliver tailored, industry-specific digital solutions designed to navigate regulatory compliance, enhance operational velocity, and unlock competitive dominance.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto h-11 rounded-md bg-teal-500 text-white hover:bg-teal-600 px-10 py-4 text-sm lg:text-lg font-semibold shadow-lg transition-colors">
-              Explore Industries
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto h-11 rounded-md border-2 border-teal-500 text-teal-600 hover:bg-teal-100 px-10 py-4 text-sm lg:text-lg font-medium backdrop-blur-sm transition-colors">
-              Schedule Consultation
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 bg-linear-to-r from-teal-100 via-white to-teal-50 text-gray-900">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((item, i) => (
-              <div
-                key={i}
-                className="group bg-white/80 backdrop-blur-md rounded-2xl shadow-md hover:shadow-xl transition p-6"
-              >
-                <div className="bg-teal-100 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  {item.icon}
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+            {stats.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div key={i} className="cloud-card p-6 rounded-3xl text-center">
+                  <div className={`w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 mx-auto flex items-center justify-center mb-3 text-[#0066FF] shadow-inner`}>
+                    <Icon className="w-6 h-6 stroke-[2]" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#0A1629] font-display mb-1">{stat.value}</div>
+                  <div className="text-xs text-slate-500 font-mono font-bold">{stat.label}</div>
                 </div>
-                <div className="text-2xl sm:text-3xl font-bold text-teal-600 mb-2">
-                  {item.value}
-                </div>
-                <div className="text-sm sm:text-base text-gray-700 font-medium">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 bg-linear-to-r from-teal-50 via-white to-teal-100 text-gray-900">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-teal-700">
-              Specialized Industry Solutions
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Our industry-specific expertise helps organizations overcome
-              unique challenges and capitalize on opportunities in their
-              respective markets.
-            </p>
+              );
+            })}
           </div>
 
-          <div className="relative group">
-            <Swiper
-              modules={[Autoplay, Navigation]}
-              spaceBetween={24}
-              slidesPerView={1}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 4 },
-              }}
-              autoplay={{ delay: 3500, disableOnInteraction: false }}
-              navigation={{
-                nextEl: ".industry-button-next",
-                prevEl: ".industry-button-prev",
-              }}
-              className="pb-12 flex! items-stretch!"
-            >
-              {industryCards.map((card, index) => (
-                <SwiperSlide key={index} className="h-auto! flex">
-                  <div className="rounded-xl overflow-hidden shadow-lg bg-white/80 backdrop-blur-md hover:shadow-xl transition-all flex flex-col h-full w-full">
-                    <div className="relative h-48 sm:h-56 overflow-hidden shrink-0">
-                      <img
-                        src={card.img}
-                        alt={card.title}
-                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col grow">
-                      <div className="flex items-center gap-3 mb-3">
-                        {card.icon}
+          {/* 8 Industry 3D Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {industryCards.map((card, idx) => {
+              const Icon = card.icon;
+              return (
+                <Card3D
+                  key={idx}
+                  intensity={10}
+                  glowColor={card.glow}
+                  className="cloud-card overflow-hidden rounded-3xl flex flex-col justify-between group"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
+                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-xl bg-white/90 backdrop-blur-md border border-blue-200 flex items-center justify-center text-[#0066FF] shadow-sm">
+                        <Icon className="w-4 h-4" />
                       </div>
-                      <h3 className="text-xl font-semibold text-teal-700 mb-3">
-                        {card.title}
-                      </h3>
-
-                      <ul className="space-y-2 text-gray-700 mb-6 grow">
-                        {card.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm">
-                            <Check className="h-4 w-4 text-teal-500 mt-1 shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <button className="inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium bg-teal-500 text-white hover:bg-teal-600 h-10 px-4 py-2 w-full transition-all mt-auto">
-                        Learn More <ArrowRight className="h-4 w-4" />
-                      </button>
+                      <span className="text-xs font-black text-[#0A1629] font-display">{card.title}</span>
                     </div>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
 
-            <div className="industry-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-              <ChevronLeft className="w-5 h-5" />
-            </div>
-            <div className="industry-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-              <ChevronRight className="w-5 h-5" />
-            </div>
+                  <div className="p-5 flex flex-col grow">
+                    <ul className="space-y-2 mb-6 grow">
+                      {card.features.map((feat, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-600 font-medium">
+                          <CheckCircle className="w-3.5 h-3.5 text-[#0066FF] shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center justify-between w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_4px_14px_rgba(0,102,255,0.25)] transition-all duration-300 mt-auto cursor-pointer"
+                    >
+                      <span>Inquire Industry Solution</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </Card3D>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-6  bg-linear-to-r from-teal-100 via-white to-teal-50 text-gray-900">
-        <div className="w-full px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why Choose Us for Your Industry?
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0A1629] font-display mb-4">
+            Accelerate Your Industry Vertical
           </h2>
-          <p className="text-lg text-gray-700 mb-10 md:mb-12 max-w-3xl mx-auto">
-            Our deep industry knowledge combined with cutting-edge technology
-            expertise makes us the ideal partner for your digital
-            transformation.
+          <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-sans">
+            Our domain architects are ready to design solutions that comply with your sector's strictest standards.
           </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {whyChooseUs.map((box, i) => (
-              <div
-                key={i}
-                className="p-6 md:p-8 rounded-2xl bg-white/70 hover:bg-white/90 border border-teal-100 shadow-md hover:shadow-xl transition-all"
-              >
-                <div className="flex justify-center mb-4">{box.icon}</div>
-                <h3 className="text-xl font-bold text-teal-700 mb-4">
-                  {box.title}
-                </h3>
-                <p className="text-gray-700">{box.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 bg-linear-to-r from-teal-50 via-white to-teal-100 text-gray-900 text-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-teal-700">
-            Ready to Transform Your Industry?
-          </h2>
-          <p className="text-lg mb-10 md:mb-12 text-gray-700 max-w-3xl mx-auto">
-            Let's discuss how our industry-specific solutions can help you
-            achieve breakthrough results.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto h-11 rounded-md bg-teal-500 text-white hover:bg-teal-600 px-10 py-4 text-lg font-semibold shadow-lg">
-              Schedule Industry Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto h-11 rounded-md border-2 border-teal-500 text-teal-600 hover:bg-teal-100 px-10 py-4 text-lg font-medium">
-              View Case Studies
-            </button>
-          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition"
+          >
+            <span>Schedule Industry Strategy Call</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </div>

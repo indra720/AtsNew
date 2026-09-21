@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Users,
   Code,
@@ -12,21 +13,11 @@ import {
   Linkedin,
   Github,
   Calendar,
+  Sparkles,
+  ArrowRight,
 } from "lucide-react";
+import Card3D from "../components/ui/Card3D";
 import RahulImage from "/Rahul5.jpg";
-
-const SkillTag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold border-orange-300 text-orange-700 bg-orange-50">
-    {children}
-  </div>
-);
-
-const StatItem: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="flex items-center gap-2">
-    <TrendingUp className="h-4 w-4 text-green-600" />
-    <span className="text-sm text-gray-700">{children}</span>
-  </div>
-);
 
 interface ProjectCardProps {
   title: string;
@@ -40,76 +31,6 @@ interface ProjectCardProps {
   caseStudyLink?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
-  title,
-  role,
-  description,
-  imageUrl,
-  imageAlt,
-  skills,
-  stats,
-  liveLink,
-  caseStudyLink,
-}) => (
-  <div className="border border-orange-200 rounded-xl p-6 bg-white shadow-sm">
-    <div className="flex flex-col md:flex-row gap-6">
-      <img
-        src={imageUrl}
-        alt={imageAlt}
-        className="w-full md:w-48 h-40 rounded-lg object-cover"
-      />
-
-      <div className="flex-1">
-        <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-bold text-gray-900">{title}</h3>
-          <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-orange-100 text-orange-700 border-orange-300">
-            {role}
-          </div>
-        </div>
-
-        <p className="text-gray-700 mb-4">{description}</p>
-
-        <div className="flex flex-wrap gap-2 mb-4">
-          {skills.map((skill) => (
-            <SkillTag key={skill}>{skill}</SkillTag>
-          ))}
-        </div>
-
-        {stats && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            {stats.map((stat) => (
-              <StatItem key={stat}>{stat}</StatItem>
-            ))}
-          </div>
-        )}
-
-        <div className="flex gap-3">
-          <a
-            href={liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 text-sm font-medium bg-orange-600 hover:bg-orange-700 h-9 rounded-md px-3 text-white transition-colors"
-          >
-            <ExternalLink className="h-4 w-4" />
-            View Live
-          </a>
-
-          {caseStudyLink && (
-            <a
-              href={caseStudyLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium border bg-white hover:bg-orange-50 h-9 rounded-md px-3 border-orange-300 text-orange-700 transition-colors"
-            >
-              Case Study
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 interface ExperienceItemProps {
   title: string;
   company: string;
@@ -117,31 +38,6 @@ interface ExperienceItemProps {
   location: string;
   bulletPoints: string[];
 }
-
-const ExperienceItem: React.FC<ExperienceItemProps> = ({
-  title,
-  company,
-  duration,
-  location,
-  bulletPoints,
-}) => (
-  <div className="border-l-4 border-orange-500 pl-4">
-    <h3 className="text-xl font-bold text-gray-900">{title}</h3>
-    <p className="text-orange-600 font-semibold">{company}</p>
-    <p className="text-gray-600 mb-2">
-      {duration} • {location}
-    </p>
-
-    <ul className="space-y-2">
-      {bulletPoints.map((point, index) => (
-        <li key={index} className="flex items-start gap-3">
-          <Star className="h-4 w-4 text-orange-500 mt-0.5" />
-          <span className="text-gray-700">{point}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
 
 const RahulProfile: React.FC = () => {
   const featuredProjects: ProjectCardProps[] = [
@@ -157,7 +53,6 @@ const RahulProfile: React.FC = () => {
       stats: ["Automated cart system", "Payment gateway added"],
       liveLink: "#",
     },
-
     {
       title: "Employee Management System (EMS)",
       role: "MERN Developer",
@@ -170,7 +65,6 @@ const RahulProfile: React.FC = () => {
       stats: ["RBAC Security", "Realtime Insights"],
       liveLink: "#",
     },
-
     {
       title: "Dynamic Portfolio Builder",
       role: "Frontend Developer",
@@ -182,7 +76,6 @@ const RahulProfile: React.FC = () => {
       skills: ["React", "TailwindCSS", "Framer Motion"],
       liveLink: "#",
     },
-
     {
       title: "Smart Admin Dashboard",
       role: "React Developer",
@@ -195,7 +88,6 @@ const RahulProfile: React.FC = () => {
       stats: ["+40% UX improvement", "Faster API performance"],
       liveLink: "#",
     },
-
     {
       title: "Blog CMS Platform",
       role: "Full Stack Developer",
@@ -207,7 +99,6 @@ const RahulProfile: React.FC = () => {
       skills: ["React", "Node.js", "MongoDB"],
       liveLink: "#",
     },
-
     {
       title: "Innomind B2B Informatic Website",
       role: "Frontend Developer",
@@ -236,121 +127,219 @@ const RahulProfile: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-r from-orange-50 via-white to-orange-100 text-gray-900">
-      <section className="relative">
-        <div
-          className="h-96 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1761319914911-71b059a655d8?auto=format&fit=crop&w=1200&q=80")',
-          }}
-        ></div>
+    <div className="min-h-screen bg-[#F0F7FF] text-[#0A1629] font-sans relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-        <div className="w-full px-4 relative -mt-32">
-          <div className="flex flex-col lg:flex-row items-start lg:items-end gap-8">
+      {/* Banner */}
+      <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-gradient-to-r from-blue-100 via-sky-100 to-indigo-100">
+        <img
+          src="https://images.unsplash.com/photo-1761319914911-71b059a655d8?auto=format&fit=crop&w=1200&q=80"
+          alt="Banner"
+          className="w-full h-full object-cover opacity-25 filter"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F0F7FF] via-transparent to-transparent" />
+      </div>
+
+      {/* Profile Header Block */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 relative z-10 mb-16">
+        <div className="p-8 sm:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
             <div className="relative">
               <img
                 src={RahulImage}
                 alt="Rahul Kumawat"
-                className="w-48 h-48 rounded-full border-8 border-white shadow-2xl object-cover"
+                className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl border-2 border-blue-200 shadow-xl object-cover bg-white"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src =
+                    "https://placehold.co/400x400/e0f2fe/0066ff?text=Rahul";
+                }}
               />
+              <div className="absolute -bottom-2 -right-2 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white shadow-lg animate-pulse" />
             </div>
 
-            <div className="flex-1 bg-white shadow-lg rounded-xl p-8">
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                <div>
-                  <h1 className="text-4xl font-bold text-gray-900">
-                    Rahul Kumawat
-                  </h1>
-
-                  <p className="text-xl text-orange-600 font-semibold mb-4">
-                    MERN Developer
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-4 text-gray-700">
-                    <MapPin className="h-4 w-4" />
-                    Jaipur, Rajasthan
-                    <Calendar className="h-4 w-4" />
-                    Joined Oct. 2025
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <a href="https://www.linkedin.com/feed/" target="_blank">
-                    <Linkedin className="h-5 w-5 hover:text-orange-600 transition" />
-                  </a>
-
-                  <a href="https://github.com/Rahul800589" target="_blank">
-                    <Github className="h-5 w-5 hover:text-orange-600 transition" />
-                  </a>
-                </div>
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF] text-xs font-mono font-semibold mb-2">
+                <Sparkles className="w-3 h-3 text-[#00D2FF]" />
+                <span>MERN Full-Stack Specialist</span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A1629]">
+                Rahul Kumawat
+              </h1>
+              <p className="text-lg font-bold text-[#0066FF] font-display mt-1 mb-3">
+                MERN Developer
+              </p>
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-mono text-slate-500">
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#0066FF]" />
+                  Jaipur, Rajasthan
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-[#0066FF]" />
+                  Joined Oct. 2025
+                </span>
               </div>
             </div>
           </div>
+
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.linkedin.com/feed/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-2xl bg-white border border-blue-200 hover:border-blue-400 text-slate-700 hover:text-[#0066FF] transition-all shadow-xs"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://github.com/Rahul800589"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-2xl bg-white border border-blue-200 hover:border-blue-400 text-slate-700 hover:text-[#0066FF] transition-all shadow-xs"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <Link
+              to="/contact"
+              className="px-6 py-3 rounded-2xl bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0066FF] text-white font-bold text-xs tracking-wider uppercase font-mono shadow-lg shadow-blue-500/25 transition-all hover:scale-105"
+            >
+              Hire Developer
+            </Link>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className="py-16">
-        <div className="w-full px-4">
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2 space-y-10">
-              <div className="bg-white rounded-xl shadow-sm p-8">
-                <h2 className="text-2xl font-bold text-orange-600 mb-6 flex items-center gap-2">
-                  <Users className="h-6 w-6" /> About Me
-                </h2>
-
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  Passionate **MERN Developer** creating fast, scalable and
-                  modern products with clean UI & optimized backend logic.
-                  Expertise in **React** for frontend, **Node.js/Express** for
-                  APIs, and **MongoDB** for database management.
-                </p>
-              </div>
-
-              <div className="bg-white rounded-xl shadow-sm p-8">
-                <h2 className="text-2xl font-bold text-orange-600 mb-8 flex items-center gap-2">
-                  <Code className="h-6 w-6" /> Featured Projects
-                </h2>
-
-                <div className="space-y-8">
-                  {featuredProjects.map((project, i) => (
-                    <ProjectCard key={i} {...project} />
-                  ))}
-                </div>
-              </div>
+      {/* Main Content Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column (2 cols): About & Projects */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* About Card */}
+            <div className="p-8 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,102,255,0.08)]">
+              <h2 className="text-xl font-bold font-display text-[#0A1629] mb-4 flex items-center gap-2">
+                <Users className="w-5 h-5 text-[#0066FF]" />
+                About Developer
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Passionate <strong className="text-[#0066FF]">MERN Developer</strong> creating fast, scalable, and modern products with clean UI & optimized backend logic. Expertise in <strong className="text-[#0A1629]">React</strong> for frontend, <strong className="text-[#0A1629]">Node.js/Express</strong> for APIs, and <strong className="text-[#0A1629]">MongoDB</strong> for database management.
+              </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-white rounded-xl shadow-sm p-8">
-                <h2 className="text-2xl font-bold text-orange-600 mb-8 flex items-center gap-2">
-                  <Briefcase className="h-6 w-6" /> Work Experience
+            {/* Featured Projects */}
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-extrabold font-display text-[#0A1629] flex items-center gap-2">
+                  <Code className="w-6 h-6 text-[#0066FF]" />
+                  Featured Projects
                 </h2>
+                <span className="text-xs font-mono text-slate-500 font-semibold">{featuredProjects.length} Built</span>
+              </div>
 
-                {workExperience.map((exp, index) => (
-                  <ExperienceItem key={index} {...exp} />
+              <div className="space-y-6">
+                {featuredProjects.map((project, idx) => (
+                  <Card3D key={idx}>
+                    <div className="p-6 sm:p-7 rounded-3xl cloud-card bg-white/90 border border-blue-100 hover:border-blue-300 backdrop-blur-xl transition-all duration-300 shadow-[0_10px_30px_-5px_rgba(0,102,255,0.08)] hover:shadow-[0_15px_35px_rgba(0,102,255,0.15)] flex flex-col md:flex-row gap-6 items-center">
+                      <img
+                        src={project.imageUrl}
+                        alt={project.imageAlt}
+                        className="w-full md:w-52 h-36 rounded-2xl object-cover border border-blue-100 shrink-0"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <h3 className="text-xl font-bold font-display text-[#0A1629]">{project.title}</h3>
+                          <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF] text-[11px] font-mono font-semibold">
+                            {project.role}
+                          </span>
+                        </div>
+                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {project.skills.map((s, i) => (
+                            <span
+                              key={i}
+                              className="px-2.5 py-1 bg-blue-50/70 border border-blue-100 rounded-lg text-xs font-mono text-[#0066FF]"
+                            >
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                        {project.stats && (
+                          <div className="flex flex-wrap gap-4 text-xs font-mono text-emerald-600 font-semibold">
+                            {project.stats.map((st, i) => (
+                              <span key={i} className="flex items-center gap-1.5">
+                                <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
+                                {st}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </Card3D>
                 ))}
               </div>
+            </div>
+          </div>
 
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h3 className="text-lg font-bold text-orange-600 mb-4">
-                  Contact Info
-                </h3>
+          {/* Right Column: Experience & Contact Info */}
+          <div className="space-y-8">
+            {/* Experience */}
+            <div className="p-8 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,102,255,0.08)]">
+              <h2 className="text-xl font-bold font-display text-[#0A1629] mb-6 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-[#0066FF]" />
+                Work Experience
+              </h2>
+              <div className="space-y-6">
+                {workExperience.map((exp, idx) => (
+                  <div key={idx} className="border-l-4 border-[#0066FF] pl-4 space-y-1.5">
+                    <h3 className="font-bold text-[#0A1629] text-base font-display">{exp.title}</h3>
+                    <p className="text-xs font-semibold text-[#0066FF]">{exp.company}</p>
+                    <p className="text-[11px] font-mono text-slate-500">{exp.duration} • {exp.location}</p>
+                    <ul className="space-y-1.5 pt-2">
+                      {exp.bulletPoints.map((b, i) => (
+                        <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                          <Star className="w-3.5 h-3.5 text-amber-500 mt-0.5 shrink-0" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-                <p className="text-gray-700">
-                  <Mail className="inline-block h-4 w-4 mr-2 text-orange-500" />
-                  rahulkumawat0992@gmail.com
+            {/* Contact Info Card */}
+            <div className="p-8 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,102,255,0.08)]">
+              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-4">Contact Info</h3>
+              <div className="space-y-3 text-xs sm:text-sm font-mono text-slate-600">
+                <p className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[#0066FF]" />
+                  <span>rahulkumawat0992@gmail.com</span>
                 </p>
-
-                <p className="text-gray-700 mt-2">
-                  <Phone className="inline-block h-4 w-4 mr-2 text-orange-500" />
-                  +91 8005894312
+                <p className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-[#0066FF]" />
+                  <span>+91 8005894312</span>
                 </p>
               </div>
             </div>
+
+            {/* Direct Contact Box */}
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-white via-[#F0F7FF] to-[#E0F2FE] border border-blue-200/80 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,102,255,0.12)] text-center">
+              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-2">Initiate Collaboration</h3>
+              <p className="text-xs text-slate-600 mb-6">Need a full-stack MERN solution or API architecture?</p>
+              <Link
+                to="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0066FF] text-white text-xs font-bold font-mono uppercase tracking-wider shadow-lg shadow-blue-500/25 hover:scale-105 transition-transform"
+              >
+                <span>Send Direct Inquiry</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

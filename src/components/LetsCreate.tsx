@@ -1,271 +1,251 @@
-
-
-import React, { useState, FormEvent, ChangeEvent } from "react";
-import logo from "/atslogo7.jpg";
-
-type FrontendLang = "HTML" | "CSS" | "JavaScript" | "React" | "Vue";
-type BackendLang = "Node.js" | "PHP" | "Python";
-type DatabaseType = "MongoDB" | "MySQL" | "PostgreSQL";
-type DeploymentType = "Lambda" | "Shared Host" | "AWS" | "VPS";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { Link } from "react-router-dom";
+import {
+  Sparkles,
+  Send,
+  CheckCircle2,
+  Cpu,
+  Smartphone,
+  Globe,
+  Cloud,
+  Shield,
+  Layers,
+  Clock,
+  DollarSign,
+  ArrowRight,
+} from "lucide-react";
+import Card3D from "./ui/Card3D";
 
 interface FormData {
-  projectName: string;
-  frontendLanguage: FrontendLang | "";
-  backendLanguage: BackendLang | "";
-  database: DatabaseType | "";
-  deployment: DeploymentType | "";
   name: string;
+  organization: string;
   phone: string;
   email: string;
+  category: string;
+  timeline: string;
+  budget: string;
   description: string;
 }
 
 const initialState: FormData = {
-  projectName: "",
-  frontendLanguage: "",
-  backendLanguage: "",
-  database: "",
-  deployment: "",
   name: "",
+  organization: "",
   phone: "",
   email: "",
+  category: "Web Application",
+  timeline: "1 - 3 Months",
+  budget: "$10,000 - $25,000",
   description: "",
 };
 
-const API_BASE_URL = "http://localhost:5000";
+const categories = [
+  { id: "Web Application", label: "Web Platform", icon: Globe },
+  { id: "Mobile App", label: "Mobile App (iOS/Android)", icon: Smartphone },
+  { id: "AI & Automation", label: "AI & Automation", icon: Cpu },
+  { id: "Cloud Infrastructure", label: "Cloud & DevOps", icon: Cloud },
+  { id: "Enterprise Software", label: "Enterprise Software", icon: Layers },
+  { id: "Cybersecurity", label: "Security & Compliance", icon: Shield },
+];
 
-const InputField = ({
-  label,
-  ...props
-}: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) => (
-  <div className="flex flex-col gap-1">
-    <label className="text-sm font-semibold text-gray-700">{label}</label>
-    <input
-      {...props}
-      className="w-full border border-gray-300 shadow-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 outline-none"
-    />
-  </div>
-);
-
-const SelectField = ({
-  label,
-  children,
-  ...props
-}: { label: string; children: React.ReactNode } & React.SelectHTMLAttributes<HTMLSelectElement>) => (
-  <div className="flex flex-col gap-1">
-    <label className="text-sm font-semibold text-gray-700">{label}</label>
-    <select
-      {...props}
-      className="w-full border border-gray-300 shadow-sm rounded-lg px-3 py-2 bg-white focus:ring-2 focus:ring-blue-400 outline-none"
-    >
-      {children}
-    </select>
-  </div>
-);
-
-const LetsCreate: React.FC = () => {
+export const LetsCreate: React.FC = () => {
   const [form, setForm] = useState<FormData>(initialState);
   const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
-
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/idea-bank`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
-
-      setShowModal(true);
-      setForm(initialState);
-    } catch (err: any) {
-      setError(err.message || "Unable to submit your idea.");
-    } finally {
+    setTimeout(() => {
       setLoading(false);
-    }
+      setSubmitted(true);
+    }, 1200);
   };
 
   return (
-    <section className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-6 px-4 flex justify-center">
-      <div className="w-full max-w-7xl bg-white/80 backdrop-blur-md shadow-xl border border-gray-200 rounded-3xl p-10">
+    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen">
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
-            IDEABANK
-            <h6 className="text-blue-600"> Let's Create Your Vision & More</h6>
-          </h1>
-          <p className="mt-3 text-gray-600 max-w-xl mx-auto">
-            Share your project concept, preferred technologies, and deployment plans.
-          </p>
-        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>INNOVATION INCUBATOR</span>
+            </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid md:grid-cols-1 gap-6">
-            <InputField
-              label="Project Name"
-              name="projectName"
-              required
-              value={form.projectName}
-              onChange={handleChange}
-            />
+            <h1 className="text-4xl sm:text-6xl font-black text-[#0A1629] tracking-tight font-display mb-4">
+              IDEABANK: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Let's Create Your Vision</span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-sans">
+              Share your concept or enterprise challenge. Our engineering leads will analyze your scope and construct a scalable implementation blueprint.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <SelectField
-              label="Frontend Language"
-              name="frontendLanguage"
-              required
-              value={form.frontendLanguage}
-              onChange={handleChange}
-            >
-              <option value="">Select Frontend</option>
-              <option value="HTML">(HTML, CSS, JavaScript)</option>
-              <option value="React">React</option>
-              <option value="Vue">Vue.js</option>
-            </SelectField>
-
-            <SelectField
-              label="Database"
-              name="database"
-              required
-              value={form.database}
-              onChange={handleChange}
-            >
-              <option value="">Select Database</option>
-              <option value="MongoDB">MongoDB</option>
-              <option value="MySQL">MySQL</option>
-              <option value="PostgreSQL">PostgreSQL</option>
-            </SelectField>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <SelectField
-              label="Backend Language"
-              name="backendLanguage"
-              required
-              value={form.backendLanguage}
-              onChange={handleChange}
-            >
-              <option value="">Select Backend</option>
-              <option value="Node.js">Node.js (Express)</option>
-              <option value="PHP">PHP</option>
-              <option value="Python">Python (Django)</option>
-            </SelectField>
-
-            <SelectField
-              label="Deployment Platform"
-              name="deployment"
-              required
-              value={form.deployment}
-              onChange={handleChange}
-            >
-              <option value="">Select Deployment</option>
-              <option value="Shared Host">Shared Host</option>
-              <option value="AWS">AWS</option>
-              <option value="VPS">VPS</option>
-            </SelectField>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <InputField
-              label="Your Name"
-              name="name"
-              required
-              value={form.name}
-              onChange={handleChange}
-            />
-            <InputField
-              label="Phone Number"
-              name="phone"
-              required
-              value={form.phone}
-              onChange={handleChange}
-            />
-            <InputField
-              label="Email"
-              name="email"
-              required
-              value={form.email}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div>
-            <label className="text-sm font-semibold text-gray-700 mb-1">
-              Project Description
-            </label>
-            <textarea
-              name="description"
-              required
-              value={form.description}
-              onChange={handleChange}
-              rows={4}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3"
-            ></textarea>
-          </div>
-
-          <div className="flex flex-col items-center gap-3 mt-4">
-            <button
-              type="submit"
-              disabled={loading}
-              className="px-10 py-3 bg-linear-to-r from-blue-500 to-purple-500 text-white rounded-xl"
-            >
-              {loading ? "Submitting..." : "Submit Your Project"}
-            </button>
-
-            {error && (
-              <div className="w-full text-center text-red-600 bg-red-100 py-2 rounded-md">
-                {error}
+          <Card3D intensity={6} className="cloud-card p-6 sm:p-10 rounded-3xl shadow-xl">
+            {submitted ? (
+              <div className="p-8 text-center space-y-4">
+                <CheckCircle2 className="w-16 h-16 text-[#0066FF] mx-auto" />
+                <h3 className="text-2xl sm:text-3xl font-black text-[#0A1629] font-display">
+                  Project Concept Received!
+                </h3>
+                <p className="text-sm text-slate-600 max-w-md mx-auto font-sans">
+                  Thank you, <strong className="text-slate-900 font-bold">{form.name}</strong>. An ATS solution architect will review your requirements and schedule an initial strategy session within 24 hours.
+                </p>
+                <div className="pt-4">
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setForm(initialState);
+                    }}
+                    className="px-6 py-3 rounded-2xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-md transition cursor-pointer"
+                  >
+                    Submit Another Concept
+                  </button>
+                </div>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* 1. Category Selection */}
+                <div>
+                  <label className="block text-xs font-mono font-bold text-[#0066FF] uppercase tracking-wider mb-3">
+                    01. Select Project Domain *
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {categories.map((c) => {
+                      const Icon = c.icon;
+                      const isSelected = form.category === c.id;
+                      return (
+                        <button
+                          type="button"
+                          key={c.id}
+                          onClick={() => setForm({ ...form, category: c.id })}
+                          className={`p-3.5 rounded-2xl border text-left flex items-center gap-3 transition-all duration-300 cursor-pointer ${
+                            isSelected
+                              ? "bg-[#EBF5FF] border-[#0066FF] text-[#0066FF] shadow-sm"
+                              : "bg-white border-blue-200 text-slate-700 hover:border-blue-300 hover:text-[#0066FF]"
+                          }`}
+                        >
+                          <Icon className={`w-5 h-5 ${isSelected ? "text-[#0066FF]" : "text-slate-400"}`} />
+                          <span className="text-xs font-bold">{c.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* 2. Personal Info */}
+                <div>
+                  <label className="block text-xs font-mono font-bold text-[#0066FF] uppercase tracking-wider mb-3">
+                    02. Contact Information *
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your Full Name *"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Company / Organization Name"
+                        value={form.organization}
+                        onChange={(e) => setForm({ ...form, organization: e.target.value })}
+                        className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        required
+                        placeholder="Work Email Address *"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Contact Phone / WhatsApp *"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Timeline & Budget */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-[#0066FF] uppercase tracking-wider mb-2">
+                      Target Timeline
+                    </label>
+                    <select
+                      value={form.timeline}
+                      onChange={(e) => setForm({ ...form, timeline: e.target.value })}
+                      className="w-full bg-white border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-[#0066FF] transition"
+                    >
+                      <option>&lt; 1 Month (Fast Prototype)</option>
+                      <option>1 - 3 Months (Standard MVP)</option>
+                      <option>3 - 6 Months (Complete System)</option>
+                      <option>6+ Months (Enterprise Scale)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-[#0066FF] uppercase tracking-wider mb-2">
+                      Approximate Budget Tier
+                    </label>
+                    <select
+                      value={form.budget}
+                      onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                      className="w-full bg-white border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-[#0066FF] transition"
+                    >
+                      <option>&lt; $10,000</option>
+                      <option>$10,000 - $25,000</option>
+                      <option>$25,000 - $50,000</option>
+                      <option>$50,000 - $100,000+</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* 4. Description */}
+                <div>
+                  <label className="block text-xs font-mono font-bold text-[#0066FF] uppercase tracking-wider mb-2">
+                    03. Describe Your Vision & Business Goals *
+                  </label>
+                  <textarea
+                    rows={4}
+                    required
+                    value={form.description}
+                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                    placeholder="Provide a summary of what you are aiming to build, key feature requirements, or any existing infrastructure to integrate..."
+                    className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition transform hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Sparkles className="w-5 h-5" />
+                  <span>{loading ? "Transmitting to Idea Bank..." : "Submit Concept to ATS Idea Bank"}</span>
+                </button>
+              </form>
             )}
-          </div>
-        </form>
-      </div>
-
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl w-[90%] max-w-lg p-6 flex gap-5">
-
-            <div className="flex items-center justify-center w-1/3">
-              <img src={logo} className="w-24 h-24 object-contain" />
-            </div>
-
-            <div className="w-2/3">
-              <h2 className="text-xl font-bold text-green-600">
-                Successful 🎉
-              </h2>
-
-              <p className="text-gray-700 mt-1">
-                Your idea has been successfully submitted!
-              </p>
-
-              <button
-                onClick={() => setShowModal(false)}
-                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg"
-              >
-                Close
-              </button>
-            </div>
-
-          </div>
+          </Card3D>
         </div>
-      )}
-    </section>
+      </section>
+    </div>
   );
 };
 

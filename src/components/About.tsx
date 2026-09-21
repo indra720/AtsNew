@@ -1,272 +1,296 @@
 import React, { FC } from "react";
-const About: FC = () => {
-  // const teamMembers = [
-  //   {
-  //     name: "Pramod Saini",
-  //     role: "Senior Frontend Developer",
-  //     description:
-  //       "06 months in tech leadership, former SudoTechlabs engineer with expertise in scalable systems.",
-  //     imgSrc: "./Pramod.png",
-  //     imgAlt: "Pramod Saini",
-  //     navigationPath: "/team-members",
-  //     skills: ["React", "Tailwind", "JavaScript", "UI/UX"],
-  //   },
-  //   {
-  //     name: "Aakash Kumawat",
-  //     role: "Senior Backend Developer",
-  //     description:
-  //       "Enterprise backend engineer with expertise in distributed systems & APIs.",
-  //     imgSrc: "./Aakash.jpeg",
-  //     imgAlt: "Aakash Kumawat",
-  //     navigationPath: "/team-members3",
-  //     skills: ["Python", "Django", "MySql", "System Design"],
-  //   },
-  //   {
-  //     name: "Rahul Kumawat",
-  //     role: "MERN Stack Developer",
-  //     description:
-  //       "MERN developer skilled in building scalable full-stack applications.",
-  //     imgSrc: "./Rahul5.jpg",
-  //     imgAlt: "Rahul Kumar",
-  //     navigationPath: "/team-members2",
-  //     skills: ["React", "Node.js", "MongoDB", "Express.js"],
-  //   },
-  //   {
-  //     name: "Kamlesh Kumar Sharma",
-  //     role: "Full Stack Developer",
-  //     description:
-  //       "Full Stack developer skilled in building scalable digital solutions.",
-  //     imgSrc: "./kamal1.jpg",
-  //     imgAlt: "Kamlesh Sharma",
-  //     navigationPath: "/team-members4",
-  //     skills: ["JS", "React", "c#", ".NET", "MySQL"],
-  //   },
-  // ];
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  Sparkles,
+  Target,
+  Eye,
+  Heart,
+  Award,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  ExternalLink,
+} from "lucide-react";
+import Card3D from "./ui/Card3D";
 
+const teamMembers = [
+  {
+    name: "Pramod Saini",
+    role: "Senior Frontend Developer",
+    description: "UI architecture leadership with expertise in building responsive, accessible, high-performance web systems.",
+    imgSrc: "./Pramod.png",
+    navigationPath: "/team-members",
+    skills: ["React", "Tailwind CSS", "JavaScript", "UI/UX Systems"],
+  },
+  {
+    name: "Aakash Kumawat",
+    role: "Senior Backend Developer",
+    description: "Enterprise backend engineer with expertise in high-throughput distributed systems, RESTful APIs, and database architecture.",
+    imgSrc: "./Aakash.jpeg",
+    navigationPath: "/team-members3",
+    skills: ["Python", "Django", "MySQL", "System Architecture"],
+  },
+  {
+    name: "Rahul Kumawat",
+    role: "MERN Stack Developer",
+    description: "Full-stack engineer dedicated to developing scalable cloud applications with resilient Node.js backends and modern React frontends.",
+    imgSrc: "./Rahul5.jpg",
+    navigationPath: "/team-members2",
+    skills: ["React", "Node.js", "MongoDB", "Express.js"],
+  },
+  {
+    name: "Kamlesh Kumar Sharma",
+    role: "Full Stack Developer",
+    description: "Full-stack engineer skilled in building robust enterprise digital solutions across modern JavaScript and Microsoft .NET ecosystems.",
+    imgSrc: "./kamal1.jpg",
+    navigationPath: "/team-members4",
+    skills: ["JavaScript", "React", "C#", ".NET Core", "MySQL"],
+  },
+];
+
+export const About: FC = () => {
   return (
-    <div
-      className="bg-white text-gray-900 min-h-screen"
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
+    <div className="bg-gradient-to-b from-[#F0F7FF] via-[#FFFFFF] to-[#E8F4FD] text-slate-900 min-h-screen">
+      {/* Hero Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-400/10 rounded-full blur-[140px] pointer-events-none" />
 
-      <section className="relative py-6   text-center flex items-center justify-center min-h-[300px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-6 shadow-xs"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>WHO WE ARE</span>
+          </motion.div>
 
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80')",
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight font-display mb-6 max-w-4xl mx-auto"
+          >
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">ATS GLOBAL TECH</span>
+          </motion.h1>
 
-        <div className="relative w-full px-6 ">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-linear-to-r from-cyan-400 to-teal-500 text-transparent bg-clip-text">
-            About <span className="text-white">ATS GLOBAL TECH</span>
-          </h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-medium"
+          >
+            ATS Global Tech empowers businesses through innovation, digital transformation, and future-ready software engineering.
+          </motion.p>
 
-          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-10">
-            ATS Global Tech empowers businesses through innovation, digital
-            transformation, and future-ready software engineering.
-          </p>
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          {/* Mission, Vision, Values Bento */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
+                icon: Target,
                 title: "Our Mission",
                 text: "Deliver scalable, secure & innovative tech solutions that accelerate global business growth.",
+                badge: "MISSION",
               },
               {
+                icon: Eye,
                 title: "Our Vision",
-                text: "To lead the future of digital transformation with intelligence and innovation.",
+                text: "To lead the future of digital transformation with intelligence, engineering precision, and innovation.",
+                badge: "VISION",
               },
               {
+                icon: Heart,
                 title: "Core Values",
-                text: "Integrate, Excellence, Innovation, Customer First & Collaboration.",
+                text: "Integrity, Excellence, Relentless Innovation, Customer First & Collaborative Transparency.",
+                badge: "VALUES",
               },
-            ].map((card, i) => (
-              <div
-                key={i}
-                className="bg-white/10 backdrop-blur-md text-gray-100 p-8 rounded-2xl shadow-xl border border-white/20 hover:scale-[1.05] transition duration-300 transform hover:shadow-2xl"
-              >
-                <h2 className="text-2xl font-semibold text-teal-300 mb-3">
-                  {card.title}
-                </h2>
-                <p className="text-gray-200">{card.text}</p>
-              </div>
-            ))}
+            ].map((card) => {
+              const Icon = card.icon;
+              return (
+                <Card3D
+                  key={card.title}
+                  intensity={10}
+                  glowColor="rgba(0, 102, 255, 0.1)"
+                  className="cloud-card p-8 border border-blue-100/90 rounded-3xl flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] shadow-inner">
+                        <Icon className="w-6 h-6 stroke-[2.2]" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-[#0066FF] px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200">
+                        {card.badge}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 font-display">{card.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed font-normal">{card.text}</p>
+                  </div>
+                </Card3D>
+              );
+            })}
           </div>
         </div>
       </section>
 
-
-      <section className="py-10 bg-gray-50">
-        <div className="w-full px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-          <div>
-            <img
-              src="./ceo.png"
-              alt="CEO"
-              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src =
-                  "https://placehold.co/400x500/0F766E/ffffff?text=CEO+Image";
-              }}
-              className="rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md object-cover mx-auto aspect-4/5 transform hover:scale-[1.02] transition duration-500"
-            />
-          </div>
-
-
-          <div>
-            <span className="px-4 py-1 text-sm bg-white rounded-full shadow-md mb-4 inline-block font-sans text-gray-700">
-              Leadership • Strategy • Innovation
-            </span>
-
-            <blockquote className="text-2xl md:text-3xl italic text-gray-700 mb-6 border-l-4 border-teal-500 pl-4">
-              “We don’t just create technology — we create growth, opportunity,
-              and success.”
-            </blockquote>
-
-            <h3 className="text-4xl font-bold bg-linear-to-r from-cyan-500 to-teal-600 bg-clip-text text-transparent">
-              Ajeet Singh
-            </h3>
-
-            <p className="text-gray-900 text-xl font-semibold mb-6">
-              CEO & Founder — ATS Global Tech
-            </p>
-
-            <p className="text-gray-700 mb-4">
-              With 15+ years of global tech experience, Abhay believes in
-              building futuristic digital ecosystems.
-            </p>
-
-            <p className="text-gray-700 mb-4">
-              He has worked with startups, mid-scale companies, and global
-              enterprises, helping them adopt modern technologies such as Cloud,
-              AI Automation, Full-Stack Engineering, Data-Driven Architecture,
-              Cybersecurity, and Scalable Digital Platforms. His focus is on
-              building systems that are fast, reliable, future-ready, and
-              capable of supporting large-scale growth.
-            </p>
-
-
-            <div className="grid grid-cols-3 gap-4 mt-6">
-              {[
-                { value: "15+", label: "Years Leading" },
-                { value: "500+", label: "Projects Done" },
-                { value: "60+", label: "Enterprise Clients" },
-              ].map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className="bg-white p-4 sm:p-5 rounded-xl text-center shadow-lg hover:-translate-y-1 transition duration-300 border border-gray-100"
-                >
-                  <div className="text-xl sm:text-3xl font-bold text-cyan-600">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs sm:text-sm text-gray-700">
-                    {stat.label}
+      {/* CEO & Leadership Spotlight */}
+      <section className="py-24 bg-[#F8FAFC]/90 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* CEO Photo Frame */}
+            <div className="lg:col-span-5 flex justify-center">
+              <Card3D intensity={10} className="relative w-full max-w-sm rounded-3xl overflow-hidden cloud-card p-2 border border-blue-200/90 shadow-xl">
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+                  <img
+                    src="/ceo.png"
+                    alt="Ajeet Singh - CEO & Founder"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://placehold.co/400x500/0066ff/ffffff?text=CEO+Ajeet+Singh";
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-xs font-mono text-cyan-300 uppercase tracking-widest block mb-0.5 font-bold">CEO & Founder</span>
+                    <h4 className="text-2xl font-black text-white font-display">Ajeet Singh</h4>
                   </div>
                 </div>
-              ))}
+              </Card3D>
             </div>
 
-            <p className="mt-8 text-gray-600 italic border-l-4 border-cyan-600 pl-4">
-              “Leadership is not a position — it's an influence that creates
-              change.”
-            </p>
+            {/* CEO Bio & Achievements */}
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-6 shadow-xs">
+                <span>LEADERSHIP • STRATEGY • INNOVATION</span>
+              </div>
+
+              <blockquote className="text-xl sm:text-2xl font-bold text-slate-900 border-l-4 border-[#0066FF] pl-6 mb-6 italic font-display">
+                “We don’t just create technology — we create growth, opportunity, and success.”
+              </blockquote>
+
+              <p className="text-base text-slate-600 leading-relaxed mb-4 font-medium">
+                With 15+ years of global tech experience, he believes in building futuristic digital ecosystems.
+              </p>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-8 font-normal">
+                He has worked with startups, mid-scale companies, and global enterprises, helping them adopt modern technologies such as Cloud, AI Automation, Full-Stack Engineering, Data-Driven Architecture, Cybersecurity, and Scalable Digital Platforms. His focus is on building systems that are fast, reliable, future-ready, and capable of supporting large-scale growth.
+              </p>
+
+              {/* Stats Counters */}
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                {[
+                  { value: "15+", label: "Years Leading" },
+                  { value: "500+", label: "Projects Done" },
+                  { value: "60+", label: "Enterprise Clients" },
+                ].map((stat) => (
+                  <div key={stat.label} className="p-4 rounded-2xl bg-white border border-blue-100 text-center shadow-xs">
+                    <div className="text-2xl sm:text-3xl font-black text-[#0066FF] font-display mb-1">{stat.value}</div>
+                    <div className="text-xs text-slate-500 font-mono font-medium">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs sm:text-sm text-slate-500 italic border-l-2 border-blue-200 pl-4">
+                “Leadership is not a position — it's an influence that creates change.”
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* <section className="py-20 bg-white">
-        <div className="w-full px-6 text-center">
-          <h2 className="text-4xl font-bold text-gray-900">Meet Our Team</h2>
+      {/* Engineering Team Section */}
+      <section className="py-24 bg-white/90 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>THE BUILDERS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display mb-4">
+              Meet Our Engineering Leadership
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium">
+              Our team blends technical mastery, software craftsmanship, and strategic architecture to build future-ready solutions.
+            </p>
+          </div>
 
-          <p className="text-lg text-gray-600 mb-14 max-w-2xl mx-auto mt-4">
-            Our team blends creativity, engineering excellence, and strategy to
-            build future-ready solutions.
-          </p>
-
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((m, i) => (
-              <div
-                key={i}
-                className="bg-white border border-gray-200 p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 transform hover:scale-[1.02] flex flex-col items-center"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((m) => (
+              <Card3D
+                key={m.name}
+                intensity={12}
+                glowColor="rgba(0, 102, 255, 0.1)"
+                className="cloud-card p-6 flex flex-col justify-between border border-blue-100/90 hover:border-blue-300 rounded-3xl group"
               >
-                <img
-                  src={m.imgSrc}
-                  onError={(
-                    e: React.SyntheticEvent<HTMLImageElement, Event>
-                  ) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = `https://placehold.co/100x100/A7F3D0/0F766E?text=${m.name.charAt(
-                      0
-                    )}`;
-                  }}
-                  className="w-24 h-24 mx-auto rounded-full object-cover mb-4 ring-4 ring-teal-200"
-                  alt={m.imgAlt}
-                />
+                <div>
+                  <div className="relative w-24 h-24 mx-auto mb-5 rounded-2xl overflow-hidden border-2 border-[#0066FF]/40 p-1 bg-[#EBF5FF] shadow-md group-hover:scale-105 transition duration-300">
+                    <img
+                      src={m.imgSrc}
+                      alt={m.name}
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        e.currentTarget.src = `https://placehold.co/100x100/0066FF/ffffff?text=${m.name.charAt(0)}`;
+                      }}
+                    />
+                  </div>
 
-                <h3 className="font-semibold text-xl">{m.name}</h3>
-                <p className="text-teal-600 text-sm mb-3">{m.role}</p>
+                  <div className="text-center mb-4">
+                    <h3 className="text-lg font-bold text-slate-900 font-display group-hover:text-[#0066FF] transition">{m.name}</h3>
+                    <p className="text-xs font-mono text-[#0066FF] font-semibold">{m.role}</p>
+                  </div>
 
-                <p className="text-gray-600 text-sm mb-4 grow">
-                  {m.description}
-                </p>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4 text-center font-normal">
+                    {m.description}
+                  </p>
 
-                <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  {m.skills.map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 text-xs bg-teal-100 text-teal-700 rounded-full border border-teal-300 font-sans"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  <div className="flex flex-wrap justify-center gap-1.5 mb-6">
+                    {m.skills.map((s, idx) => (
+                      <span key={idx} className="px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-mono text-[#0066FF] font-semibold">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-
-                <a
-                  href={m.navigationPath}
-                  className="w-full"
+                <Link
+                  to={m.navigationPath}
+                  className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-xs font-bold text-[#0066FF] bg-blue-50/80 hover:bg-[#0066FF] hover:text-white border border-blue-200 hover:border-[#0066FF] transition-all duration-300 mt-auto shadow-xs"
                 >
-                  <button className="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition duration-300 mt-auto shadow-md hover:shadow-lg w-full">
-                    View Portfolio
-                  </button>
-                </a>
-
-              </div>
+                  <span>View Engineering Portfolio</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </Link>
+              </Card3D>
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
-
-      {/* <section className="py-20 text-center bg-gray-50">
-        <h2 className="text-3xl md:text-4xl font-bold">Join Our Journey</h2>
-        <p className="text-lg text-gray-700 max-w-xl mx-auto mt-4">
-          Whether you want to collaborate or build your dream career — we’d love
-          to hear from you.
-        </p>
-
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8 px-4">
-         
-          <a href="/contact">
-            <button className="w-full sm:w-auto bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition shadow-lg">
+      {/* Join Our Journey CTA */}
+      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-[#F0F7FF] text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 font-display mb-4">
+            Join Our Journey
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-medium">
+            Whether you want to architect an enterprise platform or accelerate your engineering career — we’d love to connect.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_8px_25px_rgba(0,102,255,0.35)] transition w-full sm:w-auto"
+            >
               Get In Touch
-            </button>
-          </a>
-          <a href="/careers">
-            <button className="w-full sm:w-auto border border-teal-300 text-teal-600 px-6 py-3 rounded-lg hover:bg-teal-50 transition hover:border-teal-400 shadow-md">
-              View Careers
-            </button>
-          </a>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/careers"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-slate-800 bg-white border border-blue-200 hover:bg-slate-50 transition w-full sm:w-auto shadow-sm"
+            >
+              View Open Careers
+            </Link>
+          </div>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 };

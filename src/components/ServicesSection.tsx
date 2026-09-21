@@ -1,8 +1,6 @@
-"use client";
-
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import {
-  Star,
   Code,
   Smartphone,
   Globe,
@@ -15,13 +13,10 @@ import {
   Lightbulb,
   Wrench,
   Rocket,
-  ChevronLeft,
-  ChevronRight,
+  Sparkles,
+  Star,
 } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import Card3D from "./ui/Card3D";
 
 interface ServiceCardProps {
   title: string;
@@ -30,352 +25,254 @@ interface ServiceCardProps {
   features: string[];
   icon: React.ReactNode;
   popular?: boolean;
+  tag: string;
 }
-const ServiceCard: FC<ServiceCardProps> = ({
-  title,
-  description,
-  price,
-  features,
-  icon,
-  popular,
-}) => (
-  <div className="rounded-lg bg-white/60 backdrop-blur-md text-gray-900 shadow-lg hover:shadow-2xl transition-all duration-300 border border-teal-200 relative hover:-translate-y-1 h-full flex flex-col">
-    {popular && (
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="inline-flex items-center rounded-full text-xs font-semibold bg-teal-500 text-white px-4 py-1">
-          <Star className="h-3 w-3 mr-1" /> Popular
-        </div>
-      </div>
-    )}
-    <div className="p-6 flex flex-col h-full">
-      {" "}
 
-      <div className="bg-gray-900 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-        {icon}
-      </div>
-      <h3 className="font-semibold text-xl mb-2">{title}</h3>
-      <p className="text-gray-600 mb-6">{description}</p>{" "}
-
-      <ul className="space-y-2 mb-6 grow">
-        {features.map((feature, idx) => (
-          <li key={idx} className="flex items-center text-gray-700">
-
-            <CircleCheckBig className="h-4 w-4 text-teal-500 mr-2" />
-            {feature}
-          </li>
-        ))}
-      </ul>
-
-      <p className="text-teal-600 font-semibold mb-4">Starting from ${price}</p>
-
-      <button className="w-full bg-teal-500 hover:bg-teal-600 transition rounded-md py-2 text-white font-medium flex items-center justify-center gap-2 mt-auto">
-        {" "}
-
-        Learn More <ArrowRight className="h-4 w-4" />
-      </button>
-    </div>
-  </div>
-);
 const servicesData: ServiceCardProps[] = [
   {
     title: "Custom Software Development",
-    description:
-      "Fully tailored software built for business growth, addressing unique operational requirements and scalability demands.",
+    description: "Fully tailored software built for business growth, addressing unique operational requirements and scalability demands.",
     price: "25,000",
-    features: [
-      "Full-stack development",
-      "API integration",
-      "Testing & deployment",
-      "Maintenance",
-    ],
-    icon: <Code className="h-6 w-6 text-white" />,
+    features: ["Full-stack development", "Scalable API integration", "Testing & automated deployment", "Ongoing maintenance & upgrades"],
+    icon: <Code className="h-6 w-6 text-cyan-400" />,
     popular: true,
+    tag: "ENTERPRISE CORE",
   },
   {
     title: "Mobile App Development",
-    description:
-      "iOS & Android apps with smooth UI and performance, designed for maximum reach and user engagement across devices.",
+    description: "iOS & Android apps with smooth UI and performance, designed for maximum reach and user engagement across devices.",
     price: "18,000",
-    features: [
-      "Cross-platform options",
-      "User-friendly design",
-      "Push notifications",
-      "App publishing",
-    ],
-    icon: <Smartphone className="h-6 w-6 text-white" />,
+    features: ["Cross-platform options (React Native/Flutter)", "User-friendly ergonomic UI design", "Real-time push notifications", "Complete App Store publishing"],
+    icon: <Smartphone className="h-6 w-6 text-indigo-400" />,
+    tag: "MOBILE APPS",
   },
   {
-    title: "Web Development",
-    description:
-      "High-performance websites optimized for conversion, SEO, and lightning-fast loading speeds on any device.",
+    title: "High-Performance Web Platforms",
+    description: "High-performance websites optimized for conversion, SEO, and lightning-fast loading speeds on any device.",
     price: "13,000",
-    features: [
-      "Responsive design",
-      "SEO Optimization",
-      "High performance",
-      "Secure hosting",
-    ],
-    icon: <Globe className="h-6 w-6 text-white" />,
+    features: ["Responsive 120fps UI design", "Technical SEO optimization", "Sub-second loading speeds", "Zero-trust secure hosting"],
+    icon: <Globe className="h-6 w-6 text-blue-400" />,
+    tag: "WEB ECOSYSTEM",
   },
   {
-    title: "Database Solutions",
-    description:
-      "Secure, scalable and optimized database systems that ensure data integrity and fast access for mission-critical applications.",
+    title: "Database Engineering & Tuning",
+    description: "Secure, scalable and optimized database systems that ensure data integrity and fast access for mission-critical applications.",
     price: "12,000",
-    features: [
-      "Performance tuning",
-      "Backup strategies",
-      "Data migration",
-      "Admin dashboards",
-    ],
-    icon: <Database className="h-6 w-6 text-white" />,
+    features: ["Deep performance query tuning", "Automated backup & replication", "Zero-downtime data migration", "Custom admin observability dashboards"],
+    icon: <Database className="h-6 w-6 text-amber-400" />,
+    tag: "DATA SCALE",
   },
   {
-    title: "Cloud Architecture",
-    description:
-      "Cloud hosting, infrastructure & DevOps automation for resilient and cost-effective operations on platforms like AWS and Azure.",
+    title: "Cloud Architecture & DevOps",
+    description: "Cloud hosting, infrastructure & DevOps automation for resilient and cost-effective operations on platforms like AWS and Azure.",
     price: "24,000",
-    features: [
-      "Cloud migration",
-      "CI/CD automation",
-      "Monitoring & alerts",
-      "Serverless deployment",
-    ],
-    icon: <Cloud className="h-6 w-6 text-white" />,
+    features: ["Multi-cloud migration roadmaps", "Automated CI/CD pipelines", "24/7 Monitoring & instant alerts", "Serverless Kubernetes deployment"],
+    icon: <Cloud className="h-6 w-6 text-purple-400" />,
     popular: true,
+    tag: "CLOUD NATIVE",
   },
   {
-    title: "Cybersecurity",
-    description:
-      "Protection against evolving threats and vulnerabilities, ensuring compliance and robust security posture for your digital assets.",
+    title: "Cybersecurity & Vulnerability Audit",
+    description: "Protection against evolving threats and vulnerabilities, ensuring compliance and robust security posture for your digital assets.",
     price: "23,000",
-    features: [
-      "Security audits",
-      "Risk assessments",
-      "Implementation",
-      "Compliance",
-    ],
-    icon: <Shield className="h-6 w-6 text-white" />,
+    features: ["Full security infrastructure audits", "Ethical penetration testing", "Real-time threat monitoring implementation", "Regulatory compliance (SOC2, HIPAA)"],
+    icon: <Shield className="h-6 w-6 text-emerald-400" />,
+    tag: "ZERO TRUST",
   },
 ];
+
 const processSteps = [
   {
-    icon: <Lightbulb className="h-8 w-8 text-teal-500" />,
-    title: "Discovery",
-    desc: "We deeply understand your goals, unique needs, and technical challenges.",
+    step: "01",
+    icon: Lightbulb,
+    title: "Discovery & Analysis",
+    desc: "We deeply understand your technical hurdles, business goals, and user demands.",
   },
   {
-    icon: <ClipboardCheck className="h-8 w-8 text-teal-500" />,
-    title: "Planning",
-    desc: "We design a comprehensive, smart strategy and blueprint tailored to your business vision.",
+    step: "02",
+    icon: ClipboardCheck,
+    title: "Architecture & Planning",
+    desc: "We design a comprehensive blueprint, wireframes, and scalable technology roadmaps.",
   },
   {
-    icon: <Wrench className="h-8 w-8 text-teal-500" />,
-    title: "Development",
-    desc: "We meticulously build high-quality, scalable solutions using agile methodologies.",
+    step: "03",
+    icon: Wrench,
+    title: "Agile Development",
+    desc: "We build resilient, scalable systems with continuous integration and QA checks.",
   },
   {
-    icon: <Rocket className="h-8 w-8 text-teal-500" />,
-    title: "Launch & Support",
-    desc: "We seamlessly deploy and provide dedicated long-term support and maintenance.",
+    step: "04",
+    icon: Rocket,
+    title: "Deployment & Hypercare",
+    desc: "Seamless cloud launch followed by 24/7 SLA monitoring, optimization, and support.",
   },
 ];
-const romanStyle: React.CSSProperties = {
-  fontFamily: "'Times New Roman', serif",
-  fontWeight: 700,
-};
-const ServicesSection: FC = () => (
-  <main className="bg-linear-to-r from-teal-50 via-white to-teal-100 text-gray-900 min-h-screen ">
 
-    <section className="bg-gray-200 text-center py-6 px-4">
-      {" "}
-
-      <h1
-        className="text-4xl md:text-6xl font-bold mb-4 md:mb-6 text-gray-900"
-        style={romanStyle}
-      >
-        Our <span className="text-teal-600">Services</span>
-      </h1>
-      <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-700 mb-8 md:mb-12">
-        {" "}
-
-        Professional solutions that help your business thrive in the digital
-        world. We build, scale, and secure your digital assets.
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols lg:grid-cols-4 gap-6 w-full">
-
-        <div className="bg-gray-900 text-gray-200 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300">
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 text-teal-600">
-            Web Development
-          </h3>
-          <p className="text-sm md:text-base">
-            Modern, responsive, and high-performing websites built using the
-            latest technologies like React, Next.js, and Tailwind CSS.
-          </p>
-        </div>
-
-
-        <div className="bg-gray-900 text-gray-200 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300">
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 text-teal-600">
-            Mobile App Development
-          </h3>
-          <p className="text-sm md:text-base">
-            Cross-platform mobile apps for Android and iOS that provide seamless
-            user experiences and strong performance.
-          </p>
-        </div>
-
-
-        <div className="bg-gray-900 text-gray-200 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300">
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 text-teal-600">
-            AI & Automation
-          </h3>
-          <p className="text-sm md:text-base">
-            Harness the power of Artificial Intelligence and automation to
-            streamline business operations and make data-driven decisions.
-          </p>
-        </div>
-
-
-        <div className="bg-gray-900 text-gray-200 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300">
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 text-teal-600">
-            Cloud Solutions
-          </h3>
-          <p className="text-sm md:text-base">
-            Secure, scalable, and reliable cloud infrastructure setup and
-            management using AWS, Azure, and Google Cloud.
-          </p>
-        </div>
-
-
-        <div className="bg-gray-900 text-gray-200 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300">
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 text-teal-600">
-            UI/UX Design
-          </h3>
-          <p className="text-sm md:text-base">
-            Beautiful, user-focused interfaces that enhance usability and ensure
-            your digital products stand out visually.
-          </p>
-        </div>
-
-
-        <div className="bg-gray-900 text-gray-200 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700 hover:scale-[1.03] transition-transform duration-300">
-          <h3 className="text-xl md:text-2xl font-semibold mb-3 text-teal-600">
-            Digital Marketing
-          </h3>
-          <p className="text-sm md:text-base">
-            Comprehensive SEO, branding, and social media strategies to help
-            your business grow and reach the right audience.
-          </p>
-        </div>
-      </div>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 md:mt-12">
-        <a href="/contact">
-          <button className="w-full sm:w-auto font-bold bg-teal-500 hover:bg-teal-600 px-8 py-3 rounded-md flex items-center justify-center gap-2 text-white shadow-lg">
-            Get Started <ArrowRight className="h-5 w-5" />
-          </button>
-        </a>
-        <a href="/projects">
-          <button className="w-full sm:w-auto border border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white px-8 py-3 rounded-md shadow-md">
-            View Our Work
-          </button>
-        </a>
-      </div>
-    </section>
-
-
-   {/* Detailed service Offerings */}
-    <section className="py-16 px-4 w-full">
-      <h2
-        className="text-center text-3xl md:text-4xl font-bold mb-10 md:mb-12"
-        style={romanStyle}
-      >
-        Detailed Service Offerings
-      </h2>
-
-      <div className="relative group">
-        <Swiper
-          modules={[Autoplay, Navigation]}
-          spaceBetween={24}
-          slidesPerView={1}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 },
-          }}
-          autoplay={{ delay: 3500, disableOnInteraction: false }}
-          navigation={{
-            nextEl: ".service-button-next",
-            prevEl: ".service-button-prev",
-          }}
-          className="pb-12 flex! items-stretch!"
-        >
-          {servicesData.map((service, idx) => (
-            <SwiperSlide key={idx} className="h-auto! flex">
-              <ServiceCard {...service} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <div className="service-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-          <ChevronLeft className="w-5 h-5" />
-        </div>
-        <div className="service-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-          <ChevronRight className="w-5 h-5" />
-        </div>
-      </div>
-    </section>
-
-
-    <section className="py-6 border-t border-teal-200/50">
-
-      <h2
-        className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-16 text-gray-800"
-        style={romanStyle}
-      >
-        Our Simple 4-Step Process
-      </h2>
-
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 w-full px-4">
-        {processSteps.map((step, i) => (
-          <div key={i} className="text-center">
-
-            <div className="bg-white/70 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4 border border-teal-300 shadow-md">
-              {step.icon}
-            </div>
-
-            <h3 className="text-xl font-semibold text-teal-600 mb-2">
-              {step.title}
-            </h3>
-            <p className="text-gray-700">{step.desc}</p>
+export const ServicesSection: FC = () => {
+  return (
+    <div className="bg-gradient-to-b from-[#F0F7FF] via-[#FFFFFF] to-[#E8F4FD] text-slate-900 min-h-screen">
+      {/* Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-6 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>ENTERPRISE SOLUTIONS</span>
           </div>
-        ))}
-      </div>
-    </section>
 
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight font-display mb-6">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Engineering Services</span>
+          </h1>
 
-    <section className="py-16 md:py-20 text-center bg-teal-50/50">
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-medium">
+            Professional solutions that help your business thrive in the digital era. We build, scale, and secure your mission-critical digital assets.
+          </p>
 
-      <h2
-        className="text-3xl md:text-5xl font-bold mb-6 text-gray-900"
-        style={romanStyle}
-      >
-        Ready to build your future?
-      </h2>
-      <p className="text-base md:text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-        Let's transform your brilliant idea into an impactful, high-performing
-        digital product today.
-      </p>
+          {/* Quick Category Matrix */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {[
+              { title: "Web Development", desc: "Modern, responsive, and high-performing websites built using React, Next.js, and modern tailwind architectures." },
+              { title: "Mobile App Development", desc: "Cross-platform mobile apps for Android and iOS that provide seamless user experiences and 60fps performance." },
+              { title: "AI & Automation", desc: "Harness the power of Artificial Intelligence and automation to streamline business operations and make data-driven decisions." },
+              { title: "Cloud Solutions", desc: "Secure, scalable, and reliable cloud infrastructure setup and management using AWS, Azure, and Google Cloud." },
+              { title: "UI/UX Design", desc: "Intuitive, user-focused design systems that enhance usability and ensure your digital products stand out visually." },
+              { title: "Digital Marketing", desc: "Comprehensive technical SEO, branding, and conversion strategies to help your business reach the right audience." },
+            ].map((s, idx) => (
+              <Card3D key={idx} intensity={8} className="cloud-card p-6 border border-blue-100/90 rounded-3xl">
+                <h3 className="text-lg font-bold text-[#0066FF] mb-2 font-display">{s.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">{s.desc}</p>
+              </Card3D>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <a href="/contact">
-       
-        <button className="bg-teal-600 hover:bg-teal-700 px-10 py-4 rounded-lg font-semibold text-white flex items-center gap-2 mx-auto transition shadow-xl hover:shadow-2xl">
-          Get Free Consultation <ArrowRight className="h-5 w-5" />
-        </button>
-      </a>
-    </section>
-  </main>
-);
+      {/* Detailed Service Offerings & Pricing */}
+      <section className="py-24 bg-[#F8FAFC]/90 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display mb-4">
+              Detailed Service Offerings
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium">
+              Clear scope, transparent engagement models, and dedicated enterprise delivery guarantees.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {servicesData.map((service, idx) => (
+              <Card3D
+                key={idx}
+                intensity={12}
+                className="cloud-card p-8 flex flex-col justify-between border border-blue-100/90 hover:border-blue-300 rounded-3xl group relative"
+              >
+                {service.popular && (
+                  <div className="absolute -top-3 right-6">
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-gradient-to-r from-[#0066FF] to-[#00D2FF] text-white shadow-md">
+                      <Star className="w-3 h-3 fill-white" /> Popular Tier
+                    </span>
+                  </div>
+                )}
+
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] shadow-inner group-hover:scale-110 group-hover:bg-[#0066FF] group-hover:text-white transition-all">
+                      {service.icon}
+                    </div>
+                    <span className="text-[10px] font-mono font-bold text-[#0066FF] bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">{service.tag}</span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 font-display group-hover:text-[#0066FF] transition">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    {service.description}
+                  </p>
+
+                  <ul className="space-y-2.5 mb-8 pt-4 border-t border-blue-100">
+                    {service.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                        <CircleCheckBig className="w-4 h-4 text-[#0066FF] shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-6 border-t border-blue-100 flex items-center justify-between mt-auto">
+                  <div>
+                    <div className="text-[10px] font-mono uppercase text-slate-500 font-medium">Starting from</div>
+                    <div className="text-2xl font-black text-slate-900 font-display">${service.price}</div>
+                  </div>
+
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] transition shadow-md"
+                  >
+                    <span>Get Started</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </Card3D>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4-Step Process Section */}
+      <section className="py-24 bg-white/90 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display mb-4">
+              Our Simple 4-Step Process
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium">
+              A battle-tested engineering methodology that eliminates friction and guarantees consistent results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <Card3D key={i} intensity={8} className="cloud-card p-8 border border-blue-100/90 rounded-3xl text-center relative group">
+                  <div className="text-4xl font-black font-mono text-[#0066FF]/15 absolute top-4 right-6 group-hover:text-[#0066FF]/30 transition">
+                    {step.step}
+                  </div>
+
+                  <div className="w-14 h-14 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mx-auto mb-6 group-hover:scale-110 group-hover:bg-[#0066FF] group-hover:text-white transition shadow-inner">
+                    <Icon className="w-7 h-7 stroke-[2.2]" />
+                  </div>
+
+                  <h3 className="text-lg font-bold text-slate-900 mb-2.5 font-display">{step.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">{step.desc}</p>
+                </Card3D>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-[#F0F7FF] text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 font-display mb-4">
+            Ready to Build Your Future?
+          </h2>
+          <p className="text-base text-slate-600 mb-8 max-w-xl mx-auto font-medium">
+            Let's transform your brilliant idea into an impactful, high-performing digital product today.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition"
+          >
+            <span>Get Free Consultation</span>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 export default ServicesSection;

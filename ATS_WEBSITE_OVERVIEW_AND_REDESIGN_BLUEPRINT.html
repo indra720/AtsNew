@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATS GLOBAL TECH — Complete Project Overview, Content Blueprint & 3D Animated Redesign Specification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #0a0e17;
+      --bg-surface: #111827;
+      --bg-card: #162032;
+      --border-color: #24324d;
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --accent-cyan: #00f2fe;
+      --accent-blue: #3b82f6;
+      --accent-indigo: #6366f1;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #080c14;
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 60px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Header / Cover */
+    .doc-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 40px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(0, 242, 254, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      margin-bottom: 16px;
+    }
+
+    .badge-purple {
+      background: rgba(168, 85, 247, 0.12);
+      color: var(--accent-purple);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 2.75rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 30%, #00f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 850px;
+      line-height: 1.6;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .meta-bar strong {
+      color: #ffffff;
+    }
+
+    /* Table of Contents */
+    .toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 50px;
+    }
+
+    .toc-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+      color: var(--accent-cyan);
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px 24px;
+    }
+
+    .toc-link {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .toc-link:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Sections */
+    .section-block {
+      margin-bottom: 60px;
+      padding-top: 20px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .section-num {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #000;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      color: #ffffff;
+    }
+
+    /* Content Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+
+    .card-header h3 {
+      font-size: 1.35rem;
+      color: #ffffff;
+    }
+
+    .route-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    /* Comparison Grid */
+    .redesign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .col-box {
+      background: rgba(10, 14, 23, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .col-box-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .title-current {
+      color: var(--accent-amber);
+    }
+
+    .title-new {
+      color: var(--accent-cyan);
+    }
+
+    /* Lists */
+    ul.item-list {
+      list-style: none;
+    }
+
+    ul.item-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      font-size: 0.93rem;
+      color: #cbd5e1;
+    }
+
+    ul.item-list li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    /* Metrics Grid */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .metric-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+
+    .metric-lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Color Swatches */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .swatch-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .swatch-color {
+      height: 70px;
+      width: 100%;
+    }
+
+    .swatch-info {
+      padding: 12px;
+      font-size: 0.85rem;
+    }
+
+    .swatch-name {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .swatch-hex {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Action Banner */
+    .action-banner {
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(99, 102, 241, 0.2));
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .action-banner h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .action-banner p {
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .btn-print {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.35);
+    }
+
+    /* Print Styles for PDF Export */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        padding: 0 !important;
+      }
+
+      .container {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        background: #ffffff !important;
+      }
+
+      .btn-print, .action-banner {
+        display: none !important;
+      }
+
+      h1, h2, h3, h4 {
+        color: #0f172a !important;
+        -webkit-text-fill-color: initial !important;
+        background: none !important;
+      }
+
+      .card, .col-box, .toc-card, .meta-bar {
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        color: #1e293b !important;
+        page-break-inside: avoid;
+      }
+
+      .route-chip {
+        background: #e0e7ff !important;
+        color: #3730a3 !important;
+        border: 1px solid #c7d2fe !important;
+      }
+
+      .badge {
+        background: #e0f2fe !important;
+        color: #0369a1 !important;
+        border: 1px solid #bae6fd !important;
+      }
+
+      .metric-pill {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+
+      .metric-val {
+        color: #0284c7 !important;
+      }
+
+      .section-num {
+        background: #0284c7 !important;
+        color: #ffffff !important;
+      }
+
+      .section-block {
+        page-break-before: auto;
+      }
+
+      ul.item-list li {
+        color: #334155 !important;
+      }
+
+      ul.item-list li::before {
+        color: #0284c7 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header class="doc-header">
+      <div class="badge">Master Specification Document</div>
+      <div class="badge badge-purple">3D Animation & Framer Motion Blueprint</div>
+      <div class="badge badge-emerald">100% Content Preserved</div>
+      
+      <h1>ATS GLOBAL TECH — Complete Website Overview & 3D Redesign Master Blueprint</h1>
+      <p class="subtitle">
+        Comprehensive page-by-page content inventory, structural mapping, and futuristic 3D animated redesign plan. 
+        Prepared specifically to overhaul the entire UI/UX, typography, and color architecture while strictly preserving every headline, stat, testimonial, and business value proposition.
+      </p>
+
+      <div class="meta-bar">
+        <div><strong>Project:</strong> ATS Global Tech Website Overhaul</div>
+        <div><strong>Current Stack:</strong> React 19.2 · TypeScript 5.9 · Tailwind v4 · Vite 7.3</div>
+        <div><strong>Target Aesthetic:</strong> Cyber Modern 3D · Framer Motion · Glassmorphism</div>
+        <div><strong>Document Status:</strong> Ready for PDF Print & Execution</div>
+      </div>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc-card">
+      <h3>Document Navigation / Table of Contents</h3>
+      <div class="toc-grid">
+        <a href="#palette" class="toc-link">➔ 1. New 3D Color & Design System</a>
+        <a href="#homepage" class="toc-link">➔ 2. Home Page (All 10 Sections)</a>
+        <a href="#about" class="toc-link">➔ 3. About Us & Leadership Profile</a>
+        <a href="#services" class="toc-link">➔ 4. Services & 4-Step Process</a>
+        <a href="#mobile-solutions" class="toc-link">➔ 5. Mobile & Cloud Solutions</a>
+        <a href="#industries" class="toc-link">➔ 6. Industries Served (8 Verticals)</a>
+        <a href="#products" class="toc-link">➔ 7. Enterprise Products & SaaS Suites</a>
+        <a href="#portfolio-projects" class="toc-link">➔ 8. Projects & Portfolio Showcase</a>
+        <a href="#case-studies" class="toc-link">➔ 9. Transformative Case Studies</a>
+        <a href="#detail-pages" class="toc-link">➔ 10. 7 Dedicated Solution Deep-Dives</a>
+        <a href="#careers" class="toc-link">➔ 11. Careers & Culture Portal</a>
+        <a href="#ideabank" class="toc-link">➔ 12. Idea Bank / Let's Create Hub</a>
+        <a href="#blogs" class="toc-link">➔ 13. Blog & Thought Leadership</a>
+        <a href="#team-profiles" class="toc-link">➔ 14. Team Member Profiles</a>
+        <a href="#contact" class="toc-link">➔ 15. Contact & Social Hub</a>
+        <a href="#legal" class="toc-link">➔ 16. Privacy Policy & Terms of Service</a>
+      </div>
+    </div>
+
+    <!-- SECTION 1: NEW COLOR & DESIGN SYSTEM -->
+    <section id="palette" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">01</div>
+        <h2 class="section-title">New 3D Animated Color & Design System Architecture</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Why We Are Changing the Design & Palette</h3>
+          <span class="route-chip">Global System</span>
+        </div>
+        <p style="color: #cbd5e1; margin-bottom: 16px;">
+          The current website uses a mix of generic teal/cyan accents and an outdated serif font (<code>fontFamily: "Times New Roman, serif"</code>) across key sections. The UI lacks depth, modern motion hierarchy, and interactive 3D polish expected of an enterprise tech leader.
+        </p>
+
+        <div class="palette-grid">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #080C14;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Deep Space Obsidian</div>
+              <div class="swatch-hex">#080C14 (Background)</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #0F172A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Cyber Slate Surface</div>
+              <div class="swatch-hex">#0F172A (Cards & Modals)</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #00F2FE;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Electric Cyan 3D</div>
+              <div class="swatch-hex">#00F2FE (Primary Glow)</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #6366F1;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Neon Indigo</div>
+              <div class="swatch-hex">#6366F1 (Secondary Accent)</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #A855F7;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Holographic Violet</div>
+              <div class="swatch-hex">#A855F7 (Gradient Accent)</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background: #10B981;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Emerald Mint</div>
+              <div class="swatch-hex">#10B981 (Success & Metrics)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="redesign-grid" style="margin-top: 24px;">
+          <div class="col-box">
+            <div class="col-box-title title-current">Current Visual Issues</div>
+            <ul class="item-list">
+              <li>Inline Times New Roman font applied arbitrarily on modern tech components.</li>
+              <li>Flat cards with standard light gray borders and static CSS shadows.</li>
+              <li>Basic 2D Swiper carousels with default arrow styling.</li>
+              <li>Lack of micro-interactions and 3D depth on user cursor movements.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New 3D & Framer Motion Rules</div>
+            <ul class="item-list">
+              <li><strong>Typography:</strong> Plus Jakarta Sans (Clean UI Body) + Space Grotesk (Futuristic Display Headlines) + JetBrains Mono (Tech Specs).</li>
+              <li><strong>Interactive 3D Tilt:</strong> Cards respond to mouse position using <code>framer-motion</code> spring physics (<code>rotateX</code>, <code>rotateY</code>, <code>scale: 1.02</code>).</li>
+              <li><strong>Glassmorphism:</strong> Deep translucent background blur (<code>backdrop-blur-xl bg-slate-900/60 border border-slate-700/50</code>).</li>
+              <li><strong>Floating 3D Elements:</strong> Floating tech cubes, holographic glows, and animated gradient mesh canvases.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: HOMEPAGE -->
+    <section id="homepage" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">02</div>
+        <h2 class="section-title">Home Page — All 10 Sections Content & Redesign</h2>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="card">
+        <div class="card-header">
+          <h3>1. Hero Section</h3>
+          <span class="route-chip">Route: /</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Headlines & Taglines:</strong> Dynamic vertical sliding words: <em>"future"</em>, <em>"ideas"</em>, <em>"vision"</em>, <em>"growth"</em>.</li>
+              <li><strong>Main Heading:</strong> "Transforming Your Ideas Into Digital Reality".</li>
+              <li><strong>Subtext:</strong> "Empowering enterprises and startups with cutting-edge software, cloud infrastructure, AI automation, and bespoke engineering solutions."</li>
+              <li><strong>Primary Action:</strong> "Let's Create Together" (navigates to <code>/lets-create</code>).</li>
+              <li><strong>Slideshow Images:</strong> 6 curated enterprise tech, coding, and team collaboration images.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>3D Mesh Sphere:</strong> Interactive 3D particle canvas or interactive globe on the right side rotating on mouse drag.</li>
+              <li><strong>Kinetic Typography:</strong> Framer Motion <code>AnimatePresence</code> with smooth 3D flip effect on sliding words ("future", "ideas", "vision", "growth") with gradient glow.</li>
+              <li><strong>Floating Glass Badges:</strong> Floating telemetry chips showing "99.9% Uptime", "AI-Powered", "Enterprise Ready" hovering with floating Y-axis loops.</li>
+              <li><strong>Magnetic CTA Button:</strong> Neon cyan glowing button with magnetic pull towards cursor and ripple wave on hover.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proven Track Record -->
+      <div class="card">
+        <div class="card-header">
+          <h3>2. Why Clients Love Working With Us (Proven Track Record)</h3>
+          <span class="route-chip">Component: ProvenTrackRecord.tsx</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Section Title:</strong> "Why Clients Love Working With Us"</li>
+              <li><strong>Subtext:</strong> "We deliver powerful digital solutions designed to accelerate growth, enhance performance, and help businesses stay ahead in a fast-changing world."</li>
+              <li><strong>Pillar 1 — Fast Delivery:</strong> "We ensure rapid project turnaround without compromising quality."</li>
+              <li><strong>Pillar 2 — Creative Ideas:</strong> "Innovation-driven solutions tailored uniquely for each client."</li>
+              <li><strong>Pillar 3 — Global Presence:</strong> "We work with clients across the world to deliver impactful results."</li>
+              <li><strong>Pillar 4 — Top Security:</strong> "Your projects and data stay protected with enterprise-grade security."</li>
+              <li><strong>Pillar 5 — Client First:</strong> "We prioritize your satisfaction above everything else."</li>
+              <li><strong>Pillar 6 — High Performance:</strong> "Powerful, optimized, and scalable solutions every single time."</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Hexagonal 3D Cards:</strong> Staggered entrance animation with 3D perspective depth (<code>perspective: 1000px</code>).</li>
+              <li><strong>Dynamic Icon Rings:</strong> Glowing animated SVG rings around the Rocket, Lightbulb, Globe, and Shield icons that spin on hover.</li>
+              <li><strong>Interactive Tilt:</strong> Mouse tracking card tilt using <code>framer-motion</code> transforms for a true tactile feel.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technology Services -->
+      <div class="card">
+        <div class="card-header">
+          <h3>3. Core Technology Services</h3>
+          <span class="route-chip">Component: TechnologyServices.tsx</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Custom Software Development:</strong> Full-stack development, API integration, Database design.</li>
+              <li><strong>Cloud Solutions & DevOps:</strong> Cloud migration, CI/CD pipelines, Infrastructure as Code, Monitoring & logging.</li>
+              <li><strong>Mobile App Development:</strong> iOS & Android native, Cross-platform, App Store optimization, Push notifications.</li>
+              <li><strong>Cybersecurity Solutions:</strong> Security audits, Penetration testing, Compliance (SOC2, HIPAA).</li>
+              <li><strong>AI & Machine Learning:</strong> Custom AI models, Natural language processing, Computer vision.</li>
+              <li><strong>Data Engineering:</strong> Big data solutions, Data warehousing, ETL pipelines, BI dashboards.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>3D Holographic Tabs / Slider:</strong> Sleek futuristic carousel with glassmorphic cards, neon edge lighting, and depth-of-field blur on inactive slides.</li>
+              <li><strong>Animated Feature Chips:</strong> Checkpoint badges pulse with soft cyan light on hover.</li>
+              <li><strong>Smooth Navigation:</strong> Floating glass navigation buttons with soundless magnetic physics.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technology Stack -->
+      <div class="card">
+        <div class="card-header">
+          <h3>4. Technology Stack Matrix</h3>
+          <span class="route-chip">Component: TechnologyStack.tsx</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Languages:</strong> JavaScript, TypeScript, Python, Java, PHP, C++, Kotlin, Swift.</li>
+              <li><strong>Cloud & DevOps:</strong> Azure, Google Cloud, Docker, Kubernetes, GitHub, Jenkins, AWS, Terraform.</li>
+              <li><strong>Databases:</strong> MongoDB, MySQL, PostgreSQL, Firebase, SQLite, Redis.</li>
+              <li><strong>Frameworks:</strong> React, Node.js, Next.js, Express, Angular, Vue, Flutter, Django, Spring Boot.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>3D Interactive Orbit / Marquee:</strong> Infinite smooth floating ribbons with 3D tech icons that pause on hover.</li>
+              <li><strong>Category Filter Tabs:</strong> Tab switcher with animated sliding background pill using Framer Motion <code>layoutId="activeTab"</code>.</li>
+              <li><strong>Hover Tooltips:</strong> Floating 3D tooltip displaying tech level and use cases.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Success Stories & Why Choose Us -->
+      <div class="card">
+        <div class="card-header">
+          <h3>5. Featured Success Stories & Why Choose Us</h3>
+          <span class="route-chip">Components: FeaturedSuccessStories.tsx & WhyChooseUs.tsx</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>RetailMax Inc. (AI E-Commerce):</strong> AI recommendation engine, 60% faster page load, Automated inventory tracking.</li>
+              <li><strong>Community Bank (Secure Mobile App):</strong> Biometric login, 256-bit encryption, Fraud detection alerts.</li>
+              <li><strong>GlobalTech Corp (Cloud Migration):</strong> Zero-downtime migration, 45% cost reduction, High availability setup.</li>
+              <li><strong>MedCare Solutions (Healthcare Analytics):</strong> HIPAA-compliant, Predictive analytics, Real-time dashboards.</li>
+              <li><strong>8 Why Choose Us Points:</strong> 24/7 Support, Agile methodology, Quality assurance, Scalable architecture, Modern tech stack, Cost-effective, Progress updates, Post-launch support.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Glassmorphic Project Showcases:</strong> High-depth cards with dark glass overlays, neon status indicators, and expanding detail panels.</li>
+              <li><strong>Interactive Metrics Counter:</strong> Numbers count up smoothly from 0 to 60%, 45%, etc. using Framer Motion <code>useInView</code> and <code>animate()</code>.</li>
+              <li><strong>Split Screen 3D Showcase:</strong> Floating product mockups that tilt subtly when scrolling past.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Innovation Journey, CallToAction & Contact Section -->
+      <div class="card">
+        <div class="card-header">
+          <h3>6. Innovation Journey, CTA & Contact Section</h3>
+          <span class="route-chip">Components: InnovationJourney.tsx, CallToAction.tsx, ContactSection.tsx</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Office HQ:</strong> ATS building, 4/98, Ajmer Rd, Purani Chungi, Vidhyut Nagar, Jaipur, Rajasthan 302021.</li>
+              <li><strong>Phone Contacts:</strong> +91 9929825003 / +91 820 917 5003</li>
+              <li><strong>Email:</strong> info@atsglobaltech.in</li>
+              <li><strong>Social Media Links:</strong> Facebook, Instagram, LinkedIn, YouTube.</li>
+              <li><strong>CTA Guarantees:</strong> Free Consultation, Quick Response (&lt;24 hours), Customized Solutions.</li>
+              <li><strong>Lead Form Fields:</strong> First Name, Last Name, Email, Phone, Company, Project Details.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Dark Cyber Map UI:</strong> Styled Google Maps container with dark mode filter and animated radar pulse beacon on the office coordinates.</li>
+              <li><strong>Cyber Glow Lead Form:</strong> Inputs with floating labels, glowing neon cyan focus rings, and animated submit button with spinner.</li>
+              <li><strong>Social Cubes:</strong> 3D rotating social badges that spin 360 degrees on cursor hover.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ABOUT US & LEADERSHIP -->
+    <section id="about" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">03</div>
+        <h2 class="section-title">About Us & Executive Leadership</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>About ATS GLOBAL TECH & Leadership Story</h3>
+          <span class="route-chip">Route: /about</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Mission:</strong> Deliver scalable, secure & innovative tech solutions that accelerate global business growth.</li>
+              <li><strong>Vision:</strong> To lead the future of digital transformation with intelligence and innovation.</li>
+              <li><strong>Core Values:</strong> Integrate, Excellence, Innovation, Customer First & Collaboration.</li>
+              <li><strong>Leadership Spotlight:</strong> Ajeet Singh — CEO & Founder.</li>
+              <li><strong>Executive Quotes:</strong> 
+                <br><em>“We don’t just create technology — we create growth, opportunity, and success.”</em>
+                <br><em>“Leadership is not a position — it's an influence that creates change.”</em>
+              </li>
+              <li><strong>Bio:</strong> 15+ years of global tech experience with startups, mid-scale companies, and global enterprises adopting Cloud, AI Automation, Full-Stack Engineering, and Scalable Digital Platforms.</li>
+            </ul>
+            <div class="metrics-row">
+              <div class="metric-pill">
+                <div class="metric-val">15+</div>
+                <div class="metric-lbl">Years Leading</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-val">500+</div>
+                <div class="metric-lbl">Projects Done</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-val">60+</div>
+                <div class="metric-lbl">Enterprise Clients</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Hero Parallax Depth:</strong> Parallax header with layered geometric grid lines and glowing particle background.</li>
+              <li><strong>3D Hologram Mission/Vision Cards:</strong> Elevated frosted glass cards with reflective gradient edges that shift angle with mouse motion.</li>
+              <li><strong>Executive Holographic Badge:</strong> CEO photo framed in a sleek 3D hexagonal/squircle border with rotating neon accent beam and interactive quote reveal.</li>
+              <li><strong>Re-integrated Team Grid:</strong> Bring the commented-out engineering team (Pramod, Aakash, Rahul, Kamlesh) into an ultra-modern 3D team showcase cards with direct portfolio links!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SERVICES & 4-STEP PROCESS -->
+    <section id="services" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">04</div>
+        <h2 class="section-title">Services & Simple 4-Step Engineering Process</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Full Services Catalog & Delivery Process</h3>
+          <span class="route-chip">Route: /services</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>1. Custom Software Development:</strong> $25,000+ · Full-stack development, API integration, Testing & deployment, Maintenance. (Popular)</li>
+              <li><strong>2. Mobile App Development:</strong> $18,000+ · Cross-platform options, User-friendly design, Push notifications, App publishing.</li>
+              <li><strong>3. Web Development:</strong> $13,000+ · Responsive design, SEO Optimization, High performance, Secure hosting.</li>
+              <li><strong>4. Database Solutions:</strong> $12,000+ · Performance tuning, Backup strategies, Data migration, Admin dashboards.</li>
+              <li><strong>5. Cloud Architecture:</strong> $24,000+ · Cloud migration, CI/CD automation, Monitoring & alerts, Serverless deployment. (Popular)</li>
+              <li><strong>6. Cybersecurity:</strong> $23,000+ · Security audits, Risk assessments, Implementation, Compliance.</li>
+              <li><strong>4-Step Process:</strong>
+                <br>• <strong>Step 1 Discovery:</strong> We deeply understand your goals, unique needs, and technical challenges.
+                <br>• <strong>Step 2 Planning:</strong> We design a comprehensive, smart strategy and blueprint tailored to your business vision.
+                <br>• <strong>Step 3 Development:</strong> We meticulously build high-quality, scalable solutions using agile methodologies.
+                <br>• <strong>Step 4 Launch & Support:</strong> We seamlessly deploy and provide dedicated long-term support and maintenance.
+              </li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Interactive Pricing Cards:</strong> 3D elevated cards with neon badge tags, animated tier checkmarks, and hover-triggered glass specular reflection.</li>
+              <li><strong>Connected Process Timeline:</strong> An animated glowing neon path connects Step 1 to Step 4 that draws itself as the user scrolls down the page.</li>
+              <li><strong>Hover Micro-Interactions:</strong> Feature checkmarks morph and pulse when the card is hovered.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PRODUCTS SUITE -->
+    <section id="products" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">05</div>
+        <h2 class="section-title">Enterprise Products & SaaS Suites</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Turnkey Products & Enterprise Solutions</h3>
+          <span class="route-chip">Route: /products</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>6 Core Enterprise Platforms:</strong>
+                <br>• <strong>ATS ERP Suite:</strong> Integrated Finance & Accounting, Supply Chain Management (SCM), Manufacturing & Production Planning.
+                <br>• <strong>CRM Pro+:</strong> Lead & Opportunity Tracking, Sales Automation & Forecasting, Customer Service & Ticketing.
+                <br>• <strong>HRMS Cloud:</strong> Cloud-Based Payroll & Tax Filing, Employee Attendance & Leave Management, Performance Review Tracking.
+                <br>• <strong>ATS POS System:</strong> Inventory & Stock Control, Multi-Store Synchronization, Mobile & Contactless Payment Support.
+                <br>• <strong>ProjectFlow:</strong> Agile & Scrum Project Boards, Real-time Team Collaboration, AI-driven Resource Allocation.
+                <br>• <strong>DataVision Analytics:</strong> Customizable Business Dashboards, Predictive Modeling & Reporting, Data Governance & Security.
+              </li>
+              <li><strong>6 Featured Turnkey Systems:</strong>
+                <br>• Hospital Management System (10K+ Users, Rating 4.8, Free tier)
+                <br>• Hotel & Restaurant Management System (5K+ Users, $49/mo, Rating 4.9)
+                <br>• Learning Management System (15K+ Users, Free tier, Rating 4.7)
+                <br>• POS Billing Management System (8K+ Users, $59/mo, Rating 4.6)
+                <br>• Real Estate Management System (3K+ Users, $79/mo, Rating 4.8)
+                <br>• E-Commerce Multi-Vendor Platform (25K+ Users, Free tier, Rating 4.5)
+              </li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>SaaS Product 3D Viewport:</strong> Product cards designed like futuristic software interface monitors with glowing edge borders and real-time interactive previews.</li>
+              <li><strong>Live Filter Switcher:</strong> Instant filtering between "Enterprise Suite" and "Turnkey Systems" with smooth layout animations.</li>
+              <li><strong>Animated Rating Stars:</strong> Glowing golden stars with animated counter badges for user count and reviews.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INDUSTRIES SERVED -->
+    <section id="industries" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">06</div>
+        <h2 class="section-title">Industries Served (8 Dedicated Verticals)</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Domain Expertise & Global Reach</h3>
+          <span class="route-chip">Route: /services/industries</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>1. Healthcare & Life Sciences:</strong> Telemedicine Platforms, AI Diagnostics & Analysis, HIPAA Compliant Data Management.</li>
+              <li><strong>2. Financial Services:</strong> Secure Mobile Banking Apps, Real-Time Fraud Detection (AI/ML), Regulatory Compliance (PCI DSS).</li>
+              <li><strong>3. Retail & E-commerce:</strong> Omni-Channel Store Integration, AI-Powered Product Recommendations, Inventory & Supply Chain Optimization.</li>
+              <li><strong>4. Education & EdTech:</strong> Virtual Classroom Solutions, Adaptive Learning Platforms, Student Performance Analytics.</li>
+              <li><strong>5. Manufacturing & Industrial:</strong> IoT Integration & Monitoring, Predictive Maintenance Systems, Robotic Process Automation (RPA).</li>
+              <li><strong>6. Logistics & Supply Chain:</strong> Real-Time Fleet Tracking, Route Optimization Algorithms, Warehouse Management Automation.</li>
+              <li><strong>7. Real Estate & PropTech:</strong> Virtual Property Tours (3D), Automated Lease Management, Real Estate Marketplace Platforms.</li>
+              <li><strong>8. Gaming & Entertainment:</strong> Multiplayer Game Backend, Streaming & Content Delivery (CDN), Interactive Web3/NFT Solutions.</li>
+            </ul>
+            <div class="metrics-row">
+              <div class="metric-pill">
+                <div class="metric-val">25+</div>
+                <div class="metric-lbl">Industries Served</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-val">200+</div>
+                <div class="metric-lbl">Enterprise Clients</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-val">5+</div>
+                <div class="metric-lbl">Countries</div>
+              </div>
+              <div class="metric-pill">
+                <div class="metric-val">15+</div>
+                <div class="metric-lbl">Industry Awards</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>3D Industry Bento Grid:</strong> A high-tech Bento-style layout where each industry tile features an interactive depth parallax effect on scroll.</li>
+              <li><strong>Icon Glow Animations:</strong> Icons (Heart, Banknote, ShoppingCart, GraduationCap, Building, Truck, House, Gamepad) light up with vertical laser accents.</li>
+              <li><strong>Live Stat Counters:</strong> 25+, 200+, 5+, 15+ dynamically count up with spring dampening on scroll.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: PROJECTS & PORTFOLIO -->
+    <section id="portfolio-projects" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">07</div>
+        <h2 class="section-title">Projects & Portfolio Showcase</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Filterable Enterprise Portfolio</h3>
+          <span class="route-chip">Routes: /work/projects & /work/portfolio</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>E-Commerce Platform:</strong> React, Node.js, MongoDB, TensorFlow · Rating 4.8 · 20K+ Users · 9 Months · Retail & Ecom.</li>
+              <li><strong>FinTech Mobile App:</strong> React Native, Node.js, PostgreSQL, AWS · Rating 4.9 · 1M+ Users · 6 Months · FinTech.</li>
+              <li><strong>Healthcare Management Portal:</strong> React, Python, Django, AWS · Rating 4.9 · 5K+ Users · 12 Months · Healthcare.</li>
+              <li><strong>Enterprise Cloud Migration:</strong> AWS, Kubernetes, Terraform, Docker · Rating 4.9 · 50K+ Users · 8 Months · Cloud Solutions.</li>
+              <li><strong>AI Customer Support Bot:</strong> Python, Rasa, FastAPI, React · Rating 4.7 · 89+ Languages · 4 Months · AI & Automation.</li>
+              <li><strong>SaaS Analytics Dashboard:</strong> Next.js, ClickHouse, Go, Tailwind · Rating 4.8 · 15K+ Users · 7 Months · Business Intelligence.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Framer Motion Filter Transition:</strong> Category switching ("All", "Web", "Mobile", "Cloud", "AI") with smooth fluid repositioning via <code>layout</code> prop.</li>
+              <li><strong>Interactive 3D Card Hover:</strong> Cards tilt in 3D perspective toward the user's cursor with specular holographic highlight overlay.</li>
+              <li><strong>Tech Badge Chips:</strong> High-contrast tech badges with subtle glass borders and tooltips.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: CASE STUDIES & 7 DETAIL PAGES -->
+    <section id="case-studies" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">08</div>
+        <h2 class="section-title">Transformative Case Studies & 7 Dedicated Pages</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Full Case Studies & Specialized Deep-Dives</h3>
+          <span class="route-chip">Routes: /work/case-studies + 7 Dedicated Landing Pages</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>1. AI-Powered E-Commerce Revolution (/ai-page):</strong>
+                <br>• Challenge: Low conversion rates, cart abandonment, inventory loss.
+                <br>• Metrics: +300% Revenue, +85% Conversion Rate, -60% Cart Abandonment, 96% Satisfaction.
+              </li>
+              <li><strong>2. Secure Banking Transformation (/secure-page & /fintech-page):</strong>
+                <br>• Challenge: Legacy banking systems hindered digital security & adoption.
+                <br>• Metrics: 90% Mobile Adoption, 99.9% Fraud Prevention, 10x Processing Speed, 45% Cost Reduction.
+              </li>
+              <li><strong>3. Healthcare Analytics Revolution (/health-page):</strong>
+                <br>• Challenge: Hospitals struggled with fragmented patient records & delayed diagnoses.
+                <br>• Metrics: +40% Diagnosis Speed, +35% Patient Outcomes, $5M Annual Savings, 99.8% Data Accuracy.
+              </li>
+              <li><strong>4. Enterprise Cloud Migration (/cloud-page):</strong>
+                <br>• Challenge: High on-prem maintenance costs and rigid deployment bottlenecks.
+                <br>• Metrics: 60% Cost Reduction, 99.99% Uptime, 90% Faster Deployment, 15 Countries.
+              </li>
+              <li><strong>5. SaaS Analytics Dashboard (/saas-page):</strong>
+                <br>• Challenge: Multi-tenant data ingestion bottlenecks and sluggish dashboard reporting.
+                <br>• Metrics: Sub-second queries, 15K+ concurrent tenants, 99.9% real-time pipeline reliability.
+              </li>
+              <li><strong>6. AI-Powered Chat Assistant (/aichat-page):</strong>
+                <br>• Challenge: Support ticket backlogs and repetitive queries driving high operational overhead.
+                <br>• Metrics: -62% Resolution Time, 45% Ticket Deflection, 89+ Languages, 4.7/5 Satisfaction.
+              </li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Dedicated 3D Hero Banners:</strong> Each case study page receives a customized 3D vector illustration/graphic representing its domain (Cloud cubes, AI neural web, Banking shield, Healthcare ECG).</li>
+              <li><strong>Before/After Interactive Slider:</strong> Visual comparison showing legacy architecture vs modernized microservices architecture.</li>
+              <li><strong>Animated KPI Badges:</strong> Massive glowing stats (+300%, 99.9%, $5M) with dynamic progress bars and neon accents.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: CAREERS & CULTURE -->
+    <section id="careers" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">09</div>
+        <h2 class="section-title">Careers, Culture & Job Openings</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Talent Acquisition & Open Positions</h3>
+          <span class="route-chip">Route: /careers</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>1. Senior Full Stack Developer (Jaipur):</strong> React, Node.js, TypeScript, AWS. Scale web apps & mentor developers.</li>
+              <li><strong>2. UI/UX Designer (Jaipur):</strong> Figma, Prototyping, User Research. Craft elegant design systems and user journeys.</li>
+              <li><strong>3. Cloud DevOps Engineer (Jaipur):</strong> AWS, Docker, Kubernetes, CI/CD. Automate infrastructure and CI/CD pipelines.</li>
+              <li><strong>4. Data Scientist (Jaipur):</strong> Python, Machine Learning, SQL, TensorFlow. Analyze complex datasets and build predictive ML models.</li>
+              <li><strong>5. Product Manager (Jaipur):</strong> Agile, Leadership, Analytics, Strategy. Drive product roadmap and engineering alignment.</li>
+              <li><strong>6. Cybersecurity Specialist (Jaipur):</strong> Penetration Testing, CISSP, Network Security. Vulnerability assessments & compliance.</li>
+              <li><strong>4 Core Culture Perks:</strong> Work-Life Balance (Hybrid/Flexible), Continuous Learning (Certifications & courses), Health & Wellness (Comprehensive coverage), Growth & Equity (Clear promotions).</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Interactive Job Accordion / Modal:</strong> Expandable 3D glass cards with smooth Framer Motion spring expansion.</li>
+              <li><strong>Integrated Job Details:</strong> Connect the previously orphaned <code>JobDetails.tsx</code> component directly into this flow so applicants can review comprehensive responsibilities!</li>
+              <li><strong>Multi-Step Animated Application Flow:</strong> Interactive upload zone for resumes with drag-and-drop animated dropzone.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: IDEA BANK ("LET'S CREATE") -->
+    <section id="ideabank" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">10</div>
+        <h2 class="section-title">Idea Bank ("Let's Create Your Vision")</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Interactive Innovation & Project Incubator Form</h3>
+          <span class="route-chip">Route: /lets-create</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Header:</strong> "IDEABANK — Let's Create Your Vision & More".</li>
+              <li><strong>Subtext:</strong> "Have a concept or enterprise challenge? Submit your idea and collaborate with ATS engineers to architect a high-growth digital product."</li>
+              <li><strong>Form Inputs:</strong>
+                <br>• Full Name & Organization
+                <br>• Email & Contact Phone
+                <br>• Project Category (Web, Mobile App, AI/ML, Cloud Infrastructure, Custom ERP, Cybersecurity)
+                <br>• Expected Timeline & Budget Tier
+                <br>• Detailed Vision / Problem Description
+              </li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Gamified Multi-Step Wizard:</strong> Step 1 (Concept) ➔ Step 2 (Category & Scope) ➔ Step 3 (Contact & Submission) with smooth horizontal slide transitions.</li>
+              <li><strong>Visual Category Selector Cards:</strong> 3D glowing selectable chips with active state neon outlines instead of boring dropdowns.</li>
+              <li><strong>Success Celebration:</strong> High-impact celebratory particle burst upon form submission confirmation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: BLOG & THOUGHT LEADERSHIP -->
+    <section id="blogs" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">11</div>
+        <h2 class="section-title">Blog & Technology Insights</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Engineering Articles & Best Practices</h3>
+          <span class="route-chip">Route: /blogs</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>1. Building Scalable Cloud Architecture:</strong> Best practices guide by Michael Rodriguez (6 min read · 1.8K views).</li>
+              <li><strong>2. Cybersecurity in the Age of Remote Work:</strong> Adapting endpoint and zero-trust strategies by Emily Davis (7 min read · 2.1K views).</li>
+              <li><strong>3. Mobile-First Development: Why It Matters:</strong> Mobile traffic patterns and cross-platform speed by Alex Johnson (5 min read · 1.6K views).</li>
+              <li><strong>4. Data Analytics: Turning Information into Intelligence:</strong> BI dashboards and predictive modeling by David Kim (9 min read · 1.9K views).</li>
+              <li><strong>5. The Rise of Low-Code Development Platforms:</strong> Opportunities, trade-offs, and enterprise fit by Lisa Wang (6 min read · 1.4K views).</li>
+              <li><strong>6. DevOps Best Practices for Faster Delivery:</strong> CI/CD automation and test pipelines by James Mitchell (8 min read · 2.3K views).</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Magazine Bento Layout:</strong> Featured article in an oversized hero card with glowing glass badge; remaining 5 articles in a sleek 3D masonry grid.</li>
+              <li><strong>Reading Progress Indicator:</strong> Subtle neon cyan progress bar running at the top of the browser viewport during reading.</li>
+              <li><strong>Hover Image Zoom & Tilt:</strong> Smooth 3D image scale and parallax lens flare on hover.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 12: TEAM PROFILES -->
+    <section id="team-profiles" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">12</div>
+        <h2 class="section-title">Individual Team Engineering Portfolios</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Full Developer Profiles & Skill Matrices</h3>
+          <span class="route-chip">Routes: /team-members, /team-members2, /team-members3, /team-members4</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Pramod Saini (/team-members):</strong> Senior Frontend Developer · Expertise in React, Tailwind, JavaScript, UI/UX architecture, responsive design, state management.</li>
+              <li><strong>Rahul Kumawat (/team-members2):</strong> MERN Stack Developer · Expertise in React, Node.js, Express.js, MongoDB, RESTful APIs, JWT authentication.</li>
+              <li><strong>Aakash Kumawat (/team-members3):</strong> Senior Backend Developer · Enterprise backend engineer with expertise in Python, Django, MySQL, distributed systems, system design.</li>
+              <li><strong>Kamlesh Kumar Sharma (/team-members4):</strong> Full Stack Developer · Expertise in JavaScript, React, C#, .NET Core, MySQL, enterprise software solutions.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Unified Dynamic Route:</strong> Convert separate disjointed URLs (<code>/team-members2</code>, etc.) into clean modern route <code>/team/:id</code> with seamless routing transitions.</li>
+              <li><strong>Interactive 3D Skill Bars:</strong> Visual glowing skill percentage meters that animate into view with spring physics.</li>
+              <li><strong>Developer GitHub/Project Showcase:</strong> Cards showing verified projects with live links, tags, and animated expand modals.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 13: LEGAL & COMPLIANCE -->
+    <section id="legal" class="section-block">
+      <div class="section-title-wrap">
+        <div class="section-num">13</div>
+        <h2 class="section-title">Legal & Compliance Documentation</h2>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Privacy Policy & Terms of Service</h3>
+          <span class="route-chip">Routes: /privacy-policy & /terms-of-service</span>
+        </div>
+        <div class="redesign-grid">
+          <div class="col-box">
+            <div class="col-box-title title-current">Exact Current Content Preserved</div>
+            <ul class="item-list">
+              <li><strong>Privacy Policy Content:</strong> Data collection principles, client confidentiality, cookie usage, third-party disclosure safeguards, GDPR/data protection compliance.</li>
+              <li><strong>Terms of Service Content:</strong> Usage agreement, intellectual property ownership, service availability SLA, limitation of liability, user account responsibility.</li>
+              <li><strong>Fix Included:</strong> Remove broken empty-key Imagen AI API calls currently slowing down PrivacyPolicy rendering and replace with high-res SVG security shields.</li>
+            </ul>
+          </div>
+          <div class="col-box">
+            <div class="col-box-title title-new">New Modern 3D & Framer Motion Design</div>
+            <ul class="item-list">
+              <li><strong>Clean Sticky Anchor Sidebar:</strong> A persistent left navigation sidebar allowing users to jump directly between legal clauses with active scroll spy highlight.</li>
+              <li><strong>Ultra-Readable Dark Typography:</strong> High-contrast typography with gentle line spacing, code blocks for policy versions, and printable summary export.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION / EXPORT BANNER -->
+    <div class="action-banner">
+      <h3>Ready to Save as PDF?</h3>
+      <p>
+        Press the button below or use <strong>Ctrl + P</strong> (Windows) to instantly save this complete overview and blueprint as a formatted PDF document.
+      </p>
+      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+  </div>
+</body>
+</html>

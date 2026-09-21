@@ -1,221 +1,155 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Code,
   Cloud,
   Smartphone,
   Shield,
   Bot,
   Database,
-  CircleCheckBig,
-  ChevronLeft,
-  ChevronRight,
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+  Palette,
 } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import Card3D from "./ui/Card3D";
 
-const AOS = {
-  init: (config: any) => console.log("AOS initialized with config:", config),
-};
-
-interface Service {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  image: string;
-  features: string[];
-}
-
-const services: Service[] = [
+const services = [
   {
+    icon: Palette,
+    title: "UI/UX & Product Design",
+    desc: "Human-centered design systems, clickable wireframes, interactive 3D prototypes, and ergonomic interfaces crafted for ultra-high conversion.",
+    features: ["Figma Design Systems & Tokens", "Interactive 3D Motion Prototyping", "UX Usability Audits & User Research"],
+    gradient: "from-pink-500/20 via-rose-500/10 to-transparent",
+    borderGlow: "rgba(244, 63, 94, 0.3)",
+    tag: "STUDIO GRADE",
+    link: "/services",
+  },
+  {
+    icon: Code,
     title: "Custom Software Development",
-    description:
-      "We build bespoke software solutions tailored to your business needs using modern technologies like React, Node.js, Python, and cloud-native architectures.",
-    icon: <Code className="h-8 w-8 text-white" />,
-    image:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop",
-    features: ["Full-stack development", "API integration", "Database design"],
+    desc: "We build bespoke software architectures tailored to your business operations using React, Node.js, Python, and cloud-native frameworks.",
+    features: ["Full-stack architecture", "Scalable REST & GraphQL APIs", "Microservices database design"],
+    gradient: "from-cyan-500/20 via-blue-500/10 to-transparent",
+    borderGlow: "rgba(0, 242, 254, 0.3)",
+    tag: "CORE EXPERTISE",
+    link: "/services",
   },
   {
+    icon: Cloud,
     title: "Cloud Solutions & DevOps",
-    description:
-      "Comprehensive cloud migration, infrastructure setup, and DevOps implementation with AWS, Azure, and GCP platforms.",
-    icon: <Cloud className="h-8 w-8 text-white" />,
-    image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=250&fit=crop",
-    features: [
-      "Cloud migration",
-      "CI/CD pipelines",
-      "Infrastructure as Code",
-      "Monitoring & logging",
-    ],
+    desc: "Seamless enterprise cloud migration, resilient multi-region infrastructure, and automated zero-downtime CI/CD deployment pipelines on AWS, Azure, & GCP.",
+    features: ["Zero-downtime cloud migration", "Automated CI/CD workflows", "Kubernetes & Terraform IaC"],
+    gradient: "from-blue-500/20 via-indigo-500/10 to-transparent",
+    borderGlow: "rgba(59, 130, 246, 0.3)",
+    tag: "CLOUD SCALE",
+    link: "/cloud-page",
   },
   {
+    icon: Smartphone,
     title: "Mobile App Development",
-    description:
-      "Native iOS and Android apps, plus cross-platform solutions using React Native and Flutter for maximum reach.",
-    icon: <Smartphone className="h-8 w-8 text-white" />,
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=250&fit=crop",
-    features: [
-      "iOS & Android native",
-      "Cross-platform",
-      "App Store optimization",
-      "Push notifications",
-    ],
+    desc: "Native iOS & Android apps plus high-performance cross-platform solutions using Flutter and React Native delivering fluid 120fps mobile experiences.",
+    features: ["iOS & Android native apps", "Cross-platform mobile apps", "App Store optimization & push alerts"],
+    gradient: "from-indigo-500/20 via-purple-500/10 to-transparent",
+    borderGlow: "rgba(99, 102, 241, 0.3)",
+    tag: "CROSS-PLATFORM",
+    link: "/services/mobile",
   },
   {
-    title: "Cybersecurity Solutions",
-    description:
-      "Advanced security implementations including penetration testing, security audits, and compliance management.",
-    icon: <Shield className="h-8 w-8 text-white" />,
-    image:
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&h=250&fit=crop",
-    features: [
-      "Security audits",
-      "Penetration testing",
-      "Compliance (SOC2, HIPAA)",
-    ],
-  },
-  {
+    icon: Bot,
     title: "AI & Machine Learning",
-    description:
-      "Cutting-edge AI solutions including chatbots, predictive analytics, and machine learning model development.",
-    icon: <Bot className="h-8 w-8 text-white" />,
-    image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=250&fit=crop",
-    features: [
-      "Custom AI models",
-      "Natural language processing",
-      "Computer vision",
-    ],
+    desc: "Cutting-edge artificial intelligence, custom large language models, smart automation bots, computer vision, and predictive machine learning models.",
+    features: ["Custom AI & ML algorithms", "Natural Language Processing (NLP)", "Predictive intelligence & analytics"],
+    gradient: "from-purple-500/20 via-pink-500/10 to-transparent",
+    borderGlow: "rgba(168, 85, 247, 0.3)",
+    tag: "GEN-AI NATIVE",
+    link: "/ai-page",
   },
   {
-    title: "Data Engineering",
-    description:
-      "Big data solutions, data warehousing, ETL pipelines, and business intelligence dashboards.",
-    icon: <Database className="h-8 w-8 text-white" />,
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop",
-    features: [
-      "Data pipelines",
-      "Real-time analytics",
-      "Data warehousing",
-      "Business intelligence",
-    ],
+    icon: Shield,
+    title: "Cybersecurity Solutions",
+    desc: "Proactive enterprise security auditing, ethical penetration testing, automated threat detection, and stringent SOC2/HIPAA compliance management.",
+    features: ["Vulnerability & penetration tests", "Zero-trust network architecture", "SOC2, HIPAA & PCI DSS compliance"],
+    gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
+    borderGlow: "rgba(168, 85, 247, 0.3)",
+    tag: "ENTERPRISE SHIELD",
+    link: "/secure-page",
   },
 ];
 
-const TechnologyServices: React.FC = () => {
-  useEffect(() => {
-    AOS.init({ duration: 900, once: true, easing: "ease-out-cubic" });
-  }, []);
-  const handleImageError = (
-    e: React.SyntheticEvent<HTMLImageElement, Event>,
-    title: string
-  ) => {
-    e.currentTarget.onerror = null;
-    e.currentTarget.src = `https://placehold.co/400x250/111827/F9FAFB?text=${encodeURIComponent(
-      title
-    )}`;
-  };
-
+export const TechnologyServices: React.FC = () => {
   return (
-    <section
-      className="py-3 sm:py-6 bg-white"
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16 lg:mb-20" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
-            Comprehensive Technology Services
-          </h2>
-          <p
-            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
-            Empowering businesses with scalable, secure, and innovative digital
-            solutions engineered for long-term success.
+    <section className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
+      {/* Glow Orbs */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-400/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>COMPREHENSIVE CAPABILITIES</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
+              Core Technology Services
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-slate-600 max-w-md font-medium">
+            From visionary prototypes to global enterprise platforms, we engineer resilient software systems engineered for scale.
           </p>
         </div>
 
-        <div className="relative group">
-          <Swiper
-            modules={[Autoplay, Navigation]}
-            spaceBetween={30}
-            slidesPerView={1}
-            breakpoints={{
-              320: { slidesPerView: 1, spaceBetween: 15 },
-              768: { slidesPerView: 2, spaceBetween: 20 },
-              1024: { slidesPerView: 4, spaceBetween: 30 },
-            }}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            navigation={{
-              nextEl: ".tech-button-next",
-              prevEl: ".tech-button-prev",
-            }}
-            className="pb-16 px-4"
-          >
-            {services.map((service, index) => (
-              <SwiperSlide key={index} className="h-auto! flex pb-2">
-                <div
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 100}
-                  className="group relative flex flex-col h-full w-full rounded-3xl bg-white p-2 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(20,184,166,0.15)] border border-gray-100"
-                >
-                  <div className="relative h-60 w-full overflow-hidden rounded-2xl shrink-0">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      onError={(e) => handleImageError(e, service.title)}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                    <div className="absolute left-4 top-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
-                      {service.icon}
+        {/* 3D Service Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Card3D
+                key={item.title}
+                intensity={12}
+                glowColor="rgba(0, 102, 255, 0.1)"
+                className="cloud-card p-8 group border border-blue-100/90 hover:border-blue-300 rounded-3xl flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] group-hover:bg-[#0066FF] group-hover:text-white transition-all duration-300 shadow-inner">
+                      <Icon className="w-6 h-6 stroke-[2.2]" />
                     </div>
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF]">
+                      {item.tag}
+                    </span>
                   </div>
-                  
-                  <div className="flex flex-col p-6 grow">
-                    <h3 className="mb-3 text-xl font-bold text-teal-600">
-                      {service.title}
-                    </h3>
-                    <p className="mb-6 text-sm text-gray-600 leading-relaxed">
-                      {service.description}
-                    </p>
-                    
-                    <div className="mb-6 space-y-2">
-                      {service.features.slice(0, 3).map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-50">
-                            <CircleCheckBig className="h-3 w-3 text-teal-600" />
-                          </div>
-                          <span className="text-xs font-medium text-gray-700">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
 
-                    <button
-                      className="mt-auto group/btn flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-semibold text-white transition-all shadow-md shadow-teal-500/20"
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                    </button>
-                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 font-display group-hover:text-[#0066FF] transition">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    {item.desc}
+                  </p>
+
+                  <ul className="space-y-2.5 mb-8 pt-4 border-t border-blue-100">
+                    {item.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-center gap-2.5 text-xs text-slate-700 font-medium">
+                        <CheckCircle2 className="w-4 h-4 text-[#0066FF] shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
 
-          <div className="tech-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-            <ChevronLeft className="w-5 h-5" />
-          </div>
-          <div className="tech-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-            <ChevronRight className="w-5 h-5" />
-          </div>
+                <Link
+                  to={item.link}
+                  className="inline-flex items-center justify-between w-full py-3 px-5 rounded-2xl text-xs font-bold text-[#0066FF] bg-blue-50/80 hover:bg-[#0066FF] hover:text-white border border-blue-200 hover:border-[#0066FF] transition-all duration-300 mt-auto shadow-xs"
+                >
+                  <span>Explore Service Details</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Card3D>
+            );
+          })}
         </div>
       </div>
     </section>

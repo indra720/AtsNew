@@ -1,18 +1,20 @@
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Star,
   Users,
-  Briefcase,
   Clock,
   Zap,
   Shield,
   Smartphone,
-  ChartNoAxesColumnIncreasing,
   Cloud,
   Heart,
+  ExternalLink,
+  Sparkles,
+  Layers,
 } from "lucide-react";
-import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Card3D from "./ui/Card3D";
 
 interface Project {
   title: string;
@@ -20,371 +22,227 @@ interface Project {
   image: string;
   link: string;
   category: string;
+  filterCat: string;
   industry: string;
   rating: number;
   users: string;
   timeline: string;
   icon: React.ReactNode;
 }
+
 const projects: Project[] = [
   {
     title: "E-Commerce Platform Modernization",
-    description:
-      "Transforming retail with a high-performance cloud commerce solution built on a microservices architecture.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    description: "Transforming retail with a high-performance cloud commerce solution built on a microservices architecture with AI recommendation engines.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     link: "/ai-page",
     category: "Web Application",
-    industry: "Retail",
+    filterCat: "web",
+    industry: "Retail & E-Commerce",
     rating: 4.8,
     users: "20K+",
     timeline: "9 Months",
-    icon: <Zap className="h-5 w-5 text-white" />,
+    icon: <Zap className="h-5 w-5 text-cyan-400" />,
   },
   {
     title: "Healthcare Management System",
-    description:
-      "Next-gen healthcare data analytics and patient care portal for seamless hospital operations and reporting.",
-    image:
-      "https://images.unsplash.com/photo-1657727534685-36b09f84e193?w=1200&auto=format&fit=crop&q=80",
+    description: "Next-gen healthcare data analytics and patient care portal for seamless hospital operations, real-time diagnostic reporting, and HIPAA compliance.",
+    image: "https://images.unsplash.com/photo-1657727534685-36b09f84e193?w=600&auto=format&fit=crop&q=80",
     link: "/health-page",
     category: "SaaS Platform",
+    filterCat: "saas",
     industry: "Healthcare",
     rating: 4.9,
     users: "5K+",
     timeline: "12 Months",
-    icon: <Heart className="h-5 w-5 text-white" />,
+    icon: <Heart className="h-5 w-5 text-rose-400" />,
   },
   {
     title: "FinTech Mobile Banking App",
-    description:
-      "Secure mobile-first banking app with fast transactions, biometric login, and personalized financial insights.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&auto=format&fit=crop&q=80",
+    description: "Secure mobile-first banking app with fast transactions, biometric login, multi-layer encryption, and personalized financial insights.",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
     link: "/fintech-page",
-    category: "Mobile App",
-    industry: "Finance",
-    rating: 4.7,
+    category: "Mobile Application",
+    filterCat: "mobile",
+    industry: "FinTech",
+    rating: 4.9,
     users: "1M+",
     timeline: "6 Months",
-    icon: <Smartphone className="h-5 w-5 text-white" />,
+    icon: <Smartphone className="h-5 w-5 text-indigo-400" />,
   },
   {
-    title: "SaaS Analytics Dashboard",
-    description:
-      "Full visibility into sales revenue, marketing KPIs, and user behavior through real-time, customizable dashboards.",
-    image:
-      "https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=1200&auto=format&fit=crop&q=80",
-    link: "/saas-page",
-    category: "Data Analytics",
-    industry: "B2B SaaS",
-    rating: 4.6,
-    users: "8K+",
-    timeline: "4 Months",
-    icon: <ChartNoAxesColumnIncreasing className="h-5 w-5 text-white" />,
-  },
-  {
-    title: "Travel Booking Platform",
-    description:
-      "Smart travel booking platform integrating flight, hotel, and rental services with AI-driven price prediction.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-    link: "/travel-page",
-    category: "Cloud Solution",
-    industry: "Travel & Hospitality",
-    rating: 4.5,
-    users: "500K+",
-    timeline: "10 Months",
-    icon: <Cloud className="h-5 w-5 text-white" />,
-  },
-  {
-    title: "AI-Powered Chat Assistant",
-    description:
-      "A context-aware customer support automation tool, providing instant and accurate responses 24/7.",
-    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg",
-    link: "/aichat-page",
-    category: "Artificial Intelligence",
-    industry: "Customer Service",
+    title: "Enterprise Cloud Migration",
+    description: "Multi-region cloud infrastructure transformation migrating legacy monoliths to automated Docker & Kubernetes clusters with zero downtime.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    link: "/cloud-page",
+    category: "Cloud Solutions",
+    filterCat: "cloud",
+    industry: "Enterprise Infrastructure",
     rating: 4.9,
-    users: "30K+",
-    timeline: "5 Months",
-    icon: <Shield className="h-5 w-5 text-white" />,
+    users: "50K+",
+    timeline: "8 Months",
+    icon: <Cloud className="h-5 w-5 text-blue-400" />,
+  },
+  {
+    title: "AI-Powered Customer Support Assistant",
+    description: "Multilingual AI support automation assistant resolving high-volume tickets with natural language processing and proactive sentiment analysis.",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop",
+    link: "/aichat-page",
+    category: "AI & Automation",
+    filterCat: "ai",
+    industry: "Support Automation",
+    rating: 4.7,
+    users: "89+ Langs",
+    timeline: "4 Months",
+    icon: <Sparkles className="h-5 w-5 text-purple-400" />,
+  },
+  {
+    title: "SaaS Analytics Dashboard Platform",
+    description: "High-throughput business intelligence engine delivering real-time streaming analytics, sub-second queries, and customizable drag-and-drop metrics.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    link: "/saas-page",
+    category: "SaaS Platform",
+    filterCat: "saas",
+    industry: "Business Intelligence",
+    rating: 4.8,
+    users: "15K+",
+    timeline: "7 Months",
+    icon: <Shield className="h-5 w-5 text-emerald-400" />,
   },
 ];
 
+export const Projects: FC = () => {
+  const [activeTab, setActiveTab] = useState("all");
 
+  const filtered = activeTab === "all" ? projects : projects.filter((p) => p.filterCat === activeTab);
 
-const Projects: FC = () => {
-  const navigate = useNavigate();
-  const [activeCategory, setactiveCategory] = useState("All");
-  const filteredProjects: Project[] = activeCategory === "All" ? projects : projects.filter((project) => project.category === activeCategory);
   return (
-    <>
+    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen">
+      {/* Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-      <section className="relative pt-4 **pb-20 md:pb-40** bg-linear-to-br from-teal-50 via-white to-white text-gray-900 overflow-hidden">
-        <div className="absolute -top-32 -left-24 w-[450px] h-[450px] bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>VERIFIED PORTFOLIO</span>
+          </div>
 
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute inset-0 opacity-5 bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/symphony.png')]"></div>
-        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Our <span className="text-teal-600">Projects</span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
+            Our Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Projects</span>
           </h1>
 
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-16">
-            At <span className="font-semibold ml-1 text-teal-600">ATS Global Tech</span>
-            , we build impactful digital solutions that empower organizations,
-            redefine user experiences, and drive sustainable business growth
-            across industries.
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
+            Explore our proven track record of architecting, scaling, and securing enterprise software systems across global markets.
           </p>
 
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left mb-4">
-            <div className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-teal-100 transition-all duration-300 overflow-hidden group">
-              <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
-                alt="Web Development"
-                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-teal-600 mb-2">
-                  E-Commerce Platform
-                </h3>
-
-                <p className="text-gray-700 text-sm">
-                  A scalable online platform built with React and Next.js,
-                  enabling seamless global shopping experiences.
-                </p>
-              </div>
-            </div>
-            <div className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-teal-100 transition-all duration-300 overflow-hidden group">
-              <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80"
-                alt="Mobile App"
-                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-teal-600 mb-2">
-                  FinTech Mobile App
-                </h3>
-
-                <p className="text-gray-700 text-sm">
-                  A cross-platform app for financial analytics, offering
-                  real-time data visualization and performance insights.
-                </p>
-              </div>
-            </div>
-            <div className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-teal-100 transition-all duration-300 overflow-hidden group">
-              <img
-                src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=900&q=80"
-                alt="Analytics Dashboard"
-                className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-teal-600 mb-2">
-                  AI Analytics Dashboard
-                </h3>
-
-                <p className="text-gray-700 text-sm">
-                  A data intelligence dashboard that provides predictive
-                  insights using AI and machine learning algorithms.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Happy client section  */}
-      <section className="py-16 bg-white text-gray-900">
-        <div className="w-full px-4 sm:px-6 lg:px-18">
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center items-stretch justify-around">
-            <div className="bg-white shadow-lg border border-teal-100 p-6 rounded-2xl flex flex-col items-center justify-center transition-all transform duration-300 cursor-pointer hover:scale-105 h-full">
-              <div className="text-3xl md:text-4xl font-bold text-teal-600 mb-2">
-                15+
-              </div>
-
-              <div className="text-gray-700">Projects Completed</div>
-            </div>
-
-            <div className="bg-white shadow-lg border border-teal-100 p-6 rounded-2xl flex flex-col items-center justify-center transition-all transform duration-300 cursor-pointer hover:scale-105 h-full">
-              <div className="text-3xl md:text-4xl font-bold text-teal-600 mb-2">
-                50+
-              </div>
-              <div className="text-gray-700">Happy Clients</div>
-            </div>
-
-            <div className="bg-white shadow-lg border border-teal-100 p-6 rounded-2xl flex flex-col items-center justify-center transition-all transform duration-300 cursor-pointer hover:scale-105 h-full">
-              <div className="text-3xl md:text-4xl font-bold text-teal-600 mb-2">
-                5+
-              </div>
-
-              <div className="text-gray-700">Industries Served</div>
-            </div>
-
-            <div className="bg-white shadow-lg border border-teal-100 p-6 rounded-2xl flex flex-col items-center justify-center transition-all transform duration-300 cursor-pointer hover:scale-105 h-full">              <div className="text-3xl md:text-4xl font-bold text-teal-600 mb-2">
-              98%
-            </div>
-              <div className="text-gray-700">Success Rate</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-8 bg-teal-50 text-gray-900">
-        <div className="w-full px-4 sm:px-6 ">
-
-          <div className="flex flex-wrap justify-center gap-2">
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-16">
             {[
-              "All",
-              "Web Application",
-              "Mobile App",
-              "Data Analytics",
-              "SaaS Platform",
-              "Cloud Solution",
-              "Artificial Intelligence",
-            ].map((category, i) => (
+              { id: "all", label: "All Projects" },
+              { id: "web", label: "Web Applications" },
+              { id: "mobile", label: "Mobile Apps" },
+              { id: "cloud", label: "Cloud & DevOps" },
+              { id: "saas", label: "SaaS Platforms" },
+              { id: "ai", label: "AI & Automation" },
+            ].map((tab) => (
               <button
-                key={i} onClick={() => setactiveCategory(category)}
-                className={`inline-flex items-center justify-center gap-2 text-sm font-medium h-9 rounded-md px-3 transition ${activeCategory === category
-                  ? "bg-linear-to-r from-teal-400 to-cyan-500 text-white" // Active Button
-                  : "border border-teal-300 text-teal-700 hover:bg-teal-100" // Inactive Button
-                  }`}
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                  activeTab === tab.id
+                    ? "bg-gradient-to-r from-[#0066FF] to-[#0052CC] text-white shadow-[0_4px_16px_rgba(0,102,255,0.3)]"
+                    : "bg-white/80 border border-blue-200 text-slate-700 hover:text-[#0066FF] hover:border-blue-300"
+                }`}
               >
-                {category}
+                {tab.label}
               </button>
+            ))}
+          </div>
+
+          {/* 3D Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+            {filtered.map((project, idx) => (
+              <Card3D
+                key={idx}
+                intensity={10}
+                className="cloud-card overflow-hidden rounded-3xl flex flex-col justify-between group"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-mono font-bold text-[#0066FF] border border-blue-200 shadow-sm">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 flex flex-col grow">
+                  <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
+                    <span className="font-mono font-bold text-[#0066FF]">{project.industry}</span>
+                    <div className="flex items-center gap-1 text-amber-500 font-bold">
+                      <Star className="w-3.5 h-3.5 fill-amber-400" />
+                      <span>{project.rating}</span>
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-black text-[#0A1629] mb-2 font-display group-hover:text-[#0066FF] transition">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
+                    {project.description}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#F0F7FF] border border-blue-200 text-xs mb-6">
+                    <div>
+                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Scale</div>
+                      <div className="font-black text-[#0A1629] font-display">{project.users} Users</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Timeline</div>
+                      <div className="font-black text-[#0A1629] font-display">{project.timeline}</div>
+                    </div>
+                  </div>
+
+                  <Link
+                    to={project.link}
+                    className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_4px_16px_rgba(0,102,255,0.25)] transition duration-300 mt-auto cursor-pointer"
+                  >
+                    <span>View Case Study Architecture</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </Card3D>
             ))}
           </div>
         </div>
       </section>
-      <section className="py-2 md:py-6 bg-white text-gray-900">
-        <div className="w-full px-4 sm:px-8 ">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-teal-700">Our Projects</h2>
 
-            <p className="mt-4 text-gray-700">
-              A selection of our most impactful work, showcasing innovation,
-              design, and results.
-            </p>
-          </div>
-
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredProjects.length > 0 ? (
-              filteredProjects.map((project) => (
-                <div
-                  key={project.title}
-                  className="bg-white rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col border border-gray-100"
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="rounded-t-2xl w-full h-48 object-cover"
-                    loading="lazy"
-                  />
-                  <div className="p-6 flex flex-col grow">
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <div className="bg-teal-500 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
-                          {project.icon}
-                        </div>
-                        <span className="inline-flex items-center rounded-full border border-teal-300 px-2.5 py-0.5 text-xs font-semibold text-teal-600">
-                          {project.category}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center space-x-1 text-teal-600 text-sm">
-                        <Star className="h-4 w-4 fill-teal-500 stroke-teal-500" />
-                        <span className="font-semibold">{project.rating}</span>
-                      </div>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-teal-700 mb-2">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-gray-700 mb-4 text-sm grow">
-                      {project.description}
-                    </p>
-                    <div className="flex justify-between items-center text-xs text-gray-500 border-t pt-3 mt-auto">
-                      <span className="flex items-center gap-1">
-                        <Briefcase className="h-4 w-4 text-teal-500" />
-                        {project.industry}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-4 w-4 text-teal-500" />
-                        {project.timeline}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="h-4 w-4 text-teal-500" />
-                        {project.users}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="px-6 pb-6 pt-0">
-                    <button
-                      onClick={() => navigate(project.link)}
-                      className="text-teal-500 hover:text-teal-700 font-medium inline-flex items-center transition"
-                    >
-                      View Case Study
-                      <ArrowRight className="h-4 w-4 ml-1" />
-                    </button>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-10">
-                <p className="text-gray-500 text-lg">No projects found in this category.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-      <section className="py-10 bg-teal-50 text-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-teal-700">
-            Ready to Start Your Project?
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0A1629] font-display mb-4">
+            Have a Project in Mind?
           </h2>
-
-          <p className="text-lg mb-8 text-gray-700">
-            Let's discuss your project requirements and create something amazing
-            together. We're excited to bring your vision to life.
+          <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-sans">
+            Our engineering team will assess your scope and architect a scalable delivery roadmap.
           </p>
-
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact">
-              <button className="inline-flex items-center justify-center gap-2 text-sm font-medium bg-teal-500 text-white hover:bg-teal-600 h-11 rounded-md px-8 py-3 w-full sm:w-auto">
-                Start Your Project
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-arrow-right ml-2 h-5 w-5"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
-              </button>
-            </a>
-
-            <a href="/services">
-              <button className="inline-flex items-center justify-center gap-2 border border-teal-400 text-teal-600 hover:bg-teal-100 h-11 rounded-md px-8 py-3 w-full sm:w-auto">
-                View Services
-              </button>
-            </a>
-          </div>
+          <Link
+            to="/lets-create"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition"
+          >
+            <span>Start Your Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

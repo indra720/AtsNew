@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Cpu,
@@ -8,233 +9,160 @@ import {
   Smartphone,
   Code,
   CheckCircle,
-  ChevronLeft,
-  ChevronRight,
+  Sparkles,
 } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import Card3D from "./ui/Card3D";
 
 const solutions = [
   {
-    title: "AI Solutions",
-    description:
-      "Leverage Artificial Intelligence and Machine Learning to automate, optimize, and scale your business operations.",
-    icon: <Cpu className="w-8 h-8" />,
-    color: "indigo",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&h=500&fit=crop",
-    items: ["Predictive Analytics", "Chatbots & NLP", "AI-Powered Automation"],
+    title: "AI & Machine Learning Solutions",
+    description: "Leverage Artificial Intelligence, custom LLMs, and predictive machine learning models to automate workflows, optimize operational decisions, and scale your business.",
+    icon: Cpu,
+    color: "from-cyan-400 to-blue-500",
+    glow: "rgba(0, 242, 254, 0.25)",
+    items: ["Custom Predictive Analytics", "Chatbots & Conversational NLP", "End-to-End AI Automation"],
+    link: "/ai-page",
   },
   {
-    title: "Cloud Computing",
-    description:
-      "Scalable cloud infrastructure for seamless deployment, management, and collaboration across platforms.",
-    icon: <Cloud className="w-8 h-8" />,
-    color: "blue",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&h=500&fit=crop",
-    items: ["Cloud Migration", "DevOps & CI/CD", "Multi-Cloud Solutions"],
+    title: "Cloud Computing & Modernization",
+    description: "High-resilience cloud infrastructure for seamless global deployment, automated DevOps CI/CD pipelines, and zero-downtime scaling across AWS, Azure, & GCP.",
+    icon: Cloud,
+    color: "from-blue-500 to-indigo-600",
+    glow: "rgba(59, 130, 246, 0.25)",
+    items: ["Zero-Downtime Cloud Migration", "Automated DevOps & CI/CD", "Multi-Cloud Kubernetes Solutions"],
+    link: "/cloud-page",
   },
   {
-    title: "Data Analytics",
-    description:
-      "Transform data into actionable insights with advanced analytics and business intelligence tools.",
-    icon: <BarChart3 className="w-8 h-8" />,
-    color: "amber",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&h=500&fit=crop",
-    items: ["BI Dashboards", "Predictive Modeling", "Data Warehousing"],
+    title: "Advanced Data Analytics & BI",
+    description: "Transform raw enterprise data into actionable executive insights with modern data lakehouses, streaming pipelines, and real-time business intelligence dashboards.",
+    icon: BarChart3,
+    color: "from-indigo-500 to-purple-600",
+    glow: "rgba(99, 102, 241, 0.25)",
+    items: ["Executive BI Dashboards", "Predictive Machine Modeling", "Big Data Lakehouse Warehousing"],
+    link: "/saas-page",
   },
   {
-    title: "Cybersecurity",
-    description:
-      "Protect your digital assets with advanced security frameworks and real-time threat detection.",
-    icon: <Shield className="w-8 h-8" />,
-    color: "red",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800&h=500&fit=crop",
-    items: ["Network Security", "Data Encryption", "Risk Assessment"],
+    title: "Enterprise Cybersecurity & Zero-Trust",
+    description: "Protect critical enterprise digital assets with zero-trust security frameworks, vulnerability assessments, real-time intrusion detection, and regulatory compliance.",
+    icon: Shield,
+    color: "from-emerald-400 to-teal-500",
+    glow: "rgba(16, 185, 129, 0.25)",
+    items: ["Zero-Trust Network Security", "End-to-End 256-bit Encryption", "Continuous Risk & Vulnerability Auditing"],
+    link: "/secure-page",
   },
   {
-    title: "Mobile Development",
-    description:
-      "Build high-performance, cross-platform mobile apps that engage and convert users.",
-    icon: <Smartphone className="w-8 h-8" />,
-    color: "green",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800",
-    items: [
-      "iOS & Android Apps",
-      "Flutter & React Native",
-      "App Store Optimization",
-    ],
+    title: "High-Performance Mobile Development",
+    description: "Build ultra-responsive, cross-platform mobile apps for iOS and Android using React Native and Flutter delivering fluid 120fps animations and high conversion.",
+    icon: Smartphone,
+    color: "from-purple-500 to-pink-500",
+    glow: "rgba(168, 85, 247, 0.25)",
+    items: ["Native iOS & Android Applications", "High-Speed Flutter & React Native", "App Store Optimization & Security"],
+    link: "/fintech-page",
   },
   {
-    title: "Web Development",
-    description:
-      "Develop modern, scalable, and SEO-optimized web applications with exceptional user experiences.",
-    icon: <Code className="w-8 h-8" />,
-    color: "purple",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800",
-    items: ["Responsive Design", "E-commerce Platforms", "Web App Development"],
+    title: "Web Platform Engineering",
+    description: "Develop modern, scalable, and SEO-optimized web applications with sub-second page loads, microservices architectures, and exceptional user experiences.",
+    icon: Code,
+    color: "from-amber-400 to-orange-500",
+    glow: "rgba(245, 158, 11, 0.25)",
+    items: ["Ultra-Responsive 120fps Web Apps", "High-Conversion E-Commerce Stores", "Custom Enterprise Web Platforms"],
+    link: "/ai-page",
   },
 ];
 
-const Solution: React.FC = () => {
+export const Solution: React.FC = () => {
   return (
-    <div className="min-h-screen font-sans bg-linear-to-br from-teal-50 via-white to-cyan-100 text-gray-900">
-      <section className="relative pt-3 lg:pt-6 pb-16 lg:pb-24 overflow-hidden">
-        <div className="relative w-full px-4 sm:px-6 lg:px-10 text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight text-gray-900">
-            Innovative <span className="text-teal-600">Solutions</span>
-            <span className="block text-3xl md:text-5xl mt-3 font-semibold text-gray-700">
+    <div className="min-h-screen bg-[#F0F7FF] text-[#0A1629]">
+      {/* Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>ARCHITECTURAL DOMAINS</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
+            Innovative <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Solutions</span>
+            <span className="block text-2xl sm:text-4xl lg:text-5xl mt-2 font-bold text-slate-700">
               for Modern Challenges
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-700 mb-10 max-w-4xl mx-auto leading-relaxed">
-            Discover our comprehensive suite of technology solutions designed to
-            accelerate your digital transformation, enhance operational
-            efficiency, and drive sustainable business growth.
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-sans">
+            Discover our comprehensive suite of technology solutions designed to accelerate your digital transformation, 
+            enhance operational efficiency, and drive sustainable growth.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-xl bg-teal-600 text-white hover:bg-teal-700 px-8 py-3 text-lg font-bold shadow-xl shadow-teal-300/50 transition-all duration-300 transform hover:scale-[1.03]">
-              Explore Solutions
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-xl bg-white text-teal-600 hover:bg-teal-50 px-8 py-3 text-lg font-medium border-2 border-teal-300 shadow-md transition-colors">
-              Schedule Consultation
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="solutions"
-        className="py-10 bg-white/90 backdrop-blur-sm rounded-t-3xl border-t border-teal-200"
-      >
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
-              Comprehensive Service Offerings
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Empowering your business with cutting-edge digital solutions
-              tailored to your unique needs.
-            </p>
-          </div>
-
-          <div className="relative group">
-            <Swiper
-              modules={[Autoplay, Navigation]}
-              spaceBetween={24}
-              slidesPerView={1}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 4 },
-              }}
-              autoplay={{ delay: 3500, disableOnInteraction: false }}
-              navigation={{
-                nextEl: ".solution-button-next",
-                prevEl: ".solution-button-prev",
-              }}
-              className="pb-12 flex! items-stretch!"
-            >
-              {solutions.map((solution, index) => (
-                <SwiperSlide key={index} className="h-auto! flex">
-                  <div className="group relative bg-white border border-teal-100 shadow-xl hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden transform hover:-translate-y-1 flex flex-col h-full w-full">
-                    <div className="h-40 overflow-hidden shrink-0">
-                      <img
-                        src={solution.image}
-                        alt={solution.title}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                        onError={(e) => {
-                          e.currentTarget.onerror = null;
-                          e.currentTarget.src = `https://placehold.co/800x500/E0F2F7/0F766E?text=${solution.title.replace(
-                            /\s/g,
-                            "+"
-                          )}`;
-                        }}
-                      />
-                    </div>
-
+          {/* Solutions 3D Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+            {solutions.map((sol, index) => {
+              const Icon = sol.icon;
+              return (
+                <Card3D
+                  key={index}
+                  intensity={12}
+                  glowColor={sol.glow}
+                  className="cloud-card p-8 rounded-3xl flex flex-col justify-between group"
+                >
+                  <div>
                     <div
-                      className={`absolute top-4 left-4 w-14 h-14 bg-${solution.color}-600 text-white rounded-xl flex items-center justify-center z-20 shadow-xl border-2 border-white`}
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${sol.color} p-0.5 mb-6 flex items-center justify-center shadow-md`}
                     >
-                      {React.cloneElement(solution.icon as React.ReactElement, {
-                        className: "w-8 h-8 text-white",
-                      })}
-                    </div>
-
-                    <div className="p-6 sm:p-8 relative z-10 flex flex-col grow">
-                      <h3 className="text-2xl font-bold mb-3 text-gray-900">
-                        {solution.title}
-                      </h3>
-
-                      <p className="text-gray-700 mb-6 text-base">
-                        {solution.description}
-                      </p>
-
-                      <div className="mt-auto">
-                        <h4 className="font-semibold text-gray-800 mb-3">
-                          Key Capabilities:
-                        </h4>
-                        <ul className="space-y-2 text-gray-600 mb-8">
-                          {solution.items.map((item, i) => (
-                            <li
-                              key={i}
-                              className="flex items-center gap-3 text-base"
-                            >
-                              <CheckCircle className="w-5 h-5 text-teal-500 shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-
-                        <a
-                          href="#"
-                          className="inline-flex items-center text-lg font-bold text-teal-600 group-hover:text-teal-700 transition duration-300"
-                        >
-                          Explore {solution.title}
-                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </a>
+                      <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center group-hover:bg-transparent transition-colors">
+                        <Icon className="w-7 h-7 text-[#0066FF] group-hover:text-white transition-colors" />
                       </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
 
-            <div className="solution-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-              <ChevronLeft className="w-5 h-5" />
-            </div>
-            <div className="solution-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-              <ChevronRight className="w-5 h-5" />
-            </div>
+                    <h3 className="text-xl font-black text-[#0A1629] mb-3 font-display group-hover:text-[#0066FF] transition">
+                      {sol.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
+                      {sol.description}
+                    </p>
+
+                    <ul className="space-y-2.5 mb-8 pt-4 border-t border-blue-100">
+                      {sol.items.map((item, idx) => (
+                        <li key={idx} className="flex items-center gap-2.5 text-xs text-slate-700 font-medium">
+                          <CheckCircle className="w-4 h-4 text-[#0066FF] shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link
+                    to={sol.link}
+                    className="inline-flex items-center justify-between w-full py-3 px-5 rounded-2xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_4px_16px_rgba(0,102,255,0.25)] transition duration-300 mt-auto cursor-pointer"
+                  >
+                    <span>View Architecture Details</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Card3D>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-10 bg-teal-600">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-white p-8 md:p-12 rounded-2xl shadow-inner bg-teal-700/50 text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
-              Ready to Start Your Digital Journey?
-            </h2>
-            <p className="text-lg md:text-xl mb-8 opacity-90 max-w-4xl mx-auto">
-              Partner with us to build scalable, secure, and innovative
-              solutions that redefine your business capabilities.
-            </p>
-            <button className="inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-xl bg-white text-teal-800 hover:bg-teal-50 px-10 py-3 text-lg font-bold shadow-2xl transition-colors transform hover:scale-[1.05]">
-              Get Started Today
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-          </div>
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0A1629] font-display mb-4">
+            Transform Your Engineering Infrastructure
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-sans">
+            Discuss your system constraints with senior architects and discover how ATS Global Tech accelerates time-to-market.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition"
+          >
+            <span>Consult Our Solution Team</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </div>

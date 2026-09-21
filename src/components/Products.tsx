@@ -1,4 +1,5 @@
-import { FC } from "react";
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Heart,
   Banknote,
@@ -9,20 +10,17 @@ import {
   Gamepad2,
   ShoppingCart,
   Zap,
-  CircleCheckBig,
-  Target,
-  TrendingUp,
   ArrowRight,
   Star,
   Users,
   Shield,
-  Download,
   Smartphone,
   ChartNoAxesColumnIncreasing,
   Cloud,
-  Award,
   Check,
+  Sparkles,
 } from "lucide-react";
+import Card3D from "./ui/Card3D";
 
 interface Product {
   id: number;
@@ -36,476 +34,262 @@ interface Product {
   free?: boolean;
 }
 
-const products: Product[] = [
+const turnkeyProducts: Product[] = [
   {
     id: 1,
     title: "Hospital Management System",
     category: "Workflow Automation",
-    icon: <Zap className="h-5 w-5 text-white" />,
-    description:
-      "Streamline your business processes with intelligent automation and workflow management capabilities designed for healthcare.",
+    icon: <Heart className="h-5 w-5 text-cyan-400" />,
+    description: "Streamline healthcare business processes with intelligent patient record automation and clinical workflow management.",
     rating: 4.8,
     users: "10K+",
-    price: "Free",
+    price: "Free Tier",
     free: true,
   },
   {
     id: 2,
-    title: "Hotel & Restaurant Management System",
-    category: "Security Management",
-    icon: <Shield className="h-5 w-5 text-white" />,
-    description:
-      "Integrated property management solution with robust booking, point-of-sale, and guest security features.",
+    title: "Hotel & Restaurant Management",
+    category: "Hospitality Management",
+    icon: <Banknote className="h-5 w-5 text-indigo-400" />,
+    description: "Integrated hospitality solution with guest booking engines, real-time room inventory, and multi-POS restaurant billing.",
     rating: 4.9,
     users: "5K+",
     price: "$49/month",
   },
   {
     id: 3,
-    title: "Learning Management System",
-    category: "Mobile Development",
-    icon: <Smartphone className="h-5 w-5 text-white" />,
-    description:
-      "A scalable platform for corporate training, course creation, and skill-gap analysis, accessible via mobile.",
+    title: "Learning Management System (LMS)",
+    category: "EdTech Platform",
+    icon: <GraduationCap className="h-5 w-5 text-blue-400" />,
+    description: "Scalable platform for interactive corporate training, virtual course creation, and student skill-gap analysis.",
     rating: 4.7,
     users: "15K+",
-    price: "Free",
+    price: "Free Tier",
     free: true,
   },
   {
     id: 4,
-    title: "POS (Billing Management System)",
-    category: "Data Analytics",
-    icon: <ChartNoAxesColumnIncreasing className="h-5 w-5 text-white" />,
-    description:
-      "Point-of-Sale system providing real-time inventory tracking, sales reporting, and comprehensive data analytics.",
+    title: "POS & Billing Management System",
+    category: "Retail Intelligence",
+    icon: <ChartNoAxesColumnIncreasing className="h-5 w-5 text-amber-400" />,
+    description: "Point-of-Sale system providing sub-second barcode scanning, live multi-warehouse inventory, and financial reporting.",
     rating: 4.6,
     users: "8K+",
     price: "$59/month",
   },
   {
     id: 5,
-    title: "Real Estate Management System",
-    category: "Cloud Management",
-    icon: <Cloud className="h-5 w-5 text-white" />,
-    description:
-      "Cloud-based solution for property listing, tenant management, and financial oversight of real estate portfolios.",
+    title: "Real Estate Management CRM",
+    category: "PropTech Cloud",
+    icon: <House className="h-5 w-5 text-purple-400" />,
+    description: "Cloud-based solution for property listings, automated tenant billing, lease renewals, and asset management.",
     rating: 4.8,
     users: "3K+",
     price: "$79/month",
   },
   {
     id: 6,
-    title: "E-Commerce Platform",
-    category: "Collaboration",
-    icon: <Users className="h-5 w-5 text-white" />,
-    description:
-      "A comprehensive, customizable e-commerce storefront with multi-vendor support and seamless payment gateway integration.",
+    title: "Multi-Vendor E-Commerce Platform",
+    category: "Commerce Engine",
+    icon: <ShoppingCart className="h-5 w-5 text-emerald-400" />,
+    description: "High-throughput storefront with AI product recommendations, automated tax calculation, and multi-currency payment gateways.",
     rating: 4.5,
     users: "25K+",
-    price: "Free",
+    price: "Free Tier",
     free: true,
   },
 ];
-const primaryProducts = [
+
+const enterpriseSuites = [
   {
     title: "ATS ERP Suite",
-    features: [
-      "Integrated Finance & Accounting",
-      "Supply Chain Management (SCM)",
-      "Manufacturing & Production Planning",
-    ],
+    desc: "End-to-end enterprise resource planning system.",
+    features: ["Integrated Finance & Accounting", "Supply Chain Management (SCM)", "Manufacturing & Production Planning"],
+    color: "from-cyan-500 to-blue-600",
   },
   {
     title: "CRM Pro+",
-    features: [
-      "Lead & Opportunity Tracking",
-      "Sales Automation & Forecasting",
-      "Customer Service & Ticketing",
-    ],
+    desc: "Complete customer lifecycle and sales acceleration platform.",
+    features: ["Lead & Opportunity Tracking", "Automated Sales Forecasting", "Ticketing & Customer Service"],
+    color: "from-blue-500 to-indigo-600",
   },
   {
     title: "HRMS Cloud",
-    features: [
-      "Cloud-Based Payroll & Tax Filing",
-      "Employee Attendance & Leave Management",
-      "Performance and Review Tracking",
-    ],
+    desc: "Automated human resources & global workforce platform.",
+    features: ["Cloud-Based Payroll & Tax Filing", "Biometric Attendance & Leave Sync", "Employee Performance Reviews"],
+    color: "from-indigo-500 to-purple-600",
   },
   {
     title: "ATS POS System",
-    features: [
-      "Inventory & Stock Control",
-      "Multi-Store Synchronization",
-      "Mobile & Contactless Payment Support",
-    ],
+    desc: "Omni-channel retail and multi-store point of sale.",
+    features: ["Live Inventory & Stock Control", "Multi-Store Cloud Synchronization", "Mobile & Contactless Payments"],
+    color: "from-purple-500 to-pink-600",
   },
   {
     title: "ProjectFlow",
-    features: [
-      "Agile & Scrum Project Boards",
-      "Real-time Team Collaboration",
-      "AI-driven Resource Allocation",
-    ],
+    desc: "Agile delivery and intelligent team collaboration suite.",
+    features: ["Agile & Scrum Project Boards", "Real-Time Team Collaboration", "AI-Driven Resource Allocation"],
+    color: "from-emerald-500 to-teal-600",
   },
   {
     title: "DataVision Analytics",
-    features: [
-      "Customizable Business Dashboards",
-      "Predictive Modeling & Reporting",
-      "Data Governance & Security",
-    ],
+    desc: "Executive business intelligence & data governance.",
+    features: ["Customizable Drag-and-Drop Dashboards", "Predictive Modeling & Big Data Reports", "Enterprise Data Governance & Security"],
+    color: "from-amber-500 to-orange-600",
   },
 ];
-const getFeaturedImageUrl = (id: number) => {
-  switch (id) {
-    case 1:
-      return "https://placehold.co/600x400/10b981/ffffff?text=Hospital+System";
-    case 2:
-      return "https://placehold.co/600x400/0d9488/ffffff?text=Hotel+Management";
-    case 3:
-      return "https://placehold.co/600x400/0f766e/ffffff?text=LMS+E-Learning";
-    case 4:
-      return "https://placehold.co/600x400/14b8a6/ffffff?text=POS+Billing";
-    case 5:
-      return "https://placehold.co/600x400/06b6d4/ffffff?text=Real+Estate+CRM";
-    case 6:
-      return "https://placehold.co/600x400/0891b2/ffffff?text=E-Commerce+Store";
-    default:
-      return "https://placehold.co/600x400/0f766e/ffffff?text=Featured+Solution";
-  }
-};
-const getFeaturedIcon = (id: number) => {
-  switch (id) {
-    case 1:
-      return <Heart className="h-5 w-5 text-black" />;
-    case 2:
-      return <Banknote className="h-5 w-5 text-black" />;
-    case 3:
-      return <GraduationCap className="h-5 w-5 text-black" />;
-    case 4:
-      return <ShoppingCart className="h-5 w-5 text-black" />;
-    case 5:
-      return <House className="h-5 w-5 text-black" />;
-    case 6:
-      return <Users className="h-5 w-5 text-black" />;
-    default:
-      return <Award className="h-5 w-5 text-black" />;
-  }
-};
 
-const Products: FC = () => {
+export const Products: FC = () => {
   return (
-    <div className="font-serif min-h-screen">
+    <div className="bg-gradient-to-b from-[#F0F7FF] via-[#FFFFFF] to-[#E8F4FD] text-slate-900 min-h-screen">
+      {/* Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-6 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>SOFTWARE PRODUCTS ECOSYSTEM</span>
+          </div>
 
-      <section className="py-6 bg-linear-to-r from-teal-50 via-white to-teal-100 text-gray-900">
-
-        <div className="w-full px-4 sm:px-6 lg:px-8 text-center">
-
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Our <span className="text-teal-600">Products</span>
-
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight font-display mb-6">
+            Our Enterprise <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Products</span>
           </h1>
 
-          <p className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto">
-            Discover our suite of innovative software products
-            designed tostreamline your business operations and
-            drive digital transformation.
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-medium">
+            Discover our suite of innovative software products and scalable enterprise platforms designed to streamline operations and accelerate digital transformation.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left">
-
-            {primaryProducts.map((product, index) => (
-              <div
+          {/* Enterprise Suites Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {enterpriseSuites.map((product, index) => (
+              <Card3D
                 key={index}
-                className="bg-gray-900 text-gray-200 p-8 rounded-2xl shadow-lg border border-gray-700 hover:scale-[1.02] hover:shadow-2xl transition-transform duration-300 flex flex-col"
+                intensity={10}
+                className="cloud-card p-8 border border-blue-100/90 rounded-3xl flex flex-col justify-between group"
               >
-
-                <h3 className="text-2xl font-semibold mb-4 text-teal-400 grow-0">
-                  {product.title}
-                </h3>
-
-                <ul className="space-y-3 text-gray-300 mb-6 text-base  grow">
-
-                  {product.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-
-                      <Check className="h-5 w-5 text-teal-400 shrink-0 mt-1" />
-                      <span>{feature}</span>
-
-                    </li>
-                  ))}
-
-                </ul>
-
-                <button className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded-lg font-semibold w-full mt-auto">
-                  Learn More
-                </button>
-
-              </div>
-            ))}
-
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
-
-            <button className="inline-flex items-center justify-center gap-2 h-11 rounded-lg text-black bg-teal-200 font-bold hover:bg-teal-300 transition px-8 py-3 w-full sm:w-auto">
-              Explore Products
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-
-            <button className="inline-flex items-center justify-center gap-2 h-11 rounded-lg border border-teal-300 text-teal-600 font-bold hover:bg-teal-100 px-8 py-3 w-full sm:w-auto">
-              Watch Demo
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <section className="py-10 bg-linear-to-r from-teal-100 via-white to-teal-50 text-gray-900">
-
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center mb-16">
-
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-700 mb-4">
-              Featured Products
-            </h2>
-
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Our most popular and innovative solutions trusted by
-              thousands of               businesses.
-            </p>
-
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="rounded-xl bg-white/80 backdrop-blur-md border border-teal-100 shadow-xl hover:shadow-2xl transition hover:scale-[1.02] duration-300 flex flex-col overflow-hidden"
-              >
-
-                <div className="aspect-3/2 relative overflow-hidden">
-
-                  <img
-                    src={getFeaturedImageUrl(product.id)}
-                    alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://placehold.co/600x400/cccccc/000000?text=${product.title.replace(
-                        /\s/g,
-                        "+"
-                      )}`;
-                    }}
-                  />
-
-                </div>
-
-                <div className="p-6 flex flex-col grow">
-
-                  <div className="flex items-center justify-between gap-3 mb-3">
-
-                    <div className="flex items-center gap-3">
-
-                      <div className="bg-teal-100 w-10 h-10 rounded-full flex items-center justify-center border border-teal-300">
-                        {getFeaturedIcon(product.id)}
-
-                      </div>
-
-                      <div className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700">
-                        {product.category}
-
-                      </div>
-
-                    </div>
-
-                    <div className="text-xl font-bold text-teal-600">
-                      {product.price}
-                    </div>
-
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-4 group-hover:scale-110 group-hover:bg-[#0066FF] group-hover:text-white transition shadow-inner">
+                    <Zap className="w-6 h-6 stroke-[2.2]" />
                   </div>
-
-                  <h3 className="font-extrabold text-2xl text-teal-800 mb-2">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 font-display group-hover:text-[#0066FF] transition">
                     {product.title}
                   </h3>
-
-                  <div className="flex items-center justify-between text-sm mb-3 pt-3 border-t border-gray-100">
-
-                    <div className="flex items-center space-x-1 text-teal-600">
-
-                      <Star className="h-4 w-4 fill-amber-400 stroke-amber-400" />
-
-                      <span className="font-semibold">{product.rating}</span>
-
-                    </div>
-
-                    <div className="flex items-center space-x-1 text-gray-600">
-
-                      <Users className="h-4 w-4 text-teal-500" />
-                      <span>{product.users} Users</span>
-
-                    </div>
-
-                  </div>
-
-                  <p className="text-gray-700 mb-4 text-base grow">
-                    {product.description}
-                  </p>
-
-                  <button className="inline-flex items-center justify-center gap-2 rounded-lg text-base font-semibold bg-teal-500 text-white hover:bg-teal-600 h-11 px-6 py-2 w-full transition-all mt-auto shadow-md hover:shadow-lg">
-                    View Details
-                    <ArrowRight className="h-5 w-5" />
-                  </button>
-
+                  <p className="text-xs text-slate-600 mb-6 font-normal">{product.desc}</p>
+                  <ul className="space-y-2 mb-6 pt-4 border-t border-blue-100">
+                    {product.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
+                        <Check className="h-4 w-4 text-[#0066FF] shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-              </div>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-xs font-bold text-[#0066FF] bg-blue-50/80 hover:bg-[#0066FF] hover:text-white border border-blue-200 hover:border-[#0066FF] transition-all duration-300 mt-auto shadow-xs"
+                >
+                  <span>Request Enterprise Demo</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </Card3D>
             ))}
-
           </div>
-
         </div>
-
       </section>
-      <section className="py-10 bg-linear-to-r from-teal-50 via-white to-teal-100 text-gray-900">
 
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center mb-16">
-
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-700 mb-4">
-              Complete Product Suite
+      {/* Featured Turnkey Products */}
+      <section className="py-24 bg-[#F8FAFC]/90 border-b border-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display mb-4">
+              Turnkey SaaS & Ready Solutions
             </h2>
-
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Comprehensive solutions for every aspect of your
-              business.
+            <p className="text-sm sm:text-base text-slate-600 font-medium">
+              Battle-tested, ready-to-deploy platforms trusted by thousands of enterprise users globally.
             </p>
-
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="rounded-xl bg-white/80 backdrop-blur-md border border-teal-100 shadow-lg hover:shadow-2xl transition hover:scale-[1.02] duration-300 flex flex-col"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {turnkeyProducts.map((p) => (
+              <Card3D
+                key={p.id}
+                intensity={12}
+                className="cloud-card p-8 border border-blue-100/90 hover:border-blue-300 rounded-3xl flex flex-col justify-between group"
               >
-
-                <div className="flex flex-col space-y-1.5 p-6 grow">
-
-                  <div className="flex items-start space-x-3 mb-4">
-
-                    <div className="bg-teal-500 w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-md">
-                      {product.icon}
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] shadow-inner">
+                      {p.icon}
                     </div>
-
-                    <div className="flex flex-col grow">
-
-                      <h3 className="font-extrabold text-xl text-teal-800">
-                        {product.title}
-
-                      </h3>
-
-                      <div className="inline-flex items-center rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700 w-fit mt-1">
-                        {product.category}
-
-                      </div>
-
-                    </div>
-
+                    <span className="text-[10px] font-mono font-bold text-[#0066FF] px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200">
+                      {p.category}
+                    </span>
                   </div>
 
-                  <div className="flex items-center justify-between text-sm mb-3 pt-3 border-t border-gray-100">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 font-display group-hover:text-[#0066FF] transition">
+                    {p.title}
+                  </h3>
 
-                    <div className="flex items-center space-x-1 text-teal-600">
-
-                      <Star className="h-4 w-4 fill-amber-400 stroke-amber-400" />
-
-                      <span className="font-semibold">{product.rating}</span>
-
+                  <div className="flex items-center gap-4 text-xs text-slate-500 mb-4 pb-4 border-b border-blue-100 font-medium">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      <Star className="w-3.5 h-3.5 fill-amber-500" />
+                      <span className="font-bold text-slate-900">{p.rating}</span>
                     </div>
-
-                    <div className="flex items-center space-x-1 text-gray-600">
-
-                      <Users className="h-4 w-4 text-teal-500" />
-                      <span>{product.users} Users</span>
-
+                    <div className="flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5 text-[#0066FF]" />
+                      <span>{p.users} Users</span>
                     </div>
-
                   </div>
 
-                  <p className="text-base text-gray-700 grow">
-                    {product.description}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    {p.description}
                   </p>
-
                 </div>
 
-                <div className="p-6 pt-0 flex justify-between items-center mt-auto">
-
+                <div className="pt-6 border-t border-blue-100 flex items-center justify-between mt-auto">
                   <div>
-
-                    <p className="text-xl font-extrabold text-teal-600">
-                      {product.price}
-                    </p>
-
-                    {product.free && (
-                      <p className="text-xs text-gray-500">
-                        Free tier available
-                      </p>
-                    )}
-
+                    <div className="text-[10px] font-mono uppercase text-slate-500 font-medium">License</div>
+                    <div className="text-xl font-black text-slate-900 font-display">{p.price}</div>
                   </div>
-
-                  <button className="inline-flex items-center justify-center gap-2 bg-teal-500 text-white hover:bg-teal-600 h-10 rounded-lg px-4 text-base font-semibold transition shadow-md hover:shadow-lg">
-                    Buy Now
-                  </button>
-
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] transition shadow-md"
+                  >
+                    <span>Deploy Solution</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
-
-              </div>
+              </Card3D>
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-      <section className="py-20 bg-linear-to-r from-teal-100 via-white to-teal-50 text-gray-900 text-center">
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <h2 className="text-3xl md:text-4xl font-bold text-teal-700 mb-6">
-            Ready to Transform Your Business?
+      {/* Custom Solution CTA */}
+      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-[#F0F7FF] text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 font-display mb-4">
+            Need a Custom Architecture?
           </h2>
-
-          <p className="text-lg mb-8 text-gray-700">
-            Choose from our suite of products or let us build a
-            custom solution             for you.
+          <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-medium">
+            Choose from our existing suite of turnkey platforms or collaborate with ATS architects to engineer a completely bespoke software solution.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-            <button className="inline-flex items-center justify-center gap-2 bg-teal-500 text-white hover:bg-teal-600 h-11 rounded-lg px-8 py-3 w-full sm:w-auto font-semibold shadow-lg hover:shadow-xl">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/lets-create"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_8px_25px_rgba(0,102,255,0.35)] transition w-full sm:w-auto"
+            >
               Get Custom Solution
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-
-            <button className="inline-flex items-center justify-center gap-2 border border-teal-400 text-teal-600 hover:bg-teal-100 h-11 rounded-lg px-8 py-3 w-full sm:w-auto font-semibold shadow-md hover:shadow-lg">
-              <Award className="mr-2 h-5 w-5" /> Enterprise Demo
-
-            </button>
-
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-slate-800 bg-white border border-blue-200 hover:bg-slate-50 transition w-full sm:w-auto shadow-sm"
+            >
+              Schedule Architecture Demo
+            </Link>
           </div>
-
         </div>
-
       </section>
-
     </div>
   );
 };

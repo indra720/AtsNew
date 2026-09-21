@@ -1,9 +1,10 @@
 import React from "react";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Card3D from "./ui/Card3D";
 
 interface Testimonial {
   id: number;
@@ -21,10 +22,8 @@ const testimonials: Testimonial[] = [
     name: "Aditya Sharma",
     role: "CEO, TechCorp Industries",
     company: "TechCorp Industries",
-    image:
-      "https://plus.unsplash.com/premium_photo-1689977871600-e755257fb5f8?w=600&auto=format&fit=crop&q=60",
-    quote:
-      "ATS GLOBAL TECH transformed our entire digital infrastructure. Their expertise in cloud migration saved us 40% in operational costs while improving performance dramatically.",
+    image: "https://plus.unsplash.com/premium_photo-1689977871600-e755257fb5f8?w=600&auto=format&fit=crop&q=60",
+    quote: "ATS GLOBAL TECH transformed our entire digital infrastructure. Their expertise in cloud migration saved us 40% in operational costs while improving performance dramatically.",
     rating: 5,
   },
   {
@@ -33,8 +32,7 @@ const testimonials: Testimonial[] = [
     role: "CTO, InnovateLtd",
     company: "InnovateLtd",
     image: "https://images.pexels.com/photos/7580821/pexels-photo-7580821.jpeg",
-    quote:
-      "Working with ATS GLOBAL TECH was a game-changer. They delivered a complex AI-powered platform ahead of schedule and below budget. Exceptional team!",
+    quote: "Working with ATS GLOBAL TECH was a game-changer. They delivered a complex AI-powered platform ahead of schedule and below budget. Exceptional team!",
     rating: 5,
   },
   {
@@ -43,8 +41,7 @@ const testimonials: Testimonial[] = [
     role: "Founder, StartupX",
     company: "StartupX",
     image: "https://images.pexels.com/photos/7580971/pexels-photo-7580971.jpeg",
-    quote:
-      "From MVP to enterprise-scale solution, ATS GLOBAL TECH has been our technology partner every step of the way. Their scalable solutions grew with our business.",
+    quote: "From MVP to enterprise-scale solution, ATS GLOBAL TECH has been our technology partner every step of the way. Their scalable solutions grew with our business.",
     rating: 5,
   },
   {
@@ -52,116 +49,72 @@ const testimonials: Testimonial[] = [
     name: "Esha Verma",
     role: "VP Technology, DataFlow",
     company: "DataFlow",
-    image:
-      "https://images.pexels.com/photos/32251444/pexels-photo-32251444.jpeg",
-    quote:
-      "The mobile app they developed for us has over 100K downloads and 4.8 stars on app stores. Outstanding user experience and rock-solid performance.",
+    image: "https://images.pexels.com/photos/32251444/pexels-photo-32251444.jpeg",
+    quote: "The mobile app they developed for us has over 100K downloads and 4.8 stars on app stores. Outstanding user experience and rock-solid performance.",
     rating: 5,
   },
 ];
 
-const ClientTestimonials: React.FC = () => {
+export const ClientTestimonials: React.FC = () => {
   return (
-    <section
-      className="py-6 bg-white"
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
+    <section className="relative py-24 bg-white/90 text-slate-900 overflow-hidden border-t border-blue-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>ENTERPRISE ENDORSEMENTS</span>
+          </div>
 
-        <div className="text-center mb-12 md:mb-16 lg:mb-20" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display mb-4">
             What Our Clients Say
           </h2>
 
-
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Trusted by leaders across industries, our clients share how our
-            expertise helped them accelerate innovation and achieve measurable
-            success.
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+            Trusted by technology leaders across industries, our partners share how our architecture helped them accelerate innovation and achieve market dominance.
           </p>
         </div>
 
-
-        <div className="relative group">
-          <Swiper
-            modules={[Autoplay, Navigation]}
-            spaceBetween={24}
-            slidesPerView={1}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            navigation={{
-              nextEl: ".testimonial-button-next",
-              prevEl: ".testimonial-button-prev",
-            }}
-            className="pb-12 flex! items-stretch! p-5"
-          >
-            {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={testimonial.id} className="h-auto! flex pb-2">
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay={index * 150}
-                  className="rounded-2xl bg-white border border-gray-200 shadow-xl
-                  hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 md:p-10
-                  relative overflow-hidden group flex flex-col justify-between h-full w-full"
-                >
-
-                  <div className="absolute top-4 right-4 md:top-6 md:right-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Quote className="h-10 w-10 md:h-12 md:w-12 text-teal-600" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {testimonials.map((t) => (
+            <Card3D
+              key={t.id}
+              intensity={12}
+              glowColor="rgba(0, 102, 255, 0.1)"
+              className="cloud-card p-6 flex flex-col justify-between border border-blue-100/90 hover:border-blue-300 rounded-3xl group"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-1 text-amber-400">
+                    {[...Array(t.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    ))}
                   </div>
-
-                  {/* Content Section - grows to fill space */}
-                  <div className="grow">
-                    <div className="flex justify-start mb-4">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-5 h-5 md:w-6 md:h-6 text-teal-500 fill-teal-500 drop-shadow-sm"
-                        />
-                      ))}
-                    </div>
-
-                    <blockquote className="text-gray-700 text-base md:text-lg italic mb-6 leading-relaxed">
-                      “{testimonial.quote}”
-                    </blockquote>
-                  </div>
-
-                  {/* Footer Section - sticks to bottom */}
-                  <div className="flex items-center space-x-4 pt-4 border-t border-gray-100 mt-auto">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      onError={(e) =>
-                      (e.currentTarget.src =
-                        "https://placehold.co/64x64/E2E8F0/475569?text=User")
-                      }
-                      className="w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-teal-600 object-cover shrink-0"
-                    />
-                    <div>
-                      <h4 className="font-bold text-gray-900 text-base md:text-lg">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-teal-600 font-medium text-sm md:text-base">
-                        {testimonial.role}
-                      </p>
-                      <p className="text-gray-500 text-xs md:text-sm">
-                        {testimonial.company}
-                      </p>
-                    </div>
-                  </div>
+                  <Quote className="w-6 h-6 text-[#0066FF]/30 group-hover:text-[#0066FF] transition" />
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
 
-          <div className="testimonial-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-            <ChevronLeft className="w-5 h-5" />
-          </div>
-          <div className="testimonial-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-            <ChevronRight className="w-5 h-5" />
-          </div>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 italic font-medium">
+                  "{t.quote}"
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 pt-4 border-t border-blue-100 mt-auto">
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  className="w-11 h-11 rounded-full object-cover border-2 border-[#0066FF]/60 shadow-sm"
+                  onError={(e) => {
+                    e.currentTarget.src = `https://placehold.co/100x100/0066FF/ffffff?text=${t.name.charAt(0)}`;
+                  }}
+                />
+                <div>
+                  <div className="text-sm font-bold text-slate-900 font-display group-hover:text-[#0066FF] transition">
+                    {t.name}
+                  </div>
+                  <div className="text-[11px] text-slate-500 font-medium">{t.role}</div>
+                </div>
+              </div>
+            </Card3D>
+          ))}
         </div>
       </div>
     </section>

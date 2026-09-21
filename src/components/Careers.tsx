@@ -9,9 +9,12 @@ import {
   Loader2,
   CheckCircle,
   AlertTriangle,
+  ArrowRight,
+  Sparkles,
+  UploadCloud,
+  FileText,
 } from "lucide-react";
-
-const API_BASE_URL = "http://localhost:5000";
+import Card3D from "./ui/Card3D";
 
 interface Job {
   title: string;
@@ -21,644 +24,283 @@ interface Job {
   location: string;
 }
 
-interface ApplyFormData {
-  name: string;
-  email: string;
-  phone: string;
-  experience: string;
-  resume: File | null;
-  image: File | null;
-  message: string;
-}
-
-interface NonTechFormData {
-  fullName: string;
-  email: string;
-  phone: string;
-  category: string;
-  experience: string;
-  resume: File | null;
-  image: File | null;
-  message: string;
-}
-
-interface ApplyModalProps {
-  job: Job;
-  onClose: () => void;
-}
-
-
 const jobs: Job[] = [
   {
     title: "Senior Full Stack Developer",
-    image:
-      "https://placehold.co/600x400/0f766e/ffffff?text=Full+Stack",
-    description:
-      "Lead the development of scalable web applications and mentor junior developers, focusing on modern React and Node.js solutions.",
+    image: "https://placehold.co/600x400/0f172a/00f2fe?text=Full+Stack",
+    description: "Lead the architecture and implementation of scalable web applications, mentor junior developers, and engineer modern React and Node.js solutions.",
     tags: ["React", "Node.js", "TypeScript", "AWS"],
-    location: "Jaipur, Rajasthan",
+    location: "Jaipur, Rajasthan (Hybrid)",
   },
   {
-    title: "DevOps Engineer",
-    image:
-      "https://placehold.co/600x400/0f766e/ffffff?text=DevOps+Pipeline",
-    description:
-      "Design and maintain CI/CD pipelines and robust cloud infrastructure using containerization and automation tools.",
-    tags: ["Docker", "Kubernetes", "AWS", "Terraform"],
-    location: "Remote",
+    title: "UI/UX Product Designer",
+    image: "https://placehold.co/600x400/0f172a/6366f1?text=UI+UX+Design",
+    description: "Create intuitive, aesthetically superior digital experiences for enterprise web and mobile platforms, working closely with engineering leads.",
+    tags: ["Figma", "Design Systems", "Prototyping", "User Research"],
+    location: "Jaipur, Rajasthan (Hybrid)",
   },
   {
-    title: "UI/UX Designer",
-    image:
-      "https://placehold.co/600x400/0f766e/ffffff?text=UI%2FUX+Design",
-    description:
-      "Create intuitive and beautiful user experiences for our products. Focus on accessibility and modern design trends.",
-    tags: ["Figma", "Adobe XD", "Prototyping", "User Research", "Accessibility"],
-    location: "Jaipur, Rajasthan",
+    title: "Cloud DevOps Engineer",
+    image: "https://placehold.co/600x400/0f172a/3b82f6?text=Cloud+DevOps",
+    description: "Design and maintain resilient multi-region cloud infrastructure, automate CI/CD pipelines, and guarantee high-availability Kubernetes deployments.",
+    tags: ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD"],
+    location: "Jaipur, Rajasthan (Hybrid)",
   },
   {
-    title: "Data Scientist",
-    image:
-      "https://placehold.co/600x400/0f766e/ffffff?text=Data+Science",
-    description: "Analyze complex data sets and build predictive models using advanced statistical methods and ML frameworks.",
-    tags: ["Python", "Machine Learning", "SQL", "TensorFlow"],
-    location: "Jaipur, Rajasthan",
+    title: "Lead Data Scientist / AI Engineer",
+    image: "https://placehold.co/600x400/0f172a/a855f7?text=Data+Science",
+    description: "Analyze complex enterprise data sets, train predictive machine learning models, and implement production-ready LLM automation pipelines.",
+    tags: ["Python", "Machine Learning", "SQL", "TensorFlow", "PyTorch"],
+    location: "Jaipur, Rajasthan (Hybrid)",
   },
   {
-    title: "Product Manager",
-    image:
-      "https://placehold.co/600x400/0f766e/ffffff?text=Product+Strategy",
-    description: "Drive product vision and strategy for our key initiatives, working closely with engineering and marketing teams.",
-    tags: ["Agile", "Leadership", "Analytics", "Strategy"],
-    location: "Jaipur, Rajasthan",
+    title: "Technical Product Manager",
+    image: "https://placehold.co/600x400/0f172a/f59e0b?text=Product+Strategy",
+    description: "Drive product vision, roadmap strategy, and sprint execution for our key platforms, working cross-functionally across design and engineering.",
+    tags: ["Agile/Scrum", "Tech Roadmap", "Analytics", "System Strategy"],
+    location: "Jaipur, Rajasthan (Hybrid)",
   },
   {
     title: "Cybersecurity Specialist",
-    image:
-      "https://placehold.co/600x400/0f766e/ffffff?text=Security+Specialist",
-    description:
-      "Protect our systems, conduct vulnerability assessments, and ensure compliance with all security standards.",
-    tags: ["Penetration Testing", "CISSP", "Network Security"],
-    location: "Jaipur, Rajasthan",
+    image: "https://placehold.co/600x400/0f172a/10b981?text=Security+Specialist",
+    description: "Perform penetration testing, zero-trust infrastructure audits, vulnerability remediation, and ensure compliance with SOC2 and ISO standards.",
+    tags: ["Penetration Testing", "CISSP", "Zero-Trust", "Compliance"],
+    location: "Jaipur, Rajasthan (Hybrid)",
   },
 ];
 
-
-const CustomAlert: React.FC<{ type: 'success' | 'error', message: string }> = ({ type, message }) => {
-    const isSuccess = type === 'success';
-    const Icon = isSuccess ? CheckCircle : AlertTriangle;
-    const bgColor = isSuccess ? 'bg-green-100 border-green-400 text-green-700' : 'bg-red-100 border-red-400 text-red-700';
-
-    return (
-        <div className={`mt-4 p-4 border rounded-xl flex items-center shadow-md ${bgColor}`} role="alert">
-            <Icon className="w-5 h-5 mr-3 shrink-0" />
-            <p className="text-sm font-medium">{message}</p>
-        </div>
-    );
-};
-
-const ApplyModal: React.FC<ApplyModalProps> = ({ job, onClose }) => {
-  const [form, setForm] = useState<ApplyFormData>({
+export const Careers: React.FC = () => {
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     experience: "",
-    resume: null,
-    image: null,
     message: "",
   });
+  const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<'success' | 'error' | null>(null);
-  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const target = e.target as HTMLInputElement;
-    const { name, value, files } = target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: files && files.length > 0 ? files[0] : value,
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setStatus(null);
-    setMessage('');
-
-
-    try {
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        const success = Math.random() > 0.1;
-
-        if (success) {
-            setStatus('success');
-            setMessage(`Thank you, ${form.name}! Your application for ${job.title} has been received.`);
-            setForm({
-                name: "",
-                email: "",
-                phone: "",
-                experience: "",
-                resume: null,
-                image: null,
-                message: "",
-            });
-        } else {
-            setStatus('error');
-            setMessage("Application submission failed. Please check your inputs and try again.");
-        }
-    } catch (err) {
-        setStatus('error');
-        setMessage("A server error occurred during submission.");
-    } finally {
-        setLoading(false);
-    }
+    setTimeout(() => {
+      setLoading(false);
+      setStatus("success");
+      setTimeout(() => {
+        setStatus(null);
+        setSelectedJob(null);
+        setForm({ name: "", email: "", phone: "", experience: "", message: "" });
+        setFileName("");
+      }, 3000);
+    }, 1200);
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-start justify-center z-50 p-4 sm:p-8 overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-lg w-full mt-10 mb-10 p-6 relative">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-teal-600 transition p-1 rounded-full bg-gray-50 hover:bg-teal-50"
-        >
-          <X size={24} />
-        </button>
+    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen">
+      {/* Header */}
+      <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <h2 className="text-2xl font-bold text-teal-700 mb-6 border-b pb-3">
-          Apply for <span className="text-cyan-600">{job.title}</span>
-        </h2>
-        <p className="text-sm text-gray-500 mb-4">Location: {job.location}</p>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded-xl p-3 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded-xl p-3 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number (e.g., +91 98765 43210)"
-            value={form.phone}
-            onChange={handleChange}
-            required
-            className="w-full border border-gray-300 rounded-xl p-3 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-          />
-          <input
-            type="text"
-            name="experience"
-            placeholder="Years of Experience (e.g., 5)"
-            value={form.experience}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-xl p-3 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="text-sm text-gray-700 block mb-1 font-medium">
-                Upload Resume (PDF/DOC) <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf,.doc,.docx"
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 rounded-xl p-2 text-sm file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition cursor-pointer"
-              />
-            </div>
-            <div>
-              <label className="text-sm text-gray-700 block mb-1 font-medium">
-                Upload Image (Optional)
-              </label>
-              <input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-xl p-2 text-sm file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition cursor-pointer"
-              />
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>JOIN OUR INNOVATION HUB</span>
           </div>
 
-          <textarea
-            name="message"
-            rows={4}
-            placeholder="Why do you want to join us? (Cover Letter)"
-            value={form.message}
-            onChange={handleChange}
-            className="w-full border border-gray-300 rounded-xl p-3 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-          />
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
+            Careers at <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">ATS GLOBAL TECH</span>
+          </h1>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full flex items-center justify-center bg-linear-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            {loading ? (
-              <>
-                <Loader2 className="h-5 w-5 mr-2 animate-spin" /> Submitting...
-              </>
-            ) : (
-              "Submit Application"
-            )}
-          </button>
-        </form>
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-sans">
+            We are looking for exceptional engineers, architects, and designers to build transformative software systems for global leaders.
+          </p>
 
-        {status && <CustomAlert type={status} message={message} />}
-
-        <p className="mt-4 text-xs text-center text-gray-500">
-            Note: This is a placeholder submission and will not be sent to a server.
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const NonTechForm: React.FC = () => {
-  const [form, setForm] = useState<NonTechFormData>({
-    fullName: "",
-    email: "",
-    phone: "",
-    category: "",
-    experience: "",
-    resume: null,
-    image: null,
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<'success' | 'error' | null>(null);
-  const [message, setMessage] = useState('');
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    if (!files || files.length === 0) return;
-    setForm((prev) => ({
-      ...prev,
-      [name]: files[0],
-    }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus(null);
-    setMessage('');
-
-
-    try {
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        const success = Math.random() > 0.1;
-
-        if (success) {
-            setStatus('success');
-            setMessage(`Thank you, ${form.fullName}! Your application for ${form.category || 'Other Role'} has been received.`);
-            setForm({
-                fullName: "",
-                email: "",
-                phone: "",
-                category: "",
-                experience: "",
-                resume: null,
-                image: null,
-                message: "",
-            });
-        } else {
-            setStatus('error');
-            setMessage("Application submission failed. Please try again.");
-        }
-    } catch (err: any) {
-        setStatus('error');
-        setMessage("A server error occurred during submission.");
-    } finally {
-        setLoading(false);
-    }
-  };
-
-  return (
-    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-gray-200 h-fit lg:sticky lg:top-10">
-      <h2 className="text-2xl font-bold text-teal-700 mb-4">
-        Apply for <span className="text-cyan-600">Other Roles</span>
-      </h2>
-      <p className="text-gray-500 text-sm mb-6">
-          If your expertise doesn't fit a specific technical role, tell us about yourself here.
-      </p>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          name="fullName"
-          placeholder="Full Name"
-          value={form.fullName}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-        />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={form.email}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-        />
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone Number"
-          value={form.phone}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-        />
-
-        <select
-          name="category"
-          value={form.category}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl appearance-none bg-white focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-        >
-          <option value="" disabled>Select Category *</option>
-          <option value="Non-Technical">Non-Technical</option>
-          <option value="Support">Support</option>
-          <option value="HR / Management">HR / Management</option>
-          <option value="Marketing / Sales">Marketing / Sales</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <input
-          type="text"
-          name="experience"
-          placeholder="Years of Relevant Experience (e.g., 2)"
-          value={form.experience}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-        />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-gray-700 text-sm mb-1 font-medium">
-              Resume (PDF/DOC) <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="file"
-              name="resume"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFileChange}
-              required
-              className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm file:mr-3 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition cursor-pointer"
-            />
+          {/* Perks Bento */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-20">
+            {[
+              { title: "Work-Life Synergy", desc: "Flexible hybrid working options, generous time off, and respect for personal time.", icon: Coffee },
+              { title: "Continuous Learning", desc: "Annual education stipends, conference tickets, and full access to certification courses.", icon: GraduationCap },
+              { title: "Comprehensive Wellness", desc: "Premium health insurance for you and your dependents plus gym allowances.", icon: Heart },
+              { title: "Equity & Fast Growth", desc: "Merit-driven promotion tracks, performance bonuses, and long-term equity options.", icon: Gift },
+            ].map((perk, i) => {
+              const Icon = perk.icon;
+              return (
+                <Card3D key={i} intensity={8} className="cloud-card p-6 rounded-3xl">
+                  <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-4 shadow-inner">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-base font-black text-slate-900 mb-2 font-display">{perk.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans">{perk.desc}</p>
+                </Card3D>
+              );
+            })}
           </div>
 
-          <div>
-            <label className="block text-gray-700 text-sm mb-1 font-medium">
-              Image (Optional)
-            </label>
-            <input
-              type="file"
-              name="image"
-              accept="image/*"
-              onChange={handleFileChange}
-              className="w-full border border-gray-300 rounded-xl px-3 py-2 text-sm file:mr-3 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100 transition cursor-pointer"
-            />
-          </div>
-        </div>
-
-        <textarea
-          name="message"
-          placeholder="Tell us why you want to join ATS GLOBAL TECH"
-          rows={4}
-          value={form.message}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:border-teal-500 focus:ring-2 focus:ring-teal-200 transition"
-        ></textarea>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full flex items-center justify-center bg-linear-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-xl font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="h-5 w-5 mr-2 animate-spin" /> Submitting...
-            </>
-          ) : (
-            "Submit Non-Technical Application"
-          )}
-        </button>
-
-        {status && <CustomAlert type={status} message={message} />}
-      </form>
-    </div>
-  );
-};
-
-const Careers: React.FC = () => {
-  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-
-  return (
-
-    <div className="min-h-screen font-sans bg-gray-50">
-      <section className="relative pt-20 pb-12 bg-linear-to-br from-teal-50 via-white to-cyan-100 text-gray-900 overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-[400px] h-[400px] bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-
-        <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="text-left py-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-              Join Our
-              <span className="bg-linear-to-r from-teal-500 to-cyan-400 bg-clip-text text-transparent">
-                Amazing Team
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700 max-w-xl mb-10">
-              Be part of a team that's shaping the digital future. Explore our
-              open positions and grow your career with
-              <span className="text-teal-600 font-bold">
-                ATS GLOBAL TECH
-              </span>.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-white shadow-lg rounded-2xl p-6 border border-teal-100 hover:shadow-xl transition transform hover:scale-[1.02]">
-                <h3 className="text-xl font-semibold text-teal-600 mb-2">
-                  🚀 Innovative Projects
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Work on tech solutions that challenge your creativity and impact millions of users.
-                </p>
-              </div>
-
-              <div className="bg-white shadow-lg rounded-2xl p-6 border border-teal-100 hover:shadow-xl transition transform hover:scale-[1.02]">
-                <h3 className="text-xl font-semibold text-teal-600 mb-2">
-                  🌍 Global Culture
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Collaborate with diverse and supportive teams across the globe, promoting inclusion.
-                </p>
-              </div>
-
-              <div className="bg-white shadow-lg rounded-2xl p-6 border border-teal-100 hover:shadow-xl transition transform hover:scale-[1.02]">
-                <h3 className="text-xl font-semibold text-teal-600 mb-2">
-                  💼 Career Growth
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Learn & grow with structured mentorship, clear career paths, and generous learning budgets.
-                </p>
-              </div>
-
-              <div className="bg-white shadow-lg rounded-2xl p-6 border border-teal-100 hover:shadow-xl transition transform hover:scale-[1.02]">
-                <h3 className="text-xl font-semibold text-teal-600 mb-2">
-                  🤝 Friendly Team
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Enjoy a supportive, passionate, and collaborative work environment where your voice is heard.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <NonTechForm />
-        </div>
-      </section>
-
-
-      <section className="py-6 bg-white text-gray-900">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-extrabold text-center text-teal-700 mb-12">
-                Technical Openings
+          {/* Open Roles */}
+          <div className="text-left mb-12">
+            <h2 className="text-2xl sm:text-4xl font-black text-[#0A1629] font-display">
+              Open Positions (Jaipur HQ / Hybrid)
             </h2>
+            <p className="text-sm text-slate-600 mt-1 font-sans">Select an opening to review requirements and submit your application.</p>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-4">
-              {jobs.map((job) => (
-                <div
-                  key={job.title}
-                  className="bg-white border border-gray-200 rounded-xl shadow-xl hover:shadow-2xl hover:border-teal-400 transition transform hover:-translate-y-1 overflow-hidden flex flex-col h-full"
-                >
-                  <img
-                    src={job.image}
-                    alt={job.title}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {jobs.map((job, idx) => (
+              <Card3D
+                key={idx}
+                intensity={10}
+                className="cloud-card p-6 rounded-3xl flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs text-[#0066FF] font-mono font-bold mb-2">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>{job.location}</span>
+                  </div>
 
-                    className="w-full h-48 object-cover object-center"
+                  <h3 className="text-xl font-black text-[#0A1629] mb-2 font-display group-hover:text-[#0066FF] transition">
+                    {job.title}
+                  </h3>
 
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = `https://placehold.co/600x400/0f766e/ffffff?text=${encodeURIComponent(job.title)}`;
-                    }}
-                  />
-                  <div className="p-6 flex flex-col grow">
-                    <h3 className="text-2xl font-bold text-teal-700 mb-2">
-                      {job.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4 grow">
-                      {job.description}
-                    </p>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-6 font-sans">
+                    {job.description}
+                  </p>
 
-                    <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-                      {job.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-3 py-1 bg-cyan-50 text-cyan-700 rounded-full font-medium border border-cyan-200"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <p className="text-sm text-gray-600 flex items-center gap-2 mb-4 pt-3 border-t border-gray-100">
-                      <MapPin className="h-4 w-4 text-teal-500" /> {job.location}
-                    </p>
-
-                    <button
-                      onClick={() => setSelectedJob(job)}
-                      className="w-full bg-linear-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-xl font-bold hover:from-teal-600 hover:to-cyan-600 transition shadow-md hover:shadow-lg"
-                    >
-                      Apply Now
-                    </button>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {job.tags.map((t) => (
+                      <span key={t} className="px-2.5 py-1 rounded-full bg-[#EBF5FF] border border-blue-200 text-[10px] font-mono font-bold text-[#0066FF]">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
-        </div>
-      </section>
 
-
-      <section className="py-6 bg-teal-50">
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-teal-700 mb-12">
-            What We Offer You
-          </h2>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
-            <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-              <Heart className="h-8 w-8 text-rose-500 mb-3" />
-              <p className="text-base font-semibold text-gray-800">
-                Health & Wellness
-              </p>
-              <p className="text-xs text-gray-500 mt-1">Comprehensive coverage.</p>
-            </div>
-            <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-              <Coffee className="h-8 w-8 text-yellow-600 mb-3" />
-              <p className="text-base font-semibold text-gray-800">
-                Flexible Hours
-              </p>
-              <p className="text-xs text-gray-500 mt-1">Work-life balance focus.</p>
-            </div>
-            <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-              <GraduationCap className="h-8 w-8 text-blue-500 mb-3" />
-              <p className="text-base font-semibold text-gray-800">
-                Learning Budget
-              </p>
-              <p className="text-xs text-gray-500 mt-1">Invest in your skills.</p>
-            </div>
-            <div className="flex flex-col items-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition">
-              <Gift className="h-8 w-8 text-purple-600 mb-3" />
-              <p className="text-base font-semibold text-gray-800">
-                Performance Bonus
-              </p>
-              <p className="text-xs text-gray-500 mt-1">Rewarding your success.</p>
-            </div>
+                <button
+                  onClick={() => setSelectedJob(job)}
+                  className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-xs font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_4px_16px_rgba(0,102,255,0.25)] transition duration-300 mt-auto cursor-pointer"
+                >
+                  <span>Apply For Role</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </Card3D>
+            ))}
           </div>
         </div>
       </section>
 
-
+      {/* Application Modal */}
       {selectedJob && (
-        <ApplyModal job={selectedJob} onClose={() => setSelectedJob(null)} />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-md">
+          <div className="relative w-full max-w-lg bg-white/95 border border-blue-200 rounded-3xl p-6 sm:p-8 shadow-[0_20px_60px_-15px_rgba(0,102,255,0.2)] backdrop-blur-2xl">
+            <button
+              onClick={() => setSelectedJob(null)}
+              className="absolute top-5 right-5 p-2 text-slate-400 hover:text-slate-800 rounded-full bg-blue-50 hover:bg-blue-100 transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <h3 className="text-2xl font-black text-[#0A1629] font-display mb-1">
+              Apply for {selectedJob.title}
+            </h3>
+            <p className="text-xs text-[#0066FF] font-semibold mb-6">{selectedJob.location}</p>
+
+            {status === "success" ? (
+              <div className="p-6 text-center text-[#0066FF] space-y-2">
+                <CheckCircle className="w-12 h-12 text-[#0066FF] mx-auto" />
+                <h4 className="text-lg font-black text-slate-900 font-display">Application Transmitted!</h4>
+                <p className="text-xs text-slate-600">Thank you! Our recruitment team will review your resume and contact you soon.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-3.5">
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1 uppercase">Full Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Jane Doe"
+                    className="w-full bg-[#F0F7FF]/60 border border-blue-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-slate-700 mb-1 uppercase">Email *</label>
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="jane@example.com"
+                      className="w-full bg-[#F0F7FF]/60 border border-blue-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-slate-700 mb-1 uppercase">Phone *</label>
+                    <input
+                      type="tel"
+                      required
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="+91 9999999999"
+                      className="w-full bg-[#F0F7FF]/60 border border-blue-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1 uppercase">Years of Relevant Experience *</label>
+                  <input
+                    type="text"
+                    required
+                    value={form.experience}
+                    onChange={(e) => setForm({ ...form, experience: e.target.value })}
+                    placeholder="e.g. 5+ Years"
+                    className="w-full bg-[#F0F7FF]/60 border border-blue-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1 uppercase">Resume / CV (PDF / DOCX) *</label>
+                  <label className="border-2 border-dashed border-blue-200 hover:border-[#0066FF] rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer bg-[#F0F7FF]/40 hover:bg-blue-50/70 transition">
+                    <UploadCloud className="w-6 h-6 text-[#0066FF] mb-1" />
+                    <span className="text-xs text-slate-600 font-medium">{fileName || "Click to upload your resume"}</span>
+                    <input
+                      type="file"
+                      required
+                      accept=".pdf,.doc,.docx"
+                      className="hidden"
+                      onChange={(e) => {
+                        if (e.target.files?.[0]) setFileName(e.target.files[0].name);
+                      }}
+                    />
+                  </label>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono font-bold text-slate-700 mb-1 uppercase">Brief Introduction</label>
+                  <textarea
+                    rows={3}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Why are you excited to join ATS Global Tech?"
+                    className="w-full bg-[#F0F7FF]/60 border border-blue-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full py-3.5 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_6px_20px_rgba(0,102,255,0.3)] transition flex items-center justify-center gap-2 mt-4 cursor-pointer"
+                >
+                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Submit Application"}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

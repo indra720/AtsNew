@@ -1,237 +1,186 @@
 import React from "react";
-import { ArrowRight, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle, ExternalLink, Sparkles } from "lucide-react";
+import Card3D from "./ui/Card3D";
 
-interface CaseStudy {
-  id: number;
-  title: string;
-  client: string;
-  category: string;
-  image: string;
-  description: string;
-  points: string[];
-  tags: string[];
-  link: string;
-}
-
-const caseStudies: CaseStudy[] = [
+const caseStudies = [
   {
     id: 1,
     title: "AI-Powered E-Commerce Platform",
     client: "RetailMax Inc.",
-    category: "Web Development",
-    image:
-      "https://plus.unsplash.com/premium_photo-1747949065888-5a57b2d506db?w=600&auto=format&fit=crop&q=60",
-    description:
-      "A scalable AI-driven e-commerce platform offering personalized shopping experiences, dynamic product sorting, and advanced analytics.",
+    category: "Web & AI Engineering",
+    image: "https://plus.unsplash.com/premium_photo-1747949065888-5a57b2d506db?w=600&auto=format&fit=crop&q=60",
+    description: "A scalable AI-driven e-commerce platform offering personalized shopping experiences, dynamic product sorting, and advanced analytics.",
     points: [
-      "AI recommendation engine",
-      "60% faster page load",
-      "Automated inventory tracking",
+      "AI recommendation engine with sub-10ms response",
+      "60% faster page load across all mobile devices",
+      "Automated real-time inventory tracking & sync",
     ],
-    tags: ["AI", "React", "Node.js", "MongoDB"],
+    tags: ["AI/ML", "React", "Node.js", "MongoDB"],
     link: "/ai-page",
+    metricVal: "+300%",
+    metricLabel: "Revenue Uplift",
+    glow: "rgba(0, 242, 254, 0.2)",
   },
   {
     id: 2,
     title: "Secure Banking Mobile App",
     client: "Community Bank",
-    category: "Mobile App",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=300&h=200&fit=crop",
-    description:
-      "A robust mobile banking solution with real-time transactions, multi-layer security, and a seamless UI experience.",
-    points: ["Biometric login", "256-bit encryption", "Fraud detection alerts"],
-    tags: ["React Native", "PostgreSQL", "AWS"],
+    category: "FinTech & Security",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+    description: "A robust mobile banking solution with real-time transactions, multi-layer security, biometric login, and a seamless UI experience.",
+    points: [
+      "Biometric FaceID & fingerprint authentication",
+      "256-bit military grade data encryption",
+      "Real-time ML fraud detection & instant push alerts",
+    ],
+    tags: ["React Native", "PostgreSQL", "AWS", "Security"],
     link: "/secure-page",
+    metricVal: "99.9%",
+    metricLabel: "Fraud Prevented",
+    glow: "rgba(99, 102, 241, 0.2)",
   },
   {
     id: 3,
     title: "Enterprise Cloud Migration",
     client: "GlobalTech Corp",
-    category: "Cloud Solutions",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=200&fit=crop",
-    description:
-      "Migrated a complete enterprise infrastructure to cloud with zero downtime and enhanced automated deployment pipelines.",
+    category: "Cloud Architecture",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    description: "Migrated a complete enterprise infrastructure to cloud with zero downtime, high availability, and automated deployment pipelines.",
     points: [
-      "Zero-downtime migration",
-      "45% cost reduction",
-      "High availability setup",
+      "Zero-downtime database and system cutover",
+      "45% infrastructure operational cost reduction",
+      "Multi-region high availability Kubernetes clusters",
     ],
-    tags: ["AWS", "Docker", "Kubernetes"],
+    tags: ["AWS", "Docker", "Kubernetes", "Terraform"],
     link: "/cloud-page",
+    metricVal: "99.99%",
+    metricLabel: "System Uptime",
+    glow: "rgba(168, 85, 247, 0.2)",
   },
   {
     id: 4,
     title: "Healthcare Data Analytics Platform",
     client: "MedCare Solutions",
-    category: "Healthcare Tech",
-    image:
-      "https://images.unsplash.com/photo-1657727534685-36b09f84e193?q=80&w=1170&auto=format&fit=crop",
-    description:
-      "Healthcare analytics system built to track patient health, predict risks, and improve clinical workflows in real-time.",
-    points: ["HIPAA-compliant", "Predictive analytics", "Real-time dashboards"],
-    tags: ["Python", "React", "Docker"],
+    category: "Healthcare Technology",
+    image: "https://images.unsplash.com/photo-1657727534685-36b09f84e193?q=80&w=600&auto=format&fit=crop",
+    description: "Healthcare analytics system built to track patient health, predict clinical risks, and streamline medical diagnostics in real-time.",
+    points: [
+      "Full HIPAA-compliant medical data encryption",
+      "Predictive machine learning diagnostics models",
+      "Real-time physician monitoring dashboards",
+    ],
+    tags: ["Python", "React", "Docker", "Data Lake"],
     link: "/health-page",
+    metricVal: "+40%",
+    metricLabel: "Diagnosis Speed",
+    glow: "rgba(16, 185, 129, 0.2)",
   },
 ];
 
-const FeaturedSuccessStories = () => {
-  const navigate = (path: string) => {
-    console.log(`Navigating to: ${path}`);
-  };
-
+export const FeaturedSuccessStories: React.FC = () => {
   return (
-    <section
-      className="py-6 bg-white"
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-
-        <div className="text-center mb-12 md:mb-16 lg:mb-20" data-aos="fade-up">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
-            Featured Success Stories
-          </h2>
-
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-            Explore powerful, real-world transformations where our technology,
-            strategy, and innovation helped businesses achieve remarkable
-            growth.
-          </p>
+    <section className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>PROVEN TRANSFORMATIONS</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
+              Featured Success Stories
+            </h2>
+          </div>
+          <Link
+            to="/work/projects"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#0066FF] hover:text-[#0052CC] transition group"
+          >
+            <span>View All Enterprise Projects</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+          </Link>
         </div>
 
-        <div className="relative group">
-          <Swiper
-            modules={[Autoplay, Navigation]}
-            spaceBetween={24}
-            slidesPerView={1}
-            breakpoints={{
-              320: { slidesPerView: 1, spaceBetween: 15 },
-              768: { slidesPerView: 2, spaceBetween: 20 },
-              1024: { slidesPerView: 4, spaceBetween: 30 },
-            }}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            navigation={{
-              nextEl: ".featured-button-next",
-              prevEl: ".featured-button-prev",
-            }}
-            className="pb-12 flex!
- items-stretch!
-!"
-          >
-            {caseStudies.map((study, index) => (
-              <SwiperSlide key={study.id} className="flex flex-col h-auto pb-2">
-                <div
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 150}
-                  className="bg-white border border-gray-200 rounded-2xl shadow-lg
-                  hover:shadow-2xl hover:-translate-y-1 transition-all duration-500
-                  group overflow-hidden flex flex-col h-full"
-                >
+        {/* 3D Success Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {caseStudies.map((study) => (
+            <Card3D
+              key={study.id}
+              intensity={10}
+              glowColor="rgba(0, 102, 255, 0.1)"
+              className="cloud-card overflow-hidden border border-blue-100/90 hover:border-blue-300 rounded-3xl flex flex-col justify-between group"
+            >
+              {/* Media banner */}
+              <div className="relative h-60 sm:h-72 overflow-hidden">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
 
-                  <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden shrink-0">
-                    <img
-                      src={study.image}
-                      alt={study.title}
-                      onError={(e) =>
-                      (e.currentTarget.src = `https://placehold.co/600x400/E2E8F0/475569?text=${encodeURIComponent(
-                        study.title
-                      )}`)
-                      }
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-
-
-                    <div
-                      className="absolute top-4 left-4 bg-black/60 backdrop-blur-md
-                  text-white px-3 py-1 rounded-full text-xs tracking-wide shadow-md"
-                    >
-                      {study.category}
-                    </div>
-                  </div>
-
-
-                  <div className="p-6 md:p-8 flex flex-col grow">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                      {study.title}
-                    </h3>
-
-                    <p className="text-gray-500 text-sm mb-3">
-                      Client: <span className="font-semibold">{study.client}</span>
-                    </p>
-
-                    <p className="text-gray-700 text-sm mb-4 h-20 ">
-                      {study.description}
-                    </p>
-
-
-                    <ul className="space-y-1 mb-5 min-h-[90px]">
-                      {study.points.map((point, i) => (
-                        <li
-                          key={i}
-                          className="flex items-center gap-2 text-gray-700 text-sm"
-                        >
-                          <CheckCircle className="w-4 h-4 text-teal-600 shrink-0" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-
-
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {study.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-
-                    <button
-                      onClick={() => navigate(study.link)}
-                      className="inline-flex items-center justify-center gap-2 text-base font-medium
-                    text-white h-10 rounded-md px-5 w-full
-                    bg-linear-to-r from-cyan-500 to-teal-600
-                    hover:scale-[1.01] transition-all mt-auto"
-                    >
-                      View Case Study
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-mono font-bold text-[#0066FF] border border-blue-200 shadow-sm">
+                    {study.category}
+                  </span>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
 
-          <div className="featured-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-            <ChevronLeft className="w-5 h-5" />
-          </div>
-          <div className="featured-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg text-teal-600 flex items-center justify-center hover:bg-teal-600 hover:text-white transition-all cursor-pointer border border-teal-100">
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </div>
+                {/* Floating Metric Badge */}
+                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-xl border border-blue-100 rounded-2xl p-3 text-right shadow-xl">
+                  <div className="text-2xl font-black text-[#0066FF] font-display">{study.metricVal}</div>
+                  <div className="text-[10px] uppercase font-mono font-bold text-slate-600">{study.metricLabel}</div>
+                </div>
+              </div>
 
-        <div className="text-center mt-12 md:mt-16" data-aos="fade-up">
-          <button
-            onClick={() => navigate("/work/projects")}
-            className="inline-flex items-center gap-3 text-base font-medium
-            text-white px-8 py-3 rounded-md
-            bg-linear-to-r from-cyan-500 to-teal-600
-            hover:scale-105 transition-all shadow-xl"
-          >
-            View All Projects
-            <ArrowRight className="w-5 h-5" />
-          </button>
+              {/* Content body */}
+              <div className="p-6 sm:p-8 flex flex-col grow">
+                <div className="text-xs text-slate-500 font-medium mb-1">
+                  Client: <span className="text-slate-900 font-bold">{study.client}</span>
+                </div>
+
+                <h3 className="text-2xl font-black text-slate-900 mb-3 font-display group-hover:text-[#0066FF] transition">
+                  {study.title}
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                  {study.description}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {study.points.map((pt, pIdx) => (
+                    <li key={pIdx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <CheckCircle className="w-4 h-4 text-[#0066FF] shrink-0" />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                  {study.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-mono font-semibold text-[#0066FF]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  to={study.link}
+                  className="inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_8px_25px_rgba(0,102,255,0.35)] transition-all duration-300"
+                >
+                  <span>Read Full Case Study</span>
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+              </div>
+            </Card3D>
+          ))}
         </div>
       </div>
     </section>
   );
 };
+
 export default FeaturedSuccessStories;

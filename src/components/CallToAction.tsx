@@ -1,117 +1,76 @@
 import React from "react";
-import { ArrowRight, MessageSquare, Calendar, Target } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, MessageSquare, Calendar, Target, Sparkles } from "lucide-react";
+import Card3D from "./ui/Card3D";
 
-const CallToAction: React.FC = () => {
+export const CallToAction: React.FC = () => {
   return (
-    <section
-      className=" bg-white text-gray-900 relative overflow-hidden"
-      style={{ fontFamily: "Times New Roman, serif" }}
-    >
-      <div className="relative w-full px-4 sm:px-6 lg:px-8 text-center">
-        <h2
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-gray-900"
-          data-aos="fade-up"
-        >
-          Ready to Transform Your Business?
-        </h2>
+    <section className="relative py-24 bg-gradient-to-b from-white via-[#F0F7FF] to-[#E0F2FE] text-slate-900 overflow-hidden border-t border-blue-100">
+      {/* Dynamic Ambient Sky-Blue Glow Mesh */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-400/10 via-blue-500/10 to-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-
-        <p
-          className="text-lg sm:text-xl mb-6 text-gray-600 max-w-4xl mx-auto leading-relaxed"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          Join hundreds of successful companies who have partnered with us to
-          achieve digital transformation. Let’s discuss how we can accelerate
-          your growth and create solutions that drive real business value.
-        </p>
-
-
-        <p
-          className="text-base sm:text-lg mb-12 text-gray-700 max-w-3xl mx-auto leading-relaxed"
-          data-aos="fade-up"
-          data-aos-delay="350"
-        >
-          With a dedicated team, structured process, and cutting-edge
-          technology, we ensure every project receives the focus and precision
-          it deserves. Your business goals become our mission — and we deliver
-          results that create long-term impact.
-        </p>
-
-
-        <div
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16"
-          data-aos="zoom-in"
-          data-aos-delay="450"
-        >
-
-          <a href="/contact">
-            <button
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap
-              bg-linear-to-r from-cyan-500 to-teal-600 text-white h-12 rounded-md
-              w-full sm:w-auto
-              px-8 sm:px-12 py-3 text-base sm:text-xl font-semibold hover:scale-[1.05] transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              Start Your Project Today
-              <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
-            </button>
-          </a>
-
-
-          <a href="/services">
-            <button
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap
-              border border-gray-300 text-gray-800 h-12 rounded-md
-              w-full sm:w-auto
-              px-8 sm:px-12 py-3 text-base sm:text-xl font-medium hover:bg-gray-100 transition-all duration-300"
-            >
-              Explore Our Services
-            </button>
-          </a>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-6 shadow-xs">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>ACCELERATE YOUR FUTURE</span>
         </div>
 
-      
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6  mb-10 text-center">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight font-display max-w-4xl mx-auto mb-6 leading-tight">
+          Ready to Architect Your Next Breakthrough?
+        </h2>
+
+        <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10 font-medium">
+          Partner with ATS GLOBAL TECH to modernize legacy systems, automate complex workflows, and deploy resilient 
+          enterprise solutions that create measurable enterprise value.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition transform hover:scale-[1.02] w-full sm:w-auto"
+          >
+            <span>Start Your Project Today</span>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+
+          <Link
+            to="/services"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-slate-800 bg-white border border-blue-200 hover:border-[#0066FF]/40 shadow-sm transition w-full sm:w-auto hover:bg-slate-50"
+          >
+            Explore Services Catalog
+          </Link>
+        </div>
+
+        {/* 3 Guarantees Bento */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
           {[
             {
-              icon: (
-                <MessageSquare className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-4 text-teal-600" />
-              ),
-              title: "Free Consultation",
-              desc: "Get expert advice tailored to your needs",
-              animation: "flip-left",
+              icon: MessageSquare,
+              title: "Free Architecture Consultation",
+              desc: "Collaborate directly with senior solution architects tailored to your specific system requirements.",
             },
             {
-              icon: (
-                <Calendar className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-4 text-teal-600" />
-              ),
-              title: "Quick Response",
-              desc: "We respond within 24 hours",
-              animation: "flip-up",
+              icon: Calendar,
+              title: "Rapid 24-Hour Response",
+              desc: "Dedicated project onboarding team ensures quick turnarounds and zero communication lag.",
             },
             {
-              icon: (
-                <Target className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-4 text-teal-600" />
-              ),
-              title: "Customized Solutions",
-              desc: "Solutions designed specifically for you",
-              animation: "flip-right",
+              icon: Target,
+              title: "Bespoke Enterprise Fit",
+              desc: "Every system is custom-engineered to align seamlessly with your enterprise scale and security standards.",
             },
-          ].map((feature, idx) => (
-            <div
-              key={idx}
-              data-aos={feature.animation}
-              data-aos-delay={idx * 200}
-              className="bg-white  border border-gray-200 shadow-md hover:shadow-xl
-              hover:-translate-y-1 rounded-xl py-2 transition-all duration-300"
-            >
-              {feature.icon}
-              <h3 className="font-bold text-lg mb-2 text-gray-900">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-gray-600">{feature.desc}</p>
-            </div>
-          ))}
+          ].map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <Card3D key={idx} intensity={10} glowColor="rgba(0, 102, 255, 0.1)" className="cloud-card p-6 border border-blue-100/90 rounded-3xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-4 shadow-inner">
+                  <Icon className="w-6 h-6 stroke-[2.2]" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900 mb-1.5 font-display">{item.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">{item.desc}</p>
+              </Card3D>
+            );
+          })}
         </div>
       </div>
     </section>
