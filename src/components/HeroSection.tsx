@@ -12,7 +12,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import Card3D from "./ui/Card3D";
-import JupiterAIPlanet from "./ui/JupiterAIPlanet";
+import HeroDashboardMockup from "./ui/HeroDashboardMockup";
 
 const slidingWords = ["future", "ideas", "vision", "growth"];
 
@@ -138,16 +138,9 @@ export const HeroSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* RIGHT COLUMN: 3D Jupiter AI Planet with Auto-Rotating Orbital Circles */}
-          <div className="lg:col-span-5 flex items-center justify-center relative w-full -mt-4 sm:-mt-8 lg:-mt-12">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="w-full flex justify-center"
-            >
-              <JupiterAIPlanet />
-            </motion.div>
+          {/* RIGHT COLUMN: Clean Modern Digital Dashboard Mockup */}
+          <div className="lg:col-span-5 flex items-center justify-center relative w-full mt-2 sm:mt-0">
+            <HeroDashboardMockup />
           </div>
         </div>
 
