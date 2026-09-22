@@ -65,97 +65,86 @@ export default function JupiterAIPlanet() {
         />
       </div>
 
-      {/* 🪐 THE JUPITER AI PLANET SPHERE */}
-      <div className="relative w-[210px] sm:w-[260px] lg:w-[310px] h-[210px] sm:h-[260px] lg:h-[310px] rounded-full overflow-hidden shadow-[inset_-22px_-22px_55px_rgba(0,20,60,0.85),0_15px_50px_rgba(0,102,255,0.35),0_0_35px_rgba(0,210,255,0.25)] border border-white/40 z-0">
+      {/* 🌐 THE 3D GLOBAL AI NEURAL SPHERE */}
+      <div className="relative w-[210px] sm:w-[260px] lg:w-[310px] h-[210px] sm:h-[260px] lg:h-[310px] rounded-full overflow-hidden shadow-[inset_-22px_-22px_55px_rgba(0,18,50,0.88),0_18px_60px_rgba(0,102,255,0.38),0_0_40px_rgba(0,210,255,0.28)] border border-white/50 z-0 group">
         
-        {/* Base Gradient Surface */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00D2FF] via-[#0066FF] to-[#051336]" />
+        {/* Base Rich Deep Sapphire & Cyan Gradient Surface */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00D2FF] via-[#0052CC] to-[#040E26]" />
 
-        {/* Jupiter Banded Atmosphere SVG Layer */}
+        {/* 3D Curved Digital Wireframe Mesh & Data Nodes SVG */}
         <svg
           viewBox="0 0 300 300"
-          className="absolute inset-0 w-full h-full opacity-90 mix-blend-overlay"
+          className="absolute inset-0 w-full h-full opacity-80"
         >
           <defs>
-            <linearGradient id="bandGrad1" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.8" />
+            <linearGradient id="globeLineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.15" />
+              <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.15" />
             </linearGradient>
-            <linearGradient id="bandGrad2" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#0040C1" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#0066FF" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#0040C1" stopOpacity="0.9" />
-            </linearGradient>
-            <linearGradient id="bandGrad3" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#00D2FF" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#BAE6FD" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.8" />
+            <linearGradient id="pulseGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.3" />
             </linearGradient>
           </defs>
 
-          {/* Jupiter's Signature Cloud Bands */}
-          <rect y="15" width="300" height="18" fill="url(#bandGrad1)" />
-          <rect y="38" width="300" height="24" fill="url(#bandGrad2)" />
-          <rect y="68" width="300" height="16" fill="url(#bandGrad3)" />
-          <rect y="90" width="300" height="28" fill="url(#bandGrad1)" />
-          <rect y="124" width="300" height="22" fill="url(#bandGrad2)" />
-          <rect y="152" width="300" height="26" fill="url(#bandGrad3)" />
-          <rect y="184" width="300" height="20" fill="url(#bandGrad1)" />
-          <rect y="210" width="300" height="30" fill="url(#bandGrad2)" />
-          <rect y="246" width="300" height="20" fill="url(#bandGrad3)" />
-          <rect y="272" width="300" height="18" fill="url(#bandGrad1)" />
+          {/* Spherical Latitude Isometric Curves */}
+          <path d="M 45,65 Q 150,90 255,65" fill="none" stroke="url(#globeLineGrad)" strokeWidth="1.5" strokeDasharray="3 3" />
+          <path d="M 18,105 Q 150,135 282,105" fill="none" stroke="url(#globeLineGrad)" strokeWidth="1.8" />
+          <path d="M 2,150 Q 150,180 298,150" fill="none" stroke="url(#globeLineGrad)" strokeWidth="2.2" />
+          <path d="M 18,195 Q 150,225 282,195" fill="none" stroke="url(#globeLineGrad)" strokeWidth="1.8" />
+          <path d="M 45,235 Q 150,260 255,235" fill="none" stroke="url(#globeLineGrad)" strokeWidth="1.5" strokeDasharray="3 3" />
 
-          {/* Fluid Dynamic Atmospheric Swirls */}
-          <path
-            d="M-20,105 Q70,95 150,110 T320,100"
-            fill="none"
-            stroke="rgba(255,255,255,0.7)"
-            strokeWidth="5"
-          />
-          <path
-            d="M-20,140 Q80,150 160,135 T320,145"
-            fill="none"
-            stroke="rgba(0,210,255,0.8)"
-            strokeWidth="4"
-          />
-          <path
-            d="M-20,175 Q90,165 170,180 T320,170"
-            fill="none"
-            stroke="rgba(255,255,255,0.6)"
-            strokeWidth="4.5"
-          />
-          <path
-            d="M-20,205 Q60,215 140,200 T320,210"
-            fill="none"
-            stroke="rgba(0,210,255,0.7)"
-            strokeWidth="3.5"
-          />
+          {/* Spherical Longitude Curves */}
+          <path d="M 150,2 Q 70,150 150,298" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.4" />
+          <path d="M 150,2 Q 110,150 150,298" fill="none" stroke="rgba(0,210,255,0.4)" strokeWidth="1.2" strokeDasharray="4 4" />
+          <path d="M 150,2 Q 150,150 150,298" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="1.6" />
+          <path d="M 150,2 Q 190,150 150,298" fill="none" stroke="rgba(0,210,255,0.4)" strokeWidth="1.2" strokeDasharray="4 4" />
+          <path d="M 150,2 Q 230,150 150,298" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="1.4" />
+
+          {/* Global Network Hub Nodes */}
+          <circle cx="85" cy="118" r="4" fill="#FFFFFF" />
+          <circle cx="85" cy="118" r="8" fill="none" stroke="#00D2FF" strokeWidth="1.5" opacity="0.8" />
+          
+          <circle cx="150" cy="165" r="4.5" fill="#FFFFFF" />
+          <circle cx="150" cy="165" r="10" fill="none" stroke="#00D2FF" strokeWidth="1.5" opacity="0.9" />
+
+          <circle cx="215" cy="122" r="3.5" fill="#FFFFFF" />
+          <circle cx="215" cy="122" r="7" fill="none" stroke="#00D2FF" strokeWidth="1.2" opacity="0.7" />
+
+          <circle cx="115" cy="208" r="3.5" fill="#FFFFFF" />
+          <circle cx="190" cy="204" r="3" fill="#FFFFFF" />
+
+          {/* Interconnecting Data Lines */}
+          <line x1="85" y1="118" x2="150" y2="165" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeDasharray="2 2" />
+          <line x1="150" y1="165" x2="215" y2="122" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeDasharray="2 2" />
+          <line x1="85" y1="118" x2="115" y2="208" stroke="rgba(0,210,255,0.6)" strokeWidth="1.2" />
+          <line x1="150" y1="165" x2="190" y2="204" stroke="rgba(0,210,255,0.6)" strokeWidth="1.2" />
         </svg>
 
-        {/* 🌀 THE GREAT AI NEURAL VORTEX (Jupiter's Great Spot - Reimagined as AI Core) */}
-        <div className="absolute top-[52%] left-[48%] -translate-x-1/2 -translate-y-1/2 w-18 sm:w-22 lg:w-24 h-12 sm:h-15 lg:h-16 rounded-[50%] bg-gradient-to-r from-white via-[#00D2FF] to-[#0066FF] shadow-[0_0_25px_#00D2FF,inset_0_0_15px_#FFFFFF] flex items-center justify-center rotate-[-12deg]">
-          {/* Inner Swirling Core */}
+        {/* 🌀 THE CENTRAL AI NEURAL CORE (High-Precision Gyro Core) */}
+        <div className="absolute top-[52%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-20 sm:w-24 lg:w-28 h-14 sm:h-16 lg:h-18 rounded-[50%] bg-gradient-to-r from-white/90 via-[#00D2FF]/80 to-[#0066FF] shadow-[0_0_30px_#00D2FF,inset_0_0_18px_#FFFFFF] flex items-center justify-center rotate-[-10deg]">
+          {/* Rotating High-Tech Core Ring */}
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            className="w-12 sm:w-14 lg:w-16 h-8 sm:h-9 lg:h-10 rounded-[50%] border-2 border-white/90 border-t-[#0066FF] flex items-center justify-center shadow-inner"
+            transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+            className="w-14 sm:w-16 lg:w-18 h-9 sm:h-11 lg:h-12 rounded-[50%] border-2 border-white/95 border-t-[#0066FF] border-b-[#00D2FF] flex items-center justify-center shadow-inner"
           >
-            <div className="w-4 sm:w-5 h-4 sm:h-5 rounded-full bg-white shadow-[0_0_12px_#FFFFFF] flex items-center justify-center">
-              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#0066FF] animate-ping" />
+            <div className="w-5 sm:w-6 h-5 sm:h-6 rounded-full bg-white shadow-[0_0_14px_#FFFFFF] flex items-center justify-center">
+              <div className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#0066FF] animate-ping" />
             </div>
           </motion.div>
         </div>
 
-        {/* Spherical 3D Lighting & Shadow Overlays */}
-        {/* 1. Top-Left Luminous Specular Sun Reflection */}
-        <div className="absolute top-0 left-0 w-full h-full bg-radial from-white/60 via-transparent to-transparent opacity-80 pointer-events-none" />
+        {/* Spherical 3D Lighting & Specular Glass Reflection */}
+        {/* 1. Top-Left Luminous Specular Sun Glare */}
+        <div className="absolute top-0 left-0 w-full h-full bg-radial from-white/70 via-transparent to-transparent opacity-85 pointer-events-none" />
         
-        {/* 2. Crescent Atmosphere Shadow (Right & Bottom Depth) */}
+        {/* 2. Deep Spherical Atmosphere Shadow (Bottom-Right Depth) */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#020A1E]/85 via-transparent to-transparent pointer-events-none" />
         
-        {/* 3. Rim Glow */}
-        <div className="absolute inset-0 rounded-full shadow-[inset_0_0_30px_rgba(255,255,255,0.6)] pointer-events-none" />
+        {/* 3. Luminous Outer Rim Glow */}
+        <div className="absolute inset-0 rounded-full shadow-[inset_0_0_35px_rgba(255,255,255,0.65)] pointer-events-none" />
       </div>
 
       {/* 🚀 FLOATING AI TELEMETRY BADGES AROUND THE PLANET */}
