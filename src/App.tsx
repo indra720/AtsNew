@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 
 import ScrollToTop from "./components/ScrollToTop";
 import ModalOnlyForHome from "./components/ModalOnlyForHome";
+import GlobalCursorParticles from "./components/ui/GlobalCursorParticles";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -70,6 +71,9 @@ const App: React.FC = () => {
     <Router>
       <ScrollToTop />
       <ModalOnlyForHome setOpenModal={setOpenModal} />
+
+      {/* Global colored dash cursor particles — visible everywhere on site */}
+      <GlobalCursorParticles />
 
       <div className="relative w-full overflow-x-hidden min-h-screen flex flex-col bg-[#F0F7FF] text-[#0A1629] selection:bg-[#0066FF]/20 selection:text-[#0052CC]">
         <SocialBar />

@@ -46,6 +46,10 @@
     font-family: 'Plus Jakarta Sans', sans-serif !important;
   }
 
+  .font-editorial {
+    font-family: 'Playfair Display', 'Newsreader', Georgia, serif !important;
+  }
+
   /* Custom Luminous Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;

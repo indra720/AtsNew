@@ -1,0 +1,212 @@
+import React, { useEffect, useRef } from "react";
+
+// Google Antigravity vibrant palette
+const ANTIGRAVITY_COLORS = [
+  "#4285F4", // Google Blue
+  "#EA4335", // Google Red
+  "#FBBC05", // Google Yellow
+  "#34A853", // Google Green
+  "#9333EA", // Purple
+  "#FF6D00", // Bright Orange
+  "#00E5FF", // Electric Cyan
+  "#F43F5E", // Rose
+  "#8B5CF6", // Violet
+  "#10B981", // Emerald
+];
+
+interface DashParticle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  maxLife: number;
+  length: number;
+  width: number;
+  angle: number;
+  color: string;
+  alpha: number;
+  scale: number;
+  growth: number;
+  isDot: boolean;
+}
+
+export default function GlobalCursorParticles() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+    };
+    resize();
+
+    const particles: DashParticle[] = [];
+    const MAX = 220;
+
+    let prevX = window.innerWidth * 0.5;
+    let prevY = window.innerHeight * 0.5;
+
+    const spawnParticles = (cx: number, cy: number, rawVx: number, rawVy: number) => {
+      const speed = Math.sqrt(rawVx * rawVx + rawVy * rawVy);
+      if (speed < 0.8) return; // Sensitive to any shake or move
+
+      // More particles on fast shake
+      const count = Math.min(10, Math.max(2, Math.floor(speed * 0.55)));
+
+      for (let i = 0; i < count; i++) {
+        if (particles.length >= MAX) {
+          particles.splice(0, 3);
+        }
+
+        // Outward burst: combination of movement direction + 360° radial splash
+        const baseAngle = Math.atan2(rawVy, rawVx);
+        // 60% follow movement direction, 40% radial burst around cursor
+        const angle =
+          Math.random() < 0.65
+            ? baseAngle + (Math.random() - 0.5) * Math.PI * 0.95
+            : Math.random() * Math.PI * 2;
+
+        const particleSpeed = (speed * 0.6 + 2.5) * (0.8 + Math.random() * 2.2);
+        const spawnDist = 6 + Math.random() * 28;
+        const isDot = Math.random() < 0.35; // Mix of dots and directional dashes
+
+        particles.push({
+          x: cx + Math.cos(angle) * spawnDist,
+          y: cy + Math.sin(angle) * spawnDist,
+          vx: Math.cos(angle) * particleSpeed,
+          vy: Math.sin(angle) * particleSpeed,
+          life: 1.0,
+          maxLife: 0.5 + Math.random() * 0.7,
+          length: isDot ? 3 : 5 + Math.random() * 11,
+          width: isDot ? 3 : 1.5 + Math.random() * 1.8,
+          angle: angle,
+          color: ANTIGRAVITY_COLORS[Math.floor(Math.random() * ANTIGRAVITY_COLORS.length)],
+          alpha: 0.85 + Math.random() * 0.15,
+          scale: 0.5,
+          growth: 1.08 + Math.random() * 0.08, // Zoom effect as it travels
+          isDot,
+        });
+      }
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const vx = e.clientX - prevX;
+      const vy = e.clientY - prevY;
+      spawnParticles(e.clientX, e.clientY, vx, vy);
+      prevX = e.clientX;
+      prevY = e.clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!e.touches.length) return;
+      const t = e.touches[0];
+      const vx = t.clientX - prevX;
+      const vy = t.clientY - prevY;
+      spawnParticles(t.clientX, t.clientY, vx, vy);
+      prevX = t.clientX;
+      prevY = t.clientY;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("resize", resize);
+
+    let animId: number;
+    const loop = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+
+        p.life -= 0.016 / p.maxLife;
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        // Friction & zoom
+        p.vx *= 0.91;
+        p.vy *= 0.91;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Zoom scale outward (like jump/zoom effect)
+        if (p.scale < 1.35) {
+          p.scale *= p.growth;
+        }
+
+        // Dash points along direction of travel
+        if (!p.isDot && (Math.abs(p.vx) > 0.15 || Math.abs(p.vy) > 0.15)) {
+          p.angle = Math.atan2(p.vy, p.vx);
+        }
+
+        const currentAlpha = p.life * p.alpha;
+        if (currentAlpha < 0.02) continue;
+
+        ctx.save();
+        ctx.globalAlpha = currentAlpha;
+        ctx.translate(p.x, p.y);
+        ctx.scale(p.scale, p.scale);
+
+        if (p.isDot) {
+          // Circular particle dot
+          ctx.beginPath();
+          ctx.arc(0, 0, p.width * 0.85, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        } else {
+          // Directional dash
+          ctx.rotate(p.angle);
+          ctx.beginPath();
+          if (ctx.roundRect) {
+            ctx.roundRect(-p.length * 0.5, -p.width * 0.5, p.length, p.width, p.width * 0.5);
+          } else {
+            ctx.rect(-p.length * 0.5, -p.width * 0.5, p.length, p.width);
+          }
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+
+      ctx.restore();
+      animId = requestAnimationFrame(loop);
+    };
+
+    loop();
+
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "fixed",
+        inset: 0,
+        width: "100vw",
+        height: "100vh",
+        pointerEvents: "none",
+        zIndex: 9999,
+      }}
+    />
+  );
+}
