@@ -15,7 +15,10 @@
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
     "@lottiefiles/dotlottie-react": "^0.17.6",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.8.0",
     "@tailwindcss/vite": "^4.1.16",
+    "@types/three": "^0.186.0",
     "aos": "^2.3.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,6 +33,7 @@
     "socket.io-client": "^4.8.1",
     "swiper": "^12.2.0",
     "tailwind-merge": "^3.3.1",
+    "three": "^0.186.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {

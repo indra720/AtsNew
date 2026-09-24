@@ -13,7 +13,7 @@ interface WaveRibbonPoint {
   color: string;
 }
 
-// Fixed-position balls spread across the hero (NOT orbiting cursor)
+// Fixed-position subtle accent spheres spread across the hero (NOT orbiting cursor)
 interface HeroBall {
   homeXFrac: number;
   homeYFrac: number;
@@ -25,35 +25,6 @@ interface HeroBall {
   baseRadius: number;
   blur: number;
 }
-
-// Antigravity-style colored dash/confetti particle
-interface DashParticle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  life: number;       // 0→1, particle fades out as life→0
-  maxLife: number;
-  length: number;     // dash length px
-  width: number;      // dash width px
-  angle: number;      // rotation of dash
-  color: string;
-  alpha: number;
-}
-
-// Palette matching Antigravity screenshot: red, blue, yellow, green, purple, orange, cyan
-const DASH_COLORS = [
-  "#EF4444", // red
-  "#3B82F6", // blue
-  "#F59E0B", // amber/yellow
-  "#22C55E", // green
-  "#A855F7", // purple
-  "#F97316", // orange
-  "#06B6D4", // cyan
-  "#EC4899", // pink
-  "#8B5CF6", // violet
-  "#10B981", // emerald
-];
 
 export default function HeroWaveFlowCanvas3D() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -102,7 +73,7 @@ export default function HeroWaveFlowCanvas3D() {
     // cols dense for full width, rows dense for full height
     // ============================================================
     const cols = 110;
-    const rows = 50; // more rows = taller coverage top-to-bottom
+    const rows = 50; // taller coverage top-to-bottom
 
     const gridX = new Float32Array(cols);
     const gridZ = new Float32Array(rows);
@@ -112,7 +83,7 @@ export default function HeroWaveFlowCanvas3D() {
       for (let c = 0; c < cols; c++) {
         gridX[c] = (c / (cols - 1) - 0.5) * totalWidth;
       }
-      // Deeper Z span so the projected mesh fills full hero height
+      // Deeper Z span so projected mesh fills full hero height
       const totalDepth = h * 1.5;
       for (let r = 0; r < rows; r++) {
         gridZ[r] = (r / (rows - 1) - 0.5) * totalDepth;
@@ -121,18 +92,18 @@ export default function HeroWaveFlowCanvas3D() {
     updateGridSpan(initW, initH);
 
     // ============================================================
-    // 2. FIXED-POSITION BALLS (SMALLER) Spread Across Hero
-    // Sizes: baseRadius 8–16px (much smaller, subtle accent balls)
+    // 2. FIXED-POSITION BALLS — SUBTLE & COMPACT
+    // Sizes: baseRadius 5–9px (delicate mini glass spheres)
     // ============================================================
     const heroBalls: HeroBall[] = [
-      { homeXFrac: 0.07,  homeYFrac: 0.15, cx: 0, cy: 0, floatPhase: 0.0, floatAmp: 70, floatSpeed: 0.012, baseRadius: 12, blur: 0 },
-      { homeXFrac: 0.88,  homeYFrac: 0.12, cx: 0, cy: 0, floatPhase: 2.1, floatAmp: 80, floatSpeed: 0.010, baseRadius: 16, blur: 2 },
-      { homeXFrac: 0.03,  homeYFrac: 0.50, cx: 0, cy: 0, floatPhase: 1.0, floatAmp: 65, floatSpeed: 0.014, baseRadius: 10, blur: 0 },
-      { homeXFrac: 0.95,  homeYFrac: 0.46, cx: 0, cy: 0, floatPhase: 3.5, floatAmp: 85, floatSpeed: 0.009, baseRadius: 14, blur: 1 },
-      { homeXFrac: 0.50,  homeYFrac: 0.06, cx: 0, cy: 0, floatPhase: 4.2, floatAmp: 60, floatSpeed: 0.016, baseRadius: 9,  blur: 0 },
-      { homeXFrac: 0.20,  homeYFrac: 0.80, cx: 0, cy: 0, floatPhase: 1.8, floatAmp: 80, floatSpeed: 0.011, baseRadius: 11, blur: 1 },
-      { homeXFrac: 0.75,  homeYFrac: 0.84, cx: 0, cy: 0, floatPhase: 5.0, floatAmp: 90, floatSpeed: 0.008, baseRadius: 15, blur: 2 },
-      { homeXFrac: 0.38,  homeYFrac: 0.92, cx: 0, cy: 0, floatPhase: 2.7, floatAmp: 55, floatSpeed: 0.013, baseRadius: 8,  blur: 0 },
+      { homeXFrac: 0.08, homeYFrac: 0.16, cx: 0, cy: 0, floatPhase: 0.0, floatAmp: 60, floatSpeed: 0.012, baseRadius: 7, blur: 0 },
+      { homeXFrac: 0.88, homeYFrac: 0.13, cx: 0, cy: 0, floatPhase: 2.1, floatAmp: 65, floatSpeed: 0.010, baseRadius: 9, blur: 1 },
+      { homeXFrac: 0.04, homeYFrac: 0.48, cx: 0, cy: 0, floatPhase: 1.0, floatAmp: 55, floatSpeed: 0.014, baseRadius: 6, blur: 0 },
+      { homeXFrac: 0.94, homeYFrac: 0.44, cx: 0, cy: 0, floatPhase: 3.5, floatAmp: 70, floatSpeed: 0.009, baseRadius: 8, blur: 0.5 },
+      { homeXFrac: 0.50, homeYFrac: 0.07, cx: 0, cy: 0, floatPhase: 4.2, floatAmp: 50, floatSpeed: 0.016, baseRadius: 5, blur: 0 },
+      { homeXFrac: 0.19, homeYFrac: 0.80, cx: 0, cy: 0, floatPhase: 1.8, floatAmp: 65, floatSpeed: 0.011, baseRadius: 7, blur: 0 },
+      { homeXFrac: 0.76, homeYFrac: 0.83, cx: 0, cy: 0, floatPhase: 5.0, floatAmp: 75, floatSpeed: 0.008, baseRadius: 9, blur: 1.5 },
+      { homeXFrac: 0.38, homeYFrac: 0.92, cx: 0, cy: 0, floatPhase: 2.7, floatAmp: 45, floatSpeed: 0.013, baseRadius: 5, blur: 0 },
     ];
 
     const initBallPositions = (w: number, h: number) => {
@@ -142,52 +113,6 @@ export default function HeroWaveFlowCanvas3D() {
       }
     };
     initBallPositions(initW, initH);
-
-    // ============================================================
-    // 3. ANTIGRAVITY-STYLE COLORED DASH PARTICLES
-    // - Spawn around cursor on every move event
-    // - Shoot outward in cursor direction (zoom/jump effect)
-    // - Rotate as dashes, fade out quickly
-    // ============================================================
-    const dashParticles: DashParticle[] = [];
-    const MAX_DASH_PARTICLES = 160;
-
-    const spawnDashes = (cx: number, cy: number, vx: number, vy: number) => {
-      const speed = Math.sqrt(vx * vx + vy * vy);
-      if (speed < 1.5) return; // only spawn when actually moving
-
-      const count = Math.min(6, Math.max(2, Math.floor(speed * 0.4)));
-      for (let i = 0; i < count; i++) {
-        if (dashParticles.length >= MAX_DASH_PARTICLES) {
-          dashParticles.splice(0, 4); // remove oldest
-        }
-
-        // Main direction + randomized spread (±45°)
-        const baseAngle = Math.atan2(vy, vx);
-        const spread = (Math.random() - 0.5) * Math.PI * 0.9;
-        const angle = baseAngle + spread;
-
-        // Speed: proportional to cursor speed + random
-        const particleSpeed = speed * (0.8 + Math.random() * 2.2);
-
-        // Random spawn offset from cursor
-        const spawnDist = 20 + Math.random() * 60;
-
-        dashParticles.push({
-          x: cx + Math.cos(angle) * spawnDist * 0.3,
-          y: cy + Math.sin(angle) * spawnDist * 0.3,
-          vx: Math.cos(angle) * particleSpeed,
-          vy: Math.sin(angle) * particleSpeed,
-          life: 1.0,
-          maxLife: 0.5 + Math.random() * 0.8, // seconds-like life (in render ticks * 0.016)
-          length: 4 + Math.random() * 10,
-          width: 1.2 + Math.random() * 1.6,
-          angle: angle,
-          color: DASH_COLORS[Math.floor(Math.random() * DASH_COLORS.length)],
-          alpha: 0.7 + Math.random() * 0.3,
-        });
-      }
-    };
 
     const focalLength = 700;
 
@@ -215,17 +140,8 @@ export default function HeroWaveFlowCanvas3D() {
       const currentW = rect.width || initW;
       const currentH = rect.height || initH;
 
-      const prevTargetX = mouse.targetX;
-      const prevTargetY = mouse.targetY;
-
       mouse.targetX = clientX - rect.left;
       mouse.targetY = clientY - rect.top;
-
-      const rawVx = mouse.targetX - prevTargetX;
-      const rawVy = mouse.targetY - prevTargetY;
-
-      // Spawn Antigravity-style dash particles on cursor movement
-      spawnDashes(mouse.targetX, mouse.targetY, rawVx, rawVy);
 
       const normX = currentW > 0 ? Math.max(-1, Math.min(1, (mouse.targetX / currentW - 0.5) * 2)) : 0;
       const normY = currentH > 0 ? Math.max(-1, Math.min(1, (mouse.targetY / currentH - 0.5) * 2)) : 0;
@@ -302,53 +218,6 @@ export default function HeroWaveFlowCanvas3D() {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // ============================================================
-      // ALWAYS RENDER DASH PARTICLES (even when graph is hidden)
-      // They fade independently
-      // ============================================================
-      ctx.save();
-      ctx.scale(dpr, dpr);
-
-      for (let i = dashParticles.length - 1; i >= 0; i--) {
-        const p = dashParticles[i];
-
-        // Advance life
-        p.life -= 0.016 / p.maxLife;
-        if (p.life <= 0) { dashParticles.splice(i, 1); continue; }
-
-        // Decelerate
-        p.vx *= 0.92;
-        p.vy *= 0.92;
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Update angle to match velocity direction (dashes point direction of travel)
-        if (Math.abs(p.vx) > 0.1 || Math.abs(p.vy) > 0.1) {
-          p.angle = Math.atan2(p.vy, p.vx);
-        }
-
-        const lifeAlpha = p.life * p.alpha;
-        if (lifeAlpha < 0.02) continue;
-
-        ctx.save();
-        ctx.globalAlpha = lifeAlpha;
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.angle);
-
-        // Draw dash as rounded rectangle
-        ctx.beginPath();
-        ctx.roundRect(-p.length * 0.5, -p.width * 0.5, p.length, p.width, p.width * 0.5);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-
-        ctx.restore();
-      }
-
-      ctx.restore();
-
-      // ============================================================
-      // GRAPH + BALLS — only when cursor active
-      // ============================================================
       if (state.activity < 0.004) return;
 
       ctx.save();
@@ -360,7 +229,7 @@ export default function HeroWaveFlowCanvas3D() {
       const cosY = Math.cos(state.camYaw);
       const sinY = Math.sin(state.camYaw);
 
-      // Origin: center X, slightly above center Y so mesh fills more hero height
+      // Centered X, slightly above center Y so mesh covers full vertical height
       const originX = renderW * 0.5;
       const originY = renderH * 0.52;
 
@@ -521,8 +390,8 @@ export default function HeroWaveFlowCanvas3D() {
       }
 
       // ============================================================
-      // FIXED-POSITION HERO BALLS — smaller, spread across hero
-      // Float independently at their home positions (±65–90px)
+      // FIXED-POSITION HERO BALLS — DELICATE MINI GLASS SPHERES
+      // Float independently at their home positions (±45–75px)
       // Gentle parallax from cursor direction (NOT orbit)
       // ============================================================
       ctx.globalAlpha = state.activity;
@@ -536,9 +405,9 @@ export default function HeroWaveFlowCanvas3D() {
 
         const floatY = Math.sin(ball.floatPhase) * ball.floatAmp;
 
-        // Subtle parallax: cursor direction nudges ball slightly
-        const parallaxX = state.smoothNormX * 18 * (i % 2 === 0 ? 1 : -0.5);
-        const parallaxY = state.smoothNormY * 22 * (i % 3 === 0 ? 1 : -0.6);
+        // Subtle parallax
+        const parallaxX = state.smoothNormX * 15 * (i % 2 === 0 ? 1 : -0.5);
+        const parallaxY = state.smoothNormY * 18 * (i % 3 === 0 ? 1 : -0.6);
 
         const targetX = homeX + parallaxX;
         const targetY = homeY + floatY + parallaxY;
@@ -557,13 +426,13 @@ export default function HeroWaveFlowCanvas3D() {
 
         // Drop shadow
         ctx.beginPath();
-        ctx.ellipse(bpx + 2, bpy + br * 0.88, br * 0.82, br * 0.24, 0, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 40, 130, 0.16)";
+        ctx.ellipse(bpx + 1.5, bpy + br * 0.88, br * 0.82, br * 0.25, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0, 40, 130, 0.15)";
         ctx.fill();
 
         // 3D glass sphere gradient
         const orbR0 = Math.max(0.1, br * 0.05);
-        const orbR1 = Math.max(orbR0 + 1, br);
+        const orbR1 = Math.max(orbR0 + 0.5, br);
         const orbGrad = createSafeRadial(
           bpx - br * 0.28, bpy - br * 0.30, orbR0,
           bpx, bpy, orbR1

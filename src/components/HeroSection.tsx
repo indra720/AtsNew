@@ -10,6 +10,7 @@ import {
 import HeroWaveFlowCanvas3D from "./ui/HeroWaveFlowCanvas3D";
 import HeroWaveNodes3D from "./ui/HeroWaveNodes3D";
 import GsapRollingText from "./ui/GsapRollingText";
+import HeroCursorParticles from "./ui/HeroCursorParticles";
 
 export const HeroSection: React.FC = () => {
   return (
@@ -19,6 +20,9 @@ export const HeroSection: React.FC = () => {
       {/* 1. FULL-VIEWPORT 3D PARTICLE WAVE TERRAIN CANVAS (z-0) */}
       {/* ============================================================ */}
       <HeroWaveFlowCanvas3D />
+
+      {/* Hero-Scoped Antigravity Cursor Particles (Only inside Hero Section) */}
+      <HeroCursorParticles />
 
       {/* Floating 3D Service Nodes, 142.5K+ Card, Scroll Indicator & Far-Right Typography (z-20) */}
       <HeroWaveNodes3D />
