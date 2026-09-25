@@ -1,8 +1,8 @@
 import React from "react";
-import GenerativeAiShowcasePoster from "./GenerativeAiShowcasePoster";
+import MasterGenAIRevolution3D from "./MasterGenAIRevolution3D";
 
 export const GenAIEcosystem3D: React.FC = () => {
-  return <GenerativeAiShowcasePoster />;
+  return <MasterGenAIRevolution3D />;
 };
 
 export default GenAIEcosystem3D;
