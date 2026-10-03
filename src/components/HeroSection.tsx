@@ -7,29 +7,21 @@ import {
   ChevronRight,
   CheckCircle2,
 } from "lucide-react";
-import HeroWaveFlowCanvas3D from "./ui/HeroWaveFlowCanvas3D";
+import HeroInteractiveCyberGrid from "./ui/HeroInteractiveCyberGrid";
 import HeroWaveNodes3D from "./ui/HeroWaveNodes3D";
 import GsapRollingText from "./ui/GsapRollingText";
-import HeroCursorParticles from "./ui/HeroCursorParticles";
 
 export const HeroSection: React.FC = () => {
   return (
     <section className="relative overflow-hidden pt-2 sm:pt-4 pb-4 sm:pb-6 bg-gradient-to-b from-[#FFFFFF] via-[#F4F9FF] to-[#EAF4FF] min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between">
       
       {/* ============================================================ */}
-      {/* 1. FULL-VIEWPORT 3D PARTICLE WAVE TERRAIN CANVAS (z-0) */}
+      {/* 1. CLEAN INTERACTIVE CYBER GRID & AMBIENT AURORA (z-0) */}
       {/* ============================================================ */}
-      <HeroWaveFlowCanvas3D />
+      <HeroInteractiveCyberGrid />
 
-      {/* Hero-Scoped Antigravity Cursor Particles (Only inside Hero Section) */}
-      <HeroCursorParticles />
-
-      {/* Floating 3D Service Nodes, 142.5K+ Card, Scroll Indicator & Far-Right Typography (z-20) */}
+      {/* Center-Bottom Scroll Indicator (z-20) */}
       <HeroWaveNodes3D />
-
-      {/* Ambient Multi-Spectrum Volumetric Lights (Centered) */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-gradient-to-tr from-[#0066FF]/14 via-[#00D2FF]/16 to-[#38BDF8]/10 rounded-full blur-[150px] pointer-events-none z-0" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[650px] h-96 bg-[#0066FF]/10 rounded-full blur-[130px] pointer-events-none z-0" />
 
       {/* ============================================================ */}
       {/* 2. MAIN CENTERED HERO CONTENT (Full Width Across Hero) */}
