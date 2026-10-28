@@ -38,7 +38,9 @@ const FeatureCard: React.FC<{
           <h4 className="text-lg font-black font-display text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">
             {title}
           </h4>
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">{desc}</p>
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
+            {desc}
+          </p>
         </div>
       </div>
     </div>
@@ -50,7 +52,11 @@ export default function AIChatAssistant() {
     { label: "Resolution Time", value: "-62%", glow: "text-cyan-400" },
     { label: "Ticket Deflection", value: "45%", glow: "text-emerald-400" },
     { label: "Supported Languages", value: "89+", glow: "text-indigo-400" },
-    { label: "Customer Satisfaction", value: "4.7/5 avg", glow: "text-purple-400" },
+    {
+      label: "Customer Satisfaction",
+      value: "4.7/5 avg",
+      glow: "text-purple-400",
+    },
   ];
 
   const features = [
@@ -124,11 +130,11 @@ export default function AIChatAssistant() {
   ];
 
   return (
-    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <section className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] bg-white border border-blue-200 shadow-xs px-3.5 py-1.5 rounded-full mb-6">
@@ -144,9 +150,9 @@ export default function AIChatAssistant() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl font-sans">
-              A multilingual AI assistant that automates customer support with smart
-              routing, sentiment insights, and personalized responses — driving faster
-              resolution and higher satisfaction.
+              A multilingual AI assistant that automates customer support with
+              smart routing, sentiment insights, and personalized responses —
+              driving faster resolution and higher satisfaction.
             </p>
 
             <Link
@@ -173,7 +179,10 @@ export default function AIChatAssistant() {
         {/* Telemetry Stats */}
         <section className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-20 p-6 rounded-3xl cloud-card shadow-xl">
           {stats.map((stat) => (
-            <div key={stat.label} className="border-r last:border-r-0 border-blue-100 px-2">
+            <div
+              key={stat.label}
+              className="border-r last:border-r-0 border-blue-100 px-2"
+            >
               <p className="text-3xl sm:text-4xl font-black font-display text-[#0066FF] mb-1">
                 {stat.value}
               </p>
@@ -187,7 +196,9 @@ export default function AIChatAssistant() {
         {/* Architecture & Flow */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Intelligent Pipeline</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Intelligent Pipeline
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Architecture & System Flow
             </h2>
@@ -204,7 +215,8 @@ export default function AIChatAssistant() {
                     Intent Classification
                   </h3>
                   <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
-                    NLU models parse customer inquiries in real time, detecting sentiment, language, and core issue tags.
+                    NLU models parse customer inquiries in real time, detecting
+                    sentiment, language, and core issue tags.
                   </p>
                 </div>
               </div>
@@ -220,7 +232,9 @@ export default function AIChatAssistant() {
                     Dynamic Resolution Engine
                   </h3>
                   <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
-                    Integrates with internal CRM and billing APIs to provide instant, self-service resolutions without human intervention.
+                    Integrates with internal CRM and billing APIs to provide
+                    instant, self-service resolutions without human
+                    intervention.
                   </p>
                 </div>
               </div>
@@ -236,7 +250,8 @@ export default function AIChatAssistant() {
                     Human-in-the-Loop Handover
                   </h3>
                   <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
-                    Seamless escalation to human agents with full conversation context and suggested responses when sentiment drops.
+                    Seamless escalation to human agents with full conversation
+                    context and suggested responses when sentiment drops.
                   </p>
                 </div>
               </div>
@@ -247,7 +262,9 @@ export default function AIChatAssistant() {
         {/* Feature Cards Grid */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Enterprise Grade</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Enterprise Grade
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Core Capabilities
             </h2>
@@ -271,13 +288,15 @@ export default function AIChatAssistant() {
           </div>
 
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Proven ROI</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Proven ROI
+            </span>
             <h3 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
               Measurable Success
             </h3>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-sans">
-              Automation frees up agent bandwidth and allows global scaling without
-              expanding headcount.
+              Automation frees up agent bandwidth and allows global scaling
+              without expanding headcount.
             </p>
 
             <ul className="space-y-3">
@@ -286,7 +305,10 @@ export default function AIChatAssistant() {
                 "Automated troubleshooting flows",
                 "Higher satisfaction via instant responses",
               ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-700 text-sm font-medium">
+                <li
+                  key={idx}
+                  className="flex items-center gap-3 text-slate-700 text-sm font-medium"
+                >
                   <CheckCircle2 className="w-5 h-5 text-[#0066FF] shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -297,7 +319,9 @@ export default function AIChatAssistant() {
 
         {/* Tech Stack */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">AI Frameworks</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+            AI Frameworks
+          </span>
           <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-6">
             Technology Stack
           </h2>
@@ -317,7 +341,9 @@ export default function AIChatAssistant() {
         {/* Client Feedback */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">User Experience</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              User Experience
+            </span>
             <h2 className="text-3xl font-black font-display text-[#0A1629] mt-1">
               Client Feedback
             </h2>
@@ -341,14 +367,19 @@ export default function AIChatAssistant() {
         {/* FAQs */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Architecture Insights</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+              Architecture Insights
+            </span>
             <h2 className="text-3xl font-black font-display text-[#0A1629] mt-1">
               Frequently Asked Questions
             </h2>
           </div>
           <div className="space-y-4 max-w-3xl mx-auto">
             {faqs.map((faq, i) => (
-              <details key={i} className="cloud-card p-5 rounded-2xl group transition-colors">
+              <details
+                key={i}
+                className="cloud-card p-5 rounded-2xl group transition-colors"
+              >
                 <summary className="font-black text-[#0A1629] text-base cursor-pointer flex items-center justify-between list-none">
                   <span>{faq.q}</span>
                   <HelpCircle className="w-5 h-5 text-[#0066FF] group-open:rotate-180 transition-transform" />
@@ -368,7 +399,8 @@ export default function AIChatAssistant() {
             Enhance your support with intelligent automation
           </h3>
           <p className="text-slate-600 text-base sm:text-lg mb-8 max-w-2xl mx-auto font-sans">
-            Deliver faster, smarter, and more personalized assistance across all channels.
+            Deliver faster, smarter, and more personalized assistance across all
+            channels.
           </p>
           <Link
             to="/contact"

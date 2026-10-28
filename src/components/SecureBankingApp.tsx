@@ -1,6 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Zap, Shield, TrendingUp, Sparkles, ArrowRight, Lock, KeyRound, Smartphone } from "lucide-react";
+import {
+  Zap,
+  Shield,
+  TrendingUp,
+  Sparkles,
+  ArrowRight,
+  Lock,
+  KeyRound,
+  Smartphone,
+} from "lucide-react";
 import Card3D from "./ui/Card3D";
 
 const FeatureCard = ({
@@ -34,8 +43,12 @@ const FeatureCard = ({
           </div>
         </div>
         <div className="p-6">
-          <h4 className="text-xl font-black font-display text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">{title}</h4>
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">{desc}</p>
+          <h4 className="text-xl font-black font-display text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">
+            {title}
+          </h4>
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-sans">
+            {desc}
+          </p>
         </div>
       </div>
     </div>
@@ -62,11 +75,11 @@ export default function SecureBankingApp() {
   ];
 
   return (
-    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <section className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] bg-white border border-blue-200 shadow-xs px-3.5 py-1.5 rounded-full mb-6">
@@ -136,7 +149,9 @@ export default function SecureBankingApp() {
         {/* Feature Cards Grid */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Zero Trust Framework</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Zero Trust Framework
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Advanced Features for Peace of Mind
             </h2>
@@ -166,7 +181,9 @@ export default function SecureBankingApp() {
 
         {/* Modern & Secure Stack */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Security Architecture</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+            Security Architecture
+          </span>
           <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-6">
             Built on a Modern & Secure Stack
           </h2>

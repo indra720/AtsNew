@@ -77,7 +77,6 @@ const FloatingSocialBar: React.FC = () => {
       {/* Mobile-Only Bottom Navigation Dock (Touches bottom edge, zero space beneath) */}
       <div className="fixed bottom-0 inset-x-0 z-40 md:hidden pointer-events-none">
         <div className="pointer-events-auto relative w-full">
-          
           {/* Social Popover Menu */}
           <AnimatePresence>
             {socialOpen && (
@@ -101,7 +100,11 @@ const FloatingSocialBar: React.FC = () => {
                         item.hover || ""
                       }`}
                     >
-                      {item.isCustom ? item.render : Icon ? <Icon className="w-5 h-5" /> : null}
+                      {item.isCustom ? (
+                        item.render
+                      ) : Icon ? (
+                        <Icon className="w-5 h-5" />
+                      ) : null}
                     </a>
                   );
                 })}
@@ -110,11 +113,11 @@ const FloatingSocialBar: React.FC = () => {
           </AnimatePresence>
 
           {/* Flush Edge-to-Edge Bottom Dock Touching the Screen Base */}
-          <nav className="w-full bg-white/95 backdrop-blur-2xl border-t border-blue-100/90 shadow-[0_-8px_30px_rgba(0,102,255,0.1)] px-5 py-2 flex items-center justify-between pb-[calc(env(safe-area-inset-bottom,0px)+8px)]">
+          <nav className="w-full bg-white/95 backdrop-blur-2xl border-t border-blue-100/90 shadow-[0_-8px_30px_rgba(0,102,255,0.1)] px-3 sm:px-5 py-1.5 flex items-center justify-around pb-[calc(env(safe-area-inset-bottom,0px)+8px)]">
             {/* Home Link */}
             <Link
               to="/"
-              className={`flex flex-col items-center gap-1 text-[11px] font-semibold transition ${
+              className={`flex flex-col items-center justify-center min-w-[48px] min-h-[44px] gap-1 text-[11px] font-semibold transition ${
                 location.pathname === "/"
                   ? "text-[#0066FF]"
                   : "text-slate-500 hover:text-[#0066FF]"
@@ -127,7 +130,7 @@ const FloatingSocialBar: React.FC = () => {
             {/* Work Link */}
             <Link
               to="/work/projects"
-              className={`flex flex-col items-center gap-1 text-[11px] font-semibold transition ${
+              className={`flex flex-col items-center justify-center min-w-[48px] min-h-[44px] gap-1 text-[11px] font-semibold transition ${
                 location.pathname.startsWith("/work")
                   ? "text-[#0066FF]"
                   : "text-slate-500 hover:text-[#0066FF]"
@@ -156,7 +159,7 @@ const FloatingSocialBar: React.FC = () => {
             {/* Contact / Inquiries Link */}
             <Link
               to="/contact"
-              className={`flex flex-col items-center gap-1 text-[11px] font-semibold transition ${
+              className={`flex flex-col items-center justify-center min-w-[48px] min-h-[44px] gap-1 text-[11px] font-semibold transition ${
                 location.pathname === "/contact"
                   ? "text-[#0066FF]"
                   : "text-slate-500 hover:text-[#0066FF]"
@@ -169,7 +172,7 @@ const FloatingSocialBar: React.FC = () => {
             {/* Careers Link */}
             <Link
               to="/careers"
-              className={`flex flex-col items-center gap-1 text-[11px] font-semibold transition ${
+              className={`flex flex-col items-center justify-center min-w-[48px] min-h-[44px] gap-1 text-[11px] font-semibold transition ${
                 location.pathname === "/careers"
                   ? "text-[#0066FF]"
                   : "text-slate-500 hover:text-[#0066FF]"

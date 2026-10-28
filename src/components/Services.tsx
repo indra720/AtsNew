@@ -3,9 +3,9 @@ import React from "react";
 const Services: React.FC = () => {
   return (
     <>
-      <section className="relative py-24 lg:py-16 overflow-hidden bg-linear-to-r from-orange-400 to-red-300 sm:h-[550px] lg:h-[450px]">
+      <section className="relative py-10 lg:py-16 overflow-hidden bg-linear-to-r from-orange-400 to-red-300 sm:h-[550px] lg:h-[450px]">
         <div className="absolute inset-0 "></div>
-        <div className="relative w-full px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative w-full px-[3px] sm:px-4 lg:px-6 text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Innovative Solutions
             <span className="block text-3xl md:text-5xl mt-2 font-normal">

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  CheckCircle2,
+  Loader2,
+  Sparkles,
+} from "lucide-react";
 import Card3D from "./ui/Card3D";
 
 interface FormData {
@@ -22,10 +30,12 @@ const initialFormData: FormData = {
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "submitting" | "success"
+  >("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -45,8 +55,11 @@ export const ContactSection: React.FC = () => {
   const isSubmitting = submitStatus === "submitting";
 
   return (
-    <section id="contact-section" className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section
+      id="contact-section"
+      className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100"
+    >
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column */}
           <div className="lg:col-span-5">
@@ -60,13 +73,15 @@ export const ContactSection: React.FC = () => {
             </h2>
 
             <p className="text-base text-slate-600 leading-relaxed mb-6 font-medium">
-              Ready to transform your business operations with cutting-edge technology? 
-              Connect with our senior architects and turn your vision into an enterprise reality.
+              Ready to transform your business operations with cutting-edge
+              technology? Connect with our senior architects and turn your
+              vision into an enterprise reality.
             </p>
 
             <p className="text-sm text-slate-600 leading-relaxed mb-10 font-normal">
-              We follow a disciplined, client-first approach from concept validation to full-scale deployment. 
-              You receive structured sprint roadmaps, proactive communication, and predictable timelines.
+              We follow a disciplined, client-first approach from concept
+              validation to full-scale deployment. You receive structured sprint
+              roadmaps, proactive communication, and predictable timelines.
             </p>
 
             {/* Direct Contact Pills */}
@@ -102,8 +117,12 @@ export const ContactSection: React.FC = () => {
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-[11px] font-mono text-slate-500 uppercase font-bold">{item.title}</div>
-                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0066FF] transition">{item.info}</div>
+                      <div className="text-[11px] font-mono text-slate-500 uppercase font-bold">
+                        {item.title}
+                      </div>
+                      <div className="text-sm font-bold text-slate-900 group-hover:text-[#0066FF] transition">
+                        {item.info}
+                      </div>
                     </div>
                   </a>
                 );
@@ -113,27 +132,36 @@ export const ContactSection: React.FC = () => {
 
           {/* Right Column: Modern 3D Form Card */}
           <div className="lg:col-span-7">
-            <Card3D intensity={6} className="cloud-card p-6 sm:p-8 lg:p-10 border border-blue-100/90 rounded-3xl shadow-xl">
+            <Card3D
+              intensity={6}
+              className="cloud-card p-6 sm:p-8 lg:p-10 border border-blue-100/90 rounded-3xl shadow-xl"
+            >
               <div className="mb-8">
                 <h3 className="text-2xl font-black text-slate-900 font-display mb-2">
                   Request Free Enterprise Consultation
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 font-medium">
-                  Fill out your project specifications and our solution leads will respond within 24 business hours.
+                  Fill out your project specifications and our solution leads
+                  will respond within 24 business hours.
                 </p>
               </div>
 
               {submitStatus === "success" && (
                 <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-300 flex items-center gap-3 text-emerald-800 text-sm font-semibold shadow-xs">
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                  <span>Thank you! Your project details have been received. An ATS engineering lead will contact you shortly.</span>
+                  <span>
+                    Thank you! Your project details have been received. An ATS
+                    engineering lead will contact you shortly.
+                  </span>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">First Name *</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">
+                      First Name *
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -145,7 +173,9 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">Last Name *</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">
+                      Last Name *
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -160,7 +190,9 @@ export const ContactSection: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">Work Email *</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">
+                      Work Email *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -172,7 +204,9 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">Phone Number</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -185,7 +219,9 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">Company / Organization</label>
+                  <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">
+                    Company / Organization
+                  </label>
                   <input
                     type="text"
                     name="company"
@@ -197,7 +233,9 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">Project Scope & Requirements *</label>
+                  <label className="block text-xs font-mono text-slate-700 font-bold mb-1.5 uppercase">
+                    Project Scope & Requirements *
+                  </label>
                   <textarea
                     name="details"
                     rows={4}

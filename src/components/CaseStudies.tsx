@@ -18,8 +18,10 @@ const caseStudiesList = [
     title: "AI-Powered E-Commerce Revolution",
     industry: "E-Commerce",
     featured: true,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000&h=600&fit=crop",
-    challenge: "Low conversion rates, high cart abandonment, and inefficient inventory management were costing millions in lost revenue.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1000&h=600&fit=crop",
+    challenge:
+      "Low conversion rates, high cart abandonment, and inefficient inventory management were costing millions in lost revenue.",
     link: "/ai-page",
     metrics: [
       ["+300%", "Revenue Increase"],
@@ -32,8 +34,10 @@ const caseStudiesList = [
     title: "Secure Banking Transformation",
     industry: "Financial Services",
     featured: false,
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1000&h=600&fit=crop",
-    challenge: "Legacy core banking systems hindered mobile adoption and lacked real-time fraud mitigation capabilities.",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1000&h=600&fit=crop",
+    challenge:
+      "Legacy core banking systems hindered mobile adoption and lacked real-time fraud mitigation capabilities.",
     link: "/secure-page",
     metrics: [
       ["90%", "Mobile Adoption"],
@@ -46,8 +50,10 @@ const caseStudiesList = [
     title: "Healthcare Analytics Revolution",
     industry: "Healthcare",
     featured: false,
-    image: "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg",
-    challenge: "Hospitals struggled with fragmented patient records, delayed emergency diagnoses, and strict compliance overhead.",
+    image:
+      "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg",
+    challenge:
+      "Hospitals struggled with fragmented patient records, delayed emergency diagnoses, and strict compliance overhead.",
     link: "/health-page",
     metrics: [
       ["+40%", "Diagnosis Speed"],
@@ -60,8 +66,10 @@ const caseStudiesList = [
     title: "Enterprise Cloud Migration",
     industry: "Cloud Infrastructure",
     featured: false,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000&h=600&fit=crop",
-    challenge: "On-prem data centers suffered recurring downtime, slow feature release cycles, and spiraling maintenance overhead.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000&h=600&fit=crop",
+    challenge:
+      "On-prem data centers suffered recurring downtime, slow feature release cycles, and spiraling maintenance overhead.",
     link: "/cloud-page",
     metrics: [
       ["60%", "Cost Reduction"],
@@ -74,8 +82,10 @@ const caseStudiesList = [
     title: "EdTech Learning Platform",
     industry: "Education Technology",
     featured: false,
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&h=600&fit=crop",
-    challenge: "Traditional static virtual classrooms lacked student engagement and personalized learning paths.",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&h=600&fit=crop",
+    challenge:
+      "Traditional static virtual classrooms lacked student engagement and personalized learning paths.",
     link: "/work/projects",
     metrics: [
       ["+75%", "Engagement Uplift"],
@@ -88,8 +98,10 @@ const caseStudiesList = [
     title: "Smart Logistics Optimization",
     industry: "Logistics & Fleet",
     featured: false,
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1000&h=600&fit=crop",
-    challenge: "Inefficient fleet dispatching and static routing were causing high fuel burn and delivery delays.",
+    image:
+      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1000&h=600&fit=crop",
+    challenge:
+      "Inefficient fleet dispatching and static routing were causing high fuel burn and delivery delays.",
     link: "/work/projects",
     metrics: [
       ["30%", "Fuel Savings"],
@@ -107,43 +119,74 @@ export const CaseStudies: FC = () => {
       <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>MEASURABLE BUSINESS OUTCOMES</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
-            Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Success Stories</span>
+            Client{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">
+              Success Stories
+            </span>
           </h1>
 
           <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-sans">
-            Discover how we've helped enterprises across industries achieve remarkable transformations through innovative, future-ready technology solutions.
+            Discover how we've helped enterprises across industries achieve
+            remarkable transformations through innovative, future-ready
+            technology solutions.
           </p>
 
           {/* Metrics Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-20">
             {[
-              { val: "15+", label: "Enterprise Transformations", icon: Award, color: "text-[#0066FF]" },
-              { val: "2,000+", label: "Clients & Partners Trusted", icon: Users, color: "text-[#0052CC]" },
-              { val: "98%", label: "Client Satisfaction SLA", icon: CircleCheckBig, color: "text-emerald-600" },
-              { val: "5+", label: "Global Industry Awards", icon: Target, color: "text-amber-500" },
+              {
+                val: "15+",
+                label: "Enterprise Transformations",
+                icon: Award,
+                color: "text-[#0066FF]",
+              },
+              {
+                val: "2,000+",
+                label: "Clients & Partners Trusted",
+                icon: Users,
+                color: "text-[#0052CC]",
+              },
+              {
+                val: "98%",
+                label: "Client Satisfaction SLA",
+                icon: CircleCheckBig,
+                color: "text-emerald-600",
+              },
+              {
+                val: "5+",
+                label: "Global Industry Awards",
+                icon: Target,
+                color: "text-amber-500",
+              },
             ].map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div key={i} className="cloud-card p-6 rounded-3xl text-center">
-                  <div className={`w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 mx-auto flex items-center justify-center mb-3 shadow-inner ${stat.color}`}>
+                  <div
+                    className={`w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 mx-auto flex items-center justify-center mb-3 shadow-inner ${stat.color}`}
+                  >
                     <Icon className="w-6 h-6 stroke-[2]" />
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#0A1629] font-display mb-1">{stat.val}</div>
-                  <div className="text-xs text-slate-500 font-mono font-bold">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#0A1629] font-display mb-1">
+                    {stat.val}
+                  </div>
+                  <div className="text-xs text-slate-500 font-mono font-bold">
+                    {stat.label}
+                  </div>
                 </div>
               );
             })}
           </div>
 
           {/* Case Studies Cards List */}
-          <div className="space-y-8 text-left">
+          <div className="space-y-8 text-left ">
             {caseStudiesList.map((study, idx) => (
               <Card3D
                 key={idx}
@@ -172,19 +215,29 @@ export const CaseStudies: FC = () => {
 
                   <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-2xl sm:text-3xl font-black text-[#0A1629] mb-3 font-display group-hover:text-[#0066FF] transition">
+                      <h3 className="text-xl sm:text-3xl font-black text-[#0A1629] mb-3 font-display group-hover:text-[#0066FF] transition">
                         {study.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                        <strong className="text-slate-900 font-bold">Business Challenge:</strong> {study.challenge}
+                        <strong className="text-slate-900 font-bold">
+                          Business Challenge:
+                        </strong>{" "}
+                        {study.challenge}
                       </p>
 
                       {/* Metrics 4-grid */}
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
                         {study.metrics.map(([val, lbl], mIdx) => (
-                          <div key={mIdx} className="p-3 rounded-2xl bg-[#F0F7FF] border border-blue-200 text-center">
-                            <div className="text-xl sm:text-2xl font-black text-[#0066FF] font-display mb-0.5">{val}</div>
-                            <div className="text-[10px] uppercase font-mono font-bold text-slate-500">{lbl}</div>
+                          <div
+                            key={mIdx}
+                            className="p-3 rounded-2xl bg-[#F0F7FF] border border-blue-200 text-center"
+                          >
+                            <div className="text-xl sm:text-2xl font-black text-[#0066FF] font-display mb-0.5">
+                              {val}
+                            </div>
+                            <div className="text-[10px] uppercase font-mono font-bold text-slate-500">
+                              {lbl}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -212,7 +265,8 @@ export const CaseStudies: FC = () => {
             Ready to Write Your Success Story?
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-sans">
-            Join hundreds of forward-thinking enterprise leaders who have modernized their infrastructure with ATS Global Tech.
+            Join hundreds of forward-thinking enterprise leaders who have
+            modernized their infrastructure with ATS Global Tech.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

@@ -94,8 +94,8 @@ const AakashProfile: React.FC = () => {
       </div>
 
       {/* Profile Header Block */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 relative z-10 mb-16">
-        <div className="p-8 sm:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 -mt-28 relative z-10 mb-16">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
           <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
             <div className="relative">
               <img
@@ -163,7 +163,7 @@ const AakashProfile: React.FC = () => {
       </div>
 
       {/* Main Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column (2 cols): About & Projects */}
           <div className="lg:col-span-2 space-y-8">
@@ -177,7 +177,11 @@ const AakashProfile: React.FC = () => {
                 Python Developer with a BCA degree and strong skills in{" "}
                 <strong className="text-[#0066FF]">Django</strong>,{" "}
                 <strong className="text-[#0A1629]">Python</strong>, and{" "}
-                <strong className="text-[#0A1629]">JavaScript</strong>. Experienced in building responsive and scalable web applications, improving performance, and integrating third-party APIs. Passionate about delivering user-centric and efficient solutions.
+                <strong className="text-[#0A1629]">JavaScript</strong>.
+                Experienced in building responsive and scalable web
+                applications, improving performance, and integrating third-party
+                APIs. Passionate about delivering user-centric and efficient
+                solutions.
               </p>
             </div>
 
@@ -188,7 +192,9 @@ const AakashProfile: React.FC = () => {
                   <Code className="w-6 h-6 text-[#0066FF]" />
                   Featured Projects
                 </h2>
-                <span className="text-xs font-mono text-slate-500 font-semibold">{projects.length} Built</span>
+                <span className="text-xs font-mono text-slate-500 font-semibold">
+                  {projects.length} Built
+                </span>
               </div>
 
               <div className="space-y-6">
@@ -201,7 +207,9 @@ const AakashProfile: React.FC = () => {
                         className="w-full md:w-52 h-36 rounded-2xl object-cover border border-blue-100 shrink-0"
                       />
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold font-display text-[#0A1629] mb-2">{project.title}</h3>
+                        <h3 className="text-xl font-bold font-display text-[#0A1629] mb-2">
+                          {project.title}
+                        </h3>
                         <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                           {project.description}
                         </p>
@@ -230,12 +238,22 @@ const AakashProfile: React.FC = () => {
               </h2>
               <div className="space-y-6">
                 {experience.map((exp, idx) => (
-                  <div key={idx} className="border-l-4 border-[#0066FF] pl-4 space-y-1.5">
-                    <h3 className="font-bold text-[#0A1629] text-base font-display">{exp.title}</h3>
-                    <p className="text-[11px] font-mono text-slate-500">{exp.duration}</p>
+                  <div
+                    key={idx}
+                    className="border-l-4 border-[#0066FF] pl-4 space-y-1.5"
+                  >
+                    <h3 className="font-bold text-[#0A1629] text-base font-display">
+                      {exp.title}
+                    </h3>
+                    <p className="text-[11px] font-mono text-slate-500">
+                      {exp.duration}
+                    </p>
                     <ul className="space-y-1.5 pt-2">
                       {exp.points.map((p, i) => (
-                        <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                        <li
+                          key={i}
+                          className="text-xs text-slate-600 flex items-start gap-2"
+                        >
                           <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF] mt-1.5 shrink-0" />
                           <span>{p}</span>
                         </li>
@@ -257,30 +275,45 @@ const AakashProfile: React.FC = () => {
               </h3>
               <div className="space-y-5">
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">Frontend</h4>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">
+                    Frontend
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {skills.frontend.map((s) => (
-                      <span key={s} className="px-2.5 py-1 bg-blue-50/70 border border-blue-100 rounded-lg text-xs font-mono text-slate-700">
+                      <span
+                        key={s}
+                        className="px-2.5 py-1 bg-blue-50/70 border border-blue-100 rounded-lg text-xs font-mono text-slate-700"
+                      >
                         {s}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-[#0066FF] font-semibold mb-2">Backend</h4>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-[#0066FF] font-semibold mb-2">
+                    Backend
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {skills.backend.map((s) => (
-                      <span key={s} className="px-2.5 py-1 bg-blue-50 border border-blue-200 rounded-lg text-xs font-mono text-[#0066FF] font-bold">
+                      <span
+                        key={s}
+                        className="px-2.5 py-1 bg-blue-50 border border-blue-200 rounded-lg text-xs font-mono text-[#0066FF] font-bold"
+                      >
                         {s}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">Tools</h4>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-2">
+                    Tools
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {skills.tools.map((s) => (
-                      <span key={s} className="px-2.5 py-1 bg-blue-50/70 border border-blue-100 rounded-lg text-xs font-mono text-slate-700">
+                      <span
+                        key={s}
+                        className="px-2.5 py-1 bg-blue-50/70 border border-blue-100 rounded-lg text-xs font-mono text-slate-700"
+                      >
                         {s}
                       </span>
                     ))}
@@ -297,10 +330,21 @@ const AakashProfile: React.FC = () => {
               </h3>
               <div className="space-y-5">
                 {education.map((edu, idx) => (
-                  <div key={idx} className="border-b border-blue-100 last:border-0 pb-4 last:pb-0">
-                    <h4 className="font-bold text-[#0A1629] text-sm font-display">{edu.title}</h4>
-                    <p className="text-xs text-[#0066FF] mt-0.5">{edu.institution}</p>
-                    {edu.gpa && <p className="text-[11px] font-mono text-emerald-600 font-bold mt-1">{edu.gpa}</p>}
+                  <div
+                    key={idx}
+                    className="border-b border-blue-100 last:border-0 pb-4 last:pb-0"
+                  >
+                    <h4 className="font-bold text-[#0A1629] text-sm font-display">
+                      {edu.title}
+                    </h4>
+                    <p className="text-xs text-[#0066FF] mt-0.5">
+                      {edu.institution}
+                    </p>
+                    {edu.gpa && (
+                      <p className="text-[11px] font-mono text-emerald-600 font-bold mt-1">
+                        {edu.gpa}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
@@ -308,7 +352,9 @@ const AakashProfile: React.FC = () => {
 
             {/* Contact Information */}
             <div className="p-8 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,102,255,0.08)]">
-              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-4">Contact Info</h3>
+              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-4">
+                Contact Info
+              </h3>
               <div className="space-y-3 text-xs sm:text-sm font-mono text-slate-600">
                 <p className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#0066FF]" />
@@ -327,8 +373,12 @@ const AakashProfile: React.FC = () => {
 
             {/* Direct Contact Box */}
             <div className="p-8 rounded-3xl bg-gradient-to-br from-white via-[#F0F7FF] to-[#E0F2FE] border border-blue-200/80 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,102,255,0.12)] text-center">
-              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-2">Initiate Collaboration</h3>
-              <p className="text-xs text-slate-600 mb-6">Need high-performance Python services or REST API design?</p>
+              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-2">
+                Initiate Collaboration
+              </h3>
+              <p className="text-xs text-slate-600 mb-6">
+                Need high-performance Python services or REST API design?
+              </p>
               <Link
                 to="/contact"
                 className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0066FF] text-white text-xs font-bold font-mono uppercase tracking-wider shadow-lg shadow-blue-500/25 hover:scale-105 transition-transform"

@@ -7,50 +7,165 @@ type Category = "all" | "languages" | "cloud" | "databases" | "frameworks";
 
 const techItems = [
   // Languages
-  { name: "TypeScript", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-  { name: "JavaScript", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-  { name: "Python", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-  { name: "Java", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-  { name: "PHP", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
-  { name: "C++", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
-  { name: "Kotlin", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" },
-  { name: "Swift", category: "languages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" },
+  {
+    name: "TypeScript",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  {
+    name: "JavaScript",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    name: "Python",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  },
+  {
+    name: "Java",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  },
+  {
+    name: "PHP",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+  },
+  {
+    name: "C++",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+  },
+  {
+    name: "Kotlin",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg",
+  },
+  {
+    name: "Swift",
+    category: "languages",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg",
+  },
 
   // Cloud & DevOps
-  { name: "AWS", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
-  { name: "Azure", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" },
-  { name: "Google Cloud", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
-  { name: "Docker", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-  { name: "Kubernetes", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
-  { name: "Terraform", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" },
-  { name: "Jenkins", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
-  { name: "GitHub", category: "cloud", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+  {
+    name: "AWS",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+  },
+  {
+    name: "Azure",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+  },
+  {
+    name: "Google Cloud",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+  },
+  {
+    name: "Docker",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  },
+  {
+    name: "Kubernetes",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+  },
+  {
+    name: "Terraform",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+  },
+  {
+    name: "Jenkins",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg",
+  },
+  {
+    name: "GitHub",
+    category: "cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  },
 
   // Databases
-  { name: "PostgreSQL", category: "databases", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-  { name: "MongoDB", category: "databases", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-  { name: "MySQL", category: "databases", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-  { name: "Redis", category: "databases", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
-  { name: "Firebase", category: "databases", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
-  { name: "SQLite", category: "databases", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" },
+  {
+    name: "PostgreSQL",
+    category: "databases",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "MongoDB",
+    category: "databases",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  },
+  {
+    name: "MySQL",
+    category: "databases",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  },
+  {
+    name: "Redis",
+    category: "databases",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+  },
+  {
+    name: "Firebase",
+    category: "databases",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  },
+  {
+    name: "SQLite",
+    category: "databases",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+  },
 
   // Frameworks
-  { name: "React", category: "frameworks", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-  { name: "Next.js", category: "frameworks", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-  { name: "Node.js", category: "frameworks", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-  { name: "Flutter", category: "frameworks", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
-  { name: "Django", category: "frameworks", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" },
-  { name: "Angular", category: "frameworks", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" },
+  {
+    name: "React",
+    category: "frameworks",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Next.js",
+    category: "frameworks",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  },
+  {
+    name: "Node.js",
+    category: "frameworks",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  {
+    name: "Flutter",
+    category: "frameworks",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+  },
+  {
+    name: "Django",
+    category: "frameworks",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",
+  },
+  {
+    name: "Angular",
+    category: "frameworks",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+  },
 ];
 
 export const TechnologyStack: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Category>("all");
 
-  const filteredItems = activeTab === "all" ? techItems : techItems.filter((i) => i.category === activeTab);
+  const filteredItems =
+    activeTab === "all"
+      ? techItems
+      : techItems.filter((i) => i.category === activeTab);
 
   return (
-    <section className="relative py-24 bg-white/90 text-slate-900 overflow-hidden border-t border-blue-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="relative py-6 bg-white/90 text-slate-900 overflow-hidden border-t border-blue-100">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
             <Cpu className="w-3.5 h-3.5" />
@@ -62,12 +177,13 @@ export const TechnologyStack: React.FC = () => {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 font-medium">
-            We build with world-class, battle-tested modern frameworks and enterprise cloud tools guaranteeing reliability and security.
+            We build with world-class, battle-tested modern frameworks and
+            enterprise cloud tools guaranteeing reliability and security.
           </p>
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
           {[
             { id: "all", label: "All Technologies", icon: Layers },
             { id: "languages", label: "Languages", icon: Terminal },
@@ -81,7 +197,7 @@ export const TechnologyStack: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as Category)}
-                className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 ${
+                className={`relative px-4 py-2 rounded-xl text-[10px] sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 ${
                   isSelected
                     ? "text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] shadow-[0_6px_20px_rgba(0,102,255,0.35)]"
                     : "text-slate-600 bg-white/90 border border-blue-200/80 hover:text-[#0066FF] hover:bg-blue-50/50 shadow-xs"

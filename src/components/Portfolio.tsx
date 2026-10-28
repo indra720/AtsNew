@@ -32,8 +32,10 @@ const projects: Project[] = [
   {
     category: "Web Development",
     title: "E-Commerce Enterprise Platform",
-    description: "Full-stack e-commerce solution with AI-driven product recommendations, real-time inventory management, and advanced analytics dashboard for global scale.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=672&h=375&fit=crop",
+    description:
+      "Full-stack e-commerce solution with AI-driven product recommendations, real-time inventory management, and advanced analytics dashboard for global scale.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=672&h=375&fit=crop",
     techStack: ["React", "Node.js", "MongoDB", "TensorFlow"],
     link: "/ai-page",
     rating: 4.8,
@@ -44,8 +46,10 @@ const projects: Project[] = [
   {
     category: "Mobile App",
     title: "FinTech Mobile Banking App",
-    description: "Cross-platform mobile banking application with biometric authentication, real-time transactions, and advanced security features on Flutter & React Native.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=672&h=375&fit=crop",
+    description:
+      "Cross-platform mobile banking application with biometric authentication, real-time transactions, and advanced security features on Flutter & React Native.",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=672&h=375&fit=crop",
     techStack: ["React Native", "Node.js", "PostgreSQL", "AWS"],
     link: "/fintech-page",
     rating: 4.9,
@@ -56,8 +60,10 @@ const projects: Project[] = [
   {
     category: "Healthcare",
     title: "Healthcare Analytics Portal",
-    description: "Next-gen healthcare data analytics and patient care portal for seamless hospital operations and real-time clinical diagnostic reporting.",
-    image: "https://images.unsplash.com/photo-1657727534685-36b09f84e193?w=672&h=375&fit=crop",
+    description:
+      "Next-gen healthcare data analytics and patient care portal for seamless hospital operations and real-time clinical diagnostic reporting.",
+    image:
+      "https://images.unsplash.com/photo-1657727534685-36b09f84e193?w=672&h=375&fit=crop",
     techStack: ["Python", "Django", "React", "Docker"],
     link: "/health-page",
     rating: 4.9,
@@ -68,8 +74,10 @@ const projects: Project[] = [
   {
     category: "Cloud Solutions",
     title: "Enterprise Multi-Region Cloud Migration",
-    description: "Migrated a complete enterprise infrastructure to cloud with zero downtime, high availability, and automated Kubernetes CI/CD deployment pipelines.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=672&h=375&fit=crop",
+    description:
+      "Migrated a complete enterprise infrastructure to cloud with zero downtime, high availability, and automated Kubernetes CI/CD deployment pipelines.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=672&h=375&fit=crop",
     techStack: ["AWS", "Kubernetes", "Terraform", "Docker"],
     link: "/cloud-page",
     rating: 4.9,
@@ -80,8 +88,10 @@ const projects: Project[] = [
   {
     category: "AI & Automation",
     title: "AI Conversational Support Assistant",
-    description: "A multilingual AI assistant that automates customer support with smart routing, sentiment insights, and personalized responses in 89+ languages.",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=672&h=375&fit=crop",
+    description:
+      "A multilingual AI assistant that automates customer support with smart routing, sentiment insights, and personalized responses in 89+ languages.",
+    image:
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=672&h=375&fit=crop",
     techStack: ["Python", "Rasa", "FastAPI", "PostgreSQL"],
     link: "/aichat-page",
     rating: 4.7,
@@ -92,8 +102,10 @@ const projects: Project[] = [
   {
     category: "SaaS Platform",
     title: "Real-Time SaaS Analytics Dashboard",
-    description: "High-throughput business intelligence engine delivering real-time streaming analytics, sub-second queries, and customizable drag-and-drop metrics.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=672&h=375&fit=crop",
+    description:
+      "High-throughput business intelligence engine delivering real-time streaming analytics, sub-second queries, and customizable drag-and-drop metrics.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=672&h=375&fit=crop",
     techStack: ["Next.js", "ClickHouse", "Go", "Tailwind"],
     link: "/saas-page",
     rating: 4.8,
@@ -106,27 +118,42 @@ const projects: Project[] = [
 export const Portfolio: FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "Web Development", "Mobile App", "Healthcare", "Cloud Solutions", "AI & Automation", "SaaS Platform"];
+  const categories = [
+    "All",
+    "Web Development",
+    "Mobile App",
+    "Healthcare",
+    "Cloud Solutions",
+    "AI & Automation",
+    "SaaS Platform",
+  ];
 
-  const filtered = activeCategory === "All" ? projects : projects.filter((p) => p.category === activeCategory);
+  const filtered =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   return (
     <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen">
       <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>PORTFOLIO MATRIX</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
-            Enterprise <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Portfolio</span>
+            Enterprise{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">
+              Portfolio
+            </span>
           </h1>
 
           <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            A comprehensive matrix of bespoke software platforms, cloud modernizations, and mobile apps deployed for enterprise leaders.
+            A comprehensive matrix of bespoke software platforms, cloud
+            modernizations, and mobile apps deployed for enterprise leaders.
           </p>
 
           {/* Filter Pills */}
@@ -168,9 +195,11 @@ export const Portfolio: FC = () => {
                   </div>
                 </div>
 
-                <div className="p-6 flex flex-col grow">
+                <div className="p-4 sm:p-6 flex flex-col grow">
                   <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
-                    <span className="font-mono font-bold text-[#0066FF]">{item.industry}</span>
+                    <span className="font-mono font-bold text-[#0066FF]">
+                      {item.industry}
+                    </span>
                     <div className="flex items-center gap-1 text-amber-500 font-bold">
                       <Star className="w-3.5 h-3.5 fill-amber-400" />
                       <span>{item.rating}</span>
@@ -187,7 +216,10 @@ export const Portfolio: FC = () => {
 
                   <div className="flex flex-wrap gap-1.5 mb-6">
                     {item.techStack.map((tech) => (
-                      <span key={tech} className="px-2.5 py-1 rounded-full bg-[#EBF5FF] border border-blue-200 text-[10px] font-mono font-bold text-[#0066FF]">
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 rounded-full bg-[#EBF5FF] border border-blue-200 text-[10px] font-mono font-bold text-[#0066FF]"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -195,12 +227,20 @@ export const Portfolio: FC = () => {
 
                   <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#F0F7FF] border border-blue-200 text-xs mb-6 mt-auto">
                     <div>
-                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Scale</div>
-                      <div className="font-black text-[#0A1629] font-display">{item.users}</div>
+                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">
+                        Scale
+                      </div>
+                      <div className="font-black text-[#0A1629] font-display">
+                        {item.users}
+                      </div>
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Timeline</div>
-                      <div className="font-black text-[#0A1629] font-display">{item.timeline}</div>
+                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">
+                        Timeline
+                      </div>
+                      <div className="font-black text-[#0A1629] font-display">
+                        {item.timeline}
+                      </div>
                     </div>
                   </div>
 

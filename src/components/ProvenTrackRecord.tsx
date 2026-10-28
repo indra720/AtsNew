@@ -64,12 +64,12 @@ const pillars = [
 
 export const ProvenTrackRecord: React.FC = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] text-slate-900 overflow-hidden border-t border-blue-100">
+    <section className="relative py-12 bg-gradient-to-b from-white via-[#F8FAFC] to-[#F0F7FF] text-slate-900 overflow-hidden border-t border-blue-100">
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-300/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -97,30 +97,35 @@ export const ProvenTrackRecord: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg text-slate-600 leading-relaxed font-sans"
           >
-            We engineer high-performance digital systems designed to accelerate business velocity, 
-            enhance stability, and maintain competitive supremacy in an evolving technological landscape.
+            We engineer high-performance digital systems designed to accelerate
+            business velocity, enhance stability, and maintain competitive
+            supremacy in an evolving technological landscape.
           </motion.p>
         </div>
 
         {/* Results That Speak Louder - Live KPI Telemetry Dashboard */}
-        <div className="mb-20">
+        <div className="mb-12 ">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
             <div>
               <div className="text-xs font-mono font-bold text-[#0066FF] tracking-wider uppercase mb-1">
                 Data-Driven Impact
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-slate-900 font-display">
-                Results That Speak <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] to-[#00D2FF]">Louder</span>
+                Results That Speak{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] to-[#00D2FF]">
+                  Louder
+                </span>
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 font-medium max-w-sm">
-              Real metrics achieved across 120+ client deployments and scalable digital infrastructure.
+              Real metrics achieved across 120+ client deployments and scalable
+              digital infrastructure.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {/* KPI 1: 320% Traffic Surge */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
               <div className="text-3xl sm:text-4xl font-black text-slate-900 font-display mb-1 group-hover:text-[#0066FF] transition-colors">
                 320%
               </div>
@@ -142,7 +147,13 @@ export const ProvenTrackRecord: React.FC = () => {
                     opacity="0.25"
                   />
                   <defs>
-                    <linearGradient id="traffic-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient
+                      id="traffic-gradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
                       <stop offset="0%" stopColor="#0066FF" />
                       <stop offset="100%" stopColor="#00D2FF" stopOpacity="0" />
                     </linearGradient>
@@ -152,7 +163,7 @@ export const ProvenTrackRecord: React.FC = () => {
             </div>
 
             {/* KPI 2: 200% Growth in Conversions */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
               <div className="text-3xl sm:text-4xl font-black text-slate-900 font-display mb-1 group-hover:text-[#0052CC] transition-colors">
                 200%
               </div>
@@ -176,7 +187,7 @@ export const ProvenTrackRecord: React.FC = () => {
             </div>
 
             {/* KPI 3: 150% ROAS */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
               <div className="text-3xl sm:text-4xl font-black text-slate-900 font-display mb-1 group-hover:text-[#00D2FF] transition-colors">
                 150%
               </div>
@@ -208,13 +219,15 @@ export const ProvenTrackRecord: React.FC = () => {
                       fill="none"
                     />
                   </svg>
-                  <span className="absolute text-[11px] font-black text-[#0066FF]">1.5x</span>
+                  <span className="absolute text-[11px] font-black text-[#0066FF]">
+                    1.5x
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* KPI 4: 99.98% Retention & Uptime */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 border border-blue-100 shadow-[0_8px_30px_rgba(0,102,255,0.06)] hover:border-[#0066FF]/40 hover:shadow-[0_12px_35px_rgba(0,102,255,0.12)] transition-all group">
               <div className="text-3xl sm:text-4xl font-black text-slate-900 font-display mb-1 group-hover:text-emerald-600 transition-colors">
                 99.98%
               </div>
@@ -235,7 +248,7 @@ export const ProvenTrackRecord: React.FC = () => {
         </div>
 
         {/* 3D Bento Matrix */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {pillars.map((item) => {
             const Icon = item.icon;
             return (
@@ -243,7 +256,7 @@ export const ProvenTrackRecord: React.FC = () => {
                 key={item.title}
                 intensity={12}
                 glowColor="rgba(0, 102, 255, 0.1)"
-                className="cloud-card p-8 group border border-blue-100/90 hover:border-blue-300 rounded-3xl"
+                className="cloud-card p-4 group border border-blue-100/90 hover:border-blue-300 rounded-3xl"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] shadow-inner group-hover:scale-110 group-hover:bg-[#0066FF] group-hover:text-white transition-all duration-300">

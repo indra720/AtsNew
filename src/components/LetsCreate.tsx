@@ -66,7 +66,7 @@ export const LetsCreate: React.FC = () => {
       <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="w-full max-w-5xl mx-auto px-[3px] sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
               <Sparkles className="w-3.5 h-3.5" />
@@ -74,15 +74,23 @@ export const LetsCreate: React.FC = () => {
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-[#0A1629] tracking-tight font-display mb-4">
-              IDEABANK: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Let's Create Your Vision</span>
+              IDEABANK:{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">
+                Let's Create Your Vision
+              </span>
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto font-sans">
-              Share your concept or enterprise challenge. Our engineering leads will analyze your scope and construct a scalable implementation blueprint.
+              Share your concept or enterprise challenge. Our engineering leads
+              will analyze your scope and construct a scalable implementation
+              blueprint.
             </p>
           </div>
 
-          <Card3D intensity={6} className="cloud-card p-6 sm:p-10 rounded-3xl shadow-xl">
+          <Card3D
+            intensity={6}
+            className="cloud-card p-4 sm:p-8 lg:p-10 rounded-3xl shadow-xl"
+          >
             {submitted ? (
               <div className="p-8 text-center space-y-4">
                 <CheckCircle2 className="w-16 h-16 text-[#0066FF] mx-auto" />
@@ -90,7 +98,12 @@ export const LetsCreate: React.FC = () => {
                   Project Concept Received!
                 </h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto font-sans">
-                  Thank you, <strong className="text-slate-900 font-bold">{form.name}</strong>. An ATS solution architect will review your requirements and schedule an initial strategy session within 24 hours.
+                  Thank you,{" "}
+                  <strong className="text-slate-900 font-bold">
+                    {form.name}
+                  </strong>
+                  . An ATS solution architect will review your requirements and
+                  schedule an initial strategy session within 24 hours.
                 </p>
                 <div className="pt-4">
                   <button
@@ -126,7 +139,9 @@ export const LetsCreate: React.FC = () => {
                               : "bg-white border-blue-200 text-slate-700 hover:border-blue-300 hover:text-[#0066FF]"
                           }`}
                         >
-                          <Icon className={`w-5 h-5 ${isSelected ? "text-[#0066FF]" : "text-slate-400"}`} />
+                          <Icon
+                            className={`w-5 h-5 ${isSelected ? "text-[#0066FF]" : "text-slate-400"}`}
+                          />
                           <span className="text-xs font-bold">{c.label}</span>
                         </button>
                       );
@@ -146,7 +161,9 @@ export const LetsCreate: React.FC = () => {
                         required
                         placeholder="Your Full Name *"
                         value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        onChange={(e) =>
+                          setForm({ ...form, name: e.target.value })
+                        }
                         className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
                       />
                     </div>
@@ -155,7 +172,9 @@ export const LetsCreate: React.FC = () => {
                         type="text"
                         placeholder="Company / Organization Name"
                         value={form.organization}
-                        onChange={(e) => setForm({ ...form, organization: e.target.value })}
+                        onChange={(e) =>
+                          setForm({ ...form, organization: e.target.value })
+                        }
                         className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
                       />
                     </div>
@@ -165,7 +184,9 @@ export const LetsCreate: React.FC = () => {
                         required
                         placeholder="Work Email Address *"
                         value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        onChange={(e) =>
+                          setForm({ ...form, email: e.target.value })
+                        }
                         className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
                       />
                     </div>
@@ -175,7 +196,9 @@ export const LetsCreate: React.FC = () => {
                         required
                         placeholder="Contact Phone / WhatsApp *"
                         value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        onChange={(e) =>
+                          setForm({ ...form, phone: e.target.value })
+                        }
                         className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
                       />
                     </div>
@@ -190,7 +213,9 @@ export const LetsCreate: React.FC = () => {
                     </label>
                     <select
                       value={form.timeline}
-                      onChange={(e) => setForm({ ...form, timeline: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, timeline: e.target.value })
+                      }
                       className="w-full bg-white border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-[#0066FF] transition"
                     >
                       <option>&lt; 1 Month (Fast Prototype)</option>
@@ -206,7 +231,9 @@ export const LetsCreate: React.FC = () => {
                     </label>
                     <select
                       value={form.budget}
-                      onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, budget: e.target.value })
+                      }
                       className="w-full bg-white border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-[#0066FF] transition"
                     >
                       <option>&lt; $10,000</option>
@@ -226,7 +253,9 @@ export const LetsCreate: React.FC = () => {
                     rows={4}
                     required
                     value={form.description}
-                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, description: e.target.value })
+                    }
                     placeholder="Provide a summary of what you are aiming to build, key feature requirements, or any existing infrastructure to integrate..."
                     className="w-full bg-[#F0F7FF]/50 border border-blue-200 rounded-2xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0066FF] focus:bg-white transition"
                   />
@@ -238,7 +267,11 @@ export const LetsCreate: React.FC = () => {
                   className="w-full py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition transform hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-5 h-5" />
-                  <span>{loading ? "Transmitting to Idea Bank..." : "Submit Concept to ATS Idea Bank"}</span>
+                  <span>
+                    {loading
+                      ? "Transmitting to Idea Bank..."
+                      : "Submit Concept to ATS Idea Bank"}
+                  </span>
                 </button>
               </form>
             )}

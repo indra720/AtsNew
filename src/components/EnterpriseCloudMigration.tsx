@@ -46,8 +46,12 @@ const CloudFeature = ({
           </div>
         </div>
         <div className="p-6">
-          <h4 className="font-bold font-display text-xl text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">{title}</h4>
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{desc}</p>
+          <h4 className="font-bold font-display text-xl text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">
+            {title}
+          </h4>
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+            {desc}
+          </p>
         </div>
       </div>
     </div>
@@ -109,11 +113,11 @@ export default function EnterpriseCloudMigration() {
   ];
 
   return (
-    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Dynamic Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <section className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#0066FF] bg-white border border-blue-200 px-3.5 py-1.5 rounded-full mb-6 shadow-xs">
@@ -168,7 +172,9 @@ export default function EnterpriseCloudMigration() {
               key={stat.label}
               className="border-r last:border-r-0 border-blue-100 px-2"
             >
-              <p className={`text-3xl sm:text-4xl font-black font-display ${stat.glow} mb-1`}>
+              <p
+                className={`text-3xl sm:text-4xl font-black font-display ${stat.glow} mb-1`}
+              >
                 {stat.value}
               </p>
               <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
@@ -181,7 +187,9 @@ export default function EnterpriseCloudMigration() {
         {/* Why Migrate Section */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">Architectural Advantage</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">
+              Architectural Advantage
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A1629] mt-1">
               Why Migrate to the Cloud?
             </h2>
@@ -213,7 +221,9 @@ export default function EnterpriseCloudMigration() {
         {/* Our Proven Migration Process */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">Zero-Downtime Delivery</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">
+              Zero-Downtime Delivery
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A1629] mt-1">
               Our Proven Migration Process
             </h2>
@@ -223,13 +233,17 @@ export default function EnterpriseCloudMigration() {
               <Card3D key={step.title} className="h-full">
                 <div className="h-full p-6 cloud-card bg-white/90 border border-blue-100 hover:border-blue-300 rounded-3xl backdrop-blur-xl shadow-[0_10px_30px_-5px_rgba(0,102,255,0.08)] flex flex-col justify-between group transition-all duration-300">
                   <div>
-                    <div className={`w-12 h-12 rounded-2xl ${step.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <div
+                      className={`w-12 h-12 rounded-2xl ${step.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                    >
                       <step.Icon className={`w-6 h-6 ${step.glow}`} />
                     </div>
                     <h4 className="font-bold font-display text-base text-[#0A1629] mb-2 group-hover:text-[#0066FF] transition-colors">
                       {step.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{step.detail}</p>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {step.detail}
+                    </p>
                   </div>
                 </div>
               </Card3D>
@@ -239,7 +253,9 @@ export default function EnterpriseCloudMigration() {
 
         {/* Core Tech Expertise */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-semibold">Cloud Ecosystem</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-semibold">
+            Cloud Ecosystem
+          </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-[#0A1629] mt-1 mb-6">
             Core Technology Expertise
           </h2>

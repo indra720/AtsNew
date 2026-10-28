@@ -93,7 +93,7 @@ export const GsapRollingText: React.FC<GsapRollingTextProps> = ({
           duration: 0.85,
           ease: "power3.inOut",
         },
-        0
+        0,
       );
 
       // 2. Next word rolls UP into view from below in 3D space
@@ -107,7 +107,7 @@ export const GsapRollingText: React.FC<GsapRollingTextProps> = ({
           duration: 0.85,
           ease: "power3.inOut",
         },
-        0
+        0,
       );
     }, interval);
 
@@ -128,7 +128,7 @@ export const GsapRollingText: React.FC<GsapRollingTextProps> = ({
       {/* Active Word 1 */}
       <span
         ref={word1Ref}
-        className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] via-[#0099FF] to-[#00D2FF] font-bold will-change-transform"
+        className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0038A8] via-[#0066FF] to-[#0047BA] font-black will-change-transform"
       >
         {words[currentIndex]}
       </span>
@@ -136,7 +136,7 @@ export const GsapRollingText: React.FC<GsapRollingTextProps> = ({
       {/* Incoming Word 2 (Absolute on top of Word 1 during 3D roll) */}
       <span
         ref={word2Ref}
-        className="absolute left-0 top-0 inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0066FF] via-[#0099FF] to-[#00D2FF] font-bold will-change-transform pointer-events-none"
+        className="absolute left-0 top-0 inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#0038A8] via-[#0066FF] to-[#0047BA] font-black will-change-transform pointer-events-none"
       >
         {words[nextIndex]}
       </span>

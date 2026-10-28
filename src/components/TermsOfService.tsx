@@ -55,7 +55,7 @@ const TermsOfService: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
@@ -90,7 +90,9 @@ const TermsOfService: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-sans"
           >
-            Please read these terms carefully before using our website or services. These terms define your rights and responsibilities when engaging with ATS GLOBAL TECH.
+            Please read these terms carefully before using our website or
+            services. These terms define your rights and responsibilities when
+            engaging with ATS GLOBAL TECH.
           </motion.p>
         </div>
 
@@ -119,7 +121,9 @@ const TermsOfService: React.FC = () => {
                 />
               </div>
               <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Clause 01</span>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+                  Clause 01
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
                   Usage Agreement
                 </h2>
@@ -143,14 +147,16 @@ const TermsOfService: React.FC = () => {
                 />
               </div>
               <div className="md:order-1">
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Clause 02</span>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+                  Clause 02
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
                   User Responsibilities
                 </h2>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-sans">
-                  Users must ensure that all interactions with our platform remain
-                  lawful. You must not engage in hacking, unauthorized access,
-                  spreading malware, or any form of harmful activity.
+                  Users must ensure that all interactions with our platform
+                  remain lawful. You must not engage in hacking, unauthorized
+                  access, spreading malware, or any form of harmful activity.
                 </p>
               </div>
             </div>
@@ -167,7 +173,9 @@ const TermsOfService: React.FC = () => {
                 />
               </div>
               <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Clause 03</span>
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+                  Clause 03
+                </span>
                 <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
                   Intellectual Property
                 </h2>
@@ -208,7 +216,8 @@ const TermsOfService: React.FC = () => {
         {/* Footer Link */}
         <div className="text-center p-8 rounded-3xl cloud-card">
           <p className="text-slate-600 text-sm font-sans">
-            For inquiries regarding legal terms or commercial agreements, contact our legal counsel at{" "}
+            For inquiries regarding legal terms or commercial agreements,
+            contact our legal counsel at{" "}
             <a
               href="mailto:info@atsglobaltech.in"
               className="text-[#0066FF] hover:underline font-mono font-bold transition"

@@ -102,11 +102,11 @@ export default function FinTechMobileBankingApp() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F0F7FF] text-[#0A1629] pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F0F7FF] text-[#0A1629] pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <section className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] bg-white border border-blue-200 shadow-xs px-3.5 py-1.5 rounded-full mb-6">
@@ -130,20 +130,36 @@ export default function FinTechMobileBankingApp() {
             {/* Quick Hero Telemetry */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-3xl cloud-card mb-8 max-w-2xl">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-black font-display text-[#0066FF]">3M+</p>
-                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">Active users</p>
+                <p className="text-2xl sm:text-3xl font-black font-display text-[#0066FF]">
+                  3M+
+                </p>
+                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">
+                  Active users
+                </p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-black font-display text-emerald-600">99.95%</p>
-                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">Uptime SLA</p>
+                <p className="text-2xl sm:text-3xl font-black font-display text-emerald-600">
+                  99.95%
+                </p>
+                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">
+                  Uptime SLA
+                </p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-black font-display text-[#0052CC]">PCI-DSS</p>
-                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">Compliance</p>
+                <p className="text-2xl sm:text-3xl font-black font-display text-[#0052CC]">
+                  PCI-DSS
+                </p>
+                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">
+                  Compliance
+                </p>
               </div>
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-black font-display text-indigo-600">2ms</p>
-                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">Avg. Transfer</p>
+                <p className="text-2xl sm:text-3xl font-black font-display text-indigo-600">
+                  2ms
+                </p>
+                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mt-1">
+                  Avg. Transfer
+                </p>
               </div>
             </div>
 
@@ -203,11 +219,15 @@ export default function FinTechMobileBankingApp() {
               </p>
               <p className="flex justify-between border-b border-blue-100 pb-2">
                 <span className="text-slate-500">Core Stack:</span>
-                <span className="text-slate-900 font-bold">React Native, Node.js</span>
+                <span className="text-slate-900 font-bold">
+                  React Native, Node.js
+                </span>
               </p>
               <p className="flex justify-between">
                 <span className="text-slate-500">Compliance:</span>
-                <span className="text-[#0066FF] font-bold">PCI DSS aligned</span>
+                <span className="text-[#0066FF] font-bold">
+                  PCI DSS aligned
+                </span>
               </p>
             </div>
           </div>
@@ -216,7 +236,9 @@ export default function FinTechMobileBankingApp() {
         {/* Platform Core Features */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Capabilities</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Capabilities
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Platform Core Features
             </h2>
@@ -249,7 +271,9 @@ export default function FinTechMobileBankingApp() {
           </div>
 
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Zero-Compromise Security</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Zero-Compromise Security
+            </span>
             <h3 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
               Bank-Grade Security Architecture
             </h3>
@@ -266,7 +290,10 @@ export default function FinTechMobileBankingApp() {
                 "Adaptive, anomaly-based fraud detection engine",
                 "Strict role-based access controls (RBAC)",
               ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-700 text-sm font-medium">
+                <li
+                  key={idx}
+                  className="flex items-center gap-3 text-slate-700 text-sm font-medium"
+                >
                   <ShieldCheck className="w-5 h-5 text-[#0066FF] shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -278,7 +305,9 @@ export default function FinTechMobileBankingApp() {
         {/* Impact & Performance Metrics */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Verifiable Results</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Verifiable Results
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Impact & Performance Metrics
             </h2>
@@ -303,7 +332,9 @@ export default function FinTechMobileBankingApp() {
 
         {/* Tech Stack */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Frameworks & Infrastructure</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+            Frameworks & Infrastructure
+          </span>
           <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-6">
             Technology Stack
           </h2>

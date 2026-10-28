@@ -57,8 +57,8 @@ const cards = [
 
 export const WhyChooseUs: React.FC = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="relative py-6 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column */}
           <div className="lg:col-span-6">
@@ -72,13 +72,18 @@ export const WhyChooseUs: React.FC = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 font-medium">
-              We don’t just write software — we architect long-lasting, resilient systems backed by deep engineering 
-              excellence, transparent communication, and an unwavering commitment to your business supremacy.
+              We don’t just write software — we architect long-lasting,
+              resilient systems backed by deep engineering excellence,
+              transparent communication, and an unwavering commitment to your
+              business supremacy.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-10">
               {features.map((feat, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                <div
+                  key={idx}
+                  className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium"
+                >
                   <CheckCircle2 className="w-4 h-4 text-[#0066FF] shrink-0 mt-0.5" />
                   <span>{feat}</span>
                 </div>

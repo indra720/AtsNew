@@ -82,7 +82,7 @@ const PrivacyPolicy: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
@@ -121,7 +121,9 @@ const PrivacyPolicy: React.FC = () => {
                 Zero-Knowledge Encryption Standard
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed font-sans">
-                All client telemetry, project data, and credentials transferred through ATS GLOBAL TECH are safeguarded with TLS 1.3 encryption and enterprise-grade access protocols.
+                All client telemetry, project data, and credentials transferred
+                through ATS GLOBAL TECH are safeguarded with TLS 1.3 encryption
+                and enterprise-grade access protocols.
               </p>
             </div>
           </div>
@@ -137,15 +139,15 @@ const PrivacyPolicy: React.FC = () => {
             const Icon = sec.icon;
             return (
               <Card3D key={sec.id}>
-                <div
-                  className="cloud-card p-8 sm:p-10 rounded-3xl transition-all duration-300"
-                >
+                <div className="cloud-card p-8 sm:p-10 rounded-3xl transition-all duration-300">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] shrink-0 mt-1 shadow-inner">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Section 0{sec.number}</span>
+                      <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+                        Section 0{sec.number}
+                      </span>
                       <h2 className="text-2xl font-black font-display text-[#0A1629] mt-0.5">
                         {sec.number}. {sec.title}
                       </h2>

@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AOS from "aos";
@@ -40,7 +38,6 @@ import Careers from "./components/Careers";
 import Contact from "./components/Contact";
 import LetsCreate from "./components/LetsCreate";
 
-
 import PramodProfile from "./portfolio/PramodProfile";
 import RahulProfile from "./portfolio/RahulProfile";
 import AakashProfile from "./portfolio/AakashProfile";
@@ -56,7 +53,6 @@ import AIChatAssistant from "./components/AIChatAssistant";
 
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
-
 
 const App: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -75,7 +71,7 @@ const App: React.FC = () => {
         <SocialBar />
         <Navbar />
 
-        <main className="grow pt-32">
+        <main className="grow pt-28 sm:pt-32 lg:pt-36 pb-24 md:pb-0">
           <Routes>
             <Route
               path="/"
@@ -121,7 +117,10 @@ const App: React.FC = () => {
             <Route path="/ai-page" element={<AiPage />} />
             <Route path="/secure-page" element={<SecureBankingApp />} />
             <Route path="/cloud-page" element={<EnterpriseCloudMigration />} />
-            <Route path="/health-page" element={<HealthcareAnalyticsPlatform />} />
+            <Route
+              path="/health-page"
+              element={<HealthcareAnalyticsPlatform />}
+            />
             <Route path="/fintech-page" element={<FinTechMobileBankingApp />} />
             <Route path="/saas-page" element={<SaaSAnalyticsDashboard />} />
             <Route path="/aichat-page" element={<AIChatAssistant />} />

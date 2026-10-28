@@ -50,7 +50,13 @@ const TIERS: TierInfo[] = [
     rightTitle: "USER INTERFACE",
     rightDesc: "Chat UI, dashboards, visualizations & interactions",
     hotspotTopPercent: 9,
-    techStack: ["React 19", "Tailwind CSS", "Next.js", "WebSockets", "Streaming Markdown"],
+    techStack: [
+      "React 19",
+      "Tailwind CSS",
+      "Next.js",
+      "WebSockets",
+      "Streaming Markdown",
+    ],
     architectureDetail:
       "Enterprise conversational interfaces, dynamic real-time dashboards, and human-in-the-loop control panels with sub-100ms streaming latency.",
   },
@@ -62,7 +68,12 @@ const TIERS: TierInfo[] = [
     rightTitle: "OUTPUT LAYER",
     rightDesc: "Generated text, images, code, insights & more",
     hotspotTopPercent: 24,
-    techStack: ["Tokenizers", "Byte-Pair Encoding", "Multi-Head Attention", "AST Parsers"],
+    techStack: [
+      "Tokenizers",
+      "Byte-Pair Encoding",
+      "Multi-Head Attention",
+      "AST Parsers",
+    ],
     architectureDetail:
       "Multi-modal synthesis pipeline transforming raw latent space vectors into deterministic code ASTs, natural language, and visual assets.",
   },
@@ -74,7 +85,13 @@ const TIERS: TierInfo[] = [
     rightTitle: "AI MODELS",
     rightDesc: "LLMs, diffusion models, embedding models & more",
     hotspotTopPercent: 37,
-    techStack: ["Claude 3.5 Sonnet", "GPT-4o", "LLaMA 3.3 70B", "Flux.1", "CLIP"],
+    techStack: [
+      "Claude 3.5 Sonnet",
+      "GPT-4o",
+      "LLaMA 3.3 70B",
+      "Flux.1",
+      "CLIP",
+    ],
     architectureDetail:
       "Foundation model layer hosting proprietary weights, domain fine-tuned LoRA checkpoints, and high-throughput quantizations (FP8 / AWQ).",
   },
@@ -86,19 +103,31 @@ const TIERS: TierInfo[] = [
     rightTitle: "AI ORCHESTRATION",
     rightDesc: "APIs, vector search, chains, agents & workflows",
     hotspotTopPercent: 49,
-    techStack: ["MCP Protocol", "LangGraph", "Semantic Kernel", "Temporal DAGs"],
+    techStack: [
+      "MCP Protocol",
+      "LangGraph",
+      "Semantic Kernel",
+      "Temporal DAGs",
+    ],
     architectureDetail:
       "Multi-agent swarm coordination engine executing complex decision trees, OpenAPI tool dispatch, memory state persistence, and self-healing loops.",
   },
   {
     id: 5,
     leftTitle: "DATA & CONTEXT LAYER",
-    leftDesc: "Use data intelligently with embeddings, vectors & context management",
+    leftDesc:
+      "Use data intelligently with embeddings, vectors & context management",
     leftIcon: Database,
     rightTitle: "DATA PIPELINE",
     rightDesc: "Data ingestion, processing, chunking & embeddings",
     hotspotTopPercent: 61,
-    techStack: ["Qdrant", "Pinecone", "Apache Kafka", "Cohere Rerank", "Unstructured.io"],
+    techStack: [
+      "Qdrant",
+      "Pinecone",
+      "Apache Kafka",
+      "Cohere Rerank",
+      "Unstructured.io",
+    ],
     architectureDetail:
       "Sub-40ms hybrid vector retrieval pipeline combining semantic dense embeddings with BM25 keyword search over enterprise document stores.",
   },
@@ -110,7 +139,13 @@ const TIERS: TierInfo[] = [
     rightTitle: "CLOUD INFRASTRUCTURE",
     rightDesc: "Cloud services, GPUs, storage, scaling & deployment",
     hotspotTopPercent: 74,
-    techStack: ["NVIDIA H100 SXM5", "vLLM", "TensorRT-LLM", "Kubernetes", "Slurm"],
+    techStack: [
+      "NVIDIA H100 SXM5",
+      "vLLM",
+      "TensorRT-LLM",
+      "Kubernetes",
+      "Slurm",
+    ],
     architectureDetail:
       "Distributed GPU inference cluster with dynamic KV-cache management, continuous batching, and multi-cloud failover across AWS, Azure & GCP.",
   },
@@ -122,7 +157,12 @@ const TIERS: TierInfo[] = [
     rightTitle: "SECURITY & ETHICS",
     rightDesc: "Guardrails, bias checks, data privacy, compliance & ethics",
     hotspotTopPercent: 88,
-    techStack: ["NeMo Guardrails", "Presidio PII", "SOC-2 Type II", "HIPAA Vault"],
+    techStack: [
+      "NeMo Guardrails",
+      "Presidio PII",
+      "SOC-2 Type II",
+      "HIPAA Vault",
+    ],
     architectureDetail:
       "Air-gapped security shield providing real-time prompt injection defense, automated PII scrubbing, and tamper-evident cryptographic audit logs.",
   },
@@ -130,9 +170,13 @@ const TIERS: TierInfo[] = [
 
 export const MasterGenAIRevolution3D: React.FC = () => {
   const [activeTier, setActiveTier] = useState<number>(3); // Default to Tier 3 (AI Models)
-  const [inspectModalTier, setInspectModalTier] = useState<TierInfo | null>(null);
+  const [inspectModalTier, setInspectModalTier] = useState<TierInfo | null>(
+    null,
+  );
   const [posterModalOpen, setPosterModalOpen] = useState<boolean>(false);
-  const [centerViewMode, setCenterViewMode] = useState<"model" | "poster">("model");
+  const [centerViewMode, setCenterViewMode] = useState<"model" | "poster">(
+    "model",
+  );
 
   // Subtle interactive 3D mouse parallax on the hardware stack
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
@@ -162,12 +206,10 @@ export const MasterGenAIRevolution3D: React.FC = () => {
 
       {/* Main Container */}
       <div className="max-w-[1360px] mx-auto relative z-10">
-
         {/* ============================================================ */}
         {/* 1. TOP HEADER: ATS GLOBAL TECH REVOLUTION BRANDING */}
         {/* ============================================================ */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 mb-8 border-b border-slate-800/80">
-          
           {/* Left Column: Brand Badge + Headline */}
           <div className="space-y-2">
             {/* ATS Brand Emblem Badge */}
@@ -218,7 +260,8 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                 The Future is Generative.
               </div>
               <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                An architectural breakdown of the 7 enterprise tiers powering generative artificial intelligence.
+                An architectural breakdown of the 7 enterprise tiers powering
+                generative artificial intelligence.
               </p>
             </div>
 
@@ -236,11 +279,12 @@ export const MasterGenAIRevolution3D: React.FC = () => {
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#09152B] border border-cyan-400/40 text-xs font-mono shadow-[0_0_20px_rgba(0,210,255,0.2)]">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                 <span className="text-slate-300">TIER {currentTier.id}:</span>
-                <span className="font-bold text-[#00D2FF] uppercase">{currentTier.rightTitle}</span>
+                <span className="font-bold text-[#00D2FF] uppercase">
+                  {currentTier.rightTitle}
+                </span>
               </div>
             </div>
           </div>
-
         </div>
 
         {/* ============================================================ */}
@@ -252,7 +296,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
           onMouseLeave={handleMouseLeave}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative py-4"
         >
-          
           {/* ============================================================ */}
           {/* LEFT COLUMN: 7 FOUNDATION TIERS */}
           {/* ============================================================ */}
@@ -292,7 +335,9 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                       <div className="flex items-center justify-between gap-1">
                         <h4
                           className={`text-xs font-bold tracking-tight font-mono uppercase ${
-                            isSelected ? "text-[#00D2FF]" : "text-white group-hover:text-[#00D2FF]"
+                            isSelected
+                              ? "text-[#00D2FF]"
+                              : "text-white group-hover:text-[#00D2FF]"
                           }`}
                         >
                           {tier.leftTitle}
@@ -320,12 +365,11 @@ export const MasterGenAIRevolution3D: React.FC = () => {
           {/* CENTER COLUMN: THE PHOTOREALISTIC 3D HARDWARE STACK */}
           {/* ============================================================ */}
           <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[580px] sm:min-h-[660px] lg:min-h-[740px] order-1 lg:order-2">
-            
             {/* Glowing Ambient Core Light behind the 3D Model */}
             <div className="absolute w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-[#0066FF]/35 via-[#00D2FF]/20 to-transparent blur-[100px] pointer-events-none" />
 
             {/* Mode Switcher: Clean 3D Model vs Full Blueprint Poster */}
-            <div className="flex items-center gap-1.5 p-1 rounded-full bg-[#081224]/90 border border-slate-700/80 mb-4 z-20 shadow-xl backdrop-blur-md">
+            <div className="flex flex-col sm:flex-row items-center gap-1.5 p-1 rounded-2xl bg-[#081224]/90 border border-slate-700/80 mb-4 z-20 shadow-xl backdrop-blur-md">
               <button
                 type="button"
                 onClick={() => setCenterViewMode("model")}
@@ -425,12 +469,16 @@ export const MasterGenAIRevolution3D: React.FC = () => {
             )}
 
             {/* Active Layer Quick Info Badge at bottom of model */}
-            <div className="mt-4 px-4 py-2 rounded-2xl bg-[#09152B]/90 border border-slate-700/80 backdrop-blur-md flex items-center gap-3 shadow-lg">
+            <div className="mt-4 px-4 py-2 rounded-2xl bg-[#09152B]/90 border border-slate-700/80 backdrop-blur-md flex flex-col sm:flex-row items-center gap-3 shadow-lg">
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-xs font-mono text-slate-300">Tier {currentTier.id}:</span>
+                <span className="text-xs font-mono text-slate-300">
+                  Tier {currentTier.id}:
+                </span>
               </div>
-              <span className="text-xs font-mono font-bold text-[#00D2FF]">{currentTier.rightTitle}</span>
+              <span className="text-xs font-mono font-bold text-[#00D2FF]">
+                {currentTier.rightTitle}
+              </span>
               <button
                 onClick={() => setInspectModalTier(currentTier)}
                 className="ml-2 text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#0066FF] to-[#00D2FF] hover:brightness-110 text-white transition flex items-center gap-1 cursor-pointer shadow-md"
@@ -485,7 +533,9 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                       <div className="flex items-center justify-between gap-1">
                         <h4
                           className={`text-xs font-bold tracking-tight font-mono uppercase ${
-                            isSelected ? "text-[#00D2FF]" : "text-white group-hover:text-[#FBBF24]"
+                            isSelected
+                              ? "text-[#00D2FF]"
+                              : "text-white group-hover:text-[#FBBF24]"
                           }`}
                         >
                           {tier.rightTitle}
@@ -505,7 +555,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
               );
             })}
           </div>
-
         </div>
 
         {/* ============================================================ */}
@@ -513,7 +562,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
         {/* ============================================================ */}
         <div className="mt-10 pt-6 border-t border-slate-800/80">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            
             {/* Left: FROM ZERO TO GEN AI EXPERT with 4 Pillars */}
             <div className="space-y-2.5 w-full lg:w-auto">
               <div className="text-xs sm:text-sm font-black font-mono tracking-wider text-[#00D2FF] uppercase text-center lg:text-left flex items-center justify-center lg:justify-start gap-2">
@@ -523,15 +571,21 @@ export const MasterGenAIRevolution3D: React.FC = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-300">
                 <div className="flex items-center gap-2 bg-[#081224] px-3 py-2 rounded-xl border border-slate-800">
                   <BookOpen className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                  <span className="font-medium text-[11px]">Hands-on Learning</span>
+                  <span className="font-medium text-[11px]">
+                    Hands-on Learning
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#081224] px-3 py-2 rounded-xl border border-slate-800">
                   <Laptop className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                  <span className="font-medium text-[11px]">Real-world Projects</span>
+                  <span className="font-medium text-[11px]">
+                    Real-world Projects
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#081224] px-3 py-2 rounded-xl border border-slate-800">
                   <GraduationCap className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                  <span className="font-medium text-[11px]">Expert Mentorship</span>
+                  <span className="font-medium text-[11px]">
+                    Expert Mentorship
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 bg-[#081224] px-3 py-2 rounded-xl border border-slate-800">
                   <TrendingUp className="w-4 h-4 text-[#00D2FF] shrink-0" />
@@ -552,13 +606,14 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                 <div className="text-xs sm:text-sm font-black tracking-widest text-white uppercase mt-0.5">
                   LEARN | BUILD | INNOVATE
                 </div>
-                <div className="text-[11px] text-slate-300">with ATS Global Tech</div>
+                <div className="text-[11px] text-slate-300">
+                  with ATS Global Tech
+                </div>
               </div>
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00D2FF] to-[#0066FF] text-white flex items-center justify-center group-hover:scale-110 transition-all shadow-md">
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </Link>
-
           </div>
 
           {/* Website Link in Center */}
@@ -567,7 +622,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
             <span>www.atsglobaltech.in</span>
           </div>
         </div>
-
       </div>
 
       {/* ============================================================ */}
@@ -576,7 +630,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
       {inspectModalTier && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
           <div className="relative w-full max-w-2xl bg-[#09152B] border border-cyan-400/50 rounded-3xl p-6 sm:p-8 shadow-[0_0_80px_rgba(0,210,255,0.3)] max-h-[90vh] overflow-y-auto">
-            
             {/* Close Button */}
             <button
               onClick={() => setInspectModalTier(null)}
@@ -625,7 +678,8 @@ export const MasterGenAIRevolution3D: React.FC = () => {
             {/* Modal CTA */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
               <div className="text-xs text-slate-400">
-                Want to deploy Tier {inspectModalTier.id} capabilities in your enterprise?
+                Want to deploy Tier {inspectModalTier.id} capabilities in your
+                enterprise?
               </div>
               <Link
                 to="/lets-create"
@@ -635,7 +689,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                 Schedule Architecture Consultation
               </Link>
             </div>
-
           </div>
         </div>
       )}
@@ -646,7 +699,6 @@ export const MasterGenAIRevolution3D: React.FC = () => {
       {posterModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-lg flex items-center justify-center p-4 sm:p-6">
           <div className="relative w-full max-w-4xl bg-[#030712] border border-cyan-400/40 rounded-3xl p-4 sm:p-6 shadow-[0_0_100px_rgba(0,102,255,0.4)] max-h-[92vh] flex flex-col">
-            
             {/* Header */}
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div className="flex items-center gap-3">
@@ -656,7 +708,8 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                     GEN AI REVOLUTION — SYSTEM BLUEPRINT
                   </h3>
                   <p className="text-xs text-slate-400 font-mono">
-                    High-Resolution Technical Reference Poster by ATS Global Tech
+                    High-Resolution Technical Reference Poster by ATS Global
+                    Tech
                   </p>
                 </div>
               </div>
@@ -692,11 +745,9 @@ export const MasterGenAIRevolution3D: React.FC = () => {
                 <span>Download High-Res Blueprint</span>
               </a>
             </div>
-
           </div>
         </div>
       )}
-
     </section>
   );
 };

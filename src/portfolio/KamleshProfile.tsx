@@ -84,8 +84,8 @@ const KamleshProfile: React.FC = () => {
       </div>
 
       {/* Profile Header Block */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 relative z-10 mb-16">
-        <div className="p-8 sm:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 -mt-28 relative z-10 mb-16">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
           <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
             <div className="relative">
               <img
@@ -157,7 +157,7 @@ const KamleshProfile: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-12">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 pb-24 space-y-12">
         {/* About Card */}
         <div className="p-8 sm:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,102,255,0.08)]">
           <h2 className="text-xl font-bold font-display text-[#0A1629] mb-4 flex items-center gap-2">
@@ -165,8 +165,17 @@ const KamleshProfile: React.FC = () => {
             About Developer
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            I am a dedicated <strong className="text-[#0066FF]">Full Stack Developer</strong> with strong expertise in{" "}
-            <strong className="text-[#0A1629]">C#, .NET Framework, .NET Core, SQL Server, WinForms, API Development, Desktop Applications, and Enterprise Systems</strong>. I focus on building secure, scalable and high-performance business software with clean architecture, optimized database structures, and interactive UI components. My experience spans the full SDLC, from requirement gathering to deployment.
+            I am a dedicated{" "}
+            <strong className="text-[#0066FF]">Full Stack Developer</strong>{" "}
+            with strong expertise in{" "}
+            <strong className="text-[#0A1629]">
+              C#, .NET Framework, .NET Core, SQL Server, WinForms, API
+              Development, Desktop Applications, and Enterprise Systems
+            </strong>
+            . I focus on building secure, scalable and high-performance business
+            software with clean architecture, optimized database structures, and
+            interactive UI components. My experience spans the full SDLC, from
+            requirement gathering to deployment.
           </p>
         </div>
 
@@ -177,7 +186,9 @@ const KamleshProfile: React.FC = () => {
               <Code className="w-6 h-6 text-[#0066FF]" />
               Featured Enterprise Projects
             </h2>
-            <span className="text-xs font-mono text-slate-500 font-semibold">{projects.length} Architected Systems</span>
+            <span className="text-xs font-mono text-slate-500 font-semibold">
+              {projects.length} Architected Systems
+            </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -222,7 +233,8 @@ const KamleshProfile: React.FC = () => {
             Need Enterprise .NET & SQL Architecture?
           </h3>
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mb-6">
-            Consult directly on desktop applications, high-performance database design, or .NET microservices.
+            Consult directly on desktop applications, high-performance database
+            design, or .NET microservices.
           </p>
           <Link
             to="/contact"

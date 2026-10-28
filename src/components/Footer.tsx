@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div className="relative w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-16">
           {/* Brand Col */}
           <div className="lg:col-span-2">
@@ -95,18 +95,34 @@ const Footer: React.FC = () => {
             </Link>
 
             <p className="text-slate-600 text-sm mb-6 leading-relaxed max-w-sm">
-              Empowering global enterprises with high-performance software engineering, 
-              cloud modernization, AI automation, and scalable digital ecosystems.
+              Empowering global enterprises with high-performance software
+              engineering, cloud modernization, AI automation, and scalable
+              digital ecosystems.
             </p>
 
             {/* Social Icons */}
             <div className="flex items-center gap-3">
               {[
-                { icon: <Facebook className="w-4 h-4" />, href: "https://www.facebook.com/profile.php?id=61574788298611" },
-                { icon: <Twitter className="w-4 h-4" />, href: "https://twitter.com" },
-                { icon: <Linkedin className="w-4 h-4" />, href: "https://www.linkedin.com/in/sudo-techlabs-8b6708375" },
-                { icon: <Instagram className="w-4 h-4" />, href: "https://instagram.com" },
-                { icon: <Github className="w-4 h-4" />, href: "https://github.com" },
+                {
+                  icon: <Facebook className="w-4 h-4" />,
+                  href: "https://www.facebook.com/profile.php?id=61574788298611",
+                },
+                {
+                  icon: <Twitter className="w-4 h-4" />,
+                  href: "https://twitter.com",
+                },
+                {
+                  icon: <Linkedin className="w-4 h-4" />,
+                  href: "https://www.linkedin.com/in/sudo-techlabs-8b6708375",
+                },
+                {
+                  icon: <Instagram className="w-4 h-4" />,
+                  href: "https://instagram.com",
+                },
+                {
+                  icon: <Github className="w-4 h-4" />,
+                  href: "https://github.com",
+                },
               ].map((item, idx) => (
                 <a
                   key={idx}
@@ -155,13 +171,59 @@ const Footer: React.FC = () => {
               Our Services
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-600 font-medium">
-              <li><Link to="/services" className="hover:text-[#0066FF] transition">Custom Software</Link></li>
-              <li><Link to="/services/mobile" className="hover:text-[#0066FF] transition">Mobile App Dev</Link></li>
-              <li><Link to="/services" className="hover:text-[#0066FF] transition">Web Platforms</Link></li>
-              <li><Link to="/cloud-page" className="hover:text-[#0066FF] transition">Cloud & DevOps</Link></li>
-              <li><Link to="/ai-page" className="hover:text-[#0066FF] transition">AI & Automation</Link></li>
-              <li><Link to="/secure-page" className="hover:text-[#0066FF] transition">Cybersecurity</Link></li>
-              <li><Link to="/products" className="hover:text-[#0066FF] transition">Enterprise ERP</Link></li>
+              <li>
+                <Link
+                  to="/services"
+                  className="hover:text-[#0066FF] transition"
+                >
+                  Custom Software
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services/mobile"
+                  className="hover:text-[#0066FF] transition"
+                >
+                  Mobile App Dev
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="hover:text-[#0066FF] transition"
+                >
+                  Web Platforms
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cloud-page"
+                  className="hover:text-[#0066FF] transition"
+                >
+                  Cloud & DevOps
+                </Link>
+              </li>
+              <li>
+                <Link to="/ai-page" className="hover:text-[#0066FF] transition">
+                  AI & Automation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/secure-page"
+                  className="hover:text-[#0066FF] transition"
+                >
+                  Cybersecurity
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products"
+                  className="hover:text-[#0066FF] transition"
+                >
+                  Enterprise ERP
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -171,7 +233,8 @@ const Footer: React.FC = () => {
               Newsletter
             </h3>
             <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-              Get the latest insights on AI, cloud engineering, and enterprise digital strategy.
+              Get the latest insights on AI, cloud engineering, and enterprise
+              digital strategy.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2">
@@ -208,27 +271,38 @@ const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-blue-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} ATS GLOBAL TECH. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <Link to="/privacy-policy" className="hover:text-[#0066FF] transition">
+          <p>
+            © {new Date().getFullYear()} ATS GLOBAL TECH. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center gap-6">
+            <Link
+              to="/privacy-policy"
+              className="hover:text-[#0066FF] transition"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms-of-service" className="hover:text-[#0066FF] transition">
+            <Link
+              to="/terms-of-service"
+              className="hover:text-[#0066FF] transition"
+            >
               Terms of Service
             </Link>
-            <Link to="/lets-create" className="hover:text-[#0066FF] transition font-semibold text-[#0066FF]">
+            <Link
+              to="/lets-create"
+              className="hover:text-[#0066FF] transition font-semibold text-[#0066FF]"
+            >
               Idea Bank
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Back to top button */}
+      {/* Back to top button - Desktop only to prevent mobile CTA collisions */}
       {showScroll && (
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-24 right-6 z-40 p-3 rounded-2xl bg-gradient-to-tr from-[#0066FF] to-[#00D2FF] text-white hover:shadow-[0_10px_25px_rgba(0,102,255,0.4)] transition transform hover:scale-110 shadow-lg"
+          className="hidden md:flex fixed bottom-8 right-6 z-40 p-3 rounded-2xl bg-gradient-to-tr from-[#0066FF] to-[#00D2FF] text-white hover:shadow-[0_10px_25px_rgba(0,102,255,0.4)] transition transform hover:scale-110 shadow-lg"
         >
           <ArrowUp className="w-5 h-5 stroke-[2.5]" />
         </button>

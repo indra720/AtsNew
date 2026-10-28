@@ -104,7 +104,7 @@ const Testimonials: FC = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
       {/* Hero Header */}
-      <section className="relative pt-6 sm:pt-8 pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="relative pt-6 sm:pt-8 pb-14 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-[#0066FF] text-xs font-mono font-bold uppercase tracking-widest mb-6">
             <Sparkles className="w-3.5 h-3.5" />
@@ -120,8 +120,10 @@ const Testimonials: FC = () => {
 
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-sans">
             Real stories from our partners and clients who trusted{" "}
-            <strong className="text-[#0066FF] font-bold">ATS GLOBAL TECH</strong> to turn
-            their vision into reality.
+            <strong className="text-[#0066FF] font-bold">
+              ATS GLOBAL TECH
+            </strong>{" "}
+            to turn their vision into reality.
           </p>
         </div>
 
@@ -129,9 +131,7 @@ const Testimonials: FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featured.map((item, idx) => (
             <Card3D key={idx} className="h-full">
-              <div
-                className="cloud-card h-full p-8 rounded-3xl flex flex-col justify-between"
-              >
+              <div className="cloud-card h-full p-8 rounded-3xl flex flex-col justify-between">
                 <div>
                   <Quote className="h-8 w-8 text-[#0066FF]/40 mb-4" />
                   <p className="text-slate-700 italic mb-6 text-sm sm:text-base leading-relaxed font-sans">
@@ -142,7 +142,9 @@ const Testimonials: FC = () => {
                   <h3 className="text-[#0066FF] font-black font-display text-base">
                     — {item.author}
                   </h3>
-                  <p className="text-xs font-mono font-bold text-slate-500">{item.title}</p>
+                  <p className="text-xs font-mono font-bold text-slate-500">
+                    {item.title}
+                  </p>
                 </div>
               </div>
             </Card3D>
@@ -152,13 +154,33 @@ const Testimonials: FC = () => {
 
       {/* Telemetry Stats Bar */}
       <section className="py-12 border-y border-blue-100 bg-[#EBF5FF]/60 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6">
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-6">
             {[
-              { value: "150+", label: "Happy Clients", icon: Users, color: "text-[#0066FF]" },
-              { value: "4.9/5", label: "Average Rating", icon: Star, color: "text-amber-500" },
-              { value: "98%", label: "Success Rate", icon: TrendingUp, color: "text-emerald-600" },
-              { value: "25+", label: "Industry Awards", icon: Award, color: "text-[#0052CC]" },
+              {
+                value: "150+",
+                label: "Happy Clients",
+                icon: Users,
+                color: "text-[#0066FF]",
+              },
+              {
+                value: "4.9/5",
+                label: "Average Rating",
+                icon: Star,
+                color: "text-amber-500",
+              },
+              {
+                value: "98%",
+                label: "Success Rate",
+                icon: TrendingUp,
+                color: "text-emerald-600",
+              },
+              {
+                value: "25+",
+                label: "Industry Awards",
+                icon: Award,
+                color: "text-[#0052CC]",
+              },
             ].map((stat, i) => {
               const Icon = stat.icon;
               return (
@@ -166,7 +188,7 @@ const Testimonials: FC = () => {
                   <div className="w-12 h-12 rounded-2xl bg-white border border-blue-200 flex items-center justify-center mx-auto mb-3 shadow-sm">
                     <Icon className={`h-6 w-6 ${stat.color}`} />
                   </div>
-                  <div className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mb-1">
+                  <div className="text-xl sm:text-4xl font-black font-display text-[#0A1629] mb-1">
                     {stat.value}
                   </div>
                   <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">
@@ -180,14 +202,17 @@ const Testimonials: FC = () => {
       </section>
 
       {/* What Our Clients Say - Detailed Cards */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-6 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="text-center mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Verified Feedback</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+            Verified Feedback
+          </span>
           <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1 mb-4">
             What Our Clients Say
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto font-sans">
-            Real feedback from real clients who have experienced the ATS GLOBAL TECH difference.
+            Real feedback from real clients who have experienced the ATS GLOBAL
+            TECH difference.
           </p>
         </div>
 
@@ -241,8 +266,9 @@ const Testimonials: FC = () => {
                     </div>
 
                     <p className="text-slate-600 mb-5 text-xs sm:text-sm leading-relaxed italic border-l-2 border-[#0066FF] pl-3 font-sans">
-                      “ATS GLOBAL TECH exceeded our expectations by delivering an
-                      innovative and scalable solution tailored to our needs.”
+                      “ATS GLOBAL TECH exceeded our expectations by delivering
+                      an innovative and scalable solution tailored to our
+                      needs.”
                     </p>
                   </div>
 
@@ -274,9 +300,11 @@ const Testimonials: FC = () => {
       </section>
 
       {/* Industries We Serve */}
-      <section className="py-20 border-t border-blue-100 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-6 border-t border-blue-100 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="text-center mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Domain Expertise</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+            Domain Expertise
+          </span>
           <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1 mb-4">
             Industries We Serve
           </h2>
@@ -286,7 +314,7 @@ const Testimonials: FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
           {industries.map((industry) => (
             <Card3D key={industry.name} className="h-full">
               <div className="cloud-card h-full rounded-3xl p-6 text-center flex flex-col justify-between group">
@@ -302,7 +330,9 @@ const Testimonials: FC = () => {
                   <p className="text-2xl sm:text-3xl font-black font-display text-[#0066FF]">
                     {industry.projects}
                   </p>
-                  <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">Projects Delivered</p>
+                  <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                    Projects Delivered
+                  </p>
                 </div>
               </div>
             </Card3D>
@@ -311,10 +341,10 @@ const Testimonials: FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-6 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="bg-gradient-to-r from-white via-[#F0F7FF] to-[#EBF5FF] border border-blue-200 rounded-3xl p-8 sm:p-14 text-center shadow-[0_15px_40px_rgba(0,102,255,0.1)] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#0066FF]/10 rounded-full blur-[100px] pointer-events-none" />
-          <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mb-4">
+          <h2 className="text-xl sm:text-4xl font-black font-display text-[#0A1629] mb-4">
             Ready to Join Our Success Stories?
           </h2>
           <p className="text-slate-600 text-base sm:text-lg mb-8 max-w-2xl mx-auto font-sans">
@@ -324,7 +354,7 @@ const Testimonials: FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] text-white font-bold px-8 py-4 rounded-2xl shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition duration-300 hover:scale-105 text-sm"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] text-white font-bold px-8 py-4 rounded-2xl shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition duration-300 hover:scale-105 text-[12px] sm:text-sm"
             >
               <span>Start Your Project</span>
               <ArrowRight className="w-4 h-4" />

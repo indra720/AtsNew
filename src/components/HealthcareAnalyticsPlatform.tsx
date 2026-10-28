@@ -33,7 +33,11 @@ const ModuleCard: React.FC<ModuleCardProps> = ({
       <div>
         <div className="flex items-start gap-4 mb-4">
           <div className="bg-blue-50 border border-blue-100 p-3 rounded-2xl w-14 h-14 flex items-center justify-center text-[#0066FF] shrink-0 group-hover:scale-110 transition-transform">
-            {Icon ? <Icon className="w-6 h-6" /> : <Pill className="w-6 h-6 text-[#0066FF]" />}
+            {Icon ? (
+              <Icon className="w-6 h-6" />
+            ) : (
+              <Pill className="w-6 h-6 text-[#0066FF]" />
+            )}
           </div>
           <div>
             <h4 className="text-lg font-bold font-display text-[#0A1629] group-hover:text-[#0066FF] transition-colors mt-1">
@@ -121,11 +125,11 @@ export default function HealthcareAnalyticsPlatform() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F0F7FF] text-[#0A1629] pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F0F7FF] text-[#0A1629] pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <header className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#0066FF] bg-white border border-blue-200 px-3.5 py-1.5 rounded-full mb-6 shadow-xs">
@@ -167,7 +171,9 @@ export default function HealthcareAnalyticsPlatform() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-white/90 border border-blue-100 backdrop-blur-xl max-w-2xl shadow-md">
               {stats.map((item, i) => (
                 <div key={i} className="text-center">
-                  <p className={`text-2xl sm:text-3xl font-black font-display ${item.glow} mb-0.5`}>
+                  <p
+                    className={`text-2xl sm:text-3xl font-black font-display ${item.glow} mb-0.5`}
+                  >
                     {item.value}
                   </p>
                   <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
@@ -219,7 +225,10 @@ export default function HealthcareAnalyticsPlatform() {
                 "Limited or non-existent telehealth capabilities for remote patient care.",
                 "Navigating strict regulatory (HIPAA, HITECH) and audit requirements.",
               ].map((challenge, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-slate-700 text-sm">
+                <li
+                  key={idx}
+                  className="flex items-start gap-3 text-slate-700 text-sm"
+                >
                   <ChevronRight className="w-4 h-4 text-[#0066FF] mt-1 shrink-0" />
                   <span>{challenge}</span>
                 </li>
@@ -239,11 +248,15 @@ export default function HealthcareAnalyticsPlatform() {
               </p>
               <p className="flex justify-between border-b border-blue-100 pb-2">
                 <span className="text-slate-500">Team:</span>
-                <span className="text-[#0A1629] font-bold">~17 specialists</span>
+                <span className="text-[#0A1629] font-bold">
+                  ~17 specialists
+                </span>
               </p>
               <p className="flex justify-between border-b border-blue-100 pb-2">
                 <span className="text-slate-500">Core Stack:</span>
-                <span className="text-[#0A1629] font-bold">React, Node, Postgres</span>
+                <span className="text-[#0A1629] font-bold">
+                  React, Node, Postgres
+                </span>
               </p>
               <p className="flex justify-between">
                 <span className="text-slate-500">Compliance:</span>
@@ -256,7 +269,9 @@ export default function HealthcareAnalyticsPlatform() {
         {/* Core Modules Grid */}
         <section id="modules" className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">Integrated Capabilities</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">
+              Integrated Capabilities
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A1629] mt-1">
               Platform Core Modules
             </h2>
@@ -290,7 +305,9 @@ export default function HealthcareAnalyticsPlatform() {
           </div>
 
           <div className="lg:order-1">
-            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">Clinical Optimization</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">
+              Clinical Optimization
+            </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-[#0A1629] mt-1 mb-4">
               Measurable Operational Impact
             </h3>
@@ -306,13 +323,17 @@ export default function HealthcareAnalyticsPlatform() {
                 <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">
                   Avg. Scheduling Time Reduction
                 </p>
-                <p className="text-3xl font-black font-display text-[#0066FF]">3 mins</p>
+                <p className="text-3xl font-black font-display text-[#0066FF]">
+                  3 mins
+                </p>
               </div>
               <div className="bg-emerald-50/70 border border-emerald-100 p-5 rounded-2xl text-center">
                 <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">
                   Claims Processing Cycle
                 </p>
-                <p className="text-3xl font-black font-display text-emerald-600">-45%</p>
+                <p className="text-3xl font-black font-display text-emerald-600">
+                  -45%
+                </p>
               </div>
             </div>
           </div>
@@ -320,7 +341,9 @@ export default function HealthcareAnalyticsPlatform() {
 
         {/* Stack */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-semibold">Interoperability & Data Layers</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-semibold">
+            Interoperability & Data Layers
+          </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-[#0A1629] mt-1 mb-6">
             Built on a Secure, Modern Stack
           </h2>
@@ -339,7 +362,9 @@ export default function HealthcareAnalyticsPlatform() {
         {/* Client Success Stories */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">Hospital Feedback</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">
+              Hospital Feedback
+            </span>
             <h2 className="text-3xl font-extrabold font-display text-[#0A1629] mt-1">
               Client Success Stories
             </h2>

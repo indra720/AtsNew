@@ -157,8 +157,8 @@ const PramodProfile: React.FC = () => {
       </div>
 
       {/* Profile Header Block */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-28 relative z-10 mb-16">
-        <div className="p-8 sm:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 -mt-28 relative z-10 mb-16">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-3xl cloud-card bg-white/90 border border-blue-100 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,102,255,0.08)] flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
           <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
             <div className="relative">
               <img
@@ -226,7 +226,7 @@ const PramodProfile: React.FC = () => {
       </div>
 
       {/* Main Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column (2 cols): About & Projects */}
           <div className="lg:col-span-2 space-y-8">
@@ -248,7 +248,9 @@ const PramodProfile: React.FC = () => {
                   <Code className="w-6 h-6 text-[#0066FF]" />
                   Featured Projects
                 </h2>
-                <span className="text-xs font-mono text-slate-500 font-semibold">{featuredProjects.length} Built</span>
+                <span className="text-xs font-mono text-slate-500 font-semibold">
+                  {featuredProjects.length} Built
+                </span>
               </div>
 
               <div className="space-y-6">
@@ -262,7 +264,9 @@ const PramodProfile: React.FC = () => {
                       />
                       <div className="flex-1">
                         <div className="flex items-center justify-between gap-2 mb-2">
-                          <h3 className="text-xl font-bold font-display text-[#0A1629]">{project.title}</h3>
+                          <h3 className="text-xl font-bold font-display text-[#0A1629]">
+                            {project.title}
+                          </h3>
                           <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF] text-[11px] font-mono font-semibold">
                             {project.role}
                           </span>
@@ -298,13 +302,25 @@ const PramodProfile: React.FC = () => {
               </h2>
               <div className="space-y-6">
                 {workExperience.map((exp, idx) => (
-                  <div key={idx} className="border-l-4 border-[#0066FF] pl-4 space-y-1.5">
-                    <h3 className="font-bold text-[#0A1629] text-base font-display">{exp.title}</h3>
-                    <p className="text-xs font-semibold text-[#0066FF]">{exp.company}</p>
-                    <p className="text-[11px] font-mono text-slate-500">{exp.duration}</p>
+                  <div
+                    key={idx}
+                    className="border-l-4 border-[#0066FF] pl-4 space-y-1.5"
+                  >
+                    <h3 className="font-bold text-[#0A1629] text-base font-display">
+                      {exp.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-[#0066FF]">
+                      {exp.company}
+                    </p>
+                    <p className="text-[11px] font-mono text-slate-500">
+                      {exp.duration}
+                    </p>
                     <ul className="space-y-1 pt-2">
                       {exp.bulletPoints.map((b, i) => (
-                        <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                        <li
+                          key={i}
+                          className="text-xs text-slate-600 flex items-start gap-2"
+                        >
                           <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF] mt-1.5 shrink-0" />
                           <span>{b}</span>
                         </li>
@@ -323,10 +339,19 @@ const PramodProfile: React.FC = () => {
               </h2>
               <div className="space-y-5">
                 {educationData.map((edu, idx) => (
-                  <div key={idx} className="border-b border-blue-100 last:border-0 pb-4 last:pb-0">
-                    <h3 className="font-bold text-[#0A1629] text-sm font-display">{edu.degree}</h3>
-                    <p className="text-xs text-[#0066FF] font-semibold mt-0.5">{edu.institution}</p>
-                    <p className="text-[11px] font-mono text-slate-500 mt-1">{edu.years}</p>
+                  <div
+                    key={idx}
+                    className="border-b border-blue-100 last:border-0 pb-4 last:pb-0"
+                  >
+                    <h3 className="font-bold text-[#0A1629] text-sm font-display">
+                      {edu.degree}
+                    </h3>
+                    <p className="text-xs text-[#0066FF] font-semibold mt-0.5">
+                      {edu.institution}
+                    </p>
+                    <p className="text-[11px] font-mono text-slate-500 mt-1">
+                      {edu.years}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -334,8 +359,12 @@ const PramodProfile: React.FC = () => {
 
             {/* Direct Contact */}
             <div className="p-8 rounded-3xl bg-gradient-to-br from-white via-[#F0F7FF] to-[#E0F2FE] border border-blue-200/80 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,102,255,0.12)] text-center">
-              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-2">Initiate Collaboration</h3>
-              <p className="text-xs text-slate-600 mb-6">Need a custom web application or UI consultation?</p>
+              <h3 className="text-lg font-bold font-display text-[#0A1629] mb-2">
+                Initiate Collaboration
+              </h3>
+              <p className="text-xs text-slate-600 mb-6">
+                Need a custom web application or UI consultation?
+              </p>
               <Link
                 to="/contact"
                 className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0066FF] text-white text-xs font-bold font-mono uppercase tracking-wider shadow-lg shadow-blue-500/25 hover:scale-105 transition-transform"

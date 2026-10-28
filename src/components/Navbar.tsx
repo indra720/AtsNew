@@ -1,6 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Mail, Phone, Bell, ChevronDown, Menu, X, Sparkles } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Bell,
+  ChevronDown,
+  Menu,
+  X,
+  Sparkles,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 
@@ -34,7 +42,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [applications, setApplications] = useState<AppEntry[]>(initialApplications);
+  const [applications, setApplications] =
+    useState<AppEntry[]>(initialApplications);
   const [count, setCount] = useState(12);
   const [scrolled, setScrolled] = useState(false);
 
@@ -42,6 +51,17 @@ export default function Navbar() {
     setOpenDropdown(null);
     setMobileOpen(false);
   }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,9 +95,9 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top Ambient Telemetry Bar */}
-      <div className="bg-white/80 backdrop-blur-md border-b border-blue-100/80 text-xs text-slate-600 py-1.5 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-6">
+      <div className="relative z-50 bg-white/90 backdrop-blur-md border-b border-blue-100/80 text-xs text-slate-600 py-1.5 px-[3px] sm:px-4 lg:px-6">
+        <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="mailto:info@atsglobaltech.in"
               className="flex items-center gap-1.5 text-slate-600 hover:text-[#0066FF] transition font-medium"
@@ -90,11 +110,13 @@ export default function Navbar() {
               className="flex items-center gap-1.5 text-slate-600 hover:text-[#0066FF] transition font-medium"
             >
               <Phone className="w-3.5 h-3.5 text-[#0066FF]" />
-              <span>+91 9929825003</span>
+              <span className="text-xs sm:text-xs font-semibold">
+                +91 9929825003
+              </span>
             </a>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <span className="hidden md:inline-flex items-center gap-1.5 text-[11px] font-mono text-[#0066FF] bg-[#EBF5FF] px-3 py-0.5 rounded-full border border-blue-200 font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] animate-ping"></span>
               THE FUTURE WITH NEXT GEN-AI
@@ -108,8 +130,9 @@ export default function Navbar() {
                   setNotifOpen(!notifOpen);
                   if (!notifOpen) setCount(0);
                 }}
-                className="relative p-1.5 text-slate-600 hover:text-[#0066FF] transition rounded-full hover:bg-blue-50"
+                className="relative p-1.5 text-slate-600 hover:text-[#0066FF] transition rounded-full hover:bg-blue-50 cursor-pointer"
                 title="Notifications"
+                aria-label="View notifications"
               >
                 <Bell className="w-4 h-4" />
                 {count > 0 && (
@@ -119,27 +142,38 @@ export default function Navbar() {
                 )}
               </button>
 
-              {/* Notification Popover */}
+              {/* Notification Popover - High z-index & responsive viewport bounds */}
               <AnimatePresence>
                 {notifOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
                     transition={{ duration: 0.15 }}
                     onClick={(e) => e.stopPropagation()}
-                    className="absolute right-0 mt-2 w-76 bg-white/95 border border-blue-100 shadow-2xl rounded-2xl p-4 z-50 backdrop-blur-2xl"
+                    className="fixed sm:absolute right-2 sm:right-0 top-11 sm:top-full mt-1.5 w-[calc(100vw-20px)] max-w-xs sm:w-80 bg-white/98 border border-blue-200/90 shadow-2xl rounded-2xl p-4 z-[70] backdrop-blur-2xl"
                   >
                     <div className="flex items-center justify-between pb-2 border-b border-slate-100 text-xs font-bold text-[#0066FF]">
                       <span>Live Notifications</span>
-                      <span className="text-[10px] text-slate-400 font-mono">Applications</span>
+                      <span className="text-[10px] text-slate-400 font-mono">
+                        Applications
+                      </span>
                     </div>
                     <div className="divide-y divide-slate-100 max-h-60 overflow-y-auto mt-2">
                       {applications.map((app, idx) => (
-                        <div key={idx} className="py-2 hover:bg-blue-50/50 px-2 rounded-xl transition">
-                          <p className="text-xs font-bold text-slate-900">{app.name}</p>
-                          <p className="text-[11px] text-[#0066FF] font-medium">{app.job}</p>
-                          <p className="text-[10px] text-slate-400 mt-0.5 font-mono">{app.time}</p>
+                        <div
+                          key={idx}
+                          className="py-2 hover:bg-blue-50/50 px-2 rounded-xl transition"
+                        >
+                          <p className="text-xs font-bold text-slate-900">
+                            {app.name}
+                          </p>
+                          <p className="text-[11px] text-[#0066FF] font-medium">
+                            {app.job}
+                          </p>
+                          <p className="text-[10px] text-slate-400 mt-0.5 font-mono">
+                            {app.time}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -152,9 +186,9 @@ export default function Navbar() {
       </div>
 
       {/* Main Floating Cloud-Dock Navbar */}
-      <div className="px-4 sm:px-6 lg:px-8 mt-2.5">
+      <div className="px-[3px] sm:px-4 lg:px-6 mt-2.5">
         <nav
-          className={`max-w-7xl mx-auto rounded-full transition-all duration-300 ${
+          className={`w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto rounded-full transition-all duration-300 ${
             scrolled
               ? "cloud-dock shadow-[0_15px_35px_-10px_rgba(0,102,255,0.12)] border border-white"
               : "bg-white/80 backdrop-blur-xl border border-white/90 shadow-[0_8px_30px_rgba(0,102,255,0.06)]"
@@ -162,7 +196,11 @@ export default function Navbar() {
         >
           <div className="px-4 sm:px-6 h-16 sm:h-18 flex items-center justify-between">
             {/* Official ATS 3D Logo (Seamlessly Blended) */}
-            <Link to="/" onClick={closeAllDropdowns} className="flex items-center py-1 group">
+            <Link
+              to="/"
+              onClick={closeAllDropdowns}
+              className="flex items-center py-1 group"
+            >
               <img
                 src="/newlogo.png"
                 alt="ATS GLOBAL TECH - The Future with Next Gen-AI"
@@ -217,7 +255,11 @@ export default function Navbar() {
               {/* Services Dropdown */}
               <div className="relative desktop-dropdown-container">
                 <button
-                  onClick={() => setOpenDropdown(openDropdown === "services" ? null : "services")}
+                  onClick={() =>
+                    setOpenDropdown(
+                      openDropdown === "services" ? null : "services",
+                    )
+                  }
                   className={`relative px-4 py-2 rounded-full text-[15px] font-bold tracking-tight transition-colors flex items-center gap-1 z-0 ${
                     location.pathname.startsWith("/services")
                       ? "text-white"
@@ -228,7 +270,11 @@ export default function Navbar() {
                     <motion.div
                       layoutId="navbar-active-pill"
                       className="absolute inset-0 bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] rounded-full -z-10 shadow-[0_4px_16px_rgba(1,45,148,0.35)]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                   Services <ChevronDown className="w-3.5 h-3.5 opacity-80" />
@@ -264,7 +310,9 @@ export default function Navbar() {
               {/* Work Dropdown */}
               <div className="relative desktop-dropdown-container">
                 <button
-                  onClick={() => setOpenDropdown(openDropdown === "work" ? null : "work")}
+                  onClick={() =>
+                    setOpenDropdown(openDropdown === "work" ? null : "work")
+                  }
                   className={`relative px-4 py-2 rounded-full text-[15px] font-bold tracking-tight transition-colors flex items-center gap-1 z-0 ${
                     location.pathname.startsWith("/work")
                       ? "text-white"
@@ -275,7 +323,11 @@ export default function Navbar() {
                     <motion.div
                       layoutId="navbar-active-pill"
                       className="absolute inset-0 bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] rounded-full -z-10 shadow-[0_4px_16px_rgba(1,45,148,0.35)]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                   Work <ChevronDown className="w-3.5 h-3.5 opacity-80" />
@@ -399,63 +451,121 @@ export default function Navbar() {
 
             {/* Mobile Hamburger Button */}
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-slate-700 hover:text-[#0066FF] transition"
-              aria-label="Toggle menu"
+              onClick={() => setMobileOpen(true)}
+              className="lg:hidden p-2 text-slate-700 hover:text-[#0066FF] transition min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+              aria-label="Open menu"
             >
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-[#0066FF]" />}
+              <Menu className="w-6 h-6 text-[#0066FF]" />
             </button>
           </div>
+        </nav>
+      </div>
 
-          {/* Mobile Drawer Menu */}
-          <AnimatePresence>
-            {mobileOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden border-t border-slate-100 px-5 py-5 space-y-2 bg-white/95 backdrop-blur-2xl rounded-b-3xl shadow-xl"
+      {/* Full-Screen Modern Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="fixed inset-0 z-[60] bg-white/98 backdrop-blur-3xl flex flex-col justify-between p-4 sm:p-6 overflow-y-auto lg:hidden"
+          >
+            {/* Mobile Menu Top Header */}
+            <div className="flex items-center justify-between pb-3.5 border-b border-blue-100/90">
+              <Link
+                to="/"
+                onClick={closeAllDropdowns}
+                className="flex items-center py-1"
               >
-                {[
-                  { to: "/", label: "Home" },
-                  { to: "/about", label: "About Us" },
-                  { to: "/services", label: "Services & Pricing" },
-                  { to: "/services/mobile", label: "Solutions" },
-                  { to: "/services/industries", label: "Industries" },
-                  { to: "/work/projects", label: "Projects" },
-                  { to: "/work/portfolio", label: "Portfolio Matrix" },
-                  { to: "/work/case-studies", label: "Case Studies" },
-                  { to: "/products", label: "Products" },
-                  { to: "/testimonials", label: "Testimonials" },
-                  { to: "/blogs", label: "Blogs" },
-                  { to: "/careers", label: "Careers" },
-                  { to: "/contact", label: "Contact Us" },
-                ].map((item, idx) => (
+                <img
+                  src="/newlogo.png"
+                  alt="ATS GLOBAL TECH"
+                  className="h-10 w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/ats_white_logo.png";
+                  }}
+                />
+              </Link>
+              <button
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="w-11 h-11 rounded-full bg-blue-50 border border-blue-200 text-slate-700 hover:text-[#0066FF] flex items-center justify-center transition active:scale-95 cursor-pointer"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Scrollable Navigation Links */}
+            <div className="py-3 space-y-1 overflow-y-auto max-h-[calc(100vh-220px)] my-auto">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/about", label: "About Us" },
+                { to: "/services", label: "Services & Pricing" },
+                { to: "/services/mobile", label: "Solutions" },
+                { to: "/services/industries", label: "Industries" },
+                { to: "/work/projects", label: "Projects" },
+                { to: "/work/portfolio", label: "Portfolio Matrix" },
+                { to: "/work/case-studies", label: "Case Studies" },
+                { to: "/products", label: "Products" },
+                { to: "/testimonials", label: "Testimonials" },
+                { to: "/blogs", label: "Blogs" },
+                { to: "/careers", label: "Careers" },
+                { to: "/contact", label: "Contact Us" },
+              ].map((item, idx) => {
+                const active = isActive(item.to);
+                return (
                   <Link
                     key={idx}
                     to={item.to}
                     onClick={closeAllDropdowns}
-                    className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-800 hover:text-[#0066FF] hover:bg-blue-50/80 transition"
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-[15px] font-bold transition min-h-[44px] ${
+                      active
+                        ? "bg-[#0066FF] text-white shadow-md shadow-[#0066FF]/20"
+                        : "text-slate-800 hover:text-[#0066FF] hover:bg-blue-50/70"
+                    }`}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {active && (
+                      <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    )}
                   </Link>
-                ))}
+                );
+              })}
+            </div>
 
-                <div className="pt-3">
-                  <Link
-                    to="/lets-create"
-                    onClick={closeAllDropdowns}
-                    className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] shadow-lg shadow-[#012d94]/30"
-                  >
-                    <Sparkles className="w-4 h-4 text-[#86909e]" />
-                    Let's Create Together
-                  </Link>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </nav>
-      </div>
+            {/* Mobile Drawer Footer with Contact Info & CTA */}
+            <div className="pt-3.5 border-t border-blue-100/90 space-y-3">
+              <div className="flex items-center justify-between text-xs text-slate-600 px-1 font-medium">
+                <a
+                  href="tel:+919929825003"
+                  className="flex items-center gap-1.5 hover:text-[#0066FF] transition py-1"
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#0066FF]" />
+                  <span>+91 9929825003</span>
+                </a>
+                <a
+                  href="mailto:info@atsglobaltech.in"
+                  className="flex items-center gap-1.5 hover:text-[#0066FF] transition py-1"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#0066FF]" />
+                  <span>info@atsglobaltech.in</span>
+                </a>
+              </div>
+
+              <Link
+                to="/lets-create"
+                onClick={closeAllDropdowns}
+                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-bold text-sm text-white bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] shadow-lg shadow-[#012d94]/30 min-h-[48px] active:scale-[0.99] transition"
+              >
+                <Sparkles className="w-4 h-4 text-[#86909e]" />
+                Let's Create Together
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

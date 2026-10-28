@@ -28,7 +28,9 @@ const FeatureCard: React.FC<{
         <h4 className="text-lg font-bold font-display text-[#0A1629] group-hover:text-[#0066FF] transition-colors mb-2">
           {title}
         </h4>
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{desc}</p>
+        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          {desc}
+        </p>
       </div>
     </div>
   </Card3D>
@@ -42,12 +44,30 @@ export default function SaaSAnalyticsDashboard() {
   ];
 
   const highlights = [
-    { title: "Real-time Data", desc: "Sub-second dashboard updates for faster business decisions." },
-    { title: "Preset Templates", desc: "BI-powered insights for churn, performance, and revenue analytics." },
-    { title: "User Funnels", desc: "Track conversion flows and automate optimization insights." },
-    { title: "Cohort Analysis", desc: "Measure lifetime value with behavioral segmentation." },
-    { title: "Predictive Models", desc: "Machine learning forecasts future user and revenue growth." },
-    { title: "Custom Alerts", desc: "Trigger KPI notifications for spikes or drops instantly." },
+    {
+      title: "Real-time Data",
+      desc: "Sub-second dashboard updates for faster business decisions.",
+    },
+    {
+      title: "Preset Templates",
+      desc: "BI-powered insights for churn, performance, and revenue analytics.",
+    },
+    {
+      title: "User Funnels",
+      desc: "Track conversion flows and automate optimization insights.",
+    },
+    {
+      title: "Cohort Analysis",
+      desc: "Measure lifetime value with behavioral segmentation.",
+    },
+    {
+      title: "Predictive Models",
+      desc: "Machine learning forecasts future user and revenue growth.",
+    },
+    {
+      title: "Custom Alerts",
+      desc: "Trigger KPI notifications for spikes or drops instantly.",
+    },
   ];
 
   const stack = [
@@ -86,11 +106,11 @@ export default function SaaSAnalyticsDashboard() {
   ];
 
   return (
-    <main className="bg-[#F0F7FF] min-h-screen text-[#0A1629] pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="bg-[#F0F7FF] min-h-screen text-[#0A1629] pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         {/* Hero Section */}
         <section className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
@@ -107,16 +127,23 @@ export default function SaaSAnalyticsDashboard() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-              A real-time analytics platform empowering SaaS businesses with smart insights,
-              automated alerts, and predictive analysis to boost retention and revenue.
+              A real-time analytics platform empowering SaaS businesses with
+              smart insights, automated alerts, and predictive analysis to boost
+              retention and revenue.
             </p>
 
             {/* Metrics */}
             <div className="grid grid-cols-3 gap-4 p-5 rounded-2xl bg-white/90 border border-blue-100 backdrop-blur-xl mb-8 max-w-md shadow-md">
               {stats.map((stat, i) => (
                 <div key={i} className="text-center">
-                  <p className={`text-2xl sm:text-3xl font-black font-display ${stat.glow}`}>{stat.value}</p>
-                  <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-1">{stat.label}</p>
+                  <p
+                    className={`text-2xl sm:text-3xl font-black font-display ${stat.glow}`}
+                  >
+                    {stat.value}
+                  </p>
+                  <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider mt-1">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -149,9 +176,10 @@ export default function SaaSAnalyticsDashboard() {
               Project Overview
             </h2>
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed border-l-4 border-[#0066FF] pl-4 italic">
-              We redesigned a legacy SaaS dashboard into a modular data platform.
-              The modernized system integrates real-time analytics, dynamic reporting,
-              trend prediction, and automated growth insights for enterprise clients.
+              We redesigned a legacy SaaS dashboard into a modular data
+              platform. The modernized system integrates real-time analytics,
+              dynamic reporting, trend prediction, and automated growth insights
+              for enterprise clients.
             </p>
           </div>
 
@@ -171,7 +199,9 @@ export default function SaaSAnalyticsDashboard() {
               </p>
               <p className="flex justify-between">
                 <span className="text-slate-500">Stack:</span>
-                <span className="text-[#0066FF] font-bold">React · Node · Kafka</span>
+                <span className="text-[#0066FF] font-bold">
+                  React · Node · Kafka
+                </span>
               </p>
             </div>
           </div>
@@ -180,7 +210,9 @@ export default function SaaSAnalyticsDashboard() {
         {/* Highlights */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">Capabilities</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">
+              Capabilities
+            </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-display text-[#0A1629] mt-1">
               Key Product Highlights
             </h2>
@@ -203,14 +235,16 @@ export default function SaaSAnalyticsDashboard() {
           </div>
 
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">Interactive Architecture</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">
+              Interactive Architecture
+            </span>
             <h3 className="text-2xl sm:text-3xl font-extrabold font-display text-[#0A1629] mt-1 mb-4">
               Visual-First Insights
             </h3>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-              We designed a clean, modular analytics interface that allows teams to
-              explore and act on data interactively — with visual drilldowns, export options,
-              and customizable dashboards.
+              We designed a clean, modular analytics interface that allows teams
+              to explore and act on data interactively — with visual drilldowns,
+              export options, and customizable dashboards.
             </p>
             <ul className="space-y-3">
               {[
@@ -218,7 +252,10 @@ export default function SaaSAnalyticsDashboard() {
                 "Multi-tenant data isolation",
                 "Custom themes & role-based access",
               ].map((point, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-700 text-sm font-medium">
+                <li
+                  key={idx}
+                  className="flex items-center gap-3 text-slate-700 text-sm font-medium"
+                >
                   <CheckCircle2 className="w-5 h-5 text-[#0066FF] shrink-0" />
                   <span>{point}</span>
                 </li>
@@ -229,7 +266,9 @@ export default function SaaSAnalyticsDashboard() {
 
         {/* Tech Stack */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-semibold">Platform Stack</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 font-semibold">
+            Platform Stack
+          </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-[#0A1629] mt-1 mb-6">
             Technology Stack
           </h2>
@@ -248,7 +287,9 @@ export default function SaaSAnalyticsDashboard() {
         {/* Client Feedback */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">Enterprise Adoption</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-semibold">
+              Enterprise Adoption
+            </span>
             <h2 className="text-3xl font-extrabold font-display text-[#0A1629] mt-1">
               Client Feedback
             </h2>
@@ -257,7 +298,9 @@ export default function SaaSAnalyticsDashboard() {
             {testimonials.map((f, i) => (
               <Card3D key={i} className="h-full">
                 <blockquote className="h-full cloud-card bg-white/90 border border-blue-100 rounded-3xl p-8 backdrop-blur-xl shadow-[0_10px_30px_-5px_rgba(0,102,255,0.08)] flex flex-col justify-between">
-                  <p className="italic text-slate-700 text-base sm:text-lg mb-6 leading-relaxed">“{f.quote}”</p>
+                  <p className="italic text-slate-700 text-base sm:text-lg mb-6 leading-relaxed">
+                    “{f.quote}”
+                  </p>
                   <footer className="text-xs font-mono text-[#0066FF] font-bold border-t border-blue-100 pt-4">
                     — {f.author}
                   </footer>
@@ -270,7 +313,9 @@ export default function SaaSAnalyticsDashboard() {
         {/* FAQs */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">Clarifications</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-indigo-600 font-semibold">
+              Clarifications
+            </span>
             <h2 className="text-3xl font-extrabold font-display text-[#0A1629] mt-1">
               Frequently Asked Questions
             </h2>
@@ -285,7 +330,9 @@ export default function SaaSAnalyticsDashboard() {
                   <span>{faq.q}</span>
                   <HelpCircle className="w-5 h-5 text-[#0066FF] group-open:rotate-180 transition-transform" />
                 </summary>
-                <p className="text-slate-600 text-sm mt-3 pt-3 border-t border-blue-100 leading-relaxed">{faq.a}</p>
+                <p className="text-slate-600 text-sm mt-3 pt-3 border-t border-blue-100 leading-relaxed">
+                  {faq.a}
+                </p>
               </details>
             ))}
           </div>
@@ -298,7 +345,8 @@ export default function SaaSAnalyticsDashboard() {
             Ready to scale data-driven success?
           </h3>
           <p className="text-slate-600 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
-            Partner with us to build actionable analytics tools your customers love.
+            Partner with us to build actionable analytics tools your customers
+            love.
           </p>
           <Link
             to="/contact"

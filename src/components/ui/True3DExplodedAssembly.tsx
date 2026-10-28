@@ -43,10 +43,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "User Interface Tablet",
     badge: "INTERFACE TIER",
     leftTitle: "PROMPT ENGINEERING",
-    leftDesc: "Craft powerful inputs that drive intelligent outputs & deterministic controls",
+    leftDesc:
+      "Craft powerful inputs that drive intelligent outputs & deterministic controls",
     leftIcon: Terminal,
     rightTitle: "USER INTERFACE",
-    rightDesc: "Chat UI, dynamic dashboards, 3D visualizations & human interactions",
+    rightDesc:
+      "Chat UI, dynamic dashboards, 3D visualizations & human interactions",
     targetY: 3.1,
     color: "#00D2FF",
   },
@@ -55,10 +57,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "Output Synthesis Matrix",
     badge: "SYNTHESIS TIER",
     leftTitle: "LLMS & FOUNDATIONS",
-    leftDesc: "Understand Large Language Models, tokenizers, and multi-turn context",
+    leftDesc:
+      "Understand Large Language Models, tokenizers, and multi-turn context",
     leftIcon: Brain,
     rightTitle: "OUTPUT LAYER",
-    rightDesc: "Generated text, images, code AST, synthetic voice & business insights",
+    rightDesc:
+      "Generated text, images, code AST, synthetic voice & business insights",
     targetY: 2.1,
     color: "#A855F7",
   },
@@ -67,10 +71,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "AI Foundation Models",
     badge: "NEURAL CORE",
     leftTitle: "AI TOOLS & PLATFORMS",
-    leftDesc: "Leverage cutting-edge LLMs, diffusion backbones, and fine-tuning pipelines",
+    leftDesc:
+      "Leverage cutting-edge LLMs, diffusion backbones, and fine-tuning pipelines",
     leftIcon: Cpu,
     rightTitle: "AI FOUNDATION MODELS",
-    rightDesc: "GPT-4o, Claude 3.5, LLaMA 3.3, Flux, CLIP, and domain-tuned weights",
+    rightDesc:
+      "GPT-4o, Claude 3.5, LLaMA 3.3, Flux, CLIP, and domain-tuned weights",
     targetY: 1.1,
     color: "#38BDF8",
   },
@@ -79,10 +85,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "Agentic Orchestration Gears",
     badge: "ORCHESTRATION",
     leftTitle: "MODEL INTEGRATION",
-    leftDesc: "Connect AI models seamlessly into real-world enterprise databases & APIs",
+    leftDesc:
+      "Connect AI models seamlessly into real-world enterprise databases & APIs",
     leftIcon: Code2,
     rightTitle: "AGENTIC ORCHESTRATION",
-    rightDesc: "MCP protocol, tool calling, multi-agent swarms, DAG execution & memory",
+    rightDesc:
+      "MCP protocol, tool calling, multi-agent swarms, DAG execution & memory",
     targetY: 0.1,
     color: "#0066FF",
   },
@@ -91,10 +99,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "Data & Context Pipeline PCB",
     badge: "DATA PIPELINE",
     leftTitle: "DATA & CONTEXT LAYER",
-    leftDesc: "Use enterprise data intelligently with embeddings, vectors & context management",
+    leftDesc:
+      "Use enterprise data intelligently with embeddings, vectors & context management",
     leftIcon: Database,
     rightTitle: "DATA PIPELINE",
-    rightDesc: "Data ingestion, OCR extraction, semantic chunking & dense vector embeddings",
+    rightDesc:
+      "Data ingestion, OCR extraction, semantic chunking & dense vector embeddings",
     targetY: -0.9,
     color: "#00E5FF",
   },
@@ -103,10 +113,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "Cloud GPU Infrastructure",
     badge: "COMPUTE HARDWARE",
     leftTitle: "INFRASTRUCTURE LAYER",
-    leftDesc: "Built on scalable cloud orchestration, high-throughput GPUs & Kubernetes",
+    leftDesc:
+      "Built on scalable cloud orchestration, high-throughput GPUs & Kubernetes",
     leftIcon: Server,
     rightTitle: "CLOUD INFRASTRUCTURE",
-    rightDesc: "NVIDIA H100 clusters, TensorRT-LLM, vLLM distributed inference & VPCs",
+    rightDesc:
+      "NVIDIA H100 clusters, TensorRT-LLM, vLLM distributed inference & VPCs",
     targetY: -1.9,
     color: "#60A5FA",
   },
@@ -115,10 +127,12 @@ const LAYERS_INFO: LayerData[] = [
     name: "Security & Governance Base",
     badge: "GOVERNANCE TIER",
     leftTitle: "ETHICS & GOVERNANCE",
-    leftDesc: "Ensure responsible AI with privacy, fairness, audit trails and transparency",
+    leftDesc:
+      "Ensure responsible AI with privacy, fairness, audit trails and transparency",
     leftIcon: ShieldCheck,
     rightTitle: "SECURITY & ETHICS",
-    rightDesc: "Air-gapped guardrails, PII redaction, bias mitigation & SOC-2 / HIPAA",
+    rightDesc:
+      "Air-gapped guardrails, PII redaction, bias mitigation & SOC-2 / HIPAA",
     targetY: -2.9,
     color: "#10B981",
   },
@@ -206,11 +220,29 @@ function createTabletScreenTexture(): THREE.CanvasTexture {
 
   // Neural Synapse Nodes and Connecting Sparks
   const nodes = [
-    [-120, -50], [-90, -90], [-30, -100], [-70, -20], [-130, 20], [-90, 70], [-40, 90],
-    [-20, 30], [-60, 40], [-10, -40],
-    [120, -50], [90, -90], [30, -100], [70, -20], [130, 20], [90, 70], [40, 90],
-    [20, 30], [60, 40], [10, -40],
-    [0, -70], [0, 0], [0, 60]
+    [-120, -50],
+    [-90, -90],
+    [-30, -100],
+    [-70, -20],
+    [-130, 20],
+    [-90, 70],
+    [-40, 90],
+    [-20, 30],
+    [-60, 40],
+    [-10, -40],
+    [120, -50],
+    [90, -90],
+    [30, -100],
+    [70, -20],
+    [130, 20],
+    [90, 70],
+    [40, 90],
+    [20, 30],
+    [60, 40],
+    [10, -40],
+    [0, -70],
+    [0, 0],
+    [0, 60],
   ];
 
   ctx.strokeStyle = "rgba(56, 189, 248, 0.6)";
@@ -259,7 +291,11 @@ function createTabletScreenTexture(): THREE.CanvasTexture {
   ctx.shadowBlur = 0;
   ctx.font = "14px monospace";
   ctx.fillStyle = "rgba(0, 210, 255, 0.8)";
-  ctx.fillText("LATENCY: 8.4ms  •  CONTEXT: 128K TOKENS  •  ACTIVE WEIGHTS: 70B", cx, 560);
+  ctx.fillText(
+    "LATENCY: 8.4ms  •  CONTEXT: 128K TOKENS  •  ACTIVE WEIGHTS: 70B",
+    cx,
+    560,
+  );
 
   ctx.strokeStyle = "rgba(0, 210, 255, 0.25)";
   ctx.strokeRect(30, 20, 964, 660);
@@ -311,10 +347,19 @@ function createLaserAcrylicTexture(): THREE.CanvasTexture {
   ctx.shadowBlur = 0;
   ctx.font = "bold 16px monospace";
   ctx.fillStyle = "rgba(192, 132, 252, 0.85)";
-  ctx.fillText("SYNTHESIS BUS // TEXT • CODE • AST • AUDIO STREAMING", 120, 360);
+  ctx.fillText(
+    "SYNTHESIS BUS // TEXT • CODE • AST • AUDIO STREAMING",
+    120,
+    360,
+  );
 
   // Standoff screw rings in 4 corners
-  const corners = [[80, 80], [944, 80], [80, 620], [944, 620]];
+  const corners = [
+    [80, 80],
+    [944, 80],
+    [80, 620],
+    [944, 620],
+  ];
   ctx.strokeStyle = "#E2E8F0";
   ctx.lineWidth = 3;
   corners.forEach(([cx, cy]) => {
@@ -637,7 +682,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     rodPositions.forEach(([rx, rz]) => {
       const rod = new THREE.Mesh(
         new THREE.CylinderGeometry(rodRadius, rodRadius, rodHeight, 16),
-        chromeMat
+        chromeMat,
       );
       rod.position.set(rx, 0, rz);
       rod.castShadow = true;
@@ -646,7 +691,7 @@ export const True3DExplodedAssembly: React.FC = () => {
       // Top knurled thumbscrew cap on each rod
       const thumbCap = new THREE.Mesh(
         new THREE.CylinderGeometry(0.08, 0.08, 0.14, 16),
-        chromeMat
+        chromeMat,
       );
       thumbCap.position.set(rx, rodHeight / 2 + 0.07, rz);
       assemblyGroup.add(thumbCap);
@@ -660,7 +705,7 @@ export const True3DExplodedAssembly: React.FC = () => {
       rodPositions.forEach(([rx, rz]) => {
         const collar = new THREE.Mesh(
           new THREE.CylinderGeometry(0.07, 0.07, 0.08, 16),
-          chromeMat
+          chromeMat,
         );
         collar.position.set(rx, 0, rz);
         group.add(collar);
@@ -676,7 +721,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Tablet body with silver chamfer rim
     const l1Chassis = new THREE.Mesh(
       new THREE.BoxGeometry(3.8, 0.16, 2.6),
-      darkChassisMat
+      darkChassisMat,
     );
     l1Chassis.castShadow = true;
     l1Chassis.receiveShadow = true;
@@ -685,7 +730,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Silver side trim border
     const l1Border = new THREE.Mesh(
       new THREE.BoxGeometry(3.84, 0.04, 2.64),
-      chromeMat
+      chromeMat,
     );
     l1Group.add(l1Border);
 
@@ -701,7 +746,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     });
     const l1Screen = new THREE.Mesh(
       new THREE.PlaneGeometry(3.65, 2.45),
-      l1ScreenMat
+      l1ScreenMat,
     );
     l1Screen.rotation.x = -Math.PI / 2;
     l1Screen.position.y = 0.085;
@@ -731,7 +776,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     });
     const l2Plate = new THREE.Mesh(
       new THREE.BoxGeometry(3.75, 0.06, 2.5),
-      l2GlassMat
+      l2GlassMat,
     );
     l2Plate.castShadow = true;
     l2Group.add(l2Plate);
@@ -772,7 +817,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     });
     const l3Plate = new THREE.Mesh(
       new THREE.BoxGeometry(3.75, 0.08, 2.5),
-      l3SubstrateMat
+      l3SubstrateMat,
     );
     l3Plate.castShadow = true;
     l3Group.add(l3Plate);
@@ -780,7 +825,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Central Titanium Neural Accelerator Die
     const dieMesh = new THREE.Mesh(
       new THREE.BoxGeometry(0.95, 0.08, 0.95),
-      brushedTitaniumMat
+      brushedTitaniumMat,
     );
     dieMesh.position.set(0, 0.08, 0);
     l3Group.add(dieMesh);
@@ -788,7 +833,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Glowing Cyan Core on Die
     const dieCore = new THREE.Mesh(
       new THREE.BoxGeometry(0.55, 0.02, 0.55),
-      cyanEmissiveMat
+      cyanEmissiveMat,
     );
     dieCore.position.set(0, 0.125, 0);
     l3Group.add(dieCore);
@@ -814,7 +859,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Brushed metal plate
     const l4Plate = new THREE.Mesh(
       new THREE.BoxGeometry(3.75, 0.08, 2.5),
-      brushedTitaniumMat
+      brushedTitaniumMat,
     );
     l4Plate.castShadow = true;
     l4Group.add(l4Plate);
@@ -824,20 +869,25 @@ export const True3DExplodedAssembly: React.FC = () => {
       radius: number,
       teeth: number,
       thickness: number,
-      mat: THREE.Material
+      mat: THREE.Material,
     ) => {
       const gearGroup = new THREE.Group();
       // Main hub
       const hub = new THREE.Mesh(
         new THREE.CylinderGeometry(radius, radius, thickness, 24),
-        mat
+        mat,
       );
       gearGroup.add(hub);
 
       // Center axle cap
       const cap = new THREE.Mesh(
-        new THREE.CylinderGeometry(radius * 0.35, radius * 0.35, thickness + 0.04, 16),
-        chromeMat
+        new THREE.CylinderGeometry(
+          radius * 0.35,
+          radius * 0.35,
+          thickness + 0.04,
+          16,
+        ),
+        chromeMat,
       );
       gearGroup.add(cap);
 
@@ -849,7 +899,7 @@ export const True3DExplodedAssembly: React.FC = () => {
         tooth.position.set(
           Math.cos(angle) * (radius + 0.04),
           0,
-          Math.sin(angle) * (radius + 0.04)
+          Math.sin(angle) * (radius + 0.04),
         );
         tooth.rotation.y = -angle;
         gearGroup.add(tooth);
@@ -899,7 +949,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     });
     const l5Plate = new THREE.Mesh(
       new THREE.BoxGeometry(3.75, 0.08, 2.5),
-      l5PcbMat
+      l5PcbMat,
     );
     l5Plate.castShadow = true;
     l5Group.add(l5Plate);
@@ -907,7 +957,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // 3D Silicon IC Chips on Board
     const bigChip = new THREE.Mesh(
       new THREE.BoxGeometry(0.7, 0.08, 0.7),
-      brushedTitaniumMat
+      brushedTitaniumMat,
     );
     bigChip.position.set(-0.35, 0.08, 0.1);
     l5Group.add(bigChip);
@@ -944,7 +994,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Chassis base tray
     const l6Base = new THREE.Mesh(
       new THREE.BoxGeometry(3.75, 0.15, 2.5),
-      darkChassisMat
+      darkChassisMat,
     );
     l6Base.castShadow = true;
     l6Group.add(l6Base);
@@ -969,7 +1019,7 @@ export const True3DExplodedAssembly: React.FC = () => {
       const isCyan = b % 3 !== 0;
       const led = new THREE.Mesh(
         ledGeo,
-        isCyan ? cyanEmissiveMat : emeraldEmissiveMat
+        isCyan ? cyanEmissiveMat : emeraldEmissiveMat,
       );
       led.position.set(bx, 0.24, 1.06);
       l6Group.add(led);
@@ -990,7 +1040,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Heavy CNC Milled Titanium Base
     const l7Base = new THREE.Mesh(
       new THREE.BoxGeometry(3.85, 0.26, 2.65),
-      brushedTitaniumMat
+      brushedTitaniumMat,
     );
     l7Base.castShadow = true;
     l7Base.receiveShadow = true;
@@ -1008,7 +1058,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     });
     const shieldWell = new THREE.Mesh(
       new THREE.CylinderGeometry(0.55, 0.55, 0.04, 32),
-      shieldWellMat
+      shieldWellMat,
     );
     shieldWell.position.set(0, 0.14, 0);
     l7Group.add(shieldWell);
@@ -1016,7 +1066,7 @@ export const True3DExplodedAssembly: React.FC = () => {
     // Outer Glowing Ring on Well
     const shieldRing = new THREE.Mesh(
       new THREE.TorusGeometry(0.58, 0.025, 16, 32),
-      cyanEmissiveMat
+      cyanEmissiveMat,
     );
     shieldRing.rotation.x = Math.PI / 2;
     shieldRing.position.set(0, 0.155, 0);
@@ -1113,11 +1163,31 @@ export const True3DExplodedAssembly: React.FC = () => {
       const layerId = idx + 1;
       const baseTargetY = LAYERS_INFO[idx].targetY;
       if (layerId === id) {
-        gsap.to(group.position, { y: baseTargetY + 0.4, duration: 0.4, ease: "power2.out" });
-        gsap.to(group.scale, { x: 1.05, y: 1.05, z: 1.05, duration: 0.4, ease: "power2.out" });
+        gsap.to(group.position, {
+          y: baseTargetY + 0.4,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+        gsap.to(group.scale, {
+          x: 1.05,
+          y: 1.05,
+          z: 1.05,
+          duration: 0.4,
+          ease: "power2.out",
+        });
       } else {
-        gsap.to(group.position, { y: baseTargetY, duration: 0.4, ease: "power2.out" });
-        gsap.to(group.scale, { x: 1.0, y: 1.0, z: 1.0, duration: 0.4, ease: "power2.out" });
+        gsap.to(group.position, {
+          y: baseTargetY,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+        gsap.to(group.scale, {
+          x: 1.0,
+          y: 1.0,
+          z: 1.0,
+          duration: 0.4,
+          ease: "power2.out",
+        });
       }
     });
   };
@@ -1138,7 +1208,8 @@ export const True3DExplodedAssembly: React.FC = () => {
     });
   };
 
-  const activeLayerData = LAYERS_INFO.find((l) => l.id === activeLayer) || LAYERS_INFO[2];
+  const activeLayerData =
+    LAYERS_INFO.find((l) => l.id === activeLayer) || LAYERS_INFO[2];
 
   return (
     <div className="relative w-full bg-gradient-to-b from-[#061022] via-[#040B18] to-[#02060E] text-white py-6 sm:py-8 px-3 sm:px-6 lg:px-8 overflow-hidden rounded-3xl border border-blue-500/25 shadow-[0_20px_70px_rgba(0,102,255,0.2)]">
@@ -1161,7 +1232,9 @@ export const True3DExplodedAssembly: React.FC = () => {
                 <div className="text-[11px] font-mono font-bold tracking-widest text-[#00D2FF] uppercase">
                   ATS GLOBAL TECH • GEN AI STUDIO
                 </div>
-                <div className="text-xs text-slate-300 font-medium">Enterprise Hardware & Model Tiering</div>
+                <div className="text-xs text-slate-300 font-medium">
+                  Enterprise Hardware & Model Tiering
+                </div>
               </div>
             </div>
 
@@ -1183,7 +1256,7 @@ export const True3DExplodedAssembly: React.FC = () => {
           </div>
 
           {/* Right Subtext & Explode Control */}
-          <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-4">
+          <div className="flex flex-col sm:flex-row lg:flex-col bg-red-500 items-start lg:items-end justify-between gap-4">
             <div className="text-left lg:text-right max-w-sm">
               <div className="text-sm sm:text-base font-bold text-white">
                 Explore. Understand. Build.
@@ -1192,7 +1265,8 @@ export const True3DExplodedAssembly: React.FC = () => {
                 The Future is Generative.
               </div>
               <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                An architectural breakdown of the 7 enterprise tiers powering generative artificial intelligence.
+                An architectural breakdown of the 7 enterprise tiers powering
+                generative artificial intelligence.
               </p>
             </div>
 
@@ -1220,7 +1294,6 @@ export const True3DExplodedAssembly: React.FC = () => {
       {/* Left Callouts | Center True 3D WebGL Canvas | Right Callouts */}
       {/* ============================================================ */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
-        
         {/* Left Column: 7 Left Callout Pins */}
         <div className="lg:col-span-3 space-y-2 order-2 lg:order-1">
           <div className="text-[11px] font-mono font-bold text-cyan-300 uppercase tracking-wider mb-1.5 flex items-center gap-2">
@@ -1257,7 +1330,9 @@ export const True3DExplodedAssembly: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <h4
                         className={`text-xs font-bold tracking-tight font-mono uppercase ${
-                          isSelected ? "text-cyan-300" : "text-white group-hover:text-cyan-300"
+                          isSelected
+                            ? "text-cyan-300"
+                            : "text-white group-hover:text-cyan-300"
                         }`}
                       >
                         {layer.leftTitle}
@@ -1283,7 +1358,6 @@ export const True3DExplodedAssembly: React.FC = () => {
 
         {/* Center Column: TRUE WEBGL THREE.JS 3D CANVAS */}
         <div className="lg:col-span-6 relative flex flex-col items-center justify-center min-h-[580px] sm:min-h-[660px] order-1 lg:order-2">
-          
           {/* WebGL Mounting Container */}
           <div
             ref={mountRef}
@@ -1293,7 +1367,10 @@ export const True3DExplodedAssembly: React.FC = () => {
           {/* Interactive Instructions Tag */}
           <div className="absolute bottom-2 px-3.5 py-1.5 rounded-full bg-blue-950/85 border border-cyan-400/40 text-[11px] font-mono text-cyan-300 backdrop-blur-md pointer-events-none flex items-center gap-1.5 shadow-lg">
             <Sparkles className="w-3.5 h-3.5 text-[#00D2FF]" />
-            <span>Drag mouse to orbit 3D stack • Scroll to zoom • Click tiers to inspect</span>
+            <span>
+              Drag mouse to orbit 3D stack • Scroll to zoom • Click tiers to
+              inspect
+            </span>
           </div>
         </div>
 
@@ -1331,7 +1408,9 @@ export const True3DExplodedAssembly: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <h4
                         className={`text-xs font-bold tracking-tight font-mono uppercase ${
-                          isSelected ? "text-cyan-300" : "text-white group-hover:text-cyan-300"
+                          isSelected
+                            ? "text-cyan-300"
+                            : "text-white group-hover:text-cyan-300"
                         }`}
                       >
                         {layer.rightTitle}
@@ -1351,7 +1430,6 @@ export const True3DExplodedAssembly: React.FC = () => {
             );
           })}
         </div>
-
       </div>
 
       {/* ============================================================ */}
@@ -1367,19 +1445,27 @@ export const True3DExplodedAssembly: React.FC = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-xs text-slate-300">
               <div className="flex items-center gap-2 bg-[#09152B]/80 px-2.5 py-1.5 rounded-lg border border-blue-500/20">
                 <BookOpen className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                <span className="font-medium text-[11px]">Hands-on Learning</span>
+                <span className="font-medium text-[11px]">
+                  Hands-on Learning
+                </span>
               </div>
               <div className="flex items-center gap-2 bg-[#09152B]/80 px-2.5 py-1.5 rounded-lg border border-blue-500/20">
                 <Laptop className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                <span className="font-medium text-[11px]">Real-world Projects</span>
+                <span className="font-medium text-[11px]">
+                  Real-world Projects
+                </span>
               </div>
               <div className="flex items-center gap-2 bg-[#09152B]/80 px-2.5 py-1.5 rounded-lg border border-blue-500/20">
                 <Brain className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                <span className="font-medium text-[11px]">Expert Architecture</span>
+                <span className="font-medium text-[11px]">
+                  Expert Architecture
+                </span>
               </div>
               <div className="flex items-center gap-2 bg-[#09152B]/80 px-2.5 py-1.5 rounded-lg border border-blue-500/20">
                 <ShieldCheck className="w-4 h-4 text-[#00D2FF] shrink-0" />
-                <span className="font-medium text-[11px]">Enterprise Scale</span>
+                <span className="font-medium text-[11px]">
+                  Enterprise Scale
+                </span>
               </div>
             </div>
           </div>
@@ -1396,7 +1482,9 @@ export const True3DExplodedAssembly: React.FC = () => {
               <div className="text-xs font-black tracking-widest text-white uppercase mt-0.5">
                 LEARN • BUILD • INNOVATE
               </div>
-              <div className="text-[11px] text-slate-300">with ATS Global Tech Solutions</div>
+              <div className="text-[11px] text-slate-300">
+                with ATS Global Tech Solutions
+              </div>
             </div>
             <div className="w-8 h-8 rounded-xl bg-[#0066FF] text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-[#00D2FF] group-hover:text-slate-950 transition-all shadow-md">
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -1409,7 +1497,6 @@ export const True3DExplodedAssembly: React.FC = () => {
           <span>www.atsglobaltech.com</span>
         </div>
       </div>
-
     </div>
   );
 };

@@ -33,8 +33,10 @@ interface Project {
 const projects: Project[] = [
   {
     title: "E-Commerce Platform Modernization",
-    description: "Transforming retail with a high-performance cloud commerce solution built on a microservices architecture with AI recommendation engines.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    description:
+      "Transforming retail with a high-performance cloud commerce solution built on a microservices architecture with AI recommendation engines.",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     link: "/ai-page",
     category: "Web Application",
     filterCat: "web",
@@ -46,8 +48,10 @@ const projects: Project[] = [
   },
   {
     title: "Healthcare Management System",
-    description: "Next-gen healthcare data analytics and patient care portal for seamless hospital operations, real-time diagnostic reporting, and HIPAA compliance.",
-    image: "https://images.unsplash.com/photo-1657727534685-36b09f84e193?w=600&auto=format&fit=crop&q=80",
+    description:
+      "Next-gen healthcare data analytics and patient care portal for seamless hospital operations, real-time diagnostic reporting, and HIPAA compliance.",
+    image:
+      "https://images.unsplash.com/photo-1657727534685-36b09f84e193?w=600&auto=format&fit=crop&q=80",
     link: "/health-page",
     category: "SaaS Platform",
     filterCat: "saas",
@@ -59,8 +63,10 @@ const projects: Project[] = [
   },
   {
     title: "FinTech Mobile Banking App",
-    description: "Secure mobile-first banking app with fast transactions, biometric login, multi-layer encryption, and personalized financial insights.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+    description:
+      "Secure mobile-first banking app with fast transactions, biometric login, multi-layer encryption, and personalized financial insights.",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
     link: "/fintech-page",
     category: "Mobile Application",
     filterCat: "mobile",
@@ -72,8 +78,10 @@ const projects: Project[] = [
   },
   {
     title: "Enterprise Cloud Migration",
-    description: "Multi-region cloud infrastructure transformation migrating legacy monoliths to automated Docker & Kubernetes clusters with zero downtime.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    description:
+      "Multi-region cloud infrastructure transformation migrating legacy monoliths to automated Docker & Kubernetes clusters with zero downtime.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
     link: "/cloud-page",
     category: "Cloud Solutions",
     filterCat: "cloud",
@@ -85,8 +93,10 @@ const projects: Project[] = [
   },
   {
     title: "AI-Powered Customer Support Assistant",
-    description: "Multilingual AI support automation assistant resolving high-volume tickets with natural language processing and proactive sentiment analysis.",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop",
+    description:
+      "Multilingual AI support automation assistant resolving high-volume tickets with natural language processing and proactive sentiment analysis.",
+    image:
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop",
     link: "/aichat-page",
     category: "AI & Automation",
     filterCat: "ai",
@@ -98,8 +108,10 @@ const projects: Project[] = [
   },
   {
     title: "SaaS Analytics Dashboard Platform",
-    description: "High-throughput business intelligence engine delivering real-time streaming analytics, sub-second queries, and customizable drag-and-drop metrics.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    description:
+      "High-throughput business intelligence engine delivering real-time streaming analytics, sub-second queries, and customizable drag-and-drop metrics.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
     link: "/saas-page",
     category: "SaaS Platform",
     filterCat: "saas",
@@ -114,7 +126,10 @@ const projects: Project[] = [
 export const Projects: FC = () => {
   const [activeTab, setActiveTab] = useState("all");
 
-  const filtered = activeTab === "all" ? projects : projects.filter((p) => p.filterCat === activeTab);
+  const filtered =
+    activeTab === "all"
+      ? projects
+      : projects.filter((p) => p.filterCat === activeTab);
 
   return (
     <div className="bg-[#F0F7FF] text-[#0A1629] min-h-screen">
@@ -122,18 +137,22 @@ export const Projects: FC = () => {
       <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>VERIFIED PORTFOLIO</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
-            Our Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Projects</span>
+            Our Featured{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">
+              Projects
+            </span>
           </h1>
 
           <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-sans">
-            Explore our proven track record of architecting, scaling, and securing enterprise software systems across global markets.
+            Explore our proven track record of architecting, scaling, and
+            securing enterprise software systems across global markets.
           </p>
 
           {/* Filter Tabs */}
@@ -184,7 +203,9 @@ export const Projects: FC = () => {
 
                 <div className="p-6 flex flex-col grow">
                   <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
-                    <span className="font-mono font-bold text-[#0066FF]">{project.industry}</span>
+                    <span className="font-mono font-bold text-[#0066FF]">
+                      {project.industry}
+                    </span>
                     <div className="flex items-center gap-1 text-amber-500 font-bold">
                       <Star className="w-3.5 h-3.5 fill-amber-400" />
                       <span>{project.rating}</span>
@@ -201,12 +222,20 @@ export const Projects: FC = () => {
 
                   <div className="grid grid-cols-2 gap-2 p-3 rounded-2xl bg-[#F0F7FF] border border-blue-200 text-xs mb-6">
                     <div>
-                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Scale</div>
-                      <div className="font-black text-[#0A1629] font-display">{project.users} Users</div>
+                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">
+                        Scale
+                      </div>
+                      <div className="font-black text-[#0A1629] font-display">
+                        {project.users} Users
+                      </div>
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">Timeline</div>
-                      <div className="font-black text-[#0A1629] font-display">{project.timeline}</div>
+                      <div className="text-[10px] font-mono text-slate-500 uppercase font-bold">
+                        Timeline
+                      </div>
+                      <div className="font-black text-[#0A1629] font-display">
+                        {project.timeline}
+                      </div>
                     </div>
                   </div>
 
@@ -225,13 +254,14 @@ export const Projects: FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
+      <section className="py-6 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl sm:text-4xl font-black text-[#0A1629] font-display mb-4">
             Have a Project in Mind?
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-sans">
-            Our engineering team will assess your scope and architect a scalable delivery roadmap.
+            Our engineering team will assess your scope and architect a scalable
+            delivery roadmap.
           </p>
           <Link
             to="/lets-create"

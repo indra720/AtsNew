@@ -36,7 +36,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, text, icon }) => {
               {title}
             </h4>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">{text}</p>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+            {text}
+          </p>
         </div>
       </div>
     </Card3D>
@@ -48,7 +50,11 @@ export default function ECommerceModernization() {
     { value: "+62%", label: "Conversion uplift", glow: "text-cyan-400" },
     { value: "-35%", label: "Infrastructure cost", glow: "text-emerald-400" },
     { value: "99.99%", label: "Availability SLA", glow: "text-indigo-400" },
-    { value: "Real-time", label: "Analytics & personalization", glow: "text-purple-400" },
+    {
+      value: "Real-time",
+      label: "Analytics & personalization",
+      glow: "text-purple-400",
+    },
   ];
 
   const coreFeatures = [
@@ -88,13 +94,21 @@ export default function ECommerceModernization() {
     {
       title: "Data & AI Layer",
       desc: "Centralized event stream and model pipelines for real-time personalization.",
-      points: ["Event bus (Kafka/Kinesis)", "Model registry & CI", "Feature serving"],
+      points: [
+        "Event bus (Kafka/Kinesis)",
+        "Model registry & CI",
+        "Feature serving",
+      ],
       color: "border-indigo-500/30",
     },
     {
       title: "Platform & Infra",
       desc: "Kubernetes platform with Terraform IaC and multi-region failover.",
-      points: ["Terraform + GitOps", "Autoscaler & failover", "Canary deployments"],
+      points: [
+        "Terraform + GitOps",
+        "Autoscaler & failover",
+        "Canary deployments",
+      ],
       color: "border-cyan-500/30",
     },
     {
@@ -133,11 +147,11 @@ export default function ECommerceModernization() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F0F7FF] text-[#0A1629] pt-6 sm:pt-8 pb-16 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
+    <main className="min-h-screen bg-[#F0F7FF] text-[#0A1629] pt-6 sm:pt-8 pb-16 px-[3px] sm:px-4 lg:px-6 font-sans relative overflow-hidden">
       {/* Radial Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#38BDF8]/20 via-[#0066FF]/10 to-transparent blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         {/* Header Hero */}
         <header className="grid gap-12 lg:grid-cols-2 items-center mb-20">
           <div>
@@ -213,9 +227,11 @@ export default function ECommerceModernization() {
             <p className="text-slate-600 leading-relaxed mb-6 font-sans">
               We partnered with a top retail brand to modernize their monolithic
               e-commerce stack. The objective: migrate to a{" "}
-              <strong className="text-[#0066FF] font-bold">composable, headless architecture</strong>, enable
-              AI-driven personalization, and reduce latency for global customers
-              while cutting operational costs.
+              <strong className="text-[#0066FF] font-bold">
+                composable, headless architecture
+              </strong>
+              , enable AI-driven personalization, and reduce latency for global
+              customers while cutting operational costs.
             </p>
 
             <h3 className="text-lg font-black font-display text-[#0066FF] mb-3">
@@ -229,7 +245,10 @@ export default function ECommerceModernization() {
                 "Limited instrumentation — no real-time insights for merchandising.",
                 "Rigid catalog and slow release cycles.",
               ].map((challenge, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-slate-600 text-sm font-sans">
+                <li
+                  key={idx}
+                  className="flex items-start gap-3 text-slate-600 text-sm font-sans"
+                >
                   <div className="w-2 h-2 rounded-full bg-[#0066FF] mt-1.5 shrink-0" />
                   <span>{challenge}</span>
                 </li>
@@ -245,17 +264,24 @@ export default function ECommerceModernization() {
 
             <div className="space-y-3.5 text-sm text-slate-600 font-mono font-medium">
               <p>
-                <strong className="text-slate-900 font-bold">Duration:</strong> 6 months
+                <strong className="text-slate-900 font-bold">Duration:</strong>{" "}
+                6 months
               </p>
               <p>
-                <strong className="text-slate-900 font-bold">Team:</strong> 14 engineers, 2 data scientists, 1 product manager
+                <strong className="text-slate-900 font-bold">Team:</strong> 14
+                engineers, 2 data scientists, 1 product manager
               </p>
               <p>
-                <strong className="text-slate-900 font-bold">Stack:</strong> React, Node.js, Kubernetes, Redis, Postgres
+                <strong className="text-slate-900 font-bold">Stack:</strong>{" "}
+                React, Node.js, Kubernetes, Redis, Postgres
               </p>
               <div className="p-3.5 rounded-2xl bg-[#EBF5FF] border border-blue-200 mt-4">
-                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1 font-bold">Measured Outcome</p>
-                <p className="text-base font-black text-[#0066FF] font-display">62% conversion uplift in 90 days</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider mb-1 font-bold">
+                  Measured Outcome
+                </p>
+                <p className="text-base font-black text-[#0066FF] font-display">
+                  62% conversion uplift in 90 days
+                </p>
               </div>
             </div>
           </aside>
@@ -264,7 +290,9 @@ export default function ECommerceModernization() {
         {/* Core Capabilities */}
         <section id="features" className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Next-Gen Architecture</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Next-Gen Architecture
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Core Capabilities & Modern Features
             </h2>
@@ -272,7 +300,12 @@ export default function ECommerceModernization() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {coreFeatures.map((f, i) => (
-              <FeatureCard key={i} title={f.title} text={f.text} icon={f.icon} />
+              <FeatureCard
+                key={i}
+                title={f.title}
+                text={f.text}
+                icon={f.icon}
+              />
             ))}
           </div>
         </section>
@@ -280,7 +313,9 @@ export default function ECommerceModernization() {
         {/* Architecture Highlights */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">System Blueprint</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              System Blueprint
+            </span>
             <h2 className="text-3xl sm:text-4xl font-black font-display text-[#0A1629] mt-1">
               Architecture Highlights
             </h2>
@@ -291,12 +326,19 @@ export default function ECommerceModernization() {
               <Card3D key={i} className="h-full">
                 <div className="cloud-card h-full rounded-3xl p-7 flex flex-col justify-between">
                   <div>
-                    <h4 className="text-lg font-black font-display text-[#0A1629] mb-2">{card.title}</h4>
-                    <p className="text-slate-600 text-xs sm:text-sm mb-5 leading-relaxed font-sans">{card.desc}</p>
+                    <h4 className="text-lg font-black font-display text-[#0A1629] mb-2">
+                      {card.title}
+                    </h4>
+                    <p className="text-slate-600 text-xs sm:text-sm mb-5 leading-relaxed font-sans">
+                      {card.desc}
+                    </p>
                   </div>
                   <ul className="space-y-2 border-t border-blue-100 pt-4">
                     {card.points.map((p, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs font-mono font-bold text-[#0066FF]">
+                      <li
+                        key={idx}
+                        className="flex items-center gap-2 text-xs font-mono font-bold text-[#0066FF]"
+                      >
                         <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF]" />
                         <span>{p}</span>
                       </li>
@@ -319,7 +361,9 @@ export default function ECommerceModernization() {
           </div>
 
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Live Control Plane</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Live Control Plane
+            </span>
             <h3 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-4">
               Merchandising Dashboard
             </h3>
@@ -332,13 +376,21 @@ export default function ECommerceModernization() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="bg-white border border-blue-200 p-4 rounded-2xl text-center shadow-xs">
-                <p className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">Active A/B Tests</p>
-                <p className="text-2xl font-black font-display text-[#0066FF]">12</p>
+                <p className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">
+                  Active A/B Tests
+                </p>
+                <p className="text-2xl font-black font-display text-[#0066FF]">
+                  12
+                </p>
               </div>
 
               <div className="bg-white border border-blue-200 p-4 rounded-2xl text-center shadow-xs">
-                <p className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">Avg. Order Value</p>
-                <p className="text-2xl font-black font-display text-emerald-600">$124.50</p>
+                <p className="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-1">
+                  Avg. Order Value
+                </p>
+                <p className="text-2xl font-black font-display text-emerald-600">
+                  $124.50
+                </p>
               </div>
             </div>
           </div>
@@ -346,7 +398,9 @@ export default function ECommerceModernization() {
 
         {/* Technology Stack Badges */}
         <section className="mb-20 text-center">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Engineered With</span>
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+            Engineered With
+          </span>
           <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0A1629] mt-1 mb-6">
             Technology Stack
           </h2>
@@ -366,7 +420,9 @@ export default function ECommerceModernization() {
         {/* Customer Success */}
         <section className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">Client Feedback</span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF]">
+              Client Feedback
+            </span>
             <h2 className="text-3xl font-black font-display text-[#0A1629] mt-1">
               Customer Success
             </h2>
@@ -396,7 +452,8 @@ export default function ECommerceModernization() {
           </h3>
 
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mb-8 font-sans">
-            Schedule a free technical assessment and get a roadmap for your modernization.
+            Schedule a free technical assessment and get a roadmap for your
+            modernization.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">

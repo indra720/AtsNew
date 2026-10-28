@@ -98,7 +98,7 @@ export const Interactive3DShowcase: React.FC = () => {
       <div className="absolute inset-0 bg-[radial-gradient(#0066FF_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-blue-400/20 via-cyan-300/20 to-transparent rounded-full blur-[110px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
         {/* Compact, Punchy Header */}
         <div className="text-center max-w-3xl mx-auto mb-4">
           <motion.div
@@ -132,7 +132,8 @@ export const Interactive3DShowcase: React.FC = () => {
             transition={{ delay: 0.15 }}
             className="text-sm sm:text-base text-slate-600 font-medium max-w-xl mx-auto mb-2"
           >
-            We build modern, fast & high-converting websites that grow your business.
+            We build modern, fast & high-converting websites that grow your
+            business.
           </motion.p>
 
           {/* "Our Services" Orb Badge directly above the 3D showcase */}
@@ -147,7 +148,6 @@ export const Interactive3DShowcase: React.FC = () => {
 
         {/* Cohesive 3D Showcase Arena (Zero Empty Gap) */}
         <div className="relative grid grid-cols-1 lg:grid-cols-12 items-center gap-4 lg:gap-6 my-2">
-          
           {/* Left Service Cards (4 items stacked tightly) */}
           <div className="lg:col-span-3 flex flex-col gap-2.5 z-20">
             {leftServices.map((srv) => {
@@ -188,12 +188,11 @@ export const Interactive3DShowcase: React.FC = () => {
           </div>
 
           {/* Central 3D Device & Neon Pedestal (lg:col-span-6) */}
-          <div className="lg:col-span-6 flex flex-col items-center justify-center relative py-4 lg:py-2">
-            
+          <div className="lg:col-span-6 flex flex-col items-center justify-center relative py-4 lg:py-2 w-full overflow-hidden sm:overflow-visible">
             {/* Background Neon Orbital Rings & Floor Light */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[380px] sm:w-[480px] h-[160px] rounded-[100%] border-2 border-[#0066FF]/50 bg-gradient-to-t from-[#0066FF]/15 to-transparent shadow-[0_0_60px_rgba(0,102,255,0.3)] mt-24" />
-              <div className="absolute w-[280px] sm:w-[360px] h-[110px] rounded-[100%] border border-[#00D2FF]/60 shadow-[0_0_35px_rgba(0,210,255,0.35)] mt-24" />
+              <div className="w-[300px] sm:w-[480px] h-[130px] sm:h-[160px] rounded-[100%] border-2 border-[#0066FF]/50 bg-gradient-to-t from-[#0066FF]/15 to-transparent shadow-[0_0_60px_rgba(0,102,255,0.3)] mt-20 sm:mt-24" />
+              <div className="absolute w-[220px] sm:w-[360px] h-[85px] sm:h-[110px] rounded-[100%] border border-[#00D2FF]/60 shadow-[0_0_35px_rgba(0,210,255,0.35)] mt-20 sm:mt-24" />
             </div>
 
             {/* Realistic 3D MacBook Laptop */}
@@ -201,69 +200,82 @@ export const Interactive3DShowcase: React.FC = () => {
               initial={{ y: 0 }}
               animate={{ y: [-3, 3, -3] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10 w-full max-w-[420px] sm:max-w-[480px]"
+              className="relative z-10 w-full max-w-[320px] sm:max-w-[480px] mx-auto px-1 sm:px-0"
             >
               {/* Laptop Screen Top Lid */}
-              <div className="relative mx-auto w-[360px] sm:w-[430px] bg-[#0A1629] rounded-t-2xl p-2.5 sm:p-3 shadow-[0_20px_50px_rgba(0,102,255,0.3)] border-2 border-slate-700">
+              <div className="relative mx-auto w-full max-w-[310px] sm:max-w-[430px] bg-[#0A1629] rounded-t-2xl p-2.5 sm:p-3 shadow-[0_20px_50px_rgba(0,102,255,0.3)] border-2 border-slate-700">
                 {/* Camera Notch */}
-                <div className="flex justify-center mb-1.5">
+                <div className="flex justify-center mb-1 sm:mb-1.5">
                   <div className="w-2 h-2 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center">
                     <div className="w-1 h-1 rounded-full bg-cyan-400" />
                   </div>
                 </div>
 
                 {/* High-Impact Screen Content */}
-                <div className="bg-gradient-to-b from-[#0C1A30] to-[#0A1629] rounded-xl p-3 sm:p-4 text-white font-sans overflow-hidden border border-blue-900/60 shadow-inner">
+                <div className="bg-gradient-to-b from-[#0C1A30] to-[#0A1629] rounded-xl p-2.5 sm:p-4 text-white font-sans overflow-hidden border border-blue-900/60 shadow-inner">
                   {/* Top Screen App Bar */}
-                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-white/10">
+                  <div className="flex items-center justify-between pb-1.5 sm:pb-2 mb-1.5 sm:mb-2 border-b border-white/10">
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 rounded-full bg-rose-500" />
                       <div className="w-2 h-2 rounded-full bg-amber-400" />
                       <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                      <span className="text-[10px] font-mono text-cyan-300 ml-2 font-bold tracking-wider">
+                      <span className="text-[9px] sm:text-[10px] font-mono text-cyan-300 ml-1.5 sm:ml-2 font-bold tracking-wider">
                         ATS GLOBAL TECH
                       </span>
                     </div>
-                    <span className="text-[9px] px-2 py-0.5 rounded-full bg-blue-500/20 text-[#00D2FF] font-mono border border-blue-400/30">
+                    <span className="text-[8px] sm:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full bg-blue-500/20 text-[#00D2FF] font-mono border border-blue-400/30">
                       LIVE PLATFORM
                     </span>
                   </div>
 
                   {/* Hero Content inside Laptop Screen */}
-                  <div className="my-1.5">
-                    <p className="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">
+                  <div className="my-1 sm:my-1.5">
+                    <p className="text-[9px] sm:text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">
                       Digital Solutions
                     </p>
-                    <h3 className="text-sm sm:text-base font-black tracking-tight text-white leading-tight">
+                    <h3 className="text-xs sm:text-base font-black tracking-tight text-white leading-tight">
                       For Modern Business & Enterprise
                     </h3>
-                    <p className="text-[10px] text-slate-300 mt-1 line-clamp-2">
-                      We build stunning, responsive websites and AI platforms that drive traffic and increase sales.
+                    <p className="text-[9px] sm:text-[10px] text-slate-300 mt-0.5 sm:mt-1 line-clamp-2">
+                      We build stunning, responsive websites and AI platforms
+                      that drive traffic and increase sales.
                     </p>
                   </div>
 
                   {/* Metric Chips inside Laptop Screen */}
-                  <div className="grid grid-cols-3 gap-1.5 my-2 pt-2 border-t border-white/10 text-center">
-                    <div className="bg-white/5 rounded-lg p-1.5 border border-white/10">
-                      <div className="text-xs sm:text-sm font-black text-[#00D2FF]">+250%</div>
-                      <div className="text-[8px] text-slate-300 uppercase font-mono">Growth</div>
+                  <div className="grid grid-cols-3 gap-1 sm:gap-1.5 my-1.5 sm:my-2 pt-1.5 sm:pt-2 border-t border-white/10 text-center">
+                    <div className="bg-white/5 rounded-lg p-1 sm:p-1.5 border border-white/10">
+                      <div className="text-[11px] sm:text-sm font-black text-[#00D2FF]">
+                        +250%
+                      </div>
+                      <div className="text-[7px] sm:text-[8px] text-slate-300 uppercase font-mono">
+                        Growth
+                      </div>
                     </div>
-                    <div className="bg-white/5 rounded-lg p-1.5 border border-white/10">
-                      <div className="text-xs sm:text-sm font-black text-emerald-400">98%</div>
-                      <div className="text-[8px] text-slate-300 uppercase font-mono">Satisfaction</div>
+                    <div className="bg-white/5 rounded-lg p-1 sm:p-1.5 border border-white/10">
+                      <div className="text-[11px] sm:text-sm font-black text-emerald-400">
+                        98%
+                      </div>
+                      <div className="text-[7px] sm:text-[8px] text-slate-300 uppercase font-mono">
+                        Satisfaction
+                      </div>
                     </div>
-                    <div className="bg-white/5 rounded-lg p-1.5 border border-white/10">
-                      <div className="text-xs sm:text-sm font-black text-amber-300">24/7</div>
-                      <div className="text-[8px] text-slate-300 uppercase font-mono">Support</div>
+                    <div className="bg-white/5 rounded-lg p-1 sm:p-1.5 border border-white/10">
+                      <div className="text-[11px] sm:text-sm font-black text-amber-300">
+                        24/7
+                      </div>
+                      <div className="text-[7px] sm:text-[8px] text-slate-300 uppercase font-mono">
+                        Support
+                      </div>
                     </div>
                   </div>
 
                   {/* CTA row inside Laptop */}
                   <div className="flex items-center justify-between mt-1 pt-1">
-                    <span className="text-[9px] text-slate-400 font-mono">
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 font-mono truncate max-w-[130px] sm:max-w-none">
                       Sub-second latency & 99.98% SLA
                     </span>
-                    <span className="text-[9px] font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#00D2FF] px-2.5 py-1 rounded-md shadow-xs flex items-center gap-1">
+                    <span className="text-[8px] sm:text-[9px] font-bold text-white bg-gradient-to-r from-[#0066FF] to-[#00D2FF] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md shadow-xs flex items-center gap-1 shrink-0">
                       Get Started <ArrowRight className="w-2.5 h-2.5" />
                     </span>
                   </div>
@@ -271,66 +283,126 @@ export const Interactive3DShowcase: React.FC = () => {
               </div>
 
               {/* Laptop Keyboard Base & Hinge */}
-              <div className="relative mx-auto w-[390px] sm:w-[470px] h-[13px] bg-gradient-to-b from-slate-400 via-slate-300 to-slate-500 rounded-b-xl shadow-[0_15px_30px_rgba(0,0,0,0.3)] flex items-center justify-center">
-                <div className="w-14 h-1.5 bg-slate-600 rounded-full" />
+              <div className="relative mx-auto w-full max-w-[325px] sm:max-w-[470px] h-[10px] sm:h-[13px] bg-gradient-to-b from-slate-400 via-slate-300 to-slate-500 rounded-b-xl shadow-[0_15px_30px_rgba(0,0,0,0.3)] flex items-center justify-center">
+                <div className="w-10 sm:w-14 h-1 sm:h-1.5 bg-slate-600 rounded-full" />
               </div>
             </motion.div>
 
-            {/* Floating Glass Widget 1: Speed Gauge (Bottom-Left) */}
-            <motion.div
-              initial={{ y: 0 }}
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-2 -left-2 sm:left-2 z-30 bg-white/95 backdrop-blur-xl border border-blue-200 rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_30px_rgba(0,102,255,0.15)] flex items-center gap-2.5"
-            >
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15" className="text-blue-100" strokeWidth="3.5" stroke="currentColor" fill="none" />
-                  <circle cx="18" cy="18" r="15" className="text-[#0066FF]" strokeDasharray="98, 100" strokeWidth="3.5" strokeLinecap="round" stroke="currentColor" fill="none" />
-                </svg>
-                <span className="absolute text-[10px] font-black text-slate-900">98%</span>
-              </div>
-              <div>
-                <div className="text-[10px] font-bold text-slate-500 uppercase font-mono">Website Speed</div>
-                <div className="text-xs font-black text-[#0066FF] flex items-center gap-1">
-                  <Zap className="w-3 h-3 fill-current text-[#0066FF]" /> Ultra Fast
+            {/* Responsive Container for Floating Widgets (Side-by-side cleanly below on mobile, absolute floating on desktop) */}
+            <div className="w-full max-w-[320px] sm:max-w-none grid grid-cols-2 sm:contents gap-2 mt-3 sm:mt-0 px-1 sm:px-0 z-30">
+              {/* Floating Glass Widget 1: Speed Gauge */}
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: [0, -4, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="relative sm:absolute sm:-bottom-2 sm:left-2 z-30 bg-white/95 backdrop-blur-xl border border-blue-200 rounded-2xl p-2 sm:p-3 shadow-[0_12px_30px_rgba(0,102,255,0.15)] flex items-center gap-1.5 sm:gap-2.5"
+              >
+                <div className="relative w-8 h-8 sm:w-10 sm:h-10 shrink-0 flex items-center justify-center">
+                  <svg
+                    className="w-8 h-8 sm:w-10 sm:h-10 -rotate-90"
+                    viewBox="0 0 36 36"
+                  >
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="15"
+                      className="text-blue-100"
+                      strokeWidth="3.5"
+                      stroke="currentColor"
+                      fill="none"
+                    />
+                    <circle
+                      cx="18"
+                      cy="18"
+                      r="15"
+                      className="text-[#0066FF]"
+                      strokeDasharray="98, 100"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                    />
+                  </svg>
+                  <span className="absolute text-[8px] sm:text-[10px] font-black text-slate-900">
+                    98%
+                  </span>
                 </div>
-              </div>
-            </motion.div>
+                <div className="min-w-0">
+                  <div className="text-[8px] sm:text-[10px] font-bold text-slate-500 uppercase font-mono truncate">
+                    Speed
+                  </div>
+                  <div className="text-[10px] sm:text-xs font-black text-[#0066FF] flex items-center gap-0.5 sm:gap-1">
+                    <Zap className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-current text-[#0066FF] shrink-0" />{" "}
+                    Fast
+                  </div>
+                </div>
+              </motion.div>
 
-            {/* Floating Glass Widget 2: Live Analytics (Bottom-Right) */}
-            <motion.div
-              initial={{ y: 0 }}
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-4 -right-2 sm:right-2 z-30 bg-white/95 backdrop-blur-xl border border-blue-200 rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_30px_rgba(0,102,255,0.15)] min-w-[155px]"
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[9px] font-bold text-slate-500 uppercase font-mono">Analytics</span>
-                <span className="text-[8px] font-bold text-emerald-600 bg-emerald-50 px-1 rounded">+36%</span>
-              </div>
-              <svg className="w-full h-5 mb-1" viewBox="0 0 100 24" fill="none">
-                <path d="M 0 18 Q 20 6, 40 14 T 80 6 T 100 10" stroke="#0066FF" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
-              <div className="flex justify-between text-[9px] font-black text-slate-800">
-                <span>24.6K Visitors</span>
-                <span className="text-[#0066FF]">83.2K Views</span>
-              </div>
-            </motion.div>
+              {/* Floating Glass Widget 2: Live Analytics */}
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: [0, 4, 0] }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                className="relative sm:absolute sm:-bottom-4 sm:right-2 z-30 bg-white/95 backdrop-blur-xl border border-blue-200 rounded-2xl p-2 sm:p-3 shadow-[0_12px_30px_rgba(0,102,255,0.15)] min-w-0 sm:min-w-[155px]"
+              >
+                <div className="flex items-center justify-between mb-0.5 sm:mb-1">
+                  <span className="text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase font-mono">
+                    Analytics
+                  </span>
+                  <span className="text-[7px] sm:text-[8px] font-bold text-emerald-600 bg-emerald-50 px-1 rounded">
+                    +36%
+                  </span>
+                </div>
+                <svg
+                  className="w-full h-4 sm:h-5 mb-0.5 sm:mb-1"
+                  viewBox="0 0 100 24"
+                  fill="none"
+                >
+                  <path
+                    d="M 0 18 Q 20 6, 40 14 T 80 6 T 100 10"
+                    stroke="#0066FF"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <div className="flex justify-between text-[8px] sm:text-[9px] font-black text-slate-800">
+                  <span className="truncate">24.6K Users</span>
+                  <span className="text-[#0066FF] ml-1 shrink-0">83.2K</span>
+                </div>
+              </motion.div>
+            </div>
 
             {/* Floating Glass Widget 3: AI Neural Chip (Top-Right) */}
             <motion.div
               initial={{ y: 0 }}
-              animate={{ y: [-4, 4, -4] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-0 -right-2 sm:right-4 z-30 bg-[#0A1629] text-white border border-cyan-400/40 rounded-xl p-2 shadow-lg flex items-center gap-2"
+              animate={{ y: [-3, 3, -3] }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+              className="absolute -top-1.5 right-1 sm:top-0 sm:right-4 z-30 bg-[#0A1629] text-white border border-cyan-400/40 rounded-xl p-1.5 sm:p-2 shadow-lg flex items-center gap-1.5 sm:gap-2 scale-90 sm:scale-100 origin-top-right"
             >
               <div className="p-1 rounded-lg bg-blue-500/20 text-[#00D2FF]">
-                <Cpu className="w-3.5 h-3.5 animate-pulse" />
+                <Cpu className="w-3 h-3 sm:w-3.5 sm:h-3.5 animate-pulse" />
               </div>
               <div>
-                <div className="text-[9px] font-mono text-cyan-400 font-bold uppercase">AI POWERED</div>
-                <div className="text-[10px] font-extrabold text-white">Next Gen-AI</div>
+                <div className="text-[8px] sm:text-[9px] font-mono text-cyan-400 font-bold uppercase">
+                  AI POWERED
+                </div>
+                <div className="text-[9px] sm:text-[10px] font-extrabold text-white">
+                  Next Gen-AI
+                </div>
               </div>
             </motion.div>
           </div>
@@ -354,7 +426,7 @@ export const Interactive3DShowcase: React.FC = () => {
                 >
                   {/* Visual Node Pin */}
                   <div className="w-2.5 h-2.5 rounded-full bg-blue-300 group-hover:bg-[#0066FF] group-hover:scale-125 transition-all mr-2 shrink-0 shadow-xs" />
-                  
+
                   <div className="flex items-center gap-3 min-w-0 flex-1 justify-between">
                     <div className="min-w-0">
                       <h4 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-[#0066FF] transition-colors truncate">
@@ -377,13 +449,13 @@ export const Interactive3DShowcase: React.FC = () => {
         </div>
 
         {/* Bottom Contact / Brand Bar (Directly Inspired by Reference Template) */}
-        <div className="mt-6 pt-4 border-t border-blue-100/90 flex flex-wrap items-center justify-between gap-4 bg-white/80 backdrop-blur-md rounded-2xl px-6 py-3 border border-blue-100 shadow-sm">
-          <div className="flex items-center gap-6 flex-wrap">
+        <div className="mt-6 pt-4 border-t border-blue-100/90 flex flex-col sm:flex-row items-center justify-between gap-3.5 sm:gap-4 bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:px-6 sm:py-3 border border-blue-100 shadow-sm">
+          <div className="flex items-center justify-center sm:justify-start gap-4 sm:gap-6 flex-wrap w-full sm:w-auto">
             <a
               href="tel:+919929825003"
-              className="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066FF] transition"
+              className="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066FF] transition py-1"
             >
-              <div className="w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-[#0066FF]">
+              <div className="w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-[#0066FF] shrink-0">
                 <Phone className="w-3.5 h-3.5" />
               </div>
               <span>+91 9929825003</span>
@@ -393,9 +465,9 @@ export const Interactive3DShowcase: React.FC = () => {
               href="https://www.atsglobaltech.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066FF] transition"
+              className="hidden sm:flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066FF] transition py-1"
             >
-              <div className="w-7 h-7 rounded-full bg-cyan-50 flex items-center justify-center text-[#00D2FF]">
+              <div className="w-7 h-7 rounded-full bg-cyan-50 flex items-center justify-center text-[#00D2FF] shrink-0">
                 <Globe className="w-3.5 h-3.5" />
               </div>
               <span>www.atsglobaltech.in</span>
@@ -403,9 +475,9 @@ export const Interactive3DShowcase: React.FC = () => {
 
             <a
               href="mailto:info@atsglobaltech.in"
-              className="hidden md:flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066FF] transition"
+              className="hidden md:flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#0066FF] transition py-1"
             >
-              <div className="w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-[#0066FF]">
+              <div className="w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-[#0066FF] shrink-0">
                 <Mail className="w-3.5 h-3.5" />
               </div>
               <span>info@atsglobaltech.in</span>
@@ -414,10 +486,10 @@ export const Interactive3DShowcase: React.FC = () => {
 
           <Link
             to="/lets-create"
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] shadow-[0_4px_15px_rgba(1,45,148,0.35)] hover:scale-105 transition-transform"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] shadow-[0_4px_15px_rgba(1,45,148,0.35)] hover:scale-105 transition-transform w-full sm:w-auto min-h-[44px]"
           >
             <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
-            Get Free Consultation
+            <span>Get Free Consultation</span>
           </Link>
         </div>
       </div>

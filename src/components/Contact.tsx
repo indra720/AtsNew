@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
       const { name, value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
     },
-    []
+    [],
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -159,8 +159,13 @@ const Contact: React.FC = () => {
                 <CheckCircle className="w-5 h-5" />
               </div>
               <div>
-                <p className="font-bold text-slate-900 text-sm">Message Transmitted Successfully!</p>
-                <p className="text-xs text-slate-600 font-medium">Our engineering leads will connect with you within 2 business hours.</p>
+                <p className="font-bold text-slate-900 text-sm">
+                  Message Transmitted Successfully!
+                </p>
+                <p className="text-xs text-slate-600 font-medium">
+                  Our engineering leads will connect with you within 2 business
+                  hours.
+                </p>
               </div>
             </div>
           </motion.div>
@@ -168,13 +173,13 @@ const Contact: React.FC = () => {
       </AnimatePresence>
 
       {/* Hero Header */}
-      <section className="relative pt-4 sm:pt-6 pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="relative pt-4 sm:pt-6 pb-14 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="text-center max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF] text-xs font-mono font-bold uppercase tracking-widest mb-6 shadow-xs"
+            className="inline-flex items-center gap-2 px-4 py-1.5 mt-4 rounded-full bg-blue-50 border border-blue-200 text-[#0066FF] text-xs font-mono font-bold uppercase tracking-widest mb-6 shadow-xs"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Connect With Our Engineering Team</span>
@@ -186,7 +191,10 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-6xl font-black font-display tracking-tight text-slate-900 mb-6"
           >
-            Get In <span className="bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF] bg-clip-text text-transparent">Touch</span>
+            Get In{" "}
+            <span className="bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF] bg-clip-text text-transparent">
+              Touch
+            </span>
           </motion.h1>
 
           <motion.p
@@ -195,7 +203,8 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-slate-600 text-base sm:text-lg leading-relaxed mb-12 font-medium"
           >
-            Ready to start your next project? We'd love to hear from you. Send us a message, and our solution architects will reach out shortly.
+            Ready to start your next project? We'd love to hear from you. Send
+            us a message, and our solution architects will reach out shortly.
           </motion.p>
         </div>
 
@@ -208,7 +217,9 @@ const Contact: React.FC = () => {
                 key={idx}
                 href={item.href}
                 target={item.label === "Visit Us" ? "_blank" : undefined}
-                rel={item.label === "Visit Us" ? "noopener noreferrer" : undefined}
+                rel={
+                  item.label === "Visit Us" ? "noopener noreferrer" : undefined
+                }
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * idx }}
@@ -220,10 +231,16 @@ const Contact: React.FC = () => {
                       <div className="w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center text-[#0066FF] mb-5 shadow-inner group-hover:scale-110 group-hover:bg-[#0066FF] group-hover:text-white transition-all">
                         <Icon className="w-6 h-6 stroke-[2.2]" />
                       </div>
-                      <h3 className="text-xs uppercase tracking-wider font-mono text-[#0066FF] font-bold mb-2">{item.label}</h3>
-                      <p className="text-lg font-black text-slate-900 group-hover:text-[#0066FF] transition-colors break-words mb-2">{item.value}</p>
+                      <h3 className="text-xs uppercase tracking-wider font-mono text-[#0066FF] font-bold mb-2">
+                        {item.label}
+                      </h3>
+                      <p className="text-lg font-black text-slate-900 group-hover:text-[#0066FF] transition-colors break-words mb-2">
+                        {item.value}
+                      </p>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal">{item.sub}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      {item.sub}
+                    </p>
                   </div>
                 </Card3D>
               </motion.a>
@@ -233,9 +250,8 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Main Form & Interactive Details Grid */}
-      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-12 lg:py-16 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
           {/* Left Column: Interactive Map & Detailed Contact Info (5 cols) */}
           {/* Left Column: Interactive Map & Detailed Contact Info (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
@@ -244,9 +260,13 @@ const Contact: React.FC = () => {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#0066FF] animate-ping" />
-                  <h3 className="text-lg font-black font-display text-slate-900">Find Our Location</h3>
+                  <h3 className="text-lg font-black font-display text-slate-900">
+                    Find Our Location
+                  </h3>
                 </div>
-                <span className="text-[11px] font-mono text-[#0066FF] font-bold px-3 py-1 rounded-full bg-blue-50 border border-blue-200">Jaipur HQ</span>
+                <span className="text-[11px] font-mono text-[#0066FF] font-bold px-3 py-1 rounded-full bg-blue-50 border border-blue-200">
+                  Jaipur HQ
+                </span>
               </div>
 
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-blue-100 shadow-inner">
@@ -270,8 +290,8 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Structured Contact Details Card */}
-            <div className="p-8 rounded-3xl cloud-card border border-blue-100/90 shadow-xl space-y-6">
-              <h2 className="text-2xl font-black font-display text-slate-900 flex items-center gap-3">
+            <div className="p-4 rounded-3xl cloud-card border border-blue-100/90 shadow-xl space-y-6">
+              <h2 className="text-xl sm:text-2xl font-black font-display text-slate-900 flex items-center gap-3">
                 <ShieldCheck className="w-6 h-6 text-[#0066FF]" />
                 Contact Information
               </h2>
@@ -282,8 +302,12 @@ const Contact: React.FC = () => {
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-sm mb-1">Office Address</h4>
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{OFFICE_ADDRESS}</p>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">
+                      Office Address
+                    </h4>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                      {OFFICE_ADDRESS}
+                    </p>
                   </div>
                 </div>
 
@@ -292,8 +316,12 @@ const Contact: React.FC = () => {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-sm mb-1">Direct Line</h4>
-                    <p className="text-slate-600 text-xs sm:text-sm font-mono">+91 9929825003</p>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">
+                      Direct Line
+                    </h4>
+                    <p className="text-slate-600 text-xs sm:text-sm font-mono">
+                      +91 9929825003
+                    </p>
                   </div>
                 </div>
 
@@ -302,8 +330,12 @@ const Contact: React.FC = () => {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-sm mb-1">Email Inquiries</h4>
-                    <p className="text-slate-600 text-xs sm:text-sm font-mono break-all">info@atsglobaltech.in</p>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">
+                      Email Inquiries
+                    </h4>
+                    <p className="text-slate-600 text-xs sm:text-sm font-mono break-all">
+                      info@atsglobaltech.in
+                    </p>
                   </div>
                 </div>
 
@@ -312,7 +344,9 @@ const Contact: React.FC = () => {
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-sm mb-1">Business Hours</h4>
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">
+                      Business Hours
+                    </h4>
                     <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                       Monday - Saturday: 10:00 AM - 6:00 PM IST <br />
                       Sunday: Emergency Deployment Team On-Call
@@ -325,19 +359,27 @@ const Contact: React.FC = () => {
 
           {/* Right Column: 3D Form & Service Pipeline (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
-            
             {/* Form Card */}
-            <div className="p-8 sm:p-10 rounded-3xl cloud-card border border-blue-100/90 shadow-2xl relative">
+            <div className="p-4 sm:p-10 rounded-3xl cloud-card border border-blue-100/90 shadow-2xl relative">
               <div className="mb-8">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-bold">Direct Portal</span>
-                <h3 className="text-2xl sm:text-3xl font-black font-display text-slate-900 mt-1 mb-2">Send Us a Message</h3>
-                <p className="text-sm text-slate-600 font-medium">Fill out the form below and our technical leads will get back to you within 24 hours.</p>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-bold">
+                  Direct Portal
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black font-display text-slate-900 mt-1 mb-2">
+                  Send Us a Message
+                </h3>
+                <p className="text-sm text-slate-600 font-medium">
+                  Fill out the form below and our technical leads will get back
+                  to you within 24 hours.
+                </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">Full Name *</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">
+                      Full Name *
+                    </label>
                     <input
                       name="name"
                       value={formData.name}
@@ -349,7 +391,9 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">Work Email *</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">
+                      Work Email *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -364,7 +408,9 @@ const Contact: React.FC = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">Phone Number</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -376,7 +422,9 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">Company / Organization</label>
+                    <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">
+                      Company / Organization
+                    </label>
                     <input
                       name="company"
                       value={formData.company}
@@ -388,7 +436,9 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">Project Subject *</label>
+                  <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">
+                    Project Subject *
+                  </label>
                   <input
                     name="subject"
                     value={formData.subject}
@@ -400,7 +450,9 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">Project Scope & Requirements *</label>
+                  <label className="block text-xs font-mono text-slate-700 font-bold mb-2 uppercase tracking-wider">
+                    Project Scope & Requirements *
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -436,9 +488,14 @@ const Contact: React.FC = () => {
             <div className="p-8 rounded-3xl cloud-card border border-blue-100/90 shadow-xl">
               <div className="flex items-center gap-3 mb-2">
                 <Globe2 className="w-5 h-5 text-[#0066FF]" />
-                <h3 className="text-xl font-black font-display text-slate-900">Quick Service Details</h3>
+                <h3 className="text-lg sm:text-xl font-black font-display text-slate-900">
+                  Quick Service Details
+                </h3>
               </div>
-              <p className="text-xs text-slate-600 mb-6 font-medium">Have an urgent requirement? Check out how we start collaboration.</p>
+              <p className="text-xs text-slate-600 mb-6 font-medium">
+                Have an urgent requirement? Check out how we start
+                collaboration.
+              </p>
 
               <ul className="space-y-4">
                 {[
@@ -459,10 +516,16 @@ const Contact: React.FC = () => {
                     desc: "Serving clients across Asia, Europe, and North America with 99.98% SLA delivery.",
                   },
                 ].map((step, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-sm text-slate-700"
+                  >
                     <ChevronsRight className="w-5 h-5 text-[#0066FF] shrink-0 mt-0.5" />
                     <span>
-                      <strong className="text-slate-900 font-bold">{step.title}:</strong> {step.desc}
+                      <strong className="text-slate-900 font-bold">
+                        {step.title}:
+                      </strong>{" "}
+                      {step.desc}
                     </span>
                   </li>
                 ))}
@@ -473,11 +536,18 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Why Work With Us 3D Grid */}
-      <section className="py-16 sm:py-24 border-t border-blue-100 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-6 border-t border-blue-100 px-[3px] sm:px-4 lg:px-6 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-bold">Enterprise Standard</span>
-          <h2 className="text-3xl sm:text-4xl font-black font-display text-slate-900 mt-1 mb-4">Why Work With Us?</h2>
-          <p className="text-slate-600 text-sm sm:text-base font-medium">We're committed to delivering exceptional results and building lasting partnerships.</p>
+          <span className="text-xs font-mono uppercase tracking-widest text-[#0066FF] font-bold">
+            Enterprise Standard
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black font-display text-slate-900 mt-1 mb-4">
+            Why Work With Us?
+          </h2>
+          <p className="text-slate-600 text-sm sm:text-base font-medium">
+            We're committed to delivering exceptional results and building
+            lasting partnerships.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -490,8 +560,12 @@ const Contact: React.FC = () => {
                     <div className="w-14 h-14 rounded-2xl bg-[#EBF5FF] border border-blue-200 flex items-center justify-center mb-6 shadow-inner text-[#0066FF]">
                       <Icon className="w-7 h-7" />
                     </div>
-                    <h3 className="text-lg font-bold font-display text-slate-900 mb-3">{item.title}</h3>
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">{item.text}</p>
+                    <h3 className="text-lg font-bold font-display text-slate-900 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+                      {item.text}
+                    </p>
                   </div>
                 </div>
               </Card3D>

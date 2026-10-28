@@ -19,10 +19,30 @@ import {
 import Card3D from "./ui/Card3D";
 
 const stats = [
-  { label: "Industries Served", value: "25+", icon: Users, color: "text-cyan-400" },
-  { label: "Enterprise Clients", value: "200+", icon: Building, color: "text-indigo-400" },
-  { label: "Global Reach", value: "5+ Countries", icon: Globe, color: "text-purple-400" },
-  { label: "Industry Awards", value: "15+", icon: Award, color: "text-amber-400" },
+  {
+    label: "Industries Served",
+    value: "25+",
+    icon: Users,
+    color: "text-cyan-400",
+  },
+  {
+    label: "Enterprise Clients",
+    value: "200+",
+    icon: Building,
+    color: "text-indigo-400",
+  },
+  {
+    label: "Global Reach",
+    value: "5+ Countries",
+    icon: Globe,
+    color: "text-purple-400",
+  },
+  {
+    label: "Industry Awards",
+    value: "15+",
+    icon: Award,
+    color: "text-amber-400",
+  },
 ];
 
 const industryCards = [
@@ -31,7 +51,8 @@ const industryCards = [
     icon: Heart,
     color: "from-cyan-400 to-blue-500",
     glow: "rgba(0, 242, 254, 0.2)",
-    image: "https://plus.unsplash.com/premium_photo-1698421947098-d68176a8f5b2?w=600",
+    image:
+      "https://plus.unsplash.com/premium_photo-1698421947098-d68176a8f5b2?w=600",
     features: [
       "Secure Telemedicine & Virtual Care Platforms",
       "AI Diagnostics & Predictive Health Analytics",
@@ -67,7 +88,8 @@ const industryCards = [
     icon: GraduationCap,
     color: "from-purple-500 to-pink-500",
     glow: "rgba(168, 85, 247, 0.2)",
-    image: "https://plus.unsplash.com/premium_photo-1750859860252-6d23c5598f7c?w=600",
+    image:
+      "https://plus.unsplash.com/premium_photo-1750859860252-6d23c5598f7c?w=600",
     features: [
       "Interactive Virtual Classroom Platforms",
       "AI-Adaptive Personalized Learning Systems",
@@ -131,31 +153,45 @@ export const Industries: FC = () => {
       <section className="relative pt-6 sm:pt-8 pb-14 overflow-hidden border-b border-blue-100 bg-gradient-to-b from-[#EBF5FF]/80 via-[#F0F7FF] to-white">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#38BDF8]/20 via-[#0066FF]/15 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-blue-200/90 shadow-xs text-xs font-mono font-bold text-[#0066FF] mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             <span>INDUSTRY DOMAIN EXPERTISE</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-6">
-            Industries We <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">Transform</span>
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black text-[#0A1629] tracking-tight font-display mb-3">
+            Industries We{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">
+              Transform
+            </span>
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-sans">
-            We deliver tailored, industry-specific digital solutions designed to navigate regulatory compliance, enhance operational velocity, and unlock competitive dominance.
+          <p className="text-justify sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-16 font-sans">
+            We deliver tailored, industry-specific digital solutions designed to
+            navigate regulatory compliance, enhance operational velocity, and
+            unlock competitive dominance.
           </p>
 
           {/* Stats Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
             {stats.map((stat, i) => {
               const Icon = stat.icon;
               return (
-                <div key={i} className="cloud-card p-6 rounded-3xl text-center">
-                  <div className={`w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 mx-auto flex items-center justify-center mb-3 text-[#0066FF] shadow-inner`}>
+                <div
+                  key={i}
+                  className="cloud-card p-6 rounded-3xl text-center "
+                >
+                  <div
+                    className={`w-12 h-12 rounded-2xl bg-[#EBF5FF] border border-blue-200 mx-auto flex items-center justify-center mb-3 text-[#0066FF] shadow-inner`}
+                  >
                     <Icon className="w-6 h-6 stroke-[2]" />
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#0A1629] font-display mb-1">{stat.value}</div>
-                  <div className="text-xs text-slate-500 font-mono font-bold">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#0A1629] font-display mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-slate-500 font-mono font-bold">
+                    {stat.label}
+                  </div>
                 </div>
               );
             })}
@@ -183,14 +219,19 @@ export const Industries: FC = () => {
                       <div className="w-8 h-8 rounded-xl bg-white/90 backdrop-blur-md border border-blue-200 flex items-center justify-center text-[#0066FF] shadow-sm">
                         <Icon className="w-4 h-4" />
                       </div>
-                      <span className="text-xs font-black text-[#0A1629] font-display">{card.title}</span>
+                      <span className="text-xs font-black text-[#0A1629] font-display">
+                        {card.title}
+                      </span>
                     </div>
                   </div>
 
                   <div className="p-5 flex flex-col grow">
                     <ul className="space-y-2 mb-6 grow">
                       {card.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-600 font-medium">
+                        <li
+                          key={fIdx}
+                          className="flex items-start gap-2 text-xs text-slate-600 font-medium"
+                        >
                           <CheckCircle className="w-3.5 h-3.5 text-[#0066FF] shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </li>
@@ -213,17 +254,18 @@ export const Industries: FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
+      <section className="py-6 bg-gradient-to-b from-[#EBF5FF] to-white text-center border-t border-blue-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl sm:text-4xl font-black text-[#0A1629] font-display mb-4">
             Accelerate Your Industry Vertical
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl mx-auto font-sans">
-            Our domain architects are ready to design solutions that comply with your sector's strictest standards.
+            Our domain architects are ready to design solutions that comply with
+            your sector's strictest standards.
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl text-[12px] sm:text-sm font-bold text-white bg-gradient-to-r from-[#0066FF] via-[#0077FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_10px_30px_rgba(0,102,255,0.35)] transition"
           >
             <span>Schedule Industry Strategy Call</span>
             <ArrowRight className="w-4 h-4" />

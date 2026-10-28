@@ -10,8 +10,10 @@ const caseStudies = [
     title: "AI-Powered E-Commerce Platform",
     client: "RetailMax Inc.",
     category: "Web & AI Engineering",
-    image: "https://plus.unsplash.com/premium_photo-1747949065888-5a57b2d506db?w=600&auto=format&fit=crop&q=60",
-    description: "A scalable AI-driven e-commerce platform offering personalized shopping experiences, dynamic product sorting, and advanced analytics.",
+    image:
+      "https://plus.unsplash.com/premium_photo-1747949065888-5a57b2d506db?w=600&auto=format&fit=crop&q=60",
+    description:
+      "A scalable AI-driven e-commerce platform offering personalized shopping experiences, dynamic product sorting, and advanced analytics.",
     points: [
       "AI recommendation engine with sub-10ms response",
       "60% faster page load across all mobile devices",
@@ -28,8 +30,10 @@ const caseStudies = [
     title: "Secure Banking Mobile App",
     client: "Community Bank",
     category: "FinTech & Security",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-    description: "A robust mobile banking solution with real-time transactions, multi-layer security, biometric login, and a seamless UI experience.",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+    description:
+      "A robust mobile banking solution with real-time transactions, multi-layer security, biometric login, and a seamless UI experience.",
     points: [
       "Biometric FaceID & fingerprint authentication",
       "256-bit military grade data encryption",
@@ -46,8 +50,10 @@ const caseStudies = [
     title: "Enterprise Cloud Migration",
     client: "GlobalTech Corp",
     category: "Cloud Architecture",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-    description: "Migrated a complete enterprise infrastructure to cloud with zero downtime, high availability, and automated deployment pipelines.",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    description:
+      "Migrated a complete enterprise infrastructure to cloud with zero downtime, high availability, and automated deployment pipelines.",
     points: [
       "Zero-downtime database and system cutover",
       "45% infrastructure operational cost reduction",
@@ -64,8 +70,10 @@ const caseStudies = [
     title: "Healthcare Data Analytics Platform",
     client: "MedCare Solutions",
     category: "Healthcare Technology",
-    image: "https://images.unsplash.com/photo-1657727534685-36b09f84e193?q=80&w=600&auto=format&fit=crop",
-    description: "Healthcare analytics system built to track patient health, predict clinical risks, and streamline medical diagnostics in real-time.",
+    image:
+      "https://images.unsplash.com/photo-1657727534685-36b09f84e193?q=80&w=600&auto=format&fit=crop",
+    description:
+      "Healthcare analytics system built to track patient health, predict clinical risks, and streamline medical diagnostics in real-time.",
     points: [
       "Full HIPAA-compliant medical data encryption",
       "Predictive machine learning diagnostics models",
@@ -81,8 +89,8 @@ const caseStudies = [
 
 export const FeaturedSuccessStories: React.FC = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="relative py-6 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
@@ -128,15 +136,22 @@ export const FeaturedSuccessStories: React.FC = () => {
 
                 {/* Floating Metric Badge */}
                 <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-xl border border-blue-100 rounded-2xl p-3 text-right shadow-xl">
-                  <div className="text-2xl font-black text-[#0066FF] font-display">{study.metricVal}</div>
-                  <div className="text-[10px] uppercase font-mono font-bold text-slate-600">{study.metricLabel}</div>
+                  <div className="text-2xl font-black text-[#0066FF] font-display">
+                    {study.metricVal}
+                  </div>
+                  <div className="text-[10px] uppercase font-mono font-bold text-slate-600">
+                    {study.metricLabel}
+                  </div>
                 </div>
               </div>
 
               {/* Content body */}
               <div className="p-6 sm:p-8 flex flex-col grow">
                 <div className="text-xs text-slate-500 font-medium mb-1">
-                  Client: <span className="text-slate-900 font-bold">{study.client}</span>
+                  Client:{" "}
+                  <span className="text-slate-900 font-bold">
+                    {study.client}
+                  </span>
                 </div>
 
                 <h3 className="text-2xl font-black text-slate-900 mb-3 font-display group-hover:text-[#0066FF] transition">
@@ -149,7 +164,10 @@ export const FeaturedSuccessStories: React.FC = () => {
 
                 <ul className="space-y-2 mb-6">
                   {study.points.map((pt, pIdx) => (
-                    <li key={pIdx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                    <li
+                      key={pIdx}
+                      className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium"
+                    >
                       <CheckCircle className="w-4 h-4 text-[#0066FF] shrink-0" />
                       <span>{pt}</span>
                     </li>
