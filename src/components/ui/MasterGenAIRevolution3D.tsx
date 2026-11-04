@@ -197,7 +197,7 @@ export const MasterGenAIRevolution3D: React.FC = () => {
   return (
     <section
       id="gen-ai-ecosystem"
-      className="relative w-full bg-[#030712] text-white pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 px-3 sm:px-6 lg:px-8 overflow-hidden border-t border-b border-blue-900/40 select-none scroll-mt-32"
+      className="relative w-full bg-[#030712] text-white pt-16 pb-16 sm:pb-24 px-3 sm:px-6 lg:px-8 overflow-hidden border-t border-b border-blue-900/40 select-none scroll-mt-32"
     >
       {/* Background Volumetric Gold & Sapphire Ambient Glows */}
       <div className="absolute top-0 left-1/4 w-[750px] h-[400px] bg-gradient-to-b from-[#00D2FF]/10 via-[#0066FF]/10 to-transparent rounded-full blur-[160px] pointer-events-none" />

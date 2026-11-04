@@ -30,6 +30,7 @@ import Solution from "./components/Solution";
 import Industries from "./components/Industries";
 import Products from "./components/Products";
 import Projects from "./components/Projects";
+import ProjectDetailsPage from "./components/ProjectDetailsPage";
 import Portfolio from "./components/Portfolio";
 import CaseStudies from "./components/CaseStudies";
 import Testimonials from "./components/Testimonials";
@@ -53,9 +54,30 @@ import AIChatAssistant from "./components/AIChatAssistant";
 
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
+import CommandPalette from "./components/ui/CommandPalette";
+import TechTrustMarquee from "./components/ui/TechTrustMarquee";
+import RoiCalculator from "./components/ui/RoiCalculator";
 
 const App: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [commandOpen, setCommandOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCommandOpen((prev) => !prev);
+      }
+    };
+    const handleCustomOpen = () => setCommandOpen(true);
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('open-command-palette', handleCustomOpen);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('open-command-palette', handleCustomOpen);
+    };
+  }, []);
 
   useEffect(() => {
     AOS.init({ duration: 900, once: true });
@@ -69,7 +91,7 @@ const App: React.FC = () => {
 
       <div className="relative w-full overflow-x-hidden min-h-screen flex flex-col bg-[#F0F7FF] text-[#0A1629] selection:bg-[#0066FF]/20 selection:text-[#0052CC]">
         <SocialBar />
-        <Navbar />
+        <Navbar onOpenCommandPalette={() => setCommandOpen(true)} />
 
         <main className="grow pt-28 sm:pt-32 lg:pt-36 pb-24 md:pb-0">
           <Routes>
@@ -78,12 +100,14 @@ const App: React.FC = () => {
               element={
                 <>
                   <HeroSection />
+                  <TechTrustMarquee />
                   <Interactive3DShowcase />
                   <GenAIEcosystem3D />
                   <ProvenTrackRecord />
                   <TechnologyServices />
                   <TechnologyStack />
                   <FeaturedSuccessStories />
+                  <RoiCalculator />
                   <ClientTestimonials />
                   <WhyChooseUs />
                   <InnovationJourney />
@@ -106,6 +130,11 @@ const App: React.FC = () => {
             <Route path="/work/projects" element={<Projects />} />
             <Route path="/work/portfolio" element={<Portfolio />} />
             <Route path="/work/case-studies" element={<CaseStudies />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/project/:id" element={<ProjectDetailsPage />} />
+            <Route path="/project-details/:id" element={<ProjectDetailsPage />} />
 
             <Route path="/lets-create" element={<LetsCreate />} />
 
@@ -133,9 +162,14 @@ const App: React.FC = () => {
         <Footer />
 
         <ContactModal isOpen={openModal} onClose={() => setOpenModal(false)} />
+        <CommandPalette isOpen={commandOpen} onClose={() => setCommandOpen(false)} />
       </div>
     </Router>
   );
 };
 
 export default App;
+
+
+
+

@@ -25,11 +25,7 @@ export const Interactive3DShowcase: React.FC = () => {
   const leftServices = [
     {
       id: 1,
-      title: "School Websites",
-      desc: "Student portals & LMS portals",
-      icon: GraduationCap,
-      color: "from-blue-600 to-cyan-500",
-      link: "/services",
+      title: "LMS & Learning Portals", desc: "Interactive student & course systems", icon: GraduationCap, color: "from-blue-600 to-cyan-500", link: "/work/projects",
     },
     {
       id: 2,
@@ -68,11 +64,7 @@ export const Interactive3DShowcase: React.FC = () => {
     },
     {
       id: 6,
-      title: "E-Commerce Store",
-      desc: "High-converting online shops",
-      icon: ShoppingCart,
-      color: "from-cyan-600 to-teal-500",
-      link: "/services",
+      title: "E-Commerce Store", desc: "High-converting multi-vendor shops", icon: ShoppingCart, color: "from-cyan-600 to-teal-500", link: "/work/projects",
     },
     {
       id: 7,
@@ -498,3 +490,4 @@ export const Interactive3DShowcase: React.FC = () => {
 };
 
 export default Interactive3DShowcase;
+

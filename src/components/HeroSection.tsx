@@ -9,27 +9,22 @@ import GsapRollingText from "./ui/GsapRollingText";
 export const HeroSection: React.FC = () => {
   return (
     <section className="relative overflow-hidden pt-4 sm:pt-6 pb-6 sm:pb-8 bg-gradient-to-b from-[#FFFFFF] via-[#F4F9FF] to-[#EAF4FF] min-h-[80vh] lg:min-h-[85vh] flex flex-col justify-center">
-      {/* ============================================================ */}
-      {/* 1. INTERACTIVE CYBER GRID (Desktop & Tablet only: md/lg/xl) */}
-      {/* Hidden on mobile to keep mobile screen clean & zero clutter */}
-      {/* ============================================================ */}
+      {/* 1. INTERACTIVE CYBER GRID (Desktop & Tablet only) */}
       <div className="hidden md:block">
         <HeroInteractiveCyberGrid />
         <HeroWaveNodes3D />
       </div>
 
-      {/* Ambient Soft Glow Background (Clean & Particle-Free on Mobile) */}
+      {/* Ambient Soft Glow Background (Symmetrical on Left & Right) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[650px] sm:w-[900px] h-[350px] sm:h-[450px] bg-gradient-to-b from-blue-200/40 via-cyan-100/25 to-transparent rounded-full blur-[100px] sm:blur-[130px]" />
-        <div className="absolute top-1/2 -right-24 w-[350px] sm:w-[500px] h-[300px] bg-blue-100/40 rounded-full blur-[90px]" />
-        <div className="absolute -bottom-10 -left-20 w-[350px] sm:w-[500px] h-[300px] bg-indigo-100/35 rounded-full blur-[90px]" />
+        <div className="absolute top-1/3 -left-20 w-[400px] sm:w-[500px] h-[350px] bg-blue-100/40 rounded-full blur-[100px]" />
+        <div className="absolute top-1/3 -right-20 w-[400px] sm:w-[500px] h-[350px] bg-blue-100/40 rounded-full blur-[100px]" />
       </div>
 
-      {/* ============================================================ */}
-      {/* 2. MAIN CENTERED HERO CONTENT (High-Contrast & Clean) */}
-      {/* ============================================================ */}
+      {/* 2. MAIN CENTERED HERO CONTENT */}
       <div className="relative z-10 w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 my-auto flex flex-col items-center text-center">
-        {/* Top Luxury Badge (Shifted down 10px on mobile for perfect spacing) */}
+        {/* Top Luxury Badge */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,7 +70,7 @@ export const HeroSection: React.FC = () => {
           empower market leaders.
         </motion.p>
 
-        {/* Dual Action Buttons (High Contrast & Clear Hierarchy) */}
+        {/* Dual Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,12 +91,12 @@ export const HeroSection: React.FC = () => {
             to="/work/projects"
             className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl text-sm font-bold text-slate-900 bg-white hover:bg-slate-50 border-2 border-slate-300 hover:border-[#0066FF] shadow-xs hover:shadow-md transition-all duration-300 transform hover:scale-[1.02] w-full sm:w-auto min-h-[48px]"
           >
-            <span>Explore Work</span>
+            <span>Explore Real Work</span>
             <ArrowRight className="w-4 h-4 text-[#0066FF]" />
           </Link>
         </motion.div>
 
-        {/* Social Proof Rating (High Contrast) */}
+        {/* Social Proof Rating */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -137,7 +132,7 @@ export const HeroSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Trust Indicators Row (Deep Contrast & Sharp Text) */}
+        {/* Trust Indicators Row */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

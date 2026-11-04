@@ -1,9 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  Mail,
-  Phone,
-  Bell,
+import { Mail, Phone, Bell, Search,
   ChevronDown,
   Menu,
   X,
@@ -37,7 +34,7 @@ const initialApplications: AppEntry[] = [
   },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenCommandPalette }: { onOpenCommandPalette?: () => void }) {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
@@ -122,7 +119,23 @@ export default function Navbar() {
               THE FUTURE WITH NEXT GEN-AI
             </span>
 
-            {/* Notification Bell with Red Badge */}
+                        {/* Quick Command Palette Button (Ctrl + K) */}
+            <button
+              onClick={() => {
+                if (onOpenCommandPalette) onOpenCommandPalette();
+                else window.dispatchEvent(new CustomEvent("open-command-palette"));
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-xs text-slate-600 hover:text-[#0066FF] transition font-sans cursor-pointer shadow-xs"
+              title="Search Projects & Architecture (Ctrl + K)"
+            >
+              <Search className="w-3.5 h-3.5 text-[#0066FF]" />
+              <span className="hidden sm:inline font-medium">Search</span>
+              <kbd className="hidden sm:inline-block px-1.5 py-0.2 bg-white border border-slate-300 rounded text-[9px] font-mono text-slate-400 font-bold">
+                Ctrl K
+              </kbd>
+            </button>
+
+{/* Notification Bell with Red Badge */}
             <div className="relative notification-dropdown-container">
               <button
                 onClick={(e) => {
@@ -569,3 +582,4 @@ export default function Navbar() {
     </header>
   );
 }
+

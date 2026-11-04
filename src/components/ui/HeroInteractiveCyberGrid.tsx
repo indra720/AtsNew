@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { Brain, Cpu, Sparkles, Activity, ShieldCheck, Zap } from "lucide-react";
+import React, { useEffect, useRef } from "react";
 
-interface Node {
+interface CyberNode {
   x: number;
   y: number;
   baseX: number;
@@ -13,14 +11,14 @@ interface Node {
   baseAlpha: number;
   pulsePhase: number;
   pulseSpeed: number;
+  side: "left" | "right";
+  minX: number;
+  maxX: number;
 }
 
 export const HeroInteractiveCyberGrid: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-
-  // Parallax offset for floating glass badges
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -47,33 +45,64 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
       y: h * 0.45,
       targetX: w * 0.5,
       targetY: h * 0.45,
-      radius: 200,
+      radius: 220,
       isHovered: false,
     };
 
-    // Initialize clean constellation & matrix nodes
-    const nodes: Node[] = [];
-    const nodeCount = Math.floor(Math.min(75, Math.max(40, (w * h) / 18000)));
+    // ============================================================
+    // PERFECTLY BALANCED SYMMETRICAL LEFT & RIGHT CYBER NODES
+    // ============================================================
+    const nodes: CyberNode[] = [];
+    const sideCount = Math.floor(Math.min(30, Math.max(18, (w * h) / 38000)));
 
-    for (let i = 0; i < nodeCount; i++) {
-      const x = Math.random() * w;
+    // 1. Left Wing Nodes (0 to 36% of screen width)
+    for (let i = 0; i < sideCount; i++) {
+      const minX = -10;
+      const maxX = w * 0.36;
+      const x = minX + Math.random() * (maxX - minX);
       const y = Math.random() * h;
       nodes.push({
         x,
         y,
         baseX: x,
         baseY: y,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.35,
-        radius: 1.2 + Math.random() * 1.8,
-        baseAlpha: 0.25 + Math.random() * 0.35,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: 1.4 + Math.random() * 1.8,
+        baseAlpha: 0.35 + Math.random() * 0.35,
         pulsePhase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.015 + Math.random() * 0.02,
+        pulseSpeed: 0.018 + Math.random() * 0.02,
+        side: "left",
+        minX,
+        maxX,
+      });
+    }
+
+    // 2. Right Wing Nodes (64% to 100% of screen width)
+    for (let i = 0; i < sideCount; i++) {
+      const minX = w * 0.64;
+      const maxX = w + 10;
+      const x = minX + Math.random() * (maxX - minX);
+      const y = Math.random() * h;
+      nodes.push({
+        x,
+        y,
+        baseX: x,
+        baseY: y,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: 1.4 + Math.random() * 1.8,
+        baseAlpha: 0.35 + Math.random() * 0.35,
+        pulsePhase: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.018 + Math.random() * 0.02,
+        side: "right",
+        minX,
+        maxX,
       });
     }
 
     // Grid dots in geometric alignment
-    const gridCols = 24;
+    const gridCols = 26;
     const gridRows = 14;
 
     const handlePointerMove = (clientX: number, clientY: number) => {
@@ -82,11 +111,6 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
       mouse.targetX = clientX - rect.left;
       mouse.targetY = clientY - rect.top;
       mouse.isHovered = true;
-
-      // Parallax calculation for floating glass cards
-      const normX = (mouse.targetX / (rect.width || w) - 0.5) * 2;
-      const normY = (mouse.targetY / (rect.height || h) - 0.5) * 2;
-      setParallax({ x: normX * 14, y: normY * 12 });
     };
 
     const onMouseMove = (e: MouseEvent) => handlePointerMove(e.clientX, e.clientY);
@@ -98,7 +122,6 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
 
     const onMouseLeave = () => {
       mouse.isHovered = false;
-      setParallax({ x: 0, y: 0 });
     };
 
     const onResize = () => {
@@ -135,7 +158,7 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
 
       // Ambient wandering when idle
       if (!mouse.isHovered) {
-        mouse.targetX = w * 0.5 + Math.sin(time * 0.7) * (w * 0.22);
+        mouse.targetX = w * 0.5 + Math.sin(time * 0.6) * (w * 0.25);
         mouse.targetY = h * 0.45 + Math.cos(time * 0.5) * (h * 0.18);
       }
 
@@ -192,7 +215,7 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
       }
 
       // ============================================================
-      // 3. ORGANIC CONSTELLATION NODES & CONCURRENT CONNECTIONS
+      // 3. ORGANIC CONSTELLATION NODES & BALANCED CONNECTIONS
       // ============================================================
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
@@ -202,9 +225,9 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
         node.x += node.vx + Math.sin(node.pulsePhase) * 0.25;
         node.y += node.vy + Math.cos(node.pulsePhase) * 0.22;
 
-        // Wrap around boundaries
-        if (node.x < -30) node.x = w + 30;
-        if (node.x > w + 30) node.x = -30;
+        // Wrap around boundaries within its designated wing (left or right)
+        if (node.x < node.minX) node.x = node.maxX;
+        if (node.x > node.maxX) node.x = node.minX;
         if (node.y < -30) node.y = h + 30;
         if (node.y > h + 30) node.y = -30;
 
@@ -218,16 +241,17 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
 
         if (dist < mouse.radius) {
           const factor = 1 - dist / mouse.radius;
-          // Gentle push away
-          node.x += (dx / dist) * factor * 1.8;
-          node.y += (dy / dist) * factor * 1.8;
-          currentAlpha = Math.min(0.95, currentAlpha + factor * 0.55);
-          currentRadius = node.radius + factor * 1.8;
+          node.x += (dx / dist) * factor * 1.6;
+          node.y += (dy / dist) * factor * 1.6;
+          currentAlpha = Math.min(0.95, currentAlpha + factor * 0.5);
+          currentRadius = node.radius + factor * 1.6;
         }
 
-        // Draw connections between neighboring nodes
+        // Draw connections between nodes on the SAME side
         for (let j = i + 1; j < nodes.length; j++) {
           const nodeB = nodes[j];
+          if (node.side !== nodeB.side) continue; // Keep center clear
+
           const ndx = node.x - nodeB.x;
           const ndy = node.y - nodeB.y;
           const nDist = Math.sqrt(ndx * ndx + ndy * ndy);
@@ -247,8 +271,8 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
             ctx.lineTo(nodeB.x, nodeB.y);
             ctx.lineWidth = isNearCursor ? 1.0 : 0.6;
             ctx.strokeStyle = isNearCursor
-              ? `rgba(0, 210, 255, ${lineFactor * 0.55})`
-              : `rgba(0, 102, 255, ${lineFactor * 0.18})`;
+              ? `rgba(0, 210, 255, ${lineFactor * 0.6})`
+              : `rgba(0, 102, 255, ${lineFactor * 0.22})`;
             ctx.stroke();
           }
         }
@@ -290,60 +314,9 @@ export const HeroInteractiveCyberGrid: React.FC = () => {
       {/* 1. Main High-Performance Interactive Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* 2. Soft Ambient Multi-Spectrum Aurora Lights */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-gradient-to-tr from-[#0066FF]/12 via-[#00D2FF]/14 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[350px] bg-gradient-to-t from-[#00D2FF]/10 via-[#0066FF]/8 to-transparent rounded-full blur-[130px] pointer-events-none" />
-
-      {/* 3. Floating 3D Frosted Glass Telemetry Badges (Desktop & Tablet) */}
-      {/* Left Glass Telemetry Card */}
-      <motion.div
-        style={{
-          transform: `translate3d(${parallax.x * -1}px, ${parallax.y * -1}px, 0)`,
-          transition: "transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)",
-        }}
-        className="absolute top-24 left-6 xl:left-14 hidden lg:flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/85 dark:bg-slate-900/80 border border-blue-200/80 dark:border-blue-500/30 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,102,255,0.08)] pointer-events-auto hover:border-[#0066FF]/60 hover:shadow-[0_12px_36px_rgba(0,102,255,0.18)] transition-all group cursor-pointer"
-      >
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#00D2FF]/20 to-[#0066FF]/30 border border-cyan-400/40 flex items-center justify-center text-[#0066FF] dark:text-cyan-300 shadow-sm group-hover:scale-105 transition-transform">
-          <Brain className="w-4 h-4" />
-        </div>
-        <div className="text-left">
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[11px] font-bold tracking-wider font-mono text-slate-800 dark:text-slate-100 uppercase">
-              NEURAL CORE 3.0
-            </span>
-          </div>
-          <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
-            4.2ms Latency &bull; 99.98% Accuracy
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right Glass Telemetry Card */}
-      <motion.div
-        style={{
-          transform: `translate3d(${parallax.x * 1.1}px, ${parallax.y * 1.1}px, 0)`,
-          transition: "transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)",
-        }}
-        className="absolute bottom-28 right-6 xl:right-14 hidden lg:flex items-center gap-3.5 px-4 py-2.5 rounded-2xl bg-white/85 dark:bg-slate-900/80 border border-blue-200/80 dark:border-blue-500/30 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,102,255,0.08)] pointer-events-auto hover:border-[#00D2FF]/60 hover:shadow-[0_12px_36px_rgba(0,210,255,0.18)] transition-all group cursor-pointer"
-      >
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0066FF]/20 to-[#00D2FF]/30 border border-blue-400/40 flex items-center justify-center text-[#0066FF] dark:text-cyan-300 shadow-sm group-hover:scale-105 transition-transform">
-          <Activity className="w-4 h-4" />
-        </div>
-        <div className="text-left">
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-            <span className="text-[11px] font-bold tracking-wider font-mono text-slate-800 dark:text-slate-100 uppercase">
-              CLOUD THROUGHPUT
-            </span>
-          </div>
-          <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1">
-            <span className="text-emerald-600 dark:text-emerald-400 font-semibold">142.5K+</span>
-            <span>ops/sec &bull; Real-time Mesh</span>
-          </div>
-        </div>
-      </motion.div>
-
+      {/* 2. Symmetrical Ambient Multi-Spectrum Aurora Lights (Left & Right Balanced) */}
+      <div className="absolute top-1/4 -left-20 w-[600px] h-[450px] bg-gradient-to-tr from-[#0066FF]/12 via-[#00D2FF]/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-20 w-[600px] h-[450px] bg-gradient-to-tl from-[#0066FF]/12 via-[#00D2FF]/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
     </div>
   );
 };

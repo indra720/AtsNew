@@ -1,200 +1,426 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, ExternalLink, Sparkles } from "lucide-react";
-import Card3D from "./ui/Card3D";
-
-const caseStudies = [
-  {
-    id: 1,
-    title: "AI-Powered E-Commerce Platform",
-    client: "RetailMax Inc.",
-    category: "Web & AI Engineering",
-    image:
-      "https://plus.unsplash.com/premium_photo-1747949065888-5a57b2d506db?w=600&auto=format&fit=crop&q=60",
-    description:
-      "A scalable AI-driven e-commerce platform offering personalized shopping experiences, dynamic product sorting, and advanced analytics.",
-    points: [
-      "AI recommendation engine with sub-10ms response",
-      "60% faster page load across all mobile devices",
-      "Automated real-time inventory tracking & sync",
-    ],
-    tags: ["AI/ML", "React", "Node.js", "MongoDB"],
-    link: "/ai-page",
-    metricVal: "+300%",
-    metricLabel: "Revenue Uplift",
-    glow: "rgba(0, 242, 254, 0.2)",
-  },
-  {
-    id: 2,
-    title: "Secure Banking Mobile App",
-    client: "Community Bank",
-    category: "FinTech & Security",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-    description:
-      "A robust mobile banking solution with real-time transactions, multi-layer security, biometric login, and a seamless UI experience.",
-    points: [
-      "Biometric FaceID & fingerprint authentication",
-      "256-bit military grade data encryption",
-      "Real-time ML fraud detection & instant push alerts",
-    ],
-    tags: ["React Native", "PostgreSQL", "AWS", "Security"],
-    link: "/secure-page",
-    metricVal: "99.9%",
-    metricLabel: "Fraud Prevented",
-    glow: "rgba(99, 102, 241, 0.2)",
-  },
-  {
-    id: 3,
-    title: "Enterprise Cloud Migration",
-    client: "GlobalTech Corp",
-    category: "Cloud Architecture",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-    description:
-      "Migrated a complete enterprise infrastructure to cloud with zero downtime, high availability, and automated deployment pipelines.",
-    points: [
-      "Zero-downtime database and system cutover",
-      "45% infrastructure operational cost reduction",
-      "Multi-region high availability Kubernetes clusters",
-    ],
-    tags: ["AWS", "Docker", "Kubernetes", "Terraform"],
-    link: "/cloud-page",
-    metricVal: "99.99%",
-    metricLabel: "System Uptime",
-    glow: "rgba(168, 85, 247, 0.2)",
-  },
-  {
-    id: 4,
-    title: "Healthcare Data Analytics Platform",
-    client: "MedCare Solutions",
-    category: "Healthcare Technology",
-    image:
-      "https://images.unsplash.com/photo-1657727534685-36b09f84e193?q=80&w=600&auto=format&fit=crop",
-    description:
-      "Healthcare analytics system built to track patient health, predict clinical risks, and streamline medical diagnostics in real-time.",
-    points: [
-      "Full HIPAA-compliant medical data encryption",
-      "Predictive machine learning diagnostics models",
-      "Real-time physician monitoring dashboards",
-    ],
-    tags: ["Python", "React", "Docker", "Data Lake"],
-    link: "/health-page",
-    metricVal: "+40%",
-    metricLabel: "Diagnosis Speed",
-    glow: "rgba(16, 185, 129, 0.2)",
-  },
-];
+import {
+  ArrowRight,
+  ExternalLink,
+  Github,
+  Sparkles,
+  Phone,
+  Building2,
+  ShoppingCart,
+  Hotel,
+  GraduationCap,
+  Eye,
+} from "lucide-react";
+import { REAL_PROJECTS } from "../data/projectsData";
 
 export const FeaturedSuccessStories: React.FC = () => {
+  const callCenter = REAL_PROJECTS[0]; // ATS Call Center
+  const buildPro = REAL_PROJECTS[1];   // BuildPro Construction
+  const oranza = REAL_PROJECTS[2];     // ORANZA Multi-Vendor
+  const eduflow = REAL_PROJECTS[3];    // EduFlow AI
+  const auraPalms = REAL_PROJECTS[4];  // Aura Palms Resort
+
   return (
-    <section className="relative py-6 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
-      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1600px] mx-auto px-[3px] sm:px-4 lg:px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <section className="relative py-16 sm:py-20 bg-gradient-to-b from-[#F0F7FF] via-[#E8F4FD] to-white text-slate-900 overflow-hidden border-t border-blue-100">
+      {/* Background ambient light */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-[#38BDF8]/15 via-[#0066FF]/10 to-transparent rounded-full blur-[140px] pointer-events-none -z-10" />
+
+      <div className="w-full max-w-[98%] xl:max-w-[95%] 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-4 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-mono font-semibold text-[#0066FF] mb-3 shadow-xs">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>PROVEN TRANSFORMATIONS</span>
+              <span>PRODUCTION-GRADE SYSTEMS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
-              Featured Success Stories
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight font-display">
+              Enterprise Ecosystem{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#00D2FF]">
+                Bento Grid
+              </span>
             </h2>
+            <p className="text-xs sm:text-sm text-slate-600 mt-1.5 max-w-xl font-sans">
+              Discover real-world systems engineered, scaled, and secured by ATS Global Tech for market-leading enterprises.
+            </p>
           </div>
           <Link
             to="/work/projects"
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#0066FF] hover:text-[#0052CC] transition group"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-xs sm:text-sm font-bold text-[#0066FF] hover:bg-[#0066FF] hover:text-white transition group shrink-0 shadow-xs"
           >
-            <span>View All Enterprise Projects</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+            <span>Explore All 8+ Real Projects</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        {/* 3D Success Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {caseStudies.map((study) => (
-            <Card3D
-              key={study.id}
-              intensity={10}
-              glowColor="rgba(0, 102, 255, 0.1)"
-              className="cloud-card overflow-hidden border border-blue-100/90 hover:border-blue-300 rounded-3xl flex flex-col justify-between group"
-            >
-              {/* Media banner */}
-              <div className="relative h-60 sm:h-72 overflow-hidden">
-                <img
-                  src={study.image}
-                  alt={study.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-mono font-bold text-[#0066FF] border border-blue-200 shadow-sm">
-                    {study.category}
-                  </span>
-                </div>
-
-                {/* Floating Metric Badge */}
-                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-xl border border-blue-100 rounded-2xl p-3 text-right shadow-xl">
-                  <div className="text-2xl font-black text-[#0066FF] font-display">
-                    {study.metricVal}
-                  </div>
-                  <div className="text-[10px] uppercase font-mono font-bold text-slate-600">
-                    {study.metricLabel}
-                  </div>
-                </div>
+        {/* ============================================================ */}
+        {/* BALANCED BENTO GRID: 2 Flagship (6+6) + 3 Specialized (4+4+4) */}
+        {/* ============================================================ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+          {/* -------------------------------------------------- */}
+          {/* ROW 1 - FLAGSHIP 1: ATS Call Center (6 Cols)      */}
+          {/* -------------------------------------------------- */}
+          <Link
+            to={`/project-details/${callCenter.id}`}
+            className="lg:col-span-6 group relative bg-white rounded-3xl border border-slate-200/90 shadow-[0_6px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0,102,255,0.12)] hover:border-[#0066FF]/40 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between overflow-hidden cursor-pointer"
+          >
+            <div>
+              {/* Badges */}
+              <div className="flex items-center justify-between mb-3.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#0066FF] border border-blue-200 text-xs font-mono font-bold uppercase">
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>FLAGSHIP TELEPHONY CRM</span>
+                </span>
+                <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>87+ Screens</span>
+                </span>
               </div>
 
-              {/* Content body */}
-              <div className="p-6 sm:p-8 flex flex-col grow">
-                <div className="text-xs text-slate-500 font-medium mb-1">
-                  Client:{" "}
-                  <span className="text-slate-900 font-bold">
-                    {study.client}
+              {/* Title & Tagline */}
+              <h3 className="text-2xl font-black text-slate-950 font-display mb-1 group-hover:text-[#0066FF] transition-colors">
+                {callCenter.title}
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-[#0066FF] mb-2.5">
+                {callCenter.tagline}
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                {callCenter.shortDescription}
+              </p>
+
+              {/* App Window Frame - 100% Unclipped Natural Screenshot */}
+              <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs group/img mb-5">
+                {/* Browser Bezel */}
+                <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 border-b border-slate-200 text-[10px] font-mono text-slate-500">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  </div>
+                  <div className="px-2.5 py-0.5 rounded bg-white text-[9px] text-slate-500 border border-slate-200 font-mono tracking-tight truncate max-w-[200px]">
+                    atsglobaltech.in/call-center
+                  </div>
+                  <span className="text-[9px] font-mono font-bold text-emerald-600 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>LIVE</span>
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-slate-900 mb-3 font-display group-hover:text-[#0066FF] transition">
-                  {study.title}
-                </h3>
-
-                <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-                  {study.description}
-                </p>
-
-                <ul className="space-y-2 mb-6">
-                  {study.points.map((pt, pIdx) => (
-                    <li
-                      key={pIdx}
-                      className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 font-medium"
-                    >
-                      <CheckCircle className="w-4 h-4 text-[#0066FF] shrink-0" />
-                      <span>{pt}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-                  {study.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-mono font-semibold text-[#0066FF]"
-                    >
-                      {tag}
+                {/* Screenshot */}
+                <div className="relative w-full bg-slate-50 overflow-hidden">
+                  <img
+                    src={callCenter.image}
+                    alt={callCenter.title}
+                    className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="px-3.5 py-1.5 rounded-full bg-white text-slate-900 font-bold text-xs shadow-lg">
+                      View Full Architecture →
                     </span>
-                  ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Metrics & Action Footer */}
+            <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="grid grid-cols-3 gap-2 w-full sm:w-auto">
+                {callCenter.metrics.map((m, i) => (
+                  <div key={i} className="px-2.5 py-1.5 rounded-xl bg-blue-50/80 border border-blue-100 text-center sm:text-left">
+                    <div className="text-xs sm:text-sm font-black text-[#0066FF] font-display">
+                      {m.value}
+                    </div>
+                    <div className="text-[9px] font-mono text-slate-500 uppercase truncate">
+                      {m.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0066FF] group-hover:translate-x-1 transition-transform shrink-0">
+                <span>View Full Case Study</span>
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
+          </Link>
+
+          {/* -------------------------------------------------- */}
+          {/* ROW 1 - FLAGSHIP 2: ORANZA E-Commerce (6 Cols)    */}
+          {/* -------------------------------------------------- */}
+          <Link
+            to={`/project-details/${oranza.id}`}
+            className="lg:col-span-6 group relative bg-white rounded-3xl border border-slate-200/90 shadow-[0_6px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0,102,255,0.12)] hover:border-[#0066FF]/40 transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between overflow-hidden cursor-pointer"
+          >
+            <div>
+              {/* Badges */}
+              <div className="flex items-center justify-between mb-3.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 text-orange-600 border border-orange-200 text-xs font-mono font-bold uppercase">
+                  <ShoppingCart className="w-3.5 h-3.5" />
+                  <span>COMMERCE MARKETPLACE</span>
+                </span>
+                <span className="text-xs font-mono font-bold text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-full border border-orange-200 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                  <span>57+ Routes</span>
+                </span>
+              </div>
+
+              {/* Title & Tagline */}
+              <h3 className="text-2xl font-black text-slate-950 font-display mb-1 group-hover:text-[#0066FF] transition-colors">
+                {oranza.title}
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-orange-600 mb-2.5">
+                {oranza.tagline}
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                {oranza.shortDescription}
+              </p>
+
+              {/* App Window Frame - 100% Unclipped Natural Screenshot */}
+              <div className="relative w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs group/img mb-5">
+                {/* Browser Bezel */}
+                <div className="flex items-center justify-between px-3 py-1.5 bg-slate-100 border-b border-slate-200 text-[10px] font-mono text-slate-500">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  </div>
+                  <div className="px-2.5 py-0.5 rounded bg-white text-[9px] text-slate-500 border border-slate-200 font-mono tracking-tight truncate max-w-[200px]">
+                    atsglobaltech.in/oranza
+                  </div>
+                  <span className="text-[9px] font-mono font-bold text-emerald-600 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>LIVE</span>
+                  </span>
                 </div>
 
-                <Link
-                  to={study.link}
-                  className="inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-[#0066FF] to-[#0052CC] hover:from-[#0052CC] hover:to-[#0047BA] shadow-[0_8px_25px_rgba(0,102,255,0.35)] transition-all duration-300"
-                >
-                  <span>Read Full Case Study</span>
-                  <ExternalLink className="w-4 h-4" />
-                </Link>
+                {/* Screenshot */}
+                <div className="relative w-full bg-slate-50 overflow-hidden">
+                  <img
+                    src={oranza.image}
+                    alt={oranza.title}
+                    className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="px-3.5 py-1.5 rounded-full bg-white text-slate-900 font-bold text-xs shadow-lg">
+                      Explore Marketplace Architecture →
+                    </span>
+                  </div>
+                </div>
               </div>
-            </Card3D>
-          ))}
+            </div>
+
+            {/* Metrics & Action Footer */}
+            <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="grid grid-cols-3 gap-2 w-full sm:w-auto">
+                {oranza.metrics.map((m, i) => (
+                  <div key={i} className="px-2.5 py-1.5 rounded-xl bg-orange-50/80 border border-orange-100 text-center sm:text-left">
+                    <div className="text-xs sm:text-sm font-black text-orange-600 font-display">
+                      {m.value}
+                    </div>
+                    <div className="text-[9px] font-mono text-slate-500 uppercase truncate">
+                      {m.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0066FF] group-hover:translate-x-1 transition-transform shrink-0">
+                <span>View Full Case Study</span>
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
+          </Link>
+
+          {/* -------------------------------------------------- */}
+          {/* ROW 2 - CARD 3: BuildPro Construction ERP (4 Cols) */}
+          {/* -------------------------------------------------- */}
+          <Link
+            to={`/project-details/${buildPro.id}`}
+            className="lg:col-span-4 group relative bg-white rounded-3xl border border-slate-200/90 shadow-[0_6px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0,102,255,0.12)] hover:border-[#0066FF]/40 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between overflow-hidden cursor-pointer"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 text-xs font-mono font-bold uppercase">
+                  <Building2 className="w-3.5 h-3.5" />
+                  <span>CONSTRUCTION ERP</span>
+                </span>
+                <span className="text-[10px] font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md">
+                  85+ Sites
+                </span>
+              </div>
+
+              <h3 className="text-lg sm:text-xl font-black text-slate-950 font-display mb-1 group-hover:text-[#0066FF] transition-colors line-clamp-1">
+                {buildPro.title}
+              </h3>
+              <p className="text-xs font-semibold text-amber-600 mb-2 line-clamp-1">
+                Site Operations & Materials Procurement
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3.5 line-clamp-2">
+                {buildPro.shortDescription}
+              </p>
+
+              {/* App Window Frame - 100% Complete Uncropped Screenshot */}
+              <div className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs group/img mb-4">
+                <div className="flex items-center justify-between px-2.5 py-1 bg-slate-100 border-b border-slate-200 text-[9px] font-mono text-slate-500">
+                  <div className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-[#FF5F56]" />
+                    <span className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#27C93F]" />
+                  </div>
+                  <div className="px-2 py-0.5 rounded bg-white text-[8px] text-slate-500 border border-slate-200 font-mono tracking-tight truncate max-w-[140px]">
+                    atsglobaltech.in/buildpro
+                  </div>
+                  <span className="text-[8px] font-mono font-bold text-emerald-600">LIVE</span>
+                </div>
+                <div className="relative w-full bg-slate-50 overflow-hidden">
+                  <img
+                    src={buildPro.image}
+                    alt={buildPro.title}
+                    className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-amber-50/70 border border-amber-100 text-xs font-mono mb-2">
+                <span className="text-[10px] text-slate-500 uppercase font-bold">Waste Saved</span>
+                <span className="font-black text-amber-700 font-display">22% Reduction</span>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0066FF]">
+              <span>View Civil ERP Details</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* -------------------------------------------------- */}
+          {/* ROW 2 - CARD 4: Aura Palms Resort RMS (4 Cols)     */}
+          {/* -------------------------------------------------- */}
+          <Link
+            to={`/project-details/${auraPalms.id}`}
+            className="lg:col-span-4 group relative bg-white rounded-3xl border border-slate-200/90 shadow-[0_6px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0,102,255,0.12)] hover:border-[#0066FF]/40 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between overflow-hidden cursor-pointer"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold uppercase">
+                  <Hotel className="w-3.5 h-3.5" />
+                  <span>HOSPITALITY RMS</span>
+                </span>
+                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
+                  9+ Roles
+                </span>
+              </div>
+
+              <h3 className="text-lg sm:text-xl font-black text-slate-950 font-display mb-1 group-hover:text-[#0066FF] transition-colors line-clamp-1">
+                {auraPalms.title}
+              </h3>
+              <p className="text-xs font-semibold text-emerald-600 mb-2 line-clamp-1">
+                Direct Booking Engine & Multi-Tenant SaaS
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3.5 line-clamp-2">
+                {auraPalms.shortDescription}
+              </p>
+
+              {/* App Window Frame - 100% Complete Uncropped Screenshot */}
+              <div className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs group/img mb-4">
+                <div className="flex items-center justify-between px-2.5 py-1 bg-slate-100 border-b border-slate-200 text-[9px] font-mono text-slate-500">
+                  <div className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-[#FF5F56]" />
+                    <span className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#27C93F]" />
+                  </div>
+                  <div className="px-2 py-0.5 rounded bg-white text-[8px] text-slate-500 border border-slate-200 font-mono tracking-tight truncate max-w-[140px]">
+                    atsglobaltech.in/aura-palms
+                  </div>
+                  <span className="text-[8px] font-mono font-bold text-emerald-600">LIVE</span>
+                </div>
+                <div className="relative w-full bg-slate-50 overflow-hidden">
+                  <img
+                    src={auraPalms.image}
+                    alt={auraPalms.title}
+                    className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-50/70 border border-emerald-100 text-xs font-mono mb-2">
+                <span className="text-[10px] text-slate-500 uppercase font-bold">OTA Dependency</span>
+                <span className="font-black text-emerald-700 font-display">0% Commission</span>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0066FF]">
+              <span>Explore Resort ERP</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+
+          {/* -------------------------------------------------- */}
+          {/* ROW 2 - CARD 5: EduFlow AI Campus ERP (4 Cols)     */}
+          {/* -------------------------------------------------- */}
+          <Link
+            to={`/project-details/${eduflow.id}`}
+            className="lg:col-span-4 group relative bg-white rounded-3xl border border-slate-200/90 shadow-[0_6px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(0,102,255,0.12)] hover:border-[#0066FF]/40 transition-all duration-300 p-5 sm:p-6 flex flex-col justify-between overflow-hidden cursor-pointer"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-700 border border-purple-200 text-xs font-mono font-bold uppercase">
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>CAMPUS ERP / LMS</span>
+                </span>
+                <span className="text-[10px] font-mono font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md">
+                  184K+ Students
+                </span>
+              </div>
+
+              <h3 className="text-lg sm:text-xl font-black text-slate-950 font-display mb-1 group-hover:text-[#0066FF] transition-colors line-clamp-1">
+                {eduflow.title}
+              </h3>
+              <p className="text-xs font-semibold text-purple-600 mb-2 line-clamp-1">
+                AI Lesson Planner & UPI QR Fee Collection
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3.5 line-clamp-2">
+                {eduflow.shortDescription}
+              </p>
+
+              {/* App Window Frame - 100% Complete Uncropped Screenshot */}
+              <div className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs group/img mb-4">
+                <div className="flex items-center justify-between px-2.5 py-1 bg-slate-100 border-b border-slate-200 text-[9px] font-mono text-slate-500">
+                  <div className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-[#FF5F56]" />
+                    <span className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+                    <span className="w-2 h-2 rounded-full bg-[#27C93F]" />
+                  </div>
+                  <div className="px-2 py-0.5 rounded bg-white text-[8px] text-slate-500 border border-slate-200 font-mono tracking-tight truncate max-w-[140px]">
+                    atsglobaltech.in/eduflow
+                  </div>
+                  <span className="text-[8px] font-mono font-bold text-emerald-600">LIVE</span>
+                </div>
+                <div className="relative w-full bg-slate-50 overflow-hidden">
+                  <img
+                    src={eduflow.image}
+                    alt={eduflow.title}
+                    className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-purple-50/70 border border-purple-100 text-xs font-mono mb-2">
+                <span className="text-[10px] text-slate-500 uppercase font-bold">AI Assistant</span>
+                <span className="font-black text-purple-700 font-display">1.8M+ Requests</span>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0066FF]">
+              <span>Explore EduFlow LMS</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
         </div>
       </div>
     </section>
