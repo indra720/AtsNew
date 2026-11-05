@@ -18,6 +18,7 @@ import ProvenTrackRecord from "./components/ProvenTrackRecord";
 import TechnologyServices from "./components/TechnologyServices";
 import TechnologyStack from "./components/TechnologyStack";
 import FeaturedSuccessStories from "./components/FeaturedSuccessStories";
+import CompanyVideoShowreel from "./components/CompanyVideoShowreel";
 import ClientTestimonials from "./components/ClientTestimonials";
 import WhyChooseUs from "./components/WhyChooseUs";
 import InnovationJourney from "./components/InnovationJourney";
@@ -100,6 +101,7 @@ const App: React.FC = () => {
               element={
                 <>
                   <HeroSection />
+                  <CompanyVideoShowreel />
                   <TechTrustMarquee />
                   <Interactive3DShowcase />
                   <GenAIEcosystem3D />
