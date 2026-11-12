@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Sparkles,
   Phone,
+  PhoneCall,
   Building2,
   ShoppingCart,
   Hotel,
   GraduationCap,
 } from "lucide-react";
 import { REAL_PROJECTS } from "../data/projectsData";
+import LiveAiTelephonySimulatorModal from "./ui/LiveAiTelephonySimulatorModal";
 
 export const FeaturedSuccessStories: React.FC = () => {
+  const [openSimulator, setOpenSimulator] = useState(false);
   const callCenter = REAL_PROJECTS[0]; // ATS Call Center
   const buildPro = REAL_PROJECTS[1];   // BuildPro Construction
   const oranza = REAL_PROJECTS[2];     // ORANZA Multi-Vendor
@@ -41,13 +44,22 @@ export const FeaturedSuccessStories: React.FC = () => {
               Discover real-world systems engineered, scaled, and secured by ATS Global Tech for market-leading enterprises.
             </p>
           </div>
-          <Link
-            to="/work/projects"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-xs sm:text-sm font-bold text-[#0066FF] hover:bg-[#0066FF] hover:text-white transition group shrink-0 shadow-xs"
-          >
-            <span>Explore All 8+ Real Projects</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <button
+              onClick={() => setOpenSimulator(true)}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0052CC] to-[#0066FF] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:from-[#0040A8] hover:to-[#0052CC] transition group cursor-pointer"
+            >
+              <PhoneCall className="w-4 h-4 text-cyan-300 animate-pulse" />
+              <span>⚡ Try Live AI Web-Dialer Demo</span>
+            </button>
+            <Link
+              to="/work/projects"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-blue-200 text-xs sm:text-sm font-bold text-[#0066FF] hover:bg-[#0066FF] hover:text-white transition group shrink-0 shadow-xs"
+            >
+              <span>Explore All 8+ Real Projects</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
 
         {/* ============================================================ */}
@@ -119,6 +131,20 @@ export const FeaturedSuccessStories: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+              {/* Interactive Simulator Quick Launch Pill */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setOpenSimulator(true);
+                }}
+                className="w-full mb-3 py-2 px-3.5 rounded-xl bg-blue-50 hover:bg-[#0066FF] text-[#0066FF] hover:text-white border border-blue-200 hover:border-blue-500 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer group/sim"
+              >
+                <PhoneCall className="w-3.5 h-3.5 text-[#0066FF] group-hover/sim:text-white animate-pulse" />
+                <span>⚡ Test Live AI WebRTC Dialer Simulation</span>
+              </button>
             </div>
 
             {/* Metrics & Action Footer (Full-Width Responsive on MD) */}
@@ -432,6 +458,12 @@ export const FeaturedSuccessStories: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      {/* Live AI Telephony Simulator Modal */}
+      <LiveAiTelephonySimulatorModal
+        isOpen={openSimulator}
+        onClose={() => setOpenSimulator(false)}
+      />
     </section>
   );
 };

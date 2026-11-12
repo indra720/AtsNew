@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, ChevronRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Sparkles, ChevronRight, CheckCircle2, Cpu } from "lucide-react";
 import HeroInteractiveCyberGrid from "./ui/HeroInteractiveCyberGrid";
 import HeroWaveNodes3D from "./ui/HeroWaveNodes3D";
 import GsapRollingText from "./ui/GsapRollingText";
 import RummyCardsDeck from "./ui/RummyCardsDeck";
+import AiProjectEstimatorModal from "./ui/AiProjectEstimatorModal";
 
 export const HeroSection: React.FC = () => {
+  const [openEstimator, setOpenEstimator] = useState(false);
   return (
     <section className="relative overflow-hidden pt-6 sm:pt-10 pb-12 sm:pb-16 bg-gradient-to-b from-[#FFFFFF] via-[#F4F9FF] to-[#EAF4FF] min-h-[85vh] flex flex-col justify-center">
       {/* 1. Symmetrical Interactive Cyber Grid (Desktop & Tablet) */}
@@ -30,18 +32,20 @@ export const HeroSection: React.FC = () => {
           {/* LEFT COLUMN: HIGH-CONTRAST VALUE PROP & ACTION CTAS (7 COLS) */}
           {/* ============================================================ */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
-            {/* Top Luxury Badge */}
+            {/* Top Luxury Badge (Click to open AI Estimator) */}
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white border border-blue-300 shadow-sm mb-4 sm:mb-5 group cursor-pointer hover:border-[#0066FF] transition max-w-full"
+              onClick={() => setOpenEstimator(true)}
+              className="inline-flex items-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white border border-blue-300 shadow-sm mb-4 sm:mb-5 group cursor-pointer hover:border-[#0066FF] hover:shadow-md transition max-w-full"
             >
-              <span className="px-2.5 py-0.5 rounded-full bg-[#0066FF] text-white text-[11px] font-extrabold font-sans shadow-xs shrink-0">
-                ATS 3.0
+              <span className="px-2.5 py-0.5 rounded-full bg-[#0066FF] text-white text-[11px] font-extrabold font-sans shadow-xs shrink-0 flex items-center gap-1">
+                <Cpu className="w-3 h-3 text-cyan-200" />
+                <span>ATS 3.0</span>
               </span>
               <span className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#0066FF] transition font-sans truncate">
-                Next-Gen Enterprise AI & Engineering
+                Next-Gen Enterprise AI & Engineering &bull; Click to Estimate
               </span>
               <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0066FF] group-hover:translate-x-0.5 transition shrink-0" />
             </motion.div>
@@ -85,7 +89,7 @@ export const HeroSection: React.FC = () => {
             >
               <Link
                 to="/lets-create"
-                className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm font-black text-white bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#0047BA] hover:from-[#0047BA] hover:to-[#0038A8] shadow-[0_10px_25px_rgba(0,102,255,0.4)] hover:shadow-[0_14px_32px_rgba(0,102,255,0.5)] transition-all duration-300 transform hover:scale-[1.02] w-full sm:w-auto min-h-[48px]"
+                className="group relative overflow-hidden inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm font-black text-white bg-gradient-to-r from-[#0052CC] via-[#0066FF] to-[#0047BA] hover:from-[#0047BA] hover:to-[#0038A8] shadow-[0_10px_25px_rgba(0,102,255,0.4)] hover:shadow-[0_14px_32px_rgba(0,102,255,0.5)] transition-all duration-300 transform hover:scale-[1.02] w-full sm:w-auto min-h-[48px] btn-pulse-glow"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
                 <Sparkles className="w-4 h-4 text-white" />
@@ -174,6 +178,12 @@ export const HeroSection: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* AI Project Scope & Architecture Estimator Modal */}
+      <AiProjectEstimatorModal
+        isOpen={openEstimator}
+        onClose={() => setOpenEstimator(false)}
+      />
     </section>
   );
 };

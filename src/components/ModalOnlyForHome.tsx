@@ -9,7 +9,7 @@ const ModalOnlyForHome = ({ setOpenModal }: any) => {
 
     const timer = setTimeout(() => {
       setOpenModal(true);
-    }, 8000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [pathname]);

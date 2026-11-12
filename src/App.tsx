@@ -57,7 +57,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 import CommandPalette from "./components/ui/CommandPalette";
 import TechTrustMarquee from "./components/ui/TechTrustMarquee";
-import RoiCalculator from "./components/ui/RoiCalculator";
+import AtsAiChatbotWidget from "./components/ui/AtsAiChatbotWidget";
 
 const App: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -109,7 +109,6 @@ const App: React.FC = () => {
                   <TechnologyServices />
                   <TechnologyStack />
                   <FeaturedSuccessStories />
-                  <RoiCalculator />
                   <ClientTestimonials />
                   <WhyChooseUs />
                   <InnovationJourney />
@@ -165,6 +164,7 @@ const App: React.FC = () => {
 
         <ContactModal isOpen={openModal} onClose={() => setOpenModal(false)} />
         <CommandPalette isOpen={commandOpen} onClose={() => setCommandOpen(false)} />
+        <AtsAiChatbotWidget />
       </div>
     </Router>
   );

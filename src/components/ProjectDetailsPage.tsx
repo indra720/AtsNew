@@ -11,9 +11,7 @@ import {
   Users,
   CheckCircle2,
   Cpu,
-  Sparkles,
   Layers,
-  ShieldCheck,
   TrendingUp,
 } from "lucide-react";
 import { REAL_PROJECTS, RealProject } from "../data/projectsData";
