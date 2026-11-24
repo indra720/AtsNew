@@ -265,6 +265,33 @@ export default function Navbar({ onOpenCommandPalette }: { onOpenCommandPalette?
                 About
               </Link>
 
+              {/* Academy Link with NEW badge */}
+              <Link
+                to="/academy"
+                onClick={closeAllDropdowns}
+                className={`relative px-4 py-2 rounded-full text-[15px] font-bold tracking-tight transition-colors z-0 flex items-center gap-1.5 ${
+                  location.pathname.startsWith("/academy") ||
+                  location.pathname.startsWith("/training") ||
+                  location.pathname.startsWith("/institute")
+                    ? "text-white"
+                    : "text-slate-800 hover:text-[#0066FF]"
+                }`}
+              >
+                {(location.pathname.startsWith("/academy") ||
+                  location.pathname.startsWith("/training") ||
+                  location.pathname.startsWith("/institute")) && (
+                  <motion.div
+                    layoutId="navbar-active-pill"
+                    className="absolute inset-0 bg-gradient-to-r from-[#000c3d] via-[#012d94] to-[#86909e] rounded-full -z-10 shadow-[0_4px_16px_rgba(1,45,148,0.35)]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span>Academy</span>
+                <span className="px-1.5 py-0.5 rounded-full bg-[#0066FF] text-[9px] text-white font-mono font-extrabold shadow-2xs animate-pulse">
+                  NEW
+                </span>
+              </Link>
+
               {/* Services Dropdown */}
               <div className="relative desktop-dropdown-container">
                 <button
@@ -515,6 +542,7 @@ export default function Navbar({ onOpenCommandPalette }: { onOpenCommandPalette?
               {[
                 { to: "/", label: "Home" },
                 { to: "/about", label: "About Us" },
+                { to: "/academy", label: "ATS Academy (IT Training) 🎓" },
                 { to: "/services", label: "Services & Pricing" },
                 { to: "/services/mobile", label: "Solutions" },
                 { to: "/services/industries", label: "Industries" },

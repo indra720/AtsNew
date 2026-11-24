@@ -27,6 +27,7 @@ interface Message {
 }
 
 const QUICK_PROMPTS = [
+  "Do you offer IT training / courses?",
   "What services does ATS build?",
   "How fast can you deliver an MVP?",
   "Who is CEO Ajeet Singh?",
@@ -73,6 +74,22 @@ export const AtsAiChatbotWidget: React.FC = () => {
       return {
         text: "Thank you! I have registered your inquiry in our priority system. Our senior solutions architect will review your project requirements and connect with you within 2 hours.",
         leadBadge: "⭐ High-Priority Enterprise Lead Registered",
+      };
+    }
+
+    if (
+      q.includes("training") ||
+      q.includes("course") ||
+      q.includes("academy") ||
+      q.includes("coaching") ||
+      q.includes("institute") ||
+      q.includes("learn") ||
+      q.includes("demo class") ||
+      q.includes("student")
+    ) {
+      return {
+        text: "🎓 Yes! ATS Global Tech now operates the ATS Tech Finishing School & Academy at our Jaipur Tech Campus (and live online). We train students & professionals in 9 in-demand tracks:\n• Full Stack Web Dev (MERN/Next.js)\n• Python & AI Automation\n• Cloud DevOps & SRE\n• Frontend & React 19 Specialization\n• Backend & System Design\n• Flutter Mobile Development\n• Digital Marketing & Performance Ads\n• IT Business Development (BDE)\n\nEvery student gets 100% practical live client codebase training, direct senior architect mentorship, an official company internship certificate, and 100% placement assistance. Visit /academy to book a free 2-day demo class!",
+        leadBadge: "🎓 ATS Tech Academy Inquiry",
       };
     }
 

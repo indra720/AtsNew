@@ -146,6 +146,7 @@ const Footer: React.FC = () => {
               {[
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
+                { name: "ATS Tech Academy (New)", href: "/academy" },
                 { name: "Services", href: "/services" },
                 { name: "Projects", href: "/work/projects" },
                 { name: "Industries", href: "/services/industries" },
@@ -171,6 +172,15 @@ const Footer: React.FC = () => {
               Our Services
             </h3>
             <ul className="space-y-2.5 text-sm text-slate-600 font-medium">
+              <li>
+                <Link
+                  to="/academy"
+                  className="hover:text-[#0066FF] transition flex items-center gap-1.5 text-[#0066FF] font-bold"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#0066FF]" />
+                  <span>ATS Tech Academy (9 Courses)</span>
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/services"

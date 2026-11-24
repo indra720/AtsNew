@@ -26,6 +26,7 @@ import ContactSection from "./components/ContactSection";
 import CallToAction from "./components/CallToAction";
 
 import About from "./components/About";
+import TrainingInstitute from "./components/TrainingInstitute";
 import ServicesSection from "./components/ServicesSection";
 import Solution from "./components/Solution";
 import Industries from "./components/Industries";
@@ -119,6 +120,9 @@ const App: React.FC = () => {
             />
 
             <Route path="/about" element={<About />} />
+            <Route path="/academy" element={<TrainingInstitute />} />
+            <Route path="/training" element={<TrainingInstitute />} />
+            <Route path="/institute" element={<TrainingInstitute />} />
             <Route path="/services" element={<ServicesSection />} />
             <Route path="/products" element={<Products />} />
             <Route path="/testimonials" element={<Testimonials />} />

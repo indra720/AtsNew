@@ -15,6 +15,7 @@ import {
   ExternalLink,
   ShieldCheck,
   Building,
+  GraduationCap,
 } from "lucide-react";
 import { REAL_PROJECTS } from "../../data/projectsData";
 
@@ -31,6 +32,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
 
   // Define static quick actions & pages
   const staticActions = [
+    {
+      id: "action-academy",
+      title: "ATS Tech Academy & IT Courses (9 Tracks)",
+      subtitle: "Full Stack, Python, DevOps, Flutter, React & BDE Training in Jaipur",
+      category: "Actions",
+      icon: GraduationCap,
+      action: () => {
+        onClose();
+        navigate("/academy");
+      },
+    },
     {
       id: "action-consult",
       title: "Schedule Free Architecture Consultation",
